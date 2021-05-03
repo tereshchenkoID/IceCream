@@ -117,7 +117,10 @@ const SearchEmployer = () => {
 
                         <div className={styles.right}>
                             <div className={styles.sort}>
-                                <div className={styles.filter}>{translate('sort_label_category')}:<span>{cat && cat.title[lang]}</span></div>
+                                {
+                                    category !== '0' &&
+                                    <div className={styles.filter}>{translate('sort_label_category')}:<span>{cat && cat.title[lang]}</span></div>
+                                }
                                 {
                                     subcategory &&
                                     subcategory !== '0' &&

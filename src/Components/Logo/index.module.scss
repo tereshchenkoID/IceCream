@@ -1,7 +1,14 @@
-@import '../../../styles/config';
+@import '../../styles/config';
 
 .block {
   @include size(160px, 50px);
+
+  &.light {
+
+    .link {
+      color: var(--white);
+    }
+  }
 }
 
 .link {

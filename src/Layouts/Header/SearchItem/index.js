@@ -7,7 +7,7 @@ const SearchItem = ({data, setCheckboxes, lang}) => {
     return (
         <NavLink
             className={styles.block}
-            to={`/search/${data.id}`}
+            to={`/search-employer/${data.id}`}
             onClick={() => setCheckboxes([]) }
         >
             <span>{data.title[lang]}</span>

@@ -1,11 +1,13 @@
 import React from "react";
 import {NavLink} from "react-router-dom";
 
+import classes from "classnames";
+
 import styles from './index.module.scss';
 
-const Logo = () => {
+const Logo = ({isLight}) => {
     return (
-        <div className={styles.block}>
+        <div className={classes(styles.block, styles.light)}>
             <NavLink
                 className={styles.link}
                 to="/main"

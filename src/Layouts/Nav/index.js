@@ -3,10 +3,11 @@ import {useSelector} from "react-redux";
 
 import classes from "classnames";
 
-import Logo from "./Logo";
 import Menu from "./Menu";
 import Login from "./Login";
 import Lang from "./Lang";
+
+import Logo from "../../Components/Logo";
 
 import styles from './index.module.scss';
 

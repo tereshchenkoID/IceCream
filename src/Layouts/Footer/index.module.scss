@@ -13,6 +13,10 @@
   @include flex(center);
 }
 
+.logo {
+  flex-grow: 1;
+}
+
 .list {
   margin-right: 100px;
   margin-bottom: 30px;
