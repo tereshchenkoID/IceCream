@@ -1,0 +1,219 @@
+@import '../../styles/config';
+
+.block {
+  width: 100%;
+  min-height: 150px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 5px;
+  box-shadow: var(--box-shadow-lg);
+  background-color: var(--white);
+  padding: 20px;
+
+  &.active {
+
+    &::after {
+      @include flex(center, center);
+      @include size(120px, 30px);
+
+      position: absolute;
+      top: 10px;
+      left: -35px;
+      color: var(--white);
+      background-color: var(--brand);
+      transform: rotateZ(-45deg);
+      content: attr(data);
+    }
+  }
+}
+
+.countries,
+.genders,
+.ages {
+  @include flex($align-items: center);
+
+  > div {
+    position: relative;
+    margin-right: 5px;
+
+    &:after {
+      position: absolute;
+      right: 0;
+    }
+
+    &:last-child {
+
+      &::after {
+        display: none;
+      }
+    }
+  }
+}
+
+.wrapper {
+  @include size(100%);
+  @include flex($align-items: center);
+}
+
+.label {
+  color: rgba(0, 0, 0, 0.5);
+  font-size: 12px;
+  margin-bottom: 5px;
+}
+
+.rate {
+  @include flex(center, center);
+  @include size(55px, 25px);
+
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: rgba(0, 0, 0, 0.05);
+  border-radius: 2px;
+  z-index: 1;
+  color: var(--orange);
+  font-size: 20px;
+  font-weight: var(--medium);
+}
+
+.photo {
+  @include size(100px);
+
+  background-color: var(--grey-100);
+  border-radius: 50%;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+  flex-shrink: 0;
+  overflow: hidden;
+}
+
+.favourite {
+  @include size(25px);
+
+  position: absolute;
+  top: 50%;
+  left: 100%;
+  transform: translate(-50%, -50%);
+}
+
+.wrap {
+  @include flex($direction: column);
+  @include size(100%);
+
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.head {
+  @include flex($align-items: center);
+
+  margin-bottom: 20px;
+}
+
+.body {
+  margin-bottom: 20px;
+}
+
+.actions {
+  align-self: flex-end;
+}
+
+.name {
+  font-size: 18px;
+  font-weight: var(--medium);
+  margin-right: 10px;
+}
+
+.country {
+  @include size(25px, 15px);
+}
+
+.skill {
+  @include flex;
+
+  padding: 3px 10px;
+  position: relative;
+  margin-bottom: 5px;
+
+  &::before {
+    @include size(3px);
+
+    position: absolute;
+    top: 7px;
+    left: 0;
+    border-radius: 50%;
+    background-color: var(--black);
+    content: '';
+  }
+
+  > div {
+    margin-right: 15px;
+
+    &:first-child {
+      width: 50%;
+    }
+  }
+}
+
+.subcategory {
+  font-size: 14px;
+  margin-top: 3px;
+  color: rgba(0, 0, 0, 0.5);
+}
+
+.genders {
+
+  > div {
+
+    &::after {
+      transform: translateX(4px);
+      content: ',';
+    }
+  }
+}
+
+.ages {
+
+  > div {
+
+    &::after {
+      transform: translateX(5px);
+      content: '-';
+    }
+  }
+}
+
+.info {
+  @include flex($wrap: wrap);
+
+  > div {
+    margin-right: 15px;
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+}
+
+.link {
+  @include size(100%, 40px);
+}
+
+.button {
+  @include flex(center, center);
+
+  height: 40px;
+  margin-bottom: 10px;
+  padding: 0 10px;
+  min-width: 130px;
+  border-radius: 50px;
+  background-color: var(--brand);
+  color: var(--white);
+}
+
+svg,
+img {
+  @include size(100%);
+
+  display: block;
+  object-fit: cover;
+}

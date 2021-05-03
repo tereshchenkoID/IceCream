@@ -1,0 +1,80 @@
+@import "../../../styles/config";
+
+.subcategory,
+.wrapper {
+  @include flex($align-items: center);
+
+  width: 100%;
+  min-height: 35px;
+  cursor: pointer;
+}
+
+.category {
+
+  &.active,
+  &:hover {
+
+    .wrapper {
+      color: var(--brand);
+    }
+
+    .icon {
+
+      path {
+        fill: var(--brand);
+      }
+    }
+  }
+
+
+  &.active {
+
+    .dropdown {
+      display: block;
+    }
+
+
+    .icon {
+      transform: rotateZ(90deg);
+    }
+  }
+}
+
+.wrapper {
+  font-weight: var(--medium);
+
+  a {
+    flex-grow: 1;
+    margin-right: 10px;
+  }
+}
+
+.dropdown {
+  display: none;
+}
+
+.subcategory {
+  font-size: 14px;
+  padding-left: 10px;
+  transition: var(--default-transition);
+
+  &:hover,
+  &.active {
+    color: var(--brand);
+  }
+}
+
+.icon {
+  @include size(15px);
+
+  margin-right: 0;
+  margin-left: auto;
+  flex-shrink: 0;
+
+  svg {
+    @include size(100%);
+
+    display: block;
+    object-fit: cover;
+  }
+}

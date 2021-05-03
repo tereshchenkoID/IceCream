@@ -1,0 +1,21 @@
+@import '../../../styles/config';
+
+.block {
+  @include flex(center, center);
+
+  flex-grow: 1;
+}
+
+.link {
+  @include flex(center, center);
+
+  position: relative;
+  margin: 0 10px;
+  text-transform: uppercase;
+
+  &.active,
+  &:hover {
+
+    color: var(--brand);
+  }
+}

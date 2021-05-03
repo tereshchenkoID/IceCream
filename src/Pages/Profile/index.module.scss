@@ -1,0 +1,279 @@
+@import '../../styles/config';
+
+.block {
+}
+
+.countries,
+.genders,
+.ages {
+    @include flex($align-items: center);
+
+    > div {
+        position: relative;
+        margin-right: 5px;
+
+        &:after {
+            position: absolute;
+            right: 0;
+        }
+
+        &:last-child {
+
+            &::after {
+                display: none;
+            }
+        }
+    }
+}
+
+.category,
+.subcategory {
+    padding-top: 5px;
+    padding-bottom: 5px;
+
+    &:last-child {
+        margin-bottom: 0;
+    }
+}
+
+.works,
+.review {
+    margin-bottom: 30px;
+
+    &:last-child {
+        margin-bottom: 0;
+    }
+}
+
+.header {
+    @include flex($align-items: center);
+
+    position: relative;
+    background-color: var(--grey-100);
+    background-size: cover;
+    background-position: 50% 50%;
+    height: 400px;
+
+    &::after {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgba(0,0,0,0.7);
+        content: '';
+    }
+}
+
+.fluid {
+    position: relative;
+    z-index: 1;
+}
+
+.container {
+    padding: 50px 0;
+}
+
+.wrapper {
+    @include flex;
+
+    margin-top: 30px;
+}
+
+.left {
+    flex-grow: 1;
+}
+
+.right {
+    margin-left: 10px;
+    flex-shrink: 0;
+    width: 420px;
+}
+
+
+.description {
+    padding: 10px 15px;
+}
+
+.category {
+    position: relative;
+    padding-left: 10px;
+    text-transform: uppercase;
+
+    &::before {
+        @include size(5px);
+
+        position: absolute;
+        top: 10px;
+        left: 0;
+        background-color: var(--brand);
+        border-radius: 50%;
+        content: '';
+    }
+}
+
+.subcategory {
+    color: rgba(0,0,0,0.5);
+    padding-left: 10px;
+}
+
+.card {
+    @include flex($align-items: center);
+
+    position: relative;
+
+    &.active {
+
+        .head {
+
+            &::after {
+                @include flex(center, center);
+                @include size(50px, 28px);
+
+                position: absolute;
+                top: 15px;
+                left: 0;
+                color: var(--white);
+                background-color: var(--brand);
+                content: attr(data);
+            }
+        }
+    }
+}
+
+.head {
+    position: relative;
+}
+
+.favourite {
+    @include size(30px);
+
+    position: absolute;
+    right: 15px;
+    top: 15px;
+}
+
+.photo {
+    @include size(150px);
+
+    overflow: hidden;
+    margin-right: 25px;
+    border-radius: 50%;
+    background-color: var(--grey-200);
+}
+
+.country {
+    @include size(40px, 25px);
+
+    margin-right: 10px;
+}
+
+.name {
+    font-size: 20px;
+    color: var(--white);
+    font-weight: var(--medium);
+    text-transform: uppercase;
+}
+
+.rate {
+    font-size: 20px;
+    font-weight: var(--medium);
+    color: var(--orange);
+}
+
+.label {
+    color: rgba(#fff, 0.7);
+    margin-bottom: 5px;
+}
+
+.text {
+    color: var(--white);
+    text-transform: capitalize;
+}
+
+.wrap {
+    @include flex($align-items: center);
+
+    margin-bottom: 15px;
+
+    &:last-child {
+        margin-bottom: 0;
+    }
+}
+
+.column {
+    margin-right: 25px;
+}
+
+.button {
+    @include flex(center, center);
+    @include size(130px, 40px);
+
+    border-radius: 40px;
+    background-color: var(--brand);
+    color: var(--white);
+}
+
+.item {
+    margin-bottom: 10px;
+
+    &:last-child {
+        margin-bottom: 0;
+    }
+}
+
+.about {
+    color: rgba(#000, 0.5);
+}
+
+.img {
+    @include size(100%);
+
+    display: block;
+    object-fit: cover;
+}
+
+.skill {
+    @include flex($wrap: wrap);
+
+    margin-bottom: 40px;
+
+    > div {
+        width: 33%;
+
+        &:first-child {
+            width: 100%;
+            margin-bottom: 15px;
+        }
+    }
+
+    .label {
+        color: rgba(#000, 0.5);
+    }
+
+    &:last-child {
+        margin-bottom: 0;
+    }
+}
+
+.genders {
+
+    > div {
+
+        &::after {
+            transform: translateX(4px);
+            content: ',';
+        }
+    }
+}
+
+.ages {
+
+    > div {
+
+        &::after {
+            transform: translateX(5px);
+            content: '-';
+        }
+    }
+}

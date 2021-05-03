@@ -1,0 +1,6 @@
+@import "../../styles/config";
+
+.item {
+  @include size(100%, 35px);
+  @include flex($align-items: center);
+}

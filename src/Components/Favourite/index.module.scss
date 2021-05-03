@@ -1,0 +1,26 @@
+@import '../../styles/config';
+
+.block {
+  @include size(100%);
+
+  cursor: pointer;
+
+  svg {
+
+    path {
+      transition: var(--default-transition);
+      stroke: var(--orange);
+    }
+  }
+
+  &:hover,
+  &.active {
+
+    svg {
+
+      path {
+        fill: var(--orange);
+      }
+    }
+  }
+}

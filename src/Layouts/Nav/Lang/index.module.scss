@@ -1,0 +1,68 @@
+@import '../../../styles/config';
+
+.block {
+  @include flex($align-items: center);
+
+  height: 100%;
+  position: relative;
+
+  &.active {
+
+    .dropdown {
+      display: block;
+    }
+
+    .arrow {
+      transform: rotateZ(0);
+
+      path {
+        fill: var(--brand);
+      }
+    }
+  }
+}
+
+.checked {
+  @include flex(center, center);
+
+  cursor: pointer;
+  text-transform: uppercase;
+}
+
+.text {
+  margin-right: 5px;
+}
+
+.arrow {
+  @include size(10px, 6px);
+
+  transform: rotateZ(180deg);
+  transition: var(--default-transition);
+}
+
+.dropdown {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 120px;
+  background-color: var(--white);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.button {
+  @include size(100%, 30px);
+  @include flex($align-items: center);
+
+  padding: 0 15px;
+  border-bottom: 1px solid var(--grey-100);
+
+  &:last-child {
+    border-bottom: 0;
+  }
+
+  &.active {
+    color: var(--brand);
+  }
+}

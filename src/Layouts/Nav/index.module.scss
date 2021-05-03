@@ -1,0 +1,21 @@
+@import '../../styles/config';
+
+.block {
+  @include flex($align-items: center);
+  @include size(100%, 100px);
+
+  position: sticky;
+  top: 0;
+  z-index: 11;
+  background-color: var(--white);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.fluid,
+.container {
+  height: 100%;
+}
+
+.container {
+  @include flex(space-between, center);
+}

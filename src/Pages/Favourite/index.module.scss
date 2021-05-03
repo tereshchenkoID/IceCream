@@ -1,0 +1,51 @@
+@import '../../styles/config';
+
+.container {
+  padding: 50px 0;
+}
+
+.wrapper {
+  @include flex($wrap: wrap);
+
+  margin-top: 40px;
+}
+
+.card {
+  position: relative;
+  padding: 10px;
+
+  &.sm {
+    width: 33%;
+
+    .favourite {
+      top: 45px;
+      left: 50%;
+      transform: translateX(40px);
+    }
+  }
+
+  &.lg {
+    width: 100%;
+
+    .favourite {
+      top: 50%;
+      left: 115px;
+      transform: translateY(-50%);
+    }
+  }
+}
+
+.favourite {
+  @include size(25px);
+
+  position: absolute;
+  z-index: 2;
+  cursor: pointer;
+
+  svg {
+
+    path {
+      fill: var(--orange);
+    }
+  }
+}

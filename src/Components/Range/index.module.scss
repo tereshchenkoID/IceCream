@@ -1,0 +1,39 @@
+@import '../../styles/config';
+
+.block {
+  padding: 20px 15px 0 10px;
+  overflow: hidden;
+}
+
+:global {
+  .input-range {
+
+    &__slider {
+      background: var(--brand);
+      border: 0;
+
+      &:active {
+        transform: none!important;
+      }
+    }
+
+    &__label {
+      color: var(--font-color);
+      font-size: 16px;
+      font-weight: var(--medium);
+    }
+
+    &__slide {
+      background: var(--brand);
+      border-color: var(--brand);
+    }
+
+    &__track {
+      background: rgba(0, 0, 0, 0.2);
+
+      &--active {
+        background: var(--brand);
+      }
+    }
+  }
+}

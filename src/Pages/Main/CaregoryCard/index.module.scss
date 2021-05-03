@@ -1,0 +1,35 @@
+@import "../../../styles/config";
+
+.block{
+  @include size(100%);
+  @include flex(center, center, column);
+
+  position: relative;
+  padding: 10px;
+  background-size: cover;
+  background-repeat: no-repeat;
+
+  &::before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(180deg, rgba(16, 24, 34, 0.3) 30%, var(--grey) 140%);
+    content: '';
+  }
+}
+
+.nickname,
+.count {
+  position: relative;
+  z-index: 1;
+  color: var(--white);
+}
+
+.nickname {
+  margin-bottom: 10px;
+  font-size: 20px;
+  text-align: center;
+  text-transform: uppercase;
+}

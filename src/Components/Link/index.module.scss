@@ -1,0 +1,19 @@
+@import '../../styles/config';
+
+.block {
+  @include size(100%);
+
+  padding: 5px 10px;
+  border-radius: 25px;
+  background-color: var(--brand);
+  box-shadow: var(--box-shadow-sm);
+}
+
+.link {
+  @include size(100%);
+  @include flex(center, center);
+
+  color: var(--white);
+  font-family: var(--font-family-additional);
+  white-space: nowrap;
+}

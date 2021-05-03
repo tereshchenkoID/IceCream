@@ -1,0 +1,45 @@
+@import '../../styles/config';
+
+.block {
+  @include flex(center, center, column);
+
+  position: relative;
+  padding: 50px 0 20px;
+  background-color: var(--black);
+  flex-shrink: 0;
+}
+
+.container {
+  @include flex(center);
+}
+
+.list {
+  margin-right: 100px;
+  margin-bottom: 30px;
+
+  &:last-child {
+    margin-right: 0;
+  }
+}
+
+.item {
+  margin-bottom: 10px;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.text {
+  color: var(--white);
+}
+
+.link {
+  display: block;
+  color: rgba(255, 255, 255, 0.5);
+
+  &:hover {
+    color: var(--brand);
+    transform: translateX(10px);
+  }
+}

@@ -1,0 +1,25 @@
+@import '../../styles/config';
+
+.block {
+  @include flex($align-items: center);
+}
+
+.item {
+  @include flex($align-items: center);
+
+  &:last-child {
+
+    .divider {
+      display: none;
+    }
+  }
+}
+
+.link {
+  position: relative;
+  color: var(--brand);
+}
+
+.divider {
+  margin: 0 5px;
+}

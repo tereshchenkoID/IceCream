@@ -1,0 +1,27 @@
+@import '../../styles/config';
+
+.popup {
+  @include flex(center, center);
+
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 12;
+  background-color: var(--grey-100);
+}
+
+.button {
+  @include size(150px);
+
+  border-radius: 5px;
+  background-color: var(--brand);
+  margin: 0 20px;
+  padding: 20px;
+  color: var(--white);
+
+  svg {
+    fill: var(--white);
+  }
+}

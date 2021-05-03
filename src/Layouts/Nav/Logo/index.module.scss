@@ -1,0 +1,13 @@
+@import '../../../styles/config';
+
+.block {
+  @include size(160px, 50px);
+}
+
+.link {
+  @include size(100%);
+  @include flex($align-items: center);
+
+  font-size: 24px;
+  font-weight: var(--medium);
+}
