@@ -44,6 +44,19 @@ const Notification = () => {
                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Neque quidem recusandae repudiandae? Eius expedita perferendis veniam? Amet distinctio dolor earum, fugit hic neque ratione rem sed suscipit unde vel voluptate.</p>
                            </div>
                        </div>
+                        <div className={styles.notification}>
+                            <div className={styles.photo} />
+                            <div className={styles.description}>
+                                <div className={styles.date}>21.04.20121</div>
+                                <a href="#" className={styles.link}>Company Name</a>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Neque quidem recusandae repudiandae? Eius expedita perferendis veniam? Amet distinctio dolor earum, fugit hic neque ratione rem sed suscipit unde vel voluptate.</p>
+                            </div>
+                            <div className={styles.actions}>
+                                <div className={classes(styles.status, styles.accept)}>Accept</div>
+                                <div className={classes(styles.status, styles.decline)}>Decline</div>
+                                <div className={classes(styles.status, styles.pending)}>Pending</div>
+                            </div>
+                        </div>
                    </div>
                 </div>
             </div>

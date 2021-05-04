@@ -206,12 +206,7 @@
 }
 
 .button {
-    @include flex(center, center);
     @include size(130px, 40px);
-
-    border-radius: 40px;
-    background-color: var(--brand);
-    color: var(--white);
 }
 
 .item {

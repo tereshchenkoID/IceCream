@@ -140,11 +140,13 @@ const CompanyCard = ({ data, lang, categories, countries, isFavourite }) => {
                     </div>
 
                     <div className={styles.actions}>
-                        <button className={styles.button}>
-                            {translate('card_button_send')}
-                        </button>
                         <div className={styles.link}>
-
+                            <Link
+                                url={`/create-offer/${data.id}`}
+                                text={translate('card_button_send')}
+                            />
+                        </div>
+                        <div className={styles.link}>
                             <Link
                                 url={`/profile/${data.id}`}
                                 text={translate('card_button_profile')}

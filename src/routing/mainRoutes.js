@@ -11,6 +11,7 @@ import Registration from "../Pages/Registration";
 import Recovery from "../Pages/Recovery";
 import Settings from "../Pages/Settings";
 import Notification from "../Pages/Notification";
+import SendOffer from "../Pages/SendOffer";
 import Team from "../Pages/Team";
 
 export const routes = [
@@ -71,6 +72,12 @@ export const routes = [
   {
     path: '/notification/:id?',
     component: Notification,
+    exact: false,
+    role: [1, 2]
+  },
+  {
+    path: '/create-offer/:id?',
+    component: SendOffer,
     exact: false,
     role: [1, 2]
   },

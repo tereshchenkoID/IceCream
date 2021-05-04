@@ -7,7 +7,7 @@ import styles from './index.module.scss';
 
 const Logo = ({isLight}) => {
     return (
-        <div className={classes(styles.block, styles.light)}>
+        <div className={classes(styles.block, isLight && styles.light)}>
             <NavLink
                 className={styles.link}
                 to="/main"

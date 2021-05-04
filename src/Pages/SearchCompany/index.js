@@ -11,9 +11,9 @@ import CompanyCard from "../../Modules/CompanyCard";
 import Breadcrumbs from "../../Components/Breadcrumbs";
 import SortCountry from '../../Modules/SortCountry';
 import Title from "../../Components/Title";
+import Header from "../../Layouts/Header";
 
 import styles from './index.module.scss';
-import Header from "../../Layouts/Header";
 
 const SearchCompany = () => {
     const dispatch = useDispatch();

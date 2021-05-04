@@ -15,6 +15,7 @@ import Favourite from "../../Components/Favourite";
 import Breadcrumbs from "../../Components/Breadcrumbs";
 
 import styles from './index.module.scss';
+import Link from "../../Components/Link";
 
 const Profile = () => {
     const dispatch = useDispatch();
@@ -133,11 +134,12 @@ const Profile = () => {
                                     </div>
 
                                     <div className={styles.wrap}>
-                                        <button
-                                            className={classes(styles.button, styles.primary)}
-                                        >
-                                            {translate('card_button_send')}
-                                        </button>
+                                        <div className={styles.button}>
+                                            <Link
+                                                url={`/create-offer/${find.id}`}
+                                                text={translate('card_button_send')}
+                                            />
+                                        </div>
                                     </div>
                                 </div>
                             </div>

@@ -5,5 +5,18 @@
 }
 
 .wrapper {
+    @include flex($justify-content: center, $wrap: wrap);
+
     margin-top: 50px;
+}
+
+.card {
+    flex: 1;
+    max-width: 50%;
+    min-width: 350px;
+    margin: 10px;
+
+    &:last-child {
+        margin-bottom: 0;
+    }
 }

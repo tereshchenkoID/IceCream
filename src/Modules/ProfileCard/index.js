@@ -69,7 +69,10 @@ const ProfileCard = ({ data, lang, categories, countries, isFavourite }) => {
                                 </div>
                                 <div>
                                     <button className={styles.button}>
-                                        {translate('card_button_send')}
+                                        <Link
+                                            url={`/create-offer/${data.id}`}
+                                            text={translate('card_button_send')}
+                                        />
                                     </button>
                                     <div className={styles.money}>
                                         <span>$</span>

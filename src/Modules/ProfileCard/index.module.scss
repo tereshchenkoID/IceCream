@@ -183,14 +183,9 @@
 }
 
 .button {
-  @include flex(center, center);
-
   height: 35px;
   min-width: 130px;
   margin-left: 10px;
-  border-radius: 50px;
-  background-color: var(--brand);
-  color: var(--white);
 }
 
 svg,

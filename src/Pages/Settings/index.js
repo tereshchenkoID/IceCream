@@ -1,4 +1,6 @@
-import React from "react";
+import React, {useState} from "react";
+import {useSelector} from "react-redux";
+
 import classes from "classnames";
 
 import {translate} from "../../i18n/translate";
@@ -8,6 +10,9 @@ import Breadcrumbs from "../../Components/Breadcrumbs";
 import styles from './index.module.scss';
 
 const Settings = () => {
+    let { dataCountry } = useSelector(state => state.countryReducer);
+    const [dropdown, setDropdown] = useState(false);
+
     const breadcrumbs = [
         {
             url: "/main",
@@ -81,10 +86,30 @@ const Settings = () => {
                                 </div>
                                 <div className={styles.wrapper}>
                                     <div className={styles.text}>Nationality</div>
-                                    <input
-                                        type="text"
-                                        className={styles.field}
-                                    />
+                                    <div className={styles.dropdown}>
+                                        <input
+                                            type="text"
+                                            className={styles.field}
+                                            onClick={() => setDropdown(!dropdown)}
+                                        />
+                                        {
+                                            dropdown &&
+                                            <div className={styles.countries}>
+                                                {
+                                                    dataCountry.length > 0 &&
+                                                    dataCountry.map((item, idx) =>
+                                                        <div
+                                                            key={idx}
+                                                            className={styles.country}
+                                                            onClick={() => setDropdown(!dropdown)}
+                                                        >
+                                                            {item.name}
+                                                        </div>
+                                                    )
+                                                }
+                                            </div>
+                                        }
+                                    </div>
                                 </div>
                                 <div className={styles.wrapper}>
                                     <div className={styles.text}>Gender</div>

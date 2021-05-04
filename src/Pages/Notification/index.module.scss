@@ -93,3 +93,24 @@
         background-color: var(--red);
     }
 }
+
+.status {
+    margin-left: 10px;
+
+    &:first-child {
+        margin-left: 0;
+    }
+    // For test
+
+    &.accept {
+        color: var(--brand);
+    }
+
+    &.decline {
+        color: var(--red);
+    }
+
+    &.pending {
+        color: rgba(0, 0, 0, 0.5);
+    }
+}
