@@ -8,7 +8,7 @@ import Favourite from "../../Components/Favourite";
 
 import styles from './index.module.scss';
 
-const ProfileCard = ({ data, lang, categories, countries, isFavourite }) => {
+const ProfileCard = ({ data, lang, categories, countries, isFavourite, isTeam }) => {
 
     return (
         <div className={classes(styles.block, data && data.isPrime && styles.active)}>
@@ -68,12 +68,15 @@ const ProfileCard = ({ data, lang, categories, countries, isFavourite }) => {
                                     }
                                 </div>
                                 <div>
-                                    <button className={styles.button}>
-                                        <Link
-                                            url={`/create-offer/${data.id}`}
-                                            text={translate('card_button_send')}
-                                        />
-                                    </button>
+                                    {
+                                        !isTeam &&
+                                        <button className={styles.button}>
+                                            <Link
+                                                url={`/create-offer/${data.id}`}
+                                                text={translate('card_button_send')}
+                                            />
+                                        </button>
+                                    }
                                     <div className={styles.money}>
                                         <span>$</span>
                                         <strong>{data.wage.toFixed(2)}</strong>

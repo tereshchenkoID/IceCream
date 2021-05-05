@@ -48,6 +48,7 @@ const Team = () => {
                                         lang={lang}
                                         categories={dataCategory}
                                         countries={dataCountry}
+                                        isTeam
                                     />
                                 </div>
                             )

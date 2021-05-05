@@ -62,25 +62,9 @@ const Settings = () => {
                                     />
                                 </div>
                                 <div className={styles.wrapper}>
-                                    <div className={styles.text}>Last Name</div>
-                                    <input
-                                        type="text"
-                                        className={styles.field}
-                                    />
-                                </div>
-                                <div className={styles.wrapper}>
                                     <div className={styles.text}>Age</div>
                                     <input
                                         type="number"
-                                        className={styles.field}
-                                    />
-                                </div>
-                            </div>
-                            <div className={styles.cell}>
-                                <div className={styles.wrapper}>
-                                    <div className={styles.text}>Email</div>
-                                    <input
-                                        type="email"
                                         className={styles.field}
                                     />
                                 </div>
@@ -111,8 +95,73 @@ const Settings = () => {
                                         }
                                     </div>
                                 </div>
+                            </div>
+                            <div className={styles.cell}>
+                                <div className={styles.wrapper}>
+                                    <div className={styles.text}>Last Name</div>
+                                    <input
+                                        type="text"
+                                        className={styles.field}
+                                    />
+                                </div>
                                 <div className={styles.wrapper}>
                                     <div className={styles.text}>Gender</div>
+                                    <input
+                                        type="text"
+                                        className={styles.field}
+                                    />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className={styles.form}>
+                        <div className={styles.head}>
+                            <div className={styles.title}>Contact Information</div>
+                        </div>
+                        <div className={styles.body}>
+                            <div className={styles.cell}>
+                                <div className={styles.wrapper}>
+                                    <div className={styles.text}>Email</div>
+                                    <input
+                                        type="email"
+                                        className={styles.field}
+                                    />
+                                </div>
+                                <div className={styles.wrapper}>
+                                    <div className={styles.text}>Country</div>
+                                    <input
+                                        type="text"
+                                        className={styles.field}
+                                    />
+                                </div>
+                            </div>
+                            <div className={styles.cell}>
+                                <div className={styles.wrapper}>
+                                    <div className={styles.text}>Phone</div>
+                                    <input
+                                        type="text"
+                                        className={styles.field}
+                                    />
+                                </div>
+                                <div className={styles.wrapper}>
+                                    <div className={styles.text}>City</div>
+                                    <input
+                                        type="text"
+                                        className={styles.field}
+                                    />
+                                </div>
+                            </div>
+                            <div className={styles.cell}>
+                                <div className={styles.wrapper}>
+                                    <div className={styles.text}>Website</div>
+                                    <input
+                                        type="text"
+                                        className={styles.field}
+                                    />
+                                </div>
+                                <div className={styles.wrapper}>
+                                    <div className={styles.text}>Address</div>
                                     <input
                                         type="text"
                                         className={styles.field}

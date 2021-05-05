@@ -122,14 +122,14 @@ const Registration = () => {
                                             <input
                                                 type="text"
                                                 className={styles.field}
-                                                placeholder={`${translateString('popup_field_phone')} *`}
+                                                placeholder={`${translateString('popup_field_phone')}`}
                                             />
                                         </div>
                                         <div className={styles.wrapper}>
                                             <input
                                                 type="text"
                                                 className={styles.field}
-                                                placeholder={`${translateString('popup_field_website')} *`}
+                                                placeholder={`${translateString('popup_field_website')}`}
                                             />
                                         </div>
                                         <div className={styles.wrapper}>
