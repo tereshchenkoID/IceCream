@@ -1,5 +1,7 @@
 import React, {useState} from "react";
 import { useSelector } from 'react-redux'
+import {ReactTitle} from 'react-meta-tags';
+
 import classes from "classnames";
 
 import {translate, translateString} from "../../i18n/translate";
@@ -17,6 +19,7 @@ const Main = () => {
 
     return (
         <>
+            <ReactTitle title="Global Workers | Home" />
             <Header lang={lang} />
             {
                 dataSetting &&

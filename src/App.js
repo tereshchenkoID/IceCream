@@ -4,6 +4,8 @@ import store from './redux/store'
 import {Provider} from 'react-redux'
 import {BrowserRouter} from 'react-router-dom';
 
+import MetaTags from "react-meta-tags";
+
 import { I18nProvider, LOCALES } from "./i18n";
 
 import Api from "./Components/Api"
@@ -25,21 +27,28 @@ const App = () => {
   }, []);
 
   return (
-          loader
-          ?
-              <Preloader/>
-          :
-          <I18nProvider locale={lang}>
-              <Provider store={store}>
-                  <BrowserRouter>
-
-                     <Api/>
-                     <Nav lang={lang} setLang={setLang}/>
-                     <Routing {...{ routes }} />
-                     <Footer />
-                  </BrowserRouter>
-              </Provider>
-          </I18nProvider>
+      <>
+          <MetaTags>
+              <title>Global Workers</title>
+              <meta name="description" content="Find jobs" />
+          </MetaTags>
+          {
+              loader
+              ?
+                  <Preloader/>
+              :
+              <I18nProvider locale={lang}>
+                  <Provider store={store}>
+                      <BrowserRouter>
+                         <Api/>
+                         <Nav lang={lang} setLang={setLang}/>
+                         <Routing {...{ routes }} />
+                         <Footer />
+                      </BrowserRouter>
+                  </Provider>
+              </I18nProvider>
+          }
+      </>
   );
 }
 

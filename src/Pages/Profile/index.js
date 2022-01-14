@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from "react";
 import {useParams} from "react-router-dom";
 import {useSelector} from 'react-redux'
+import {ReactTitle} from "react-meta-tags";
 
 import classes from "classnames";
 
@@ -44,6 +45,7 @@ const Profile = () => {
 
     return (
         <main>
+            <ReactTitle title="Global Workers | Profile" />
             {
                 find &&
                 Object.keys(find).length !== 0 &&

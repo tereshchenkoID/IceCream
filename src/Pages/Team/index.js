@@ -1,5 +1,7 @@
 import React, {useState} from "react";
 import {useSelector} from "react-redux";
+import {ReactTitle} from "react-meta-tags";
+
 import classes from "classnames";
 
 import getAllStorage from "../../helpers/localStorage";
@@ -36,6 +38,7 @@ const Team = () => {
 
     return (
         <main>
+            <ReactTitle title="Global Workers | Team" />
             <section className={classes("section", "alt")}>
                 <div className="container-fluid">
                     <div className="container">

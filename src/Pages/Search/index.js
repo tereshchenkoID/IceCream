@@ -1,6 +1,7 @@
 import React, {useState} from "react";
 import {useParams} from "react-router-dom";
 import {useSelector} from 'react-redux'
+import {ReactTitle} from "react-meta-tags";
 
 import classes from "classnames";
 
@@ -121,7 +122,7 @@ const Search = () => {
 
     return (
         <main>
-
+            <ReactTitle title="Global Workers | Search" />
             <section className={classes("section", "alt")}>
                 <div className="container-fluid">
                     <div className="container">
