@@ -2,39 +2,34 @@ import React from "react";
 
 import styles from './index.module.scss';
 
-const Checkbox = ({id, name, sort, setSort}) => {
+const Checkbox = ({item, name, label, date, action}) => {
+    const handleCheckbox = (e) => {
+        const data = date.slice();
 
-    const handleCheckbox = (e, id) => {
-        const date = sort.slice();
-        const s = date.filter(c => c.name.includes(e.target.value))
-
-        if (s.length > 0) {
-            date.splice(date.indexOf(s[0]), 1);
+        if (data.indexOf(e.target.value) !== -1) {
+            data.splice(data.indexOf(e.target.value), 1);
         }
         else {
-            date.push({
-                name: e.target.value,
-                code: id.toLowerCase()
-            })
+            data.push(e.target.value)
         }
 
-        setSort(date);
+        action(data);
     };
 
     return (
         <div className={styles.block}>
             <input
                 type="checkbox"
-                id={id}
-                value={name}
+                id={`${name}_${label.split(' ').join('-').toLowerCase()}`}
+                value={item.id}
                 className={styles.input}
-                onChange={(e) => handleCheckbox(e, id)}
+                onChange={(e) => handleCheckbox(e)}
             />
             <label
-                htmlFor={id}
+                htmlFor={`${name}_${label.split(' ').join('-').toLowerCase()}`}
                 className={styles.label}
             >
-                {name}
+                {label}
             </label>
         </div>
     );

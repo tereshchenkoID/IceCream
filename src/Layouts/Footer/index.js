@@ -1,89 +1,94 @@
 import React from "react";
-import classes from "classnames";
-
 import {NavLink} from "react-router-dom";
 
-import {translate} from "../../i18n/translate";
+import classes from "classnames";
 
-import Logo from "../../Components/Logo";
+import {translate} from "../../i18n/translate";
 
 import styles from './index.module.scss';
 
 const Footer = () => {
     return (
-        <div className={styles.block}>
-            <div className={classes("container-fluid", styles.fluid)}>
-                <div className={classes("container", styles.container)}>
-                    <div className={styles.logo}>
-                        <Logo isLight />
-                    </div>
-                    <div className={styles.list}>
-                        <div className={styles.item}>
-                            <div className={styles.text}>Navigation</div>
-                        </div>
-                        <div className={styles.item}>
-                            <NavLink
-                                className={styles.link}
-                                to="/main"
-                            >
-                                Home
-                            </NavLink>
-                        </div>
-                        <div className={styles.item}>
-                            <NavLink
-                                className={styles.link}
-                                to="/login"
-                            >
-                                Login
-                            </NavLink>
-                        </div>
-                        <div className={styles.item}>
-                            <NavLink
-                                className={styles.link}
-                                to="/registration"
-                            >
-                                Registration
-                            </NavLink>
-                        </div>
-                    </div>
-                    <div className={styles.list}>
-                        <div className={styles.item}>
-                            <div className={styles.text}>Helpful Links</div>
-                        </div>
-                        <div className={styles.item}>
-                            <NavLink
-                                className={styles.link}
-                                to="/contact"
-                            >
-                                Contact
-                            </NavLink>
-                        </div>
-                        <div className={styles.item}>
-                            <NavLink
-                                className={styles.link}
-                                to="/privacy"
-                            >
-                                Privacy Policy
-                            </NavLink>
-                        </div>
-                        <div className={styles.item}>
-                            <NavLink
-                                className={styles.link}
-                                to="/terms"
-                            >
-                                Terms of Use
-                            </NavLink>
+        <footer className={styles.block}>
+            <div className={styles.top}>
+                <div className="container-fluid">
+                    <div className="container">
+                        <div className="row">
+                            <div className={classes("col", "col-12", "col-md-6")}>
+                            </div>
+                            <div className={classes("col", "col-12", "col-md-3", "col-padding-vertical")}>
+                                <div className={styles.list}>
+                                    <div className={styles.item}>
+                                        <NavLink
+                                            className={styles.link}
+                                            to="/main"
+                                        >
+                                            {translate('menu_link_1')}
+                                        </NavLink>
+                                    </div>
+                                    <div className={styles.item}>
+                                        <NavLink
+                                            className={styles.link}
+                                            to="/search"
+                                        >
+                                            {translate('menu_link_2')}
+                                        </NavLink>
+                                    </div>
+                                    <div className={styles.item}>
+                                        <NavLink
+                                            className={styles.link}
+                                            to="/favourite"
+                                        >
+                                            {translate('menu_link_3')}
+                                        </NavLink>
+                                    </div>
+                                    <div className={styles.item}>
+                                        <NavLink
+                                            className={styles.link}
+                                            to="/team"
+                                        >
+                                            {translate('menu_link_4')}
+                                        </NavLink>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className={classes("col", "col-12", "col-md-3", "col-padding-vertical")}>
+                                <div className={styles.list}>
+                                    <div className={styles.item}>
+                                        <NavLink
+                                            className={styles.link}
+                                            to="/privacy"
+                                        >
+                                            {translate('menu_link_6')}
+                                        </NavLink>
+                                    </div>
+                                    <div className={styles.item}>
+                                        <NavLink
+                                            className={styles.link}
+                                            to="/terms"
+                                        >
+                                            {translate('menu_link_7')}
+                                        </NavLink>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <div className={classes("container-fluid", styles.fluid)}>
-                <div className={classes("container", styles.container)}>
-                    <div className={styles.text}>© 2021 website. All Rights Reserved.</div>
+            <div className={styles.bottom}>
+                <div className="container-fluid">
+                    <div className="container">
+                        <div className={styles.text}>
+                            <span>©</span>
+                            <span>{ new Date().getFullYear() }</span>
+                            <span>Global-Working. {translate('title-reserved')}</span>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
+        </footer>
     );
 }
 

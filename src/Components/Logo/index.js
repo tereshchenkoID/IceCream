@@ -1,19 +1,15 @@
 import React from "react";
-import {NavLink} from "react-router-dom";
 
-import classes from "classnames";
+import {NavLink} from "react-router-dom";
 
 import styles from './index.module.scss';
 
-const Logo = ({isLight}) => {
+const Logo = () => {
     return (
-        <div className={classes(styles.block, isLight && styles.light)}>
+        <div className={styles.block} style={{backgroundImage: 'url(/img/logo.webp)'}}>
             <NavLink
-                className={styles.link}
                 to="/main"
-            >
-                manaГeR.com
-            </NavLink>
+            />
         </div>
     );
 }

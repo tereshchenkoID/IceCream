@@ -9,7 +9,7 @@
   .input-range {
 
     &__slider {
-      background: var(--brand);
+      background: var(--color-primary);
       border: 0;
 
       &:active {
@@ -24,15 +24,15 @@
     }
 
     &__slide {
-      background: var(--brand);
-      border-color: var(--brand);
+      background: var(--color-primary);
+      border-color: var(--color-primary);
     }
 
     &__track {
       background: rgba(0, 0, 0, 0.2);
 
       &--active {
-        background: var(--brand);
+        background: var(--color-primary);
       }
     }
   }

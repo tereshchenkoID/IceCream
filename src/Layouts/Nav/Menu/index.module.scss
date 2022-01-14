@@ -1,9 +1,31 @@
 @import '../../../styles/config';
 
-.block {
-  @include flex(center, center);
+$md: map-get($brackpoints, 'md');
 
-  flex-grow: 1;
+.block {
+  @include flex($align-items: center);
+
+  @include media-max($md) {
+    flex-direction: column;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    padding: 90px 0 0;
+    margin: 0;
+    z-index: 11;
+    background-color: var(--color-white);
+    transition: var(--default-transition);
+    box-shadow: var(--box-shadow-lg);
+    transform: translateX(-100%);
+    opacity: 0;
+    width: 320px;
+
+    &.active {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
 }
 
 .link {
@@ -11,11 +33,29 @@
 
   position: relative;
   margin: 0 10px;
-  text-transform: uppercase;
 
   &.active,
   &:hover {
+    color: var(--color-primary);
+  }
 
-    color: var(--brand);
+  @include media-max($md) {
+    justify-content: flex-start;
+    margin: 0;
+    padding: 10px 20px;
+    width: 100%;
+  }
+}
+
+.icon {
+  @include size(50px);
+
+  display: none;
+  position: absolute;
+  top: 15px;
+  right: 15px;
+
+  @include media-max($md) {
+    display: block;
   }
 }

@@ -1,62 +1,83 @@
-import React, {useEffect, useState} from "react";
+import React, {useState} from "react";
+import {useSelector} from "react-redux";
 import classes from "classnames";
-import {useDispatch, useSelector} from "react-redux";
+
+import getAllStorage from "../../helpers/localStorage";
 
 import {translate, translateString} from "../../i18n/translate";
 
-import {loadCardData} from "../../redux/actions/cardActions";
-
-
 import Breadcrumbs from "../../Components/Breadcrumbs";
 import ProfileCard from "../../Modules/ProfileCard";
+import Empty from "../../Components/Empty";
 
-import styles from './index.module.scss';
+// import styles from './index.module.scss';
+
+const getTeam = (arr, name) => {
+    return arr.find((e) => {return e === name});
+}
 
 const Team = () => {
-    const dispatch = useDispatch();
-    const [lang] = useState(translateString('lang'));
-
-    let { dataCard } = useSelector(state => state.cardReducer);
-    let { dataCountry } = useSelector(state => state.countryReducer);
-    let { dataCategory } = useSelector(state => state.categoryReducer);
-
     const breadcrumbs = [
         {
             url: "/main",
             text: translate("menu_link_1")
         },
         {
-            text: 'Team Manage'
+            text: translate("menu_link_4")
         }
     ]
 
-    useEffect(() => {
-        dispatch(loadCardData());
-    }, []);
+    const [lang] = useState(translateString('lang'));
+    const [favArray, setFavArray] = useState(getAllStorage('favourite'));
+    const [teamArray, setTeamArray] = useState(getAllStorage('team'));
+
+    let { dataCard } = useSelector(state => state.cardReducer);
+    let { dataSetting } = useSelector(state => state.settingReducer);
 
     return (
-        <div className={styles.block}>
-            <div className={classes("container-fluid", styles.fluid)}>
-                <div className={classes("container", styles.container)}>
-                    <Breadcrumbs data={breadcrumbs}/>
-                    <div className={styles.wrapper}>
-                        {
-                            dataCard.map((item, idx) =>
-                                <div key={idx} className={styles.card}>
-                                    <ProfileCard
-                                        data={item}
-                                        lang={lang}
-                                        categories={dataCategory}
-                                        countries={dataCountry}
-                                        isTeam
-                                    />
-                                </div>
-                            )
-                        }
+        <main>
+            <section className={classes("section", "alt")}>
+                <div className="container-fluid">
+                    <div className="container">
+                        <div className="row">
+                            <div className={classes("col", "col-12")}>
+                                <Breadcrumbs data={breadcrumbs}/>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </div>
+            </section>
+
+            <section className="section">
+                <div className="container-fluid">
+                    <div className="container">
+                        <div className="row">
+                            {
+                                teamArray.length > 0
+                                    ?
+                                    dataCard.map((item, idx) =>
+                                        getTeam(teamArray, item.id) &&
+                                        <div key={idx} className={classes("col", "col-12", "col-md-6", "col-lg-4")}>
+                                            <ProfileCard
+                                                setting={dataSetting}
+                                                data={item}
+                                                lang={lang}
+                                                favArray={favArray}
+                                                setFavArray={setFavArray}
+                                                teamArray={teamArray}
+                                                setTeamArray={setTeamArray}
+                                            />
+                                        </div>
+
+                                    )
+                                    :
+                                    <Empty />
+                            }
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
     );
 }
 

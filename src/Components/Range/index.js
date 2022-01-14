@@ -5,14 +5,14 @@ import 'react-input-range/lib/css/index.css';
 
 import styles from './index.module.scss';
 
-const Range = ({age, setAge}) => {
+const Range = ({data, action, max, min}) => {
     return (
         <div className={styles.block}>
             <InputRange
-                maxValue={100}
-                minValue={0}
-                value={age}
-                onChange={(value) => setAge({min: value.min, max: value.max})} />
+                maxValue={max}
+                minValue={min}
+                value={data}
+                onChange={(value) => action({min: value.min, max: value.max})} />
         </div>
     );
 }

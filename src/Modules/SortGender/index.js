@@ -1,29 +1,26 @@
 import React from "react";
 
-import Checkbox from "../../Components/Checkbox";
+import Radio from "../../Components/Radio";
 
 import styles from './index.module.scss';
 
-const SortGender = ({gender, setGender}) => {
-
+const SortGender = ({setting, lang, gender, setGender}) => {
     return (
         <div>
-            <div className={styles.item}>
-                <Checkbox
-                    id="male"
-                    name="Male"
-                    sort={gender}
-                    setSort={setGender}
-                />
-            </div>
-            <div className={styles.item}>
-                <Checkbox
-                    id="female"
-                    name="Female"
-                    sort={gender}
-                    setSort={setGender}
-                />
-            </div>
+            {
+                setting &&
+                setting.map((item, idx) =>
+                    <div key={idx} className={styles.item}>
+                        <Radio
+                            lang={lang}
+                            item={item}
+                            name={'gender'}
+                            date={gender}
+                            action={setGender}
+                        />
+                    </div>
+                )
+            }
         </div>
     )
 }

@@ -7,9 +7,8 @@
 @import 'mixins/gradients';
 @import 'mixins/stroke';
 @import 'mixins/ellipsis';
-
-@import 'global/container-fluid';
-@import 'global/container';
+@import 'mixins/media-max';
+@import 'mixins/media-min';
 
 @mixin smooth-font {
   -webkit-font-smoothing: antialiased;

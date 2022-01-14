@@ -1,7 +1,9 @@
 import en from './en-US';
 import de from './de-DE';
 
-export default {
+const a = {
     ...en,
     ...de
 }
+
+export default a

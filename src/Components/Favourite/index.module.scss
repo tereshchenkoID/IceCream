@@ -3,23 +3,38 @@
 .block {
   @include size(100%);
 
-  cursor: pointer;
+  display: block;
+  padding: 8px;
+  border-radius: 50%;
+  background-color: var(--color-secondary);
+  transition: var(--default-transition);
 
   svg {
 
     path {
       transition: var(--default-transition);
-      stroke: var(--orange);
+      fill: var(--color-text);
     }
   }
 
-  &:hover,
-  &.active {
+  &:hover {
+    background-color: var(--color-text);
 
     svg {
 
       path {
-        fill: var(--orange);
+        fill: var(--color-white);
+      }
+    }
+  }
+
+  &.active {
+    background-color: var(--color-yellow);
+
+    svg {
+
+      path {
+        fill: var(--color-white);
       }
     }
   }

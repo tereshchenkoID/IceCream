@@ -2,6 +2,8 @@
 
 .block {
   @include flex($align-items: center);
+
+  padding: 30px 0;
 }
 
 .item {
@@ -17,9 +19,9 @@
 
 .link {
   position: relative;
-  color: var(--brand);
+  color: var(--color-primary);
 }
 
 .divider {
-  margin: 0 5px;
+  margin: 0 8px;
 }

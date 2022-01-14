@@ -1,0 +1,968 @@
+{
+  "gender": [
+    {
+      "id": "0",
+      "ua": "Всі",
+      "ru": "Все",
+      "en": "All",
+      "de": "Alle"
+    },
+    {
+      "id": "1",
+      "ua": "Чоловік",
+      "ru": "Мужчина",
+      "en": "Male",
+      "de": "Mann"
+    },
+    {
+      "id": "2",
+      "ua": "Жінка",
+      "ru": "Женщина",
+      "en": "Female",
+      "de": "Frau"
+    }
+  ],
+  "family": [
+    {
+      "id": "0",
+      "ua": "Всі",
+      "ru": "Все",
+      "en": "All",
+      "de": "Alle"
+    },
+    {
+      "id": "1",
+      "ua": "Неодружений/a",
+      "ru": "Холост/незамужем",
+      "en": "Single",
+      "de": "Unverheiratet"
+    },
+    {
+      "id": "2",
+      "ua": "Одружений/a",
+      "ru": "Женат/замужем",
+      "en": "Married",
+      "de": "Verheiratet"
+    }
+  ],
+  "language": {
+    "list": [
+      {
+        "id": "0",
+        "ua": "Англійська",
+        "ru": "Английский",
+        "en": "English",
+        "de": "Englisch"
+      },
+      {
+        "id": "1",
+        "ua": "Німецька",
+        "ru": "Немецкий",
+        "en": "German",
+        "de": "Deutsch"
+      }
+    ],
+    "level": [
+      {
+        "id": "0",
+        "ua": "Початковий",
+        "ru": "Начальный",
+        "en": "Beginner",
+        "de": "Initial"
+      },
+      {
+        "id": "1",
+        "ua": "Середній",
+        "ru": "Средний",
+        "en": "Intermediate",
+        "de": "Durchschnitt"
+      },
+      {
+        "id": "2",
+        "ua": "Досконалий",
+        "ru": "Продвинутый",
+        "en": "Advanced",
+        "de": "Perfekt"
+      },
+      {
+        "id": "2",
+        "ua": "Професійний",
+        "ru": "Профессиональный",
+        "en": "Proficiency",
+        "de": "Fachmann"
+      }
+    ]
+  },
+  "vaccination": [
+    {
+      "id": "0",
+      "ua": "Всі",
+      "ru": "Все",
+      "en": "All",
+      "de": "Alle"
+    },
+    {
+      "id": "1",
+      "ua": "Так, 2 та більше",
+      "ru": "Да, 2 и больше",
+      "en": "Yes, 2 and More",
+      "de": "Ja, 2 und mehr"
+    },
+    {
+      "id": "2",
+      "ua": "Частково, 1 вакцина",
+      "ru": "Частично, 1 вакцина",
+      "en": "Partially, 1 Vaccine",
+      "de": "Teilweise 1 Impfstoff"
+    },
+    {
+      "id": "3",
+      "ua": "Ні",
+      "ru": "Нет",
+      "en": "No",
+      "de": "Nein"
+    }
+  ],
+  "access": [
+    {
+      "id": "0",
+      "ua": "Всі",
+      "ru": "Все",
+      "en": "All",
+      "de": "Alle"
+    },
+    {
+      "id": "1",
+      "ru": "Да",
+      "ua": "Так",
+      "en": "Yes",
+      "de": "Ja"
+    },
+    {
+      "id": "2",
+      "ru": "Нет",
+      "ua": "Нi",
+      "en": "No",
+      "de": "Nein"
+    }
+  ],
+  "driver": [
+    {
+      "id": "0",
+      "name": "B"
+    },
+    {
+      "id": "1",
+      "name": "BE"
+    },
+    {
+      "id": "2",
+      "name": "C1"
+    },
+    {
+      "id": "3",
+      "name": "C"
+    },
+    {
+      "id": "4",
+      "name": "CE"
+    },
+    {
+      "id": "5",
+      "name": "D1"
+    },
+    {
+      "id": "6",
+      "name": "D"
+    },
+    {
+      "id": "7",
+      "name": "DE"
+    },
+    {
+      "id": "8",
+      "name": "Code 95"
+    }
+  ],
+  "job": [
+    {
+      "id": "0",
+      "ua": "Всі",
+      "ru": "Все",
+      "en": "All",
+      "de": "Alle"
+    },
+    {
+      "id": "1",
+      "ua": "Збирачі врожаю",
+      "ru": "Сборщики урожая",
+      "en": "Farm labourer",
+      "de": "Erntehelfer",
+      "list": [
+        {
+          "id": "0",
+          "ua": "Яблука",
+          "ru": "Яблоки",
+          "en": "Apples",
+          "de": "Äpfel"
+        },
+        {
+          "id": "1",
+          "ua": "Ягоди",
+          "ru": "Ягоды",
+          "en": "Soft fruit",
+          "de": "Beerenobst"
+        },
+        {
+          "id": "2",
+          "ua": "Груші",
+          "ru": "Груши",
+          "en": "Pears",
+          "de": "Birnen"
+        },
+        {
+          "id": "3",
+          "ua": "Боби",
+          "ru": "Бобы",
+          "en": "Beans",
+          "de": "Bohnen"
+        },
+        {
+          "id": "4",
+          "ua": "Печериця",
+          "ru": "Шампиньон",
+          "en": "Mushroom Champignon",
+          "de": "Champignon"
+        },
+        {
+          "id": "5",
+          "ua": "Полуниця",
+          "ru": "Клубника",
+          "en": "Strawberries",
+          "de": "Erdbeeren"
+        },
+        {
+          "id": "6",
+          "ua": "Зерно",
+          "ru": "Зерно",
+          "en": "Grain",
+          "de": "Getreide"
+        },
+        {
+          "id": "7",
+          "ua": "Огірок",
+          "ru": "Огурец",
+          "en": "Cucumber",
+          "de": "Gurken"
+        },
+        {
+          "id": "8",
+          "ua": "Картопля",
+          "ru": "Картофель",
+          "en": "Potatoes",
+          "de": "Kartoffeln"
+        },
+        {
+          "id": "9",
+          "ua": "Вишня",
+          "ru": "Вишня",
+          "en": "Cherries",
+          "de": "Kirschen"
+        },
+        {
+          "id": "10",
+          "ua": "Капуста",
+          "ru": "Капуста",
+          "en": "Cabbage",
+          "de": "Kohl"
+        },
+        {
+          "id": "11",
+          "ua": "Кукурудза",
+          "ru": "Кукуруза",
+          "en": "Corn",
+          "de": "Mais"
+        },
+        {
+          "id": "12",
+          "ua": "Морква",
+          "ru": "Морковь",
+          "en": "Carrots",
+          "de": "Möhren"
+        },
+        {
+          "id": "13",
+          "ua": "Сливи",
+          "ru": "Сливы",
+          "en": "Plums",
+          "de": "Pflaumen"
+        },
+        {
+          "id": "14",
+          "ua": "Редис",
+          "ru": "Редис",
+          "en": "Radish",
+          "de": "Radieschen"
+        },
+        {
+          "id": "15",
+          "ua": "Ріпак",
+          "ru": "Рапс",
+          "en": "Rape",
+          "de": "Raps"
+        },
+        {
+          "id": "16",
+          "ua": "Салат",
+          "ru": "Салат",
+          "en": "Salad",
+          "de": "Salat"
+        },
+        {
+          "id": "17",
+          "ua": "Спаржа",
+          "ru": "Спаржа",
+          "en": "Asparagus",
+          "de": "Spargel"
+        },
+        {
+          "id": "18",
+          "ua": "Шпинат",
+          "ru": "Шпинат",
+          "en": "Spinach",
+          "de": "Spinat"
+        },
+        {
+          "id": "19",
+          "ua": "Цукровий буряк",
+          "ru": "Сахарная свекла",
+          "en": "Sugar beet",
+          "de": "Zuckerrüben"
+        },
+        {
+          "id": "20",
+          "ua": "Цибуля ріпчаста",
+          "ru": "Лук репчатый",
+          "en": "Onions",
+          "de": "Zwiebeln"
+        }
+      ]
+    },
+    {
+      "id": "2",
+      "ua": "Садівники та землероби",
+      "ru": "Садоводы и земледельцы",
+      "en": "Gardeners and farmers",
+      "de": "Gärtner und Bauern",
+      "list": [
+        {
+          "id": "0",
+          "ua": "Лікарські та ароматичні рослини",
+          "ru": "Лекарственные и ароматические растения",
+          "en": "Medicinal and aromatic plants",
+          "de": "Arznei- und Gewürzpflanzen"
+        },
+        {
+          "id": "1",
+          "ua": "Дерев\"яний розплідник",
+          "ru": "Древесный питомник",
+          "en": "Tree nursery",
+          "de": "Baumschulen"
+        },
+        {
+          "id": "2",
+          "ua": "Квіти та декоративні рослини",
+          "ru": "Цветы и декоративные растения",
+          "en": "Flowers and ornamental plants",
+          "de": "Blumen- und Zierpflanzen"
+        },
+        {
+          "id": "3",
+          "ua": "Садівництво",
+          "ru": "Садоводство",
+          "en": "Gardening",
+          "de": "Gärtnerei"
+        },
+        {
+          "id": "4",
+          "ua": "Овочеводство",
+          "ru": "Овощеводство",
+          "en": "Vegetable growing",
+          "de": "Gemüsebau"
+        },
+        {
+          "id": "5",
+          "ua": "Пасовища",
+          "ru": "Пастбища",
+          "en": "Grassland",
+          "de": "Grünland"
+        },
+        {
+          "id": "6",
+          "ua": "Вирощування хмелю",
+          "ru": "Выращивание хмеля",
+          "en": "Hop growing",
+          "de": "Hopfenbau"
+        },
+        {
+          "id": "7",
+          "ua": "Вирощування фруктів",
+          "ru": "Выращивание фруктов",
+          "en": "Fruit growing",
+          "de": "Obstbau"
+        },
+        {
+          "id": "8",
+          "ua": "Переробка фруктів та овочів",
+          "ru": "Переработка фруктов и овощей",
+          "en": "Fruit and vegetable processing",
+          "de": "Obst- und Gemüseverarbeitung"
+        },
+        {
+          "id": "9",
+          "ua": "Вирощування грибів",
+          "ru": "Выращивание грибов",
+          "en": "Mushroom growing",
+          "de": "Pilzzucht"
+        },
+        {
+          "id": "10",
+          "ua": "Виноградарство",
+          "ru": "Виноградарство",
+          "en": "Viticulture",
+          "de": "Weinbau"
+        }
+      ]
+    },
+    {
+      "id": "3",
+      "ua": "Тваринники",
+      "ru": "Животноводы",
+      "en": "Stockbreeder",
+      "de": "Viehzüchter",
+      "list": [
+        {
+          "id": "0",
+          "ua": "Бджільництво",
+          "ru": "Пчеловодство",
+          "en": "Beekeeping",
+          "de": "Bienenzucht"
+        },
+        {
+          "id": "1",
+          "ua": "Рибництво",
+          "ru": "Рыбоводство",
+          "en": "Fish farming",
+          "de": "Fischzucht"
+        },
+        {
+          "id": "2",
+          "ua": "Тваринництво",
+          "ru": "Животноводство",
+          "en": "livestock breeding",
+          "de": "Tierhaltung"
+        },
+        {
+          "id": "3",
+          "ua": "Переробка м\"яса",
+          "ru": "Переработка мяса",
+          "en": "Meat processing",
+          "de": "Fleischverarbeitung"
+        },
+        {
+          "id": "4",
+          "ua": "Кінний двір",
+          "ru": "Конный двор",
+          "en": "Riding stables/center",
+          "de": "Reiterhof"
+        }
+      ]
+    },
+    {
+      "id": "4",
+      "ua": "Лісне господарство",
+      "ru": "Лесное хозяйство",
+      "en": "Forest",
+      "de": "Wald",
+      "list": [
+        {
+          "id": "0",
+          "ua": "Вальник лісу",
+          "ru": "Вальщик леса",
+          "en": "Lumberjack",
+          "de": "Holzhacker"
+        },
+        {
+          "id": "1",
+          "ua": "Лісник",
+          "ru": "Лесник",
+          "en": "Forester",
+          "de": "Forstwirt/Förster"
+        },
+        {
+          "id": "2",
+          "ua": "Лісоруб",
+          "ru": "Лесоруб",
+          "en": "Tree feller/Lumberer",
+          "de": "Holzfäller"
+        }
+      ]
+    },
+    {
+      "id": "5",
+      "ua": "Водії спеціальної техніки",
+      "ru": "Водители специальной техники",
+      "en": "Drivers of special equipment",
+      "de": "Zugmaschinenführer",
+      "list": [
+        {
+          "id": "0",
+          "ua": "Тракторист",
+          "ru": "Тракторист",
+          "en": "Тractor driver",
+          "de": "Traktorfahrer"
+        },
+        {
+          "id": "1",
+          "ua": "Оператор комбайна",
+          "ru": "Оператор комбайна",
+          "en": "Combine harvester operator",
+          "de": "Mähdrescherfahrer"
+        }
+      ]
+    },
+    {
+      "id": "6",
+      "ua": "Послуги з догляду",
+      "ru": "Услуги по уходу",
+      "en": "Care services",
+      "de": "Pflegedienste",
+      "list": [
+        {
+          "id": "0",
+          "ua": "Доглядальниця",
+          "ru": "Сиделка",
+          "en": "Nurse",
+          "de": "Pfleger/Pflegerin"
+        }
+      ]
+    },
+    {
+      "id": "7",
+      "ua": "Інші послуги",
+      "ru": "Другие услуги",
+      "en": "Other services",
+      "de": "Andere Dienstleistungen",
+      "list": [
+        {
+          "id": "0",
+          "ua": "Гастрономія",
+          "ru": "Гастрономия",
+          "en": "Gastronomy",
+          "de": "Gastronomie"
+        },
+        {
+          "id": "1",
+          "ua": "Готельні послуги",
+          "ru": "Гостиничные услуги",
+          "en": "Hotel",
+          "de": "Hotel"
+        }
+      ]
+    },
+    {
+      "id": "8",
+      "ua": "Без практичного досвіду в сільському господарстві",
+      "ru": "Без практического опыта в сельском хозяйстве",
+      "en": "No practical experience in agriculture",
+      "de": "Keine praktische Erfahrung in der Landwirtschaft",
+      "list": [
+        {
+          "id": "0",
+          "ua": "Студент/ка (сільське господарстві)",
+          "ru": "Студент/ка (сельскоe хозяйстве)",
+          "en": "Student (agriculture)",
+          "de": "Student (landwirtschaft)"
+        },
+        {
+          "id": "1",
+          "ua": "Студента/ка (інша галузь)",
+          "ru": "Студента/ка (другая отрасль)",
+          "en": "Student (another industry)",
+          "de": "Student (eine andere Branche)"
+        },
+        {
+          "id": "2",
+          "ua": "Маю досвід в іншій галузі",
+          "ru": "Имею опыт в другой области",
+          "en": "I have experience in another field",
+          "de": "Ich habe Erfahrung in einem anderen Bereich"
+        }
+      ]
+    }
+  ],
+  "about": [
+    {
+      "id": "0",
+      "ua": "Туризм",
+      "ru": "Туризм",
+      "en": "Tourism",
+      "de": "Tourismus"
+    },
+    {
+      "id": "1",
+      "ua": "Рибалка",
+      "ru": "Рыбалка",
+      "en": "Fishing",
+      "de": "Angeln"
+    },
+    {
+      "id": "2",
+      "ua": "Спостереження за птахами",
+      "ru": "Наблюдение за птицами",
+      "en": "Bird watching",
+      "de": "Vögel beobachten"
+    },
+    {
+      "id": "3",
+      "ua": "Танці",
+      "ru": "Танцы",
+      "en": "Dancing",
+      "de": "Tanzen"
+    },
+    {
+      "id": "4",
+      "ua": "Пейнтбол",
+      "ru": "Пейнтбол",
+      "en": "Paintball",
+      "de": "Paintball"
+    },
+    {
+      "id": "5",
+      "ua": "Кіно",
+      "ru": "Кино",
+      "en": "Cinema",
+      "de": "Kino"
+    },
+    {
+      "id": "6",
+      "ua": "Гра в аматорському театрі",
+      "ru": "Игра в любительском театре",
+      "en": "Amateur theater",
+      "de": "Amateurtheaterstück"
+    },
+    {
+      "id": "7",
+      "ua": "Колекціонування",
+      "ru": "Коллекционирование",
+      "en": "Collecting",
+      "de": "Sammeln"
+    },
+    {
+      "id": "8",
+      "ua": "Збирання пазлів",
+      "ru": "Собирание пазлов",
+      "en": "Collecting puzzles",
+      "de": "Rätsel sammeln"
+    },
+    {
+      "id": "9",
+      "ua": "Квітництво",
+      "ru": "Цветоводство",
+      "en": "Floriculture",
+      "de": "Blumenzucht"
+    },
+    {
+      "id": "10",
+      "ua": "Садівництво",
+      "ru": "Садоводство",
+      "en": "Gardening",
+      "de": "Gartenarbeit"
+    },
+    {
+      "id": "11",
+      "ua": "Огородництво",
+      "ru": "Огородничество",
+      "en": "Horticulture",
+      "de": "Gartenbau"
+    },
+    {
+      "id": "12",
+      "ua": "Собаківництво",
+      "ru": "Собаководство",
+      "en": "Dog breeding",
+      "de": "Hundezucht"
+    },
+    {
+      "id": "13",
+      "ua": "Малювання",
+      "ru": "Рисование",
+      "en": "Painting",
+      "de": "Gemälde"
+    },
+    {
+      "id": "14",
+      "ua": "Рукоділля",
+      "ru": "Рукоделие",
+      "en": "Needlework",
+      "de": "Handarbeit"
+    },
+    {
+      "id": "15",
+      "ua": "Аматорська фотографія",
+      "ru": "Любительская фотография",
+      "en": "Amateur photography",
+      "de": "Amateurfotografie"
+    },
+    {
+      "id": "16",
+      "ua": "Аматорський живопис",
+      "ru": "Любительская живопись",
+      "en": "Amateur painting",
+      "de": "Amateurmalerei"
+    },
+    {
+      "id": "17",
+      "ua": "Кулінарія",
+      "ru": "Кулинария",
+      "en": "Cooking",
+      "de": "Kochen"
+    },
+    {
+      "id": "18",
+      "ua": "Спів, караоке",
+      "ru": "Пение, караоке",
+      "en": "Singing, karaoke",
+      "de": "Singen, Karaoke"
+    },
+    {
+      "id": "19",
+      "ua": "Гра на музичному інструменті",
+      "ru": "Игра на музыкальном инструменте",
+      "en": "Playing a musical instrument",
+      "de": "Ein Musikinstrument spielen"
+    },
+    {
+      "id": "20",
+      "ua": "Комп'ютерні ігри",
+      "ru": "Компьютерные игры",
+      "en": "Computer games",
+      "de": "Computerspiele"
+    },
+    {
+      "id": "21",
+      "ua": "Настільні ігри",
+      "ru": "Настольные игры",
+      "en": "Board games",
+      "de": "Brettspiele"
+    },
+    {
+      "id": "22",
+      "ua": "Програмування",
+      "ru": "Программирование",
+      "en": "Programming",
+      "de": "Programmierung"
+    },
+    {
+      "id": "23",
+      "ua": "Інтелектуальні ігри (кросворди, ребуси)",
+      "ru": "Интеллектуальные игры (кроссворды, ребусы)",
+      "en": "Intellectual games (crosswords, puzzles)",
+      "de": "Intellektuelle Spiele (Kreuzworträtsel, Rätsel)"
+    },
+    {
+      "id": "24",
+      "ua": "Шахи",
+      "ru": "Шахматы",
+      "en": "Chess",
+      "de": "Schach"
+    }
+  ],
+  "regions":  [
+    {
+      "id": "0",
+      "iso": "ua",
+      "ru": "Украина",
+      "ua": "Україна",
+      "en": "Ukraine",
+      "de": "Ukraine",
+      "list": [
+        {
+          "id": "0",
+          "ru": "АРК",
+          "ua": "АРК",
+          "en": "Autonomous Republic of Crimea",
+          "de": "Autonome Republik Krim"
+        },
+        {
+          "id": "1",
+          "ru": "Винницкая",
+          "ua": "Вінницька",
+          "en": "Vinnytsia",
+          "de": "Winnyzja"
+        },
+        {
+          "id": "2",
+          "ru": "Волынская",
+          "ua": "Волинська",
+          "en": "Volyn",
+          "de": "Wolyn"
+        },
+        {
+          "id": "3",
+          "ru": "Днепропетровская",
+          "ua": "Дніпропетровська",
+          "en": "Dnipropetrovsk",
+          "de": "Dnipropetrowsk"
+        },
+        {
+          "id": "4",
+          "ru": "Донецкая",
+          "ua": "Донецька",
+          "en": "Donetsk",
+          "de": "Donezk"
+        },
+        {
+          "id": "5",
+          "ru": "Житомирская",
+          "ua": "Житомирська",
+          "en": "Zhytomyr",
+          "de": "Schytomyr"
+        },
+        {
+          "id": "6",
+          "ru": "Закарпатская",
+          "ua": "Закарпатська",
+          "en": "Transcarpathian",
+          "de": "Transkarpatien"
+        },
+        {
+          "id": "7",
+          "ru": "Запорожская",
+          "ua": "Запорізька",
+          "en": "Zaporozhye",
+          "de": "Saporoschje"
+        },
+        {
+          "id": "8",
+          "ru": "Ивано-Франковская",
+          "ua": "Івано-Франківська",
+          "en": "Ivano-Frankivsk",
+          "de": "Iwano-Frankiwsk"
+        },
+        {
+          "id": "9",
+          "ru": "Киевская",
+          "ua": "Київська",
+          "en": "Kiev",
+          "de": "Kiew"
+        },
+        {
+          "id": "10",
+          "ru": "Кировоградская",
+          "ua": "Кіровоградська",
+          "en": "Kirovograd",
+          "de": "Kirowograd"
+        },
+        {
+          "id": "11",
+          "ru": "Луганская",
+          "ua": "Луганська",
+          "en": "Luhansk",
+          "de": "Luhansk"
+        },
+        {
+          "id": "12",
+          "ru": "Львовская",
+          "ua": "Львівська",
+          "en": "Lviv",
+          "de": "Lwiw"
+        },
+        {
+          "id": "13",
+          "ru": "Николаевская",
+          "ua": "Миколаївська",
+          "en": "Mykolaiv",
+          "de": "Mykolajiw"
+        },
+        {
+          "id": "14",
+          "ru": "Одесская",
+          "ua": "Одеська",
+          "en": "Odessa",
+          "de": "Odessa"
+        },
+        {
+          "id": "15",
+          "ru": "Полтавская",
+          "ua": "Полтавська",
+          "en": "Poltava",
+          "de": "Poltawa"
+        },
+        {
+          "id": "16",
+          "ru": "Ровенская",
+          "ua": "Рівненська",
+          "en": "Rivne",
+          "de": "Riwne"
+        },
+        {
+          "id": "17",
+          "ru": "Сумская",
+          "ua": "Сумська",
+          "en": "Sumy",
+          "de": "Sumy"
+        },
+        {
+          "id": "18",
+          "ru": "Тернопольская",
+          "ua": "Тернопільська",
+          "en": "Ternopil",
+          "de": "Ternopil"
+        },
+        {
+          "id": "19",
+          "ru": "Харьковская",
+          "ua": "Харківська",
+          "en": "Kharkiv",
+          "de": "Charkiw"
+        },
+        {
+          "id": "20",
+          "ru": "Херсонская",
+          "ua": "Херсонська",
+          "en": "Kherson",
+          "de": "Cherson"
+        },
+        {
+          "id": "21",
+          "ru": "Хмельницкая",
+          "ua": "Хмельницька",
+          "en": "Khmelnytsky",
+          "de": "Chmelnyzkyj"
+        },
+        {
+          "id": "22",
+          "ru": "Черкасская",
+          "ua": "Черкаська",
+          "en": "Cherkasy",
+          "de": "Tscherkassy"
+        },
+        {
+          "id": "23",
+          "ru": "Черновицкая",
+          "ua": "Чернівецька",
+          "en": "Chernivtsi",
+          "de": "Czernowitz"
+        },
+        {
+          "id": "24",
+          "ru": "Черниговская",
+          "ua": "Чернігівська",
+          "en": "Chernihiv",
+          "de": "Tschernihiw"
+        }
+      ]
+    }
+  ]
+}

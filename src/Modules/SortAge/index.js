@@ -2,14 +2,14 @@ import React from "react";
 
 import Range from "../../Components/Range";
 
-import styles from './index.module.scss';
-
-const SortAge = ({age, setAge}) => {
+const SortAge = ({age, setAge, max, min}) => {
     return (
-        <div className={styles.block}>
+        <div>
             <Range
-                age={age}
-                setAge={setAge}
+                max={max}
+                min={min}
+                data={age}
+                action={setAge}
             />
         </div>
     )

@@ -7,11 +7,10 @@ const CategoryCard = ({data, lang}) => {
     return (
         <NavLink
             className={styles.block}
-            to={`/search-employer/${data.id}`}
-            style={{backgroundImage: 'url(/img/example-1.jpeg)'}}
+            to={`/search/${data.id}`}
+            style={{backgroundImage: `url(/img/${data.id}.webp)`}}
         >
-            <span className={styles.nickname}>{data.title[lang]}</span>
-            <span className={styles.count}>{data.count}</span>
+            <span className={styles.nickname}>{data[lang]}</span>
         </NavLink>
     )
 }

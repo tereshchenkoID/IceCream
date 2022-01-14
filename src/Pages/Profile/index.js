@@ -1,43 +1,32 @@
 import React, {useEffect, useState} from "react";
 import {useParams} from "react-router-dom";
-import { useDispatch, useSelector } from 'react-redux'
-import classes from "classnames";
+import {useSelector} from 'react-redux'
 
-import { loadCardData } from '../../redux/actions/cardActions';
-import {loadCompanyData} from "../../redux/actions/companyActions";
+import classes from "classnames";
 
 import {translate, translateString} from "../../i18n/translate";
 
-import WorkBlock from "../../Modules/WorkBlock";
-import ReviewBlock from "../../Modules/ReviewBlock";
-import Subcategory from "../../Components/Subcategory";
+import convertData from "../../helpers/convertData";
+import getAge from "../../helpers/getAge";
+import getAllStorage from "../../helpers/localStorage";
+
+import Team from "../../Components/Team";
 import Favourite from "../../Components/Favourite";
 import Breadcrumbs from "../../Components/Breadcrumbs";
 
 import styles from './index.module.scss';
-import Link from "../../Components/Link";
 
 const Profile = () => {
-    const dispatch = useDispatch();
-
     let { id } = useParams();
-    let { dataUser } = useSelector(state => state.userReducer);
-    let { dataCountry } = useSelector( state => state.countryReducer);
-    let { dataCategory } = useSelector(state => state.categoryReducer);
 
     let { dataCard } = useSelector(state => state.cardReducer);
-    let { dataCompany } = useSelector(state => state.companyReducer);
-
-    const titles = {
-        about: `${translateString('section_description_about')}:`,
-        skills: `${translateString('section_description_skills')}:`,
-        works: `${translateString('section_description_work')}:`,
-        reviews: `${translateString('section_description_review')}:`,
-    };
+    let { dataSetting } = useSelector(state => state.settingReducer);
 
     const [lang] = useState(translateString('lang'));
-    const [prime] = useState(translateString('card_prime'));
-    const [find, setFind] = useState();
+
+    const [find, setFind] = useState({});
+    const [teamArray, setTeamArray] = useState(getAllStorage('team'));
+    const [favArray, setFavArray] = useState(getAllStorage('favourite'));
 
     const breadcrumbs = [
         {
@@ -45,272 +34,206 @@ const Profile = () => {
             text: translate("menu_link_1")
         },
         {
-            text: 'Profile'
+            text: translate("menu_link_5")
         }
     ]
 
     useEffect(() => {
-        dataUser.role === 1 && dispatch(loadCompanyData());
-        dataUser.role === 2 && dispatch(loadCardData());
-
-        dataUser.role === 1 && setFind(dataCompany && dataCompany.find((e) => {return e.id === id}))
-        dataUser.role === 2 && setFind(dataCard && dataCard.find((e) => {return e.id === id}))
-    }, [dataCard, dataCompany]);
+        setFind(dataCard.find((e) => {return e.id === id}))
+    }, [id, dataCard]);
 
     return (
-        <div className={styles.block}>
-            <div className={styles.header} style={{backgroundImage: 'url(/img/header-2.jpeg)'}}>
-                <div className={classes("container-fluid", styles.fluid)}>
-                    <div className={classes("container", styles.container)}>
-                        {
-                            find &&
-                            <div className={classes(styles.card, find.isPrime && styles.active)}>
-                                <div className={styles.head} data={prime}>
-                                    <div className={styles.favourite}>
-                                        <Favourite id={find.id}/>
-                                    </div>
-                                    <div className={styles.photo}>
-                                        {
-                                            find.photo &&
-                                            <img
-                                                src={find.photo}
-                                                alt={find.photo}
-                                                className={styles.img}
-                                            />
-                                        }
-                                    </div>
-                                </div>
+        <main>
+            {
+                find &&
+                Object.keys(find).length !== 0 &&
+                <>
+                    <section className={classes("section", "alt")}>
+                        <div className="container-fluid">
+                            <div className="container">
+                                <Breadcrumbs data={breadcrumbs}/>
+                            </div>
+                        </div>
+                    </section>
 
-                                <div>
-                                    <div className={styles.wrap}>
-                                        <div className={styles.name}>
-                                            {find.name} {find.surname && find.surname}
-                                        </div>
-                                    </div>
-
-                                    <div className={styles.wrap}>
-                                        <div className={styles.country}>
-                                            <img
-                                                src={`https://weplay-cdn.azureedge.net/weplay-public/flags/${find.country}.svg`}
-                                                alt={find.country}
-                                                className={styles.img}
+                    <section className={styles.header} style={{backgroundImage: 'url(/img/profile-bg.webp)'}}>
+                        <div className="container-fluid">
+                            <div className="container">
+                                <div className={styles.card}>
+                                    <div>
+                                        <div className={styles.favourite}>
+                                            <Favourite
+                                                id={id}
+                                                favArray={favArray}
+                                                setFavArray={setFavArray}
                                             />
                                         </div>
-                                        {
-                                            find.rate &&
-                                            <div className={styles.rate}>{find.rate.toFixed(1)}</div>
-                                        }
+                                        <div className={styles.photo}>
+                                           <img
+                                               src={find.photo}
+                                               alt={find.photo}
+                                               loading={'lazy'}
+                                           />
+                                        </div>
                                     </div>
 
-                                    <div className={styles.wrap}>
-                                        <div className={styles.column}>
-                                            <div className={styles.label}>{translate('card_country')}:</div>
-                                            <div className={styles.text}>
-                                                {
-                                                    dataCountry.find((e) => {
-                                                        return e.code.toLowerCase() === find.country
-                                                    }).name
-                                                }
-                                            </div>
+                                    <div>
+                                        <div className={styles.wrap}>
+                                            <div className={styles.name}>{find.name} {find.surname}</div>
                                         </div>
-                                        {
-                                            find.gender &&
+                                        <div className={styles.wrap}>
                                             <div className={styles.column}>
-                                                <div className={styles.label}>{translate('card_gender')}:</div>
-                                                <div className={styles.text}>{find.gender}</div>
+                                                <p className={styles.label}>{translate('card_available')}: </p>
+                                                <p className={styles.text}>{convertData(find.available[0])} - {convertData(find.available[1])}</p>
                                             </div>
-                                        }
-                                        {
-                                            find.age &&
                                             <div className={styles.column}>
-                                                <div className={styles.label}>{translate('card_age')}:</div>
-                                                <div className={styles.text}>{find.age}</div>
+                                                <p className={styles.label}>{translate('card_date')}:</p>
+                                                <p className={styles.text}>{convertData(find.date)}</p>
                                             </div>
-                                        }
-                                        <div className={styles.column}>
-                                            <div className={styles.label}>{translate('card_date')}:</div>
-                                            <div className={styles.text}>{find.date}</div>
                                         </div>
-                                    </div>
 
-                                    <div className={styles.wrap}>
-                                        <div className={styles.button}>
-                                            <Link
-                                                url={`/create-offer/${find.id}`}
-                                                text={translate('card_button_send')}
-                                            />
+                                        <div className={styles.wrap}>
+                                            <div className={styles.button}>
+                                                <Team
+                                                    id={find.id}
+                                                    teamArray={teamArray}
+                                                    setTeamArray={setTeamArray}
+                                                />
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        }
-                    </div>
-                </div>
-            </div>
+                        </div>
+                    </section>
 
-            <div className={classes("container-fluid", styles.fluid)}>
-                <div className={classes("container", styles.container)}>
-                    <Breadcrumbs data={breadcrumbs}/>
-                    <div className={styles.wrapper}>
-                        <div className={styles.left}>
-                            {
-                                find &&
-                                <>
-                                    {
-                                        find.about &&
-                                        <div className={styles.section}>
-                                            <Subcategory text={titles.about}/>
-                                            <div className={styles.description}>
-                                                <div className={styles.about}>{find.about}</div>
+                    <section className="section">
+                        <div className="container-fluid">
+                            <div className="container">
+                                <div className={styles.wrapper}>
+                                    <div className={styles.title}>{translate('section_description_general')}:</div>
+                                    <div className={styles.body}>
+                                        <div className={styles.row}>
+                                            <p className={styles.cell}>{translate('sort_title_age')}</p>
+                                            <strong className={styles.cell}>{getAge(find.age)}</strong>
+                                        </div>
+                                        <div className={styles.row}>
+                                            <p className={styles.cell}>{translate('sort_title_gender')}</p>
+                                            <strong className={styles.cell}>{dataSetting.gender[find.gender][lang]}</strong>
+                                        </div>
+                                        <div className={styles.row}>
+                                            <p className={styles.cell}>{translate('sort_title_vaccination')}</p>
+                                            <strong className={styles.cell}>{dataSetting.vaccination[find.vaccinated][lang]}</strong>
+                                        </div>
+                                        <div className={styles.row}>
+                                            <p className={styles.cell}>{translate('sort_title_access')}</p>
+                                            <strong className={styles.cell}>{dataSetting.access[find.eu_allowed_person][lang]}</strong>
+                                        </div>
+                                        {
+                                            find.family &&
+                                            <div className={styles.row}>
+                                                <p className={styles.cell}>{translate('sort_title_family')}</p>
+                                                <strong className={styles.cell}>{dataSetting.family[find.family][lang]}</strong>
                                             </div>
-                                        </div>
-                                    }
-                                    <div className={styles.section}>
-                                        <Subcategory text={titles.skills}/>
-                                        <div className={styles.description}>
-                                            {
-                                                dataUser.role === 1 &&
-                                                find.skills.map((item, idx)=>
-                                                    <div key={idx} className={styles.skill}>
-                                                        <div>
-                                                            <div className={styles.category}>
-                                                                {
-                                                                    dataCategory.find((e) => {
-                                                                        return e.id === item.id
-                                                                    }).title[lang]
-                                                                }
-                                                            </div>
-                                                            {
-                                                                item.services.map((s_item, s_idx) =>
-                                                                    <div key={s_idx} className={styles.subcategory}>
-                                                                        {
-                                                                            dataCategory.find((e) => {return e.id === item.id}).subcategory &&
-                                                                            dataCategory.find((e) => {return e.id === item.id}).subcategory.find((e) => {return e.id === s_item}).title[lang]
-                                                                        }
-                                                                    </div>
-                                                                )
-                                                            }
-                                                        </div>
-                                                        <div>
-                                                            <div className={styles.label}>{translate('card_gender')}: </div>
-                                                            <div className={styles.genders}>
-                                                                {
-                                                                    item.gender &&
-                                                                    item.gender.map((g_item, g_idx) =>
-                                                                        <div key={g_idx} style={{textTransform: 'capitalize'}}>
-                                                                            {g_item}
-                                                                        </div>
-                                                                    )
-                                                                }
-                                                            </div>
-                                                        </div>
-                                                        <div>
-                                                            <div className={styles.label}>{translate('card_age')}: </div>
-                                                            <div className={styles.ages}>
-                                                                {
-                                                                    item.age &&
-                                                                    item.age.map((a_item, a_idx) =>
-                                                                        <div key={a_idx} style={{textTransform: 'capitalize'}}>
-                                                                            {a_item}
-                                                                        </div>
-                                                                    )
-                                                                }
-                                                            </div>
-                                                        </div>
-                                                        {
-                                                            item.country &&
-                                                            <div>
-                                                                <div className={styles.label}>{translate('card_country')}: </div>
-                                                                <div className={styles.countries}>
-                                                                    {
-                                                                        item.country &&
-                                                                        item.country.map((a_item, a_idx) =>
-                                                                            <div key={a_idx} style={{textTransform: 'capitalize'}}>
-                                                                                <div className={styles.country}>
-                                                                                    <img
-                                                                                        src={`https://weplay-cdn.azureedge.net/weplay-public/flags/${a_item}.svg`}
-                                                                                        className={styles.img}
-                                                                                    />
-                                                                                </div>
-                                                                            </div>
-                                                                        )
-                                                                    }
-                                                                </div>
-                                                            </div>
-                                                        }
-                                                    </div>
-                                                )
-                                            }
-                                            {
-                                                dataUser.role === 2 &&
-                                                find.skills.map((sk_item, sk_idx) =>
-                                                    <div key={sk_idx} className={styles.item}>
-                                                        <div className={styles.category}>{dataCategory.find((e) => {return e.id === sk_item.id}).title[lang]}</div>
-                                                        {
-                                                            sk_item.services &&
-                                                            sk_item.services.map((s_item, s_idx) =>
-                                                                <div key={s_idx} className={styles.subcategory}>
-                                                                    {
-                                                                        dataCategory.find((e) => {return e.id === sk_item.id}).subcategory &&
-                                                                        dataCategory.find((e) => {return e.id === sk_item.id}).subcategory.find((a) => {return a.id === s_item}).title[lang]
-                                                                    }
-                                                                </div>
-                                                            )
-                                                        }
-                                                    </div>
-                                                )
-                                            }
-                                        </div>
+                                        }
+                                        {
+                                            find.weight !== '0' &&
+                                            <div className={styles.row}>
+                                                <p className={styles.cell}>{translate('sort_title_weight')}</p>
+                                                <strong className={styles.cell}>{find.weight} kg</strong>
+                                            </div>
+                                        }
+                                        {
+                                            find.height !== '0' &&
+                                            <div className={styles.row}>
+                                                <p className={styles.cell}>{translate('sort_title_height')}</p>
+                                                <strong className={styles.cell}>{find.height} cm</strong>
+                                            </div>
+                                        }
                                     </div>
-                                    {
-                                        find.works &&
-                                        <div className={styles.section}>
-                                            <Subcategory text={titles.works}/>
-                                            <div className={styles.description}>
-                                                {
-                                                    find.works.length > 0
-                                                        ?
-                                                        (
-                                                            find.reviews.map((item, idx) =>
-                                                                <div key={idx} className={styles.works}>
-                                                                    <WorkBlock data={item}/>
-                                                                </div>
-                                                            )
+                                </div>
+
+                                <div className={styles.wrapper}>
+                                    <div className={styles.title}>{translate('section_description_skills')}:</div>
+                                    <div className={styles.body}>
+                                        {
+                                            find.skills &&
+                                            find.skills.slice(1, find.skills.length).map((category, idx) =>
+                                                <div key={idx} className={styles.skill}>
+                                                    <p className={styles.category}>{dataSetting.job[category.id][lang]}:</p>
+                                                    <div className={styles.list}>
+                                                    {
+                                                        category.list.map((subcategory, idx) =>
+                                                            <p key={idx} className={styles.item}>{dataSetting.job[category.id].list[subcategory][lang]}</p>
                                                         )
-                                                        :
-                                                        <div>Not working yet</div>
+                                                    }
+                                                    </div>
+                                                </div>
+                                            )
+                                        }
+                                    </div>
+                                </div>
+
+                                {
+                                    find.language &&
+                                    <div className={styles.wrapper}>
+                                        <div className={styles.title}>{translate('section_description_language')}:</div>
+                                        <div className={styles.body}>
+                                            <div className={styles.list}>
+                                                {
+                                                    find.language &&
+                                                    find.language.map((item, idx) =>
+                                                        <div key={idx} className={styles.item}>
+                                                            {dataSetting.language.list[item.lang][lang]} ({dataSetting.language.level[item.level][lang]})
+                                                        </div>
+                                                    )
                                                 }
                                             </div>
                                         </div>
-                                    }
-                                    <div className={styles.section}>
-                                        <Subcategory text={titles.reviews}/>
-                                        <div className={styles.description}>
-                                            {
-                                                find.reviews.length > 0
-                                                    ?
-                                                    (
-                                                        find.reviews.map((item, idx) =>
-                                                            <div key={idx} className={styles.review}>
-                                                                <ReviewBlock data={item}/>
-                                                            </div>
-                                                        )
+                                    </div>
+                                }
+
+                                {
+                                    find.driver_license &&
+                                    <div className={styles.wrapper}>
+                                        <div className={styles.title}>{translate('section_description_driver')}:</div>
+                                        <div className={styles.body}>
+                                            <div className={styles.list}>
+                                                {
+                                                    find.driver_license.map((item, idx) =>
+                                                        <div key={idx} className={styles.item}>
+                                                            {dataSetting.driver[item].name}
+                                                        </div>
                                                     )
-                                                    :
-                                                    <div>No reviews</div>
-                                            }
+                                                }
+                                            </div>
                                         </div>
                                     </div>
-                                </>
-                            }
-                        </div>
-                        <div className={styles.right}>
+                                }
 
+                                {
+                                    find.hobbies &&
+                                    <div className={styles.wrapper}>
+                                        <div className={styles.title}>{translate('section_description_about')}:</div>
+                                        <div className={styles.body}>
+                                            <div className={styles.list}>
+                                                {
+                                                    find.hobbies.map((item, idx) =>
+                                                        <div key={idx} className={styles.item}>
+                                                            <div>{dataSetting.about[item][lang]}</div>
+                                                        </div>
+                                                    )
+                                                }
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+                            </div>
                         </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+                    </section>
+                </>
+            }
+        </main>
     );
 }
 

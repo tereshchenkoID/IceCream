@@ -1,23 +1,21 @@
 import React from "react";
-import classes from "classnames";
 
 import {translate} from "../../i18n/translate";
 
-import Search from "./Search";
-
 import styles from './index.module.scss';
 
-const Header = ({lang}) => {
+const Header = () => {
     return (
-        <div className={styles.block} style={{backgroundImage: 'url(/img/header-1.jpeg)'}}>
-            <div className={classes("container-fluid", styles.fluid)}>
-                <div className={classes("container", styles.container)}>
-                    <h1 className={styles.title}>{translate('header_title')}</h1>
-                    <h4 className={styles.subtitle}>{translate('header_subtitle')}</h4>
-                    <Search lang={lang}/>
+        <header className={styles.block} style={{backgroundImage: 'url(https://tereshchenko-id.com/website/manager/img/bg.webp)'}}>
+            <div className="container-fluid">
+                <div className="container">
+                    <div className={styles.content}>
+                        <h1 className={styles.title}>{translate('header_title')}</h1>
+                        <h4 className={styles.subtitle}>{translate('header_subtitle')}</h4>
+                    </div>
                 </div>
             </div>
-        </div>
+        </header>
     );
 }
 

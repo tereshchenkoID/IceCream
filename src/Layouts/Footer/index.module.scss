@@ -1,25 +1,22 @@
 @import '../../styles/config';
 
 .block {
-  @include flex(center, center, column);
-
   position: relative;
-  padding: 50px 0 20px;
-  background-color: var(--black);
-  flex-shrink: 0;
 }
 
-.container {
-  @include flex(center);
+.top {
+  padding: 50px 0;
+  background-color: var(--color-black);
 }
 
-.logo {
-  flex-grow: 1;
+.bottom {
+  padding: 15px 0;
+  background-color: #262626;
+  text-align: center;
 }
 
 .list {
-  margin-right: 100px;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
 
   &:last-child {
     margin-right: 0;
@@ -35,7 +32,11 @@
 }
 
 .text {
-  color: var(--white);
+  color: var(--color-white);
+
+  span {
+    margin: 0 2px;
+  }
 }
 
 .link {
@@ -43,7 +44,7 @@
   color: rgba(255, 255, 255, 0.5);
 
   &:hover {
-    color: var(--brand);
+    color: var(--color-primary);
     transform: translateX(10px);
   }
 }

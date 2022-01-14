@@ -1,0 +1,1100 @@
+<!doctype html>
+<html lang="ua">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Registration</title>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&family=Roboto&display=swap');
+
+    :root {
+      --color-primary: #30ab4a;
+      --color-secondary: #f0f0f0;
+      --color-red: #f00;
+      --color-black: #000;
+      --color-white: #fff;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-size: 14px;
+    }
+
+    body {
+      font-family: Montserrat, sans-serif;
+      font-size: 16px;
+    }
+
+    .file {
+      position: relative;
+    }
+
+    .file__input {
+      opacity: 0;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    .file__icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 50px;
+      height: 100%;
+      border-right: 1px solid var(--color-white);
+    }
+
+    .file__icon img {
+      width: 25px;
+      height: 25px;
+    }
+
+    .file__text {
+      flex-grow: 1;
+      text-align: center;
+    }
+
+    .file__label {
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      z-index: 1;
+      width: 260px;
+      height: 40px;
+      background-color: var(--color-secondary);
+    }
+
+    .nav {
+      position: sticky;
+      top: 0;
+      height: 88px;
+      z-index: 2;
+      background-color: var(--color-white);
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .nav__container {
+      display: flex;
+      align-items: center;
+      padding: 0 10px;
+      width: 100%;
+      height: 100%;
+    }
+
+    .nav__cell {
+      display: flex;
+      flex: 1;
+    }
+
+    .nav__cell--center {
+      justify-content: center;
+      text-align: center;
+    }
+
+    .nav__cell--right {
+      justify-content: flex-end;
+      text-align: right;
+    }
+
+    .container {
+      margin: 0 auto;
+      padding: 30px 0;
+      width: 100%;
+      min-width: 320px;
+      max-width: 2000px;
+    }
+
+    .logo {
+      width: 150px;
+      height: auto;
+    }
+
+    .language {
+      display: flex;
+      align-items: center;
+    }
+
+    .language__item {
+      font-size: 14px;
+      margin-left: 5px;
+    }
+
+    .language__item:hover,
+    .language__item--active {
+      color: var(--color-primary);
+    }
+
+    .form__container,
+    .form__block,
+    .form__languages {
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    .form {
+      padding: 0 5px;
+    }
+
+    .form__container {
+      justify-content: center;
+    }
+
+    .form__block {
+      align-items: center;
+      margin-bottom: 25px;
+    }
+
+    .form__block:last-child {
+      margin-bottom: 0;
+    }
+
+    .form__wrapper {
+      flex: 1;
+      margin-right: 15px;
+    }
+
+    .form__wrapper:last-child {
+      margin-right: 0;
+    }
+
+    .form__subtitle {
+      margin-bottom: 10px;
+      font-weight: 500;
+    }
+
+    .form__subtitle--required:after {
+      color: var(--color-red);
+      margin-left: 3px;
+      content: '*';
+    }
+
+    .form__photo {
+      margin-top: 10px;
+      background-color: var(--color-secondary);
+      width: 120px;
+      height: 120px;
+      overflow: hidden;
+    }
+
+    .form__languages {
+      align-items: center;
+    }
+
+    .form__language {
+      margin-right: 20px;
+      margin-bottom: 10px;
+      min-width: 260px;
+    }
+
+    .form__language:last-child {
+      margin-right: 0;
+    }
+
+    @media only screen and (max-width: 768px) {
+
+      .form__wrapper {
+        flex: unset;
+        margin: 0 0 10px;
+        width: 100%;
+      }
+
+      .form__wrapper:last-child {
+        margin-bottom: 0;
+      }
+
+      .form__language {
+        margin-right: 0;
+        width: 100%;
+      }
+    }
+
+    .skills {
+      display: flex;
+      flex-wrap: wrap;
+      margin-top: 5px;
+    }
+
+    .skill {
+      flex: 1;
+      margin-bottom: 10px;
+      min-width: 50%;
+    }
+
+    .skill__title {
+      font-weight: 500;
+    }
+
+    .skill__list {
+      margin-top: 10px;
+    }
+
+    .field,
+    .select {
+      margin: 0;
+      outline: 0;
+      border: 1px solid rgba(0, 0, 0, 0.5);
+      border-radius: 3px;
+      width: 100%;
+      height: 40px;
+      font-family: Montserrat, sans-serif;
+    }
+
+    .field:focus,
+    .select:focus {
+      border-color: var(--color-primary);
+    }
+
+    .field {
+      padding: 0 15px;
+    }
+
+    .select {
+      padding: 0 10px;
+    }
+
+    .checkbox,
+    .radio {
+      display: flex;
+      align-items: center;
+      margin-bottom: 5px;
+      cursor: pointer;
+    }
+
+    .checkbox__text,
+    .radio__text {
+      margin-left: 5px;
+    }
+
+    .rules {
+      max-width: 1000px;
+      text-align: center;
+      line-height: 1.8;
+      margin: 0 auto;
+    }
+
+    .rules .checkbox {
+      display: inline-flex;
+      color: var(--color-primary);
+    }
+
+    .hobbies {
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    .hobby {
+      margin-right: 10px;
+      margin-bottom: 10px;
+      border-radius: 3px;
+      background-color: var(--color-secondary);
+      cursor: pointer;
+      padding: 5px 10px;
+    }
+
+    .hobby--active {
+      background-color: var(--color-primary);
+      color: var(--color-white);
+    }
+
+    @media (hover: hover) {
+
+      .hobby:hover {
+        background-color: var(--color-primary);
+        color: var(--color-white);
+      }
+    }
+
+    .file {
+      width: 100%;
+    }
+
+    .fieldset {
+      flex: 1;
+      margin: 20px 10px;
+      border-radius: 3px;
+      padding: 20px;
+    }
+
+    .legend {
+      padding: 0 10px;
+      letter-spacing: 1px;
+      font-size: 18px;
+    }
+
+    .button {
+      margin: 0 auto;
+      border: 0;
+      padding: 10px 20px;
+      color: var(--color-white);
+      background-color: var(--color-primary);
+    }
+
+    h1 {
+      padding: 0 5px;
+      font-size: 22px;
+    }
+
+    button,
+    a {
+      cursor: pointer;
+    }
+
+    img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+
+    @media only screen and (max-width: 768px) {
+      h1 {
+        font-size: 16px;
+      }
+
+      .logo {
+        width: 100px;
+      }
+
+      .fieldset {
+        margin-right: 0;
+        margin-left: 0;
+      }
+
+      .fieldset,
+      .skill {
+        flex: unset;
+        width: 100%;
+      }
+    }
+
+    input::placeholder {
+      font-size: 14px;
+    }
+
+    @media only screen and (min-width: 768px) {
+
+      .fieldset {
+        min-width: 95%;
+      }
+    }
+
+    @media only screen and (min-width: 992px) {
+
+      .fieldset {
+        min-width: 45%;
+      }
+    }
+  </style>
+</head>
+<body>
+<nav class="nav">
+  <div class="nav__container">
+    <div class="nav__cell nav__cell--left">
+      <div class="logo">
+      <img src="data:image/png;base64,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
+" />
+    </div>
+    </div>
+    <div class="nav__cell nav__cell--center">
+      <h1 data-langkey="title">User Registration</h1>
+    </div>
+    <div class="nav__cell nav__cell--right">
+      <div class="language">
+        <a class="language__item language__item--active js-language-item" data="ua">UK</a>
+        <a class="language__item js-language-item" data="en">EN</a>
+      </div>
+    </div>
+  </div>
+</nav>
+<div class="container">
+  <form id="form" class="form">
+    <div style="padding: 0 10px;">
+      <span data-langkey="text-alert-3"></span>
+      <span style="color: var(--color-red)">*</span>
+    </div>
+    <div class="form__container">
+      <fieldset class="fieldset">
+        <legend data-langkey="subtitle-0" class="legend"></legend>
+        <div class="form__block">
+          <div class="form__wrapper">
+            <p class="form__subtitle" data-langkey="subtitle-photo"></p>
+            <div class="file">
+              <input type="file" class="file__input" id="photo" name="photo" onchange="registration.encodeImageFileAsURL()" required>
+              <label for="photo" class="file__label">
+                <span class="file__icon">
+                  <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABmJLR0QA/wD/AP+gvaeTAAAAmElEQVRYhe2W6wqAIAxGv3oIk16xHje6PI39aMIQ08pWFDswgpzueCEDFKUMR3GZ+iYRFVABFVCB/wt0AOyJcS31uYUe2/d+ikjE7gJLuY76FmMADDTgAqBNCDQsdw5yRSS4gFjxlIQXEC/u4fvrny54d+awXoKvBA/RmeckHi3usQBGCvFl38NQfJcq0170x3ukzuuXkaKsGmc1NEc7CmkAAAAASUVORK5CYII="/>
+                </span>
+                <span class="file__text" data-langkey="placeholder-file"></span>
+              </label>
+            </div>
+            <div class="form__photo" id="photo-image"></div>
+          </div>
+        </div>
+        <div class="form__block">
+          <p data-langkey="subtitle-alert"></p>
+        </div>
+        <div class="form__block">
+          <p class="form__subtitle form__subtitle--required" data-langkey="subtitle-name"></p>
+          <input type="text" data-langkey="placeholder-name" class="field js-input-full-name" name="name" required>
+        </div>
+        <div class="form__block">
+          <p class="form__subtitle form__subtitle--required" data-langkey="subtitle-surname"></p>
+          <input type="text" data-langkey="placeholder-surname" class="field js-input-full-name" name="surname" required>
+        </div>
+        <div class="form__block">
+          <div class="form__wrapper">
+            <p class="form__subtitle form__subtitle--required" data-langkey="subtitle-age"></p>
+            <input type="date" class="field" name="age" required>
+          </div>
+        </div>
+        <div class="form__block">
+          <div class="form__wrapper">
+            <p class="form__subtitle form__subtitle--required" data-langkey="subtitle-gender"></p>
+            <div id="gender-list"></div>
+          </div>
+        </div>
+        <div class="form__block">
+          <div class="form__wrapper">
+            <p class="form__subtitle" data-langkey="subtitle-family"></p>
+            <div id="family-list"></div>
+          </div>
+        </div>
+        <div class="form__block">
+          <p class="form__subtitle" data-langkey="subtitle-height"></p>
+          <input type="number" data-langkey="placeholder-height" class="field js-input-size" name="height">
+        </div>
+        <div class="form__block">
+          <p class="form__subtitle" data-langkey="subtitle-weight"></p>
+          <input type="number" data-langkey="placeholder-weight" class="field js-input-size" name="weight">
+        </div>
+      </fieldset>
+
+      <fieldset class="fieldset">
+        <legend data-langkey="subtitle-1" class="legend"></legend>
+        <div class="form__block">
+          <p class="form__subtitle form__subtitle--required" data-langkey="subtitle-email"></p>
+          <input type="email" data-langkey="placeholder-email" pattern="[^@\s]+@[^@\s]+\.[^@\s]+" class="field" name="email" required>
+        </div>
+        <div class="form__block">
+          <p class="form__subtitle form__subtitle--required" data-langkey="subtitle-phone"></p>
+          <input type="tel" data-langkey="placeholder-phone" class="field" name="phone" pattern="[0-9]{3}[0-9]{3}[0-9]{4}" required>
+        </div>
+        <div class="form__block">
+          <p class="form__subtitle form__subtitle--required" data-langkey="subtitle-country"></p>
+          <div id="country-list" style="width: 100%;"></div>
+        </div>
+        <div class="form__block">
+          <p class="form__subtitle form__subtitle--required" data-langkey="subtitle-region"></p>
+          <div id="city-list" style="width: 100%;"></div>
+        </div>
+      </fieldset>
+
+      <fieldset class="fieldset">
+        <legend data-langkey="subtitle-2" class="legend"></legend>
+        <div class="form__block">
+          <div class="form__wrapper">
+            <p class="form__subtitle form__subtitle--required" data-langkey="subtitle-access"></p>
+            <div id="access-list"></div>
+          </div>
+        </div>
+        <div class="form__block">
+          <div class="form__wrapper">
+            <p class="form__subtitle form__subtitle--required" data-langkey="subtitle-available-from"></p>
+            <input type="date" class="field" name="available-from" required>
+          </div>
+          <div class="form__wrapper">
+            <p class="form__subtitle form__subtitle--required" data-langkey="subtitle-available-to"></p>
+            <input type="date" class="field" name="available-to" required>
+          </div>
+        </div>
+        <div class="form__block">
+          <div class="form__wrapper">
+            <p class="form__subtitle" data-langkey="subtitle-skills">Skills (Please choose which you needed)  *</p>
+            <div class="skills" id="skills-list"></div>
+          </div>
+        </div>
+      </fieldset>
+
+      <fieldset class="fieldset">
+        <legend data-langkey="subtitle-3" class="legend"></legend>
+        <div class="form__block">
+          <div class="form__wrapper">
+            <p class="form__subtitle form__subtitle--required" data-langkey="subtitle-vaccination"></p>
+            <div id="vaccination-list"></div>
+          </div>
+        </div>
+        <div class="form__block">
+          <div class="form__wrapper">
+            <p class="form__subtitle" data-langkey="subtitle-driver"></p>
+            <div id="driver-list"></div>
+          </div>
+        </div>
+        <div class="form__block">
+          <div class="form__wrapper">
+            <p class="form__subtitle" data-langkey="subtitle-languages"></p>
+            <div class="form__languages" id="languages-list"></div>
+          </div>
+        </div>
+        <div class="form__block">
+          <div class="form__wrapper">
+            <p class="form__subtitle" data-langkey="subtitle-about"></p>
+            <div id="hobbies-list"></div>
+          </div>
+        </div>
+      </fieldset>
+    </div>
+    <div class="form__block">
+      <div class="rules">
+        <span data-langkey="subtitle-policy"></span>
+        <br>
+        <a href="../DOC/useful.pdf" class="link" target="_blank" data-langkey="subtitle-rules"></a>
+        <span data-langkey="subtitle-and"></span>
+        <a href="../DOC/confidential.pdf" class="link" target="_blank" data-langkey="subtitle-politic"></a>
+      </div>
+    </div>
+    <div class="form__block">
+      <div class="rules">
+        <p data-langkey="text-alert-1"></p>
+        <label for="continue" class="checkbox">
+          <input type="checkbox" id="continue" class=checkbox__input" required/>
+          <span class="checkbox__text" data-langkey="text-button-2"></span>
+        </label>
+        <p data-langkey="text-alert-2"></p>
+        <a href="mailto:admin@global-workers.eu">admin@global-workers.eu</a>
+      </div>
+    </div>
+    <div class="form__block">
+      <button type="submit" class="button" data-langkey="text-button-1"></button>
+    </div>
+  </form>
+</div>
+<script>
+  function Localize () {
+    this.lang = 'ua'
+    this.langDocument = {
+      'en': {
+        'title': 'User Registration',
+        'subtitle-0': 'General Information:',
+        'subtitle-1': 'Contact details:',
+        'subtitle-2': 'About Work:',
+        'subtitle-3': 'Other:',
+        'subtitle-alert': 'Enter your first and last name according to your foreign passport.',
+        'placeholder-file': 'Choose file',
+        'placeholder-name': 'Example: Oleksandr',
+        'placeholder-surname': 'Example: Ivanov',
+        'placeholder-email': 'Example: ivanov@gmail.com',
+        'placeholder-phone': 'Example: 0669999999',
+        'placeholder-country': 'Country',
+        'placeholder-region': 'Region',
+        'placeholder-level': 'Select level',
+        'placeholder-family': 'Select marital status',
+        'placeholder-gender': 'Select gender',
+        'placeholder-height': 'Cm',
+        'placeholder-weight': 'Kg',
+        'placeholder-about': 'Some words about you...',
+        'subtitle-name': 'Name',
+        'subtitle-surname': 'Surname',
+        'subtitle-age': 'Age',
+        'subtitle-photo': 'Photo',
+        'subtitle-access': 'EU entry ban',
+        'subtitle-gender': 'Gender',
+        'subtitle-phone': 'Phone',
+        'subtitle-email': 'Email',
+        'subtitle-country': 'Country',
+        'subtitle-region': 'Region',
+        'subtitle-height': 'Height',
+        'subtitle-weight': 'Weight',
+        'subtitle-driver': 'Driver licenses',
+        'subtitle-languages': 'Languages',
+        'subtitle-family': 'Marital status',
+        'subtitle-vaccination': 'Vaccination from Covid-19',
+        'subtitle-available-from': 'Available date from work in 2022 (From)',
+        'subtitle-available-to': 'Available date from work in 2022 (To)',
+        'subtitle-skills': 'Skills: (choose from the list available)',
+        'subtitle-about': 'Hobby',
+        'subtitle-policy': 'By clicking the "Register" button, you accept',
+        'subtitle-and': 'and',
+        'subtitle-rules': 'site rules',
+        'subtitle-politic': 'privacy policy',
+        'text-button-1': 'Registration',
+        'text-button-2': 'Continue',
+        'text-alert-1': 'Please note that the quality and speed of profile review and processing will depend on the accuracy of the data you provide. Please check the regularity of genital refueling and push',
+        'text-alert-2': 'If you have any questions, please email us at',
+        'text-alert-3': 'Required to fill out field mark with start'
+      },
+      'ua': {
+        'title': 'Реєстрація користувача',
+        'subtitle-0': 'Загальна інформація:',
+        'subtitle-1': 'Контактні дані:',
+        'subtitle-2': 'Про роботу:',
+        'subtitle-3': 'Інше:',
+        'subtitle-alert': 'Вкажіть ім\'я та прізвище згідно закордонного паспорту',
+        'placeholder-file': 'Виберіть файл',
+        'placeholder-name': 'Наприклад: Oleksandr',
+        'placeholder-surname': 'Наприклад: Ivanov',
+        'placeholder-email': 'Наприклад: ivanov@gmail.com',
+        'placeholder-phone': 'Наприклад: 0669999999',
+        'placeholder-country': 'Країна',
+        'placeholder-region': 'Область',
+        'placeholder-level': 'Оберіть рівень',
+        'placeholder-family': 'Оберіть сімейний стан',
+        'placeholder-gender': 'Оберіть стать',
+        'placeholder-height': 'См',
+        'placeholder-weight': 'Кг',
+        'placeholder-about': 'Декілька слів про Вас...',
+        'subtitle-name': 'Ім`я',
+        'subtitle-surname': 'Прізвище',
+        'subtitle-age': 'Вік',
+        'subtitle-photo': 'Фото',
+        'subtitle-access': 'Заборона в\'їзду в ЄС',
+        'subtitle-gender': 'Стать',
+        'subtitle-phone': 'Телефон',
+        'subtitle-email': 'Email',
+        'subtitle-country': 'Країна',
+        'subtitle-region': 'Область',
+        'subtitle-height': 'Зріст',
+        'subtitle-weight': 'Вага',
+        'subtitle-driver': 'Водійське посвідчення',
+        'subtitle-languages': 'Знання мов',
+        'subtitle-family': 'Сімейний стан',
+        'subtitle-vaccination': 'Вакцинація від Covid-19',
+        'subtitle-available-from': 'Вільний для роботи в 2022 (з)',
+        'subtitle-available-to': 'Вільний для роботи в 2022 (по)',
+        'subtitle-skills': 'Навички: (Виберіть зі списку натиснувши на відповідну)',
+        'subtitle-about': 'Хоббі',
+        'subtitle-policy': 'Натиснувши на кнопку "Зареєструватися", ви приймаєте ',
+        'subtitle-and': 'та',
+        'subtitle-rules': 'правила сайту',
+        'subtitle-politic': 'політику конфеденційності',
+        'text-button-1': 'Зареєструватися',
+        'text-button-2': 'Продовжити',
+        'text-alert-1': 'Зверніть увагу на те, що від коректності вказаних вами даних буде залежати якість та швидкість розгляду та обробки профілю. Перевірте, будь ласка, ще раз правильність заповнення полів та натисніть',
+        'text-alert-2': 'У випадку виникнення питань, будь ласка, пишіть нам на електронну адресу:',
+        'text-alert-3': 'Обов\'язкові до заповнення поля позначені зірочкою'
+      }
+    }
+  }
+
+  Localize.prototype.switchLanguage = function() {
+    this.processLangDocument(document.body);
+    this.processLangField(document.body);
+    this.processLangDynamic(document.body);
+  }
+
+  Localize.prototype.processLangDocument = function(block){
+    const tags = block.querySelectorAll('span, img, a, p, label, li, option, h1, h2, h3, h4, h5, h6, legend, button, option');
+    Array.from(tags).forEach((value) => {
+      const key = value.dataset.langkey;
+      if(this.langDocument[this.lang][key]) {
+        // eslint-disable-next-line no-param-reassign
+        value.innerText = this.langDocument[this.lang][key];
+      }
+    });
+  }
+
+  Localize.prototype.processLangField = function (){
+    const tags = document.querySelectorAll('input, textarea');
+    Array.from(tags).forEach((value) => {
+      const key = value.dataset.langkey;
+      if(this.langDocument[this.lang][key]) {
+        // eslint-disable-next-line no-param-reassign
+        value.setAttribute('placeholder', this.langDocument[this.lang][key]);
+      }
+    });
+  }
+
+  Localize.prototype.processLangDynamic = function (){
+    const tags = document.querySelectorAll(`*[data-${localize.lang}]`);
+    Array.from(tags).forEach((value) => {
+      value.innerHTML = value.getAttribute(`data-${localize.lang}`);
+    });
+  }
+
+  let localize = new Localize();
+
+  function Registration () {
+    this.photo = '';
+    this.driver = [];
+    this.language = [];
+    this.hobbies = [];
+    this.skills = [];
+    this.settings = [];
+  }
+
+  Registration.prototype.getSettings = function() {
+    const self = this;
+    $.ajax({
+      method: "GET",
+      url: "http://global-workers.eu/API/setting.json",
+      // url: "../API/setting.json",
+      async: false,
+      dataType: "json",
+      success(data){
+        self.settings = data;
+      }
+    });
+  }
+
+  Registration.prototype.encodeImageFileAsURL = function() {
+    const filesSelected = document.getElementById("photo").files;
+    const self = this;
+    if (filesSelected.length > 0) {
+      const fileToLoad = filesSelected[0];
+      const fileReader = new FileReader();
+      fileReader.onload = function(fileLoadedEvent) {
+        const srcData = fileLoadedEvent.target.result;
+        const newImage = document.createElement('img');
+        newImage.src = srcData;
+
+        document.getElementById("photo-image").innerHTML = newImage.outerHTML;
+        self.photo = newImage.src
+      }
+      fileReader.readAsDataURL(fileToLoad);
+    }
+  }
+
+  Registration.prototype.drawGender = function() {
+    let html = '';
+
+    html += `<select class="select" name="gender">
+                <option disabled selected data-langkey="placeholder-gender"></option>`;
+
+    this.settings.gender.slice(1, this.settings.gender.length).map(function(i) {
+      html += `<option value="${i.id}" data-en="${i.en}" data-ru="${i.ru}" data-ua="${i.ua}" data="${i.id}"></option>`;
+    })
+
+    html += `<select>`;
+
+    $('#gender-list').html(html)
+  }
+
+  Registration.prototype.drawCountry = function() {
+    let html = '';
+    html += `<select class="select" name="country" required>`;
+
+      this.settings.regions.map(function(item) {
+          html += `<option value="${item.id}" data-en="${item.en}" data-ru="${item.ru}" data-ua="${item.ua}" data="${item.id}"></option>`
+      });
+    html += `</select>`
+    $('#country-list').html(html);
+  }
+
+  Registration.prototype.drawRegions = function(id) {
+    let html = '';
+
+    html += `<select class="select" name="city" required>
+               <option disabled selected data-langkey="placeholder-region"></option>`;
+
+    this.settings.regions.filter(item => item.id === id)[0].list.map(function(item) {
+      html += `<option value="${item.id}" data-en="${item.en}" data-ru="${item.ru}" data-ua="${item.ua}" data="${item.id}"></option>`
+    });
+
+    $('#city-list').html(html);
+
+
+    localize.processLangDocument(document.getElementById('city-list'));
+    localize.processLangDynamic(document.getElementById('city-list'));
+  }
+
+  Registration.prototype.drawVaccination = function() {
+    let html = '';
+
+    this.settings.vaccination.slice(1, this.settings.vaccination.length).map(function(item) {
+      html += `
+        <label for="vaccination-${item.id}" class="radio">
+          <input type="radio" name="vaccination" id="vaccination-${item.id}" value="${item.id}" class="radio__input" required/>
+          <span class="radio__text" data-en="${item.en}" data-ru="${item.ru}" data-ua="${item.ua}" data="${item.id}"></span>
+        </label>
+      `
+    })
+
+    $('#vaccination-list').html(html)
+  }
+
+  Registration.prototype.drawSkills = function() {
+    let html = '';
+
+    this.settings.job.slice(1, this.settings.job.length).map(function(i) {
+      html += `<div class="skill js-skill" data="${i.id}">
+                <div class="skill__title" data-en="${i.en}" data-ru="${i.ru}" data-ua="${i.ua}"></div>
+                <div class="skill__list">`;
+
+                i.list.map(function(e) {
+                  html += `
+                    <label for="skill_${i.id}${e.id}" class="checkbox js-skill-item">
+                      <input type="checkbox" id="skill_${i.id}${e.id}" value="${e.id}" class=checkbox__input"/>
+                      <span class="checkbox__text" data-en="${e.en}" data-ru="${e.ru}" data-ua="${e.ua}" data="${e.id}"></span>
+                    </label>
+                  `;
+                });
+
+        html += `</div>
+              </div>`;
+    })
+
+    $('#skills-list').html(html)
+  }
+
+  Registration.prototype.drawDriver = function() {
+    let html = '';
+
+    this.settings.driver.map(function(item) {
+      html += `
+              <label for="driver_${item.id}" class="checkbox">
+                <input type="checkbox" name="driver" id="driver_${item.id}" value="${item.id}" class=checkbox__input"/>
+                <span class=" checkbox__text">${item.name}</span>
+              </label>
+      `;
+    })
+
+    $('#driver-list').html(html)
+  }
+
+  Registration.prototype.drawLanguages = function() {
+    let html = '';
+    const self = this;
+
+    this.settings.language.list.map(function(e) {
+
+      html += `<div class="form__language js-form-language">
+                <label for="language-${e.id}" class="checkbox">
+                  <input type="checkbox" name="language" id="language-${e.id}" value="${e.id}" class="checkbox__input"/>
+                  <span class="checkbox__text" data-en="${e.en}" data-ru="${e.ru}" data-ua="${e.ua}" data="${e.id}"></span>
+                </label>
+                <select class="select" disabled>
+                    <option disabled selected data-langkey="placeholder-level"></option>`;
+                    self.settings.language.level.map(function(i) {
+                      html += `<option value="${i.id}" data-en="${i.en}" data-ru="${i.ru}" data-ua="${i.ua}" data="${i.id}"></option>`;
+                    })
+        html += `<select>
+              </div>`;
+    })
+
+    $('#languages-list').html(html)
+  }
+
+  Registration.prototype.selectLanguage = function() {
+    const self = this;
+    $('.js-form-language').map(function(index, item) {
+      if ($(item).find('input').is(':checked')){
+        self.language.push({
+          lang: $(item).find('input').val(),
+          level: $(item).find('select').val() || '0'
+        })
+      }
+    })
+  }
+
+  Registration.prototype.drawAccess = function() {
+    let html = '';
+
+    this.settings.access.slice(1, this.settings.access.length).map(function(item) {
+      html += `
+        <label for="access-${item.id}" class="radio">
+          <input type="radio" name="access" id="access-${item.id}" value="${item.id}" class="radio__input" required/>
+          <span class="radio__text" data-en="${item.en}" data-ru="${item.ru}" data-ua="${item.ua}" data="${item.id}"></span>
+        </label>
+      `
+    })
+
+    $('#access-list').html(html)
+  }
+
+  Registration.prototype.drawFamily = function() {
+    let html = '';
+
+    html += `<select class="select" name="family">
+              <option disabled selected data-langkey="placeholder-family"></option>`;
+
+      this.settings.family.slice(1, this.settings.family.length).map(function(i) {
+        html += `<option value="${i.id}" data-en="${i.en}" data-ru="${i.ru}" data-ua="${i.ua}" data="${i.id}"></option>`;
+      })
+
+    html += `<select>`;
+
+    $('#family-list').html(html)
+  }
+
+  Registration.prototype.drawHobbies = function() {
+    let html = '';
+
+    html += `<div class="hobbies">`;
+    this.settings.about.map(function(item) {
+      html += `<div class="hobby js-hobby" data-en="${item.en}" data-ru="${item.ru}" data-ua="${item.ua}" data="${item.id}"></div>`
+    })
+    html += `</div>`;
+
+    $('#hobbies-list').html(html)
+  }
+
+  Registration.prototype.selectHobbies = function() {
+    const self = this;
+    $('.hobby--active').map(function(index, item) {
+      self.hobbies.push($(item).attr('data'))
+    })
+  }
+
+  Registration.prototype.selectSkills = function() {
+    const self = this;
+    $('.js-skill').map(function(index, item) {
+      const s = {
+        id: $(item).attr('data'),
+        list: []
+      };
+
+      $(item).find('input').map(function(i, e) {
+        if ($(e).is(':checked')){
+          s.list.push($(e).val())
+        }
+      })
+
+      if(s.list.length > 0) self.skills.push(s)
+    })
+  }
+
+  const registration = new Registration();
+
+  registration.getSettings();
+  registration.drawSkills();
+  registration.drawCountry();
+  registration.drawRegions('0');
+  registration.drawDriver();
+  registration.drawGender();
+  registration.drawVaccination();
+  registration.drawLanguages();
+  registration.drawAccess();
+  registration.drawFamily();
+  registration.drawHobbies();
+
+  window.onload = () => {
+    localize.switchLanguage();
+
+    $("#form").on("submit", function(){
+      event.preventDefault();
+
+      registration.selectLanguage();
+      registration.selectSkills();
+      registration.selectHobbies();
+
+      const user = {
+        "id": 0,
+        "photo": registration.photo,
+        "date": 'Y-m-d'.replace('Y', new Date().getFullYear()).replace('m', new Date().getMonth() + 1).replace('d', new Date().getDate()),
+        "name": $(this).find( "input[name='name']" ).val(),
+        "surname": $(this).find( "input[name='surname']" ).val(),
+        "gender": $(this).find( "select[name='gender']" ).val(),
+        "age": $(this).find( "input[name='age']" ).val(),
+        "weight": $(this).find( "input[name='weight']" ).val() || "0",
+        "height": $(this).find( "input[name='height']" ).val() || "0",
+        "country": $(this).find("select[name='country']" ).val(),
+        "region": $(this).find( "select[name='city']" ).val(),
+        "family": $(this).find( "select[name='family']" ).val(),
+        "contact": {
+          "email": $(this).find( "input[name='email']" ).val(),
+          "phone": $(this).find( "input[name='phone']" ).val()
+        },
+        "vaccinated": $(this).find( "input[name='vaccination']:checked" ).val(),
+        "language": registration.language,
+        "driver_license": registration.driver,
+        "hobbies": registration.hobbies,
+        "skills": registration.skills,
+        "eu_allowed_person": $(this).find( "input[name='access']:checked" ).val(),
+        "available": [
+          $(this).find( "input[name='available-from']" ).val(),
+          $(this).find( "input[name='available-to']" ).val()
+        ]
+      }
+
+      $.ajax({
+        url: './mail.php',
+        method: 'post',
+        dataType: 'json',
+        data: {user}
+      });
+
+      alert("Registration success");
+
+      $("input").val('');
+      $("textarea").val('');
+      $('input[type="radio"]').prop('checked', false);
+      $('input[type="checkbox"]').prop('checked', false);
+      $('select').prop('selectedIndex', 0);
+      $('button').attr('disabled', true)
+      $('#photo-image').html('')
+      $('.js-hobby').removeClass('hobby--active');
+      $('.js-form-language').find('select').attr('disabled', true);
+    });
+  };
+
+  $('body').on('change', 'select[name="country"]', function(){
+    registration.drawRegions($(this).val());
+  });
+
+  $('body').on('change', 'input[name="language"]', function(){
+    if ($(this).is(':checked')) {
+      $(this).parent().next('select').attr('disabled', false)
+      $(this).parent().next('select').attr('required', true)
+    }
+    else {
+      $(this).parent().next('select').attr('disabled', true)
+      $(this).parent().next('select').attr('required', false)
+    }
+  });
+
+  $('body').on('change', 'input[name="driver"]', function(){
+    if ($(this).is(':checked')) {
+      registration.driver.push($(this).val());
+    }
+    else {
+      registration.driver.splice(registration.driver.indexOf($(this).val()), 1)
+    }
+  });
+
+  $('body').on('click', '.js-form-skill', function (){
+    if (registration.skills.indexOf($(this).attr('data')) === -1) {
+      registration.skills.push($(this).attr('data'))
+    }
+    else {
+      registration.skills.splice(registration.skills.indexOf($(this).attr('data')), 1);
+    }
+
+    $(this).toggleClass('form__skill--active');
+  });
+
+  $('body').on('click', '.js-language-item', function (){
+    $('.js-language-item').removeClass('language__item--active');
+    $(this).toggleClass('language__item--active');
+
+    localize.lang = $(this).attr('data');
+    localize.switchLanguage();
+  });
+
+  $('body').on('click', '.js-hobby', function (){
+    $(this).toggleClass('hobby--active');
+  });
+
+  $('.js-input-full-name').keyup(function () {
+    if (!this.value.match(/^[a-zA-Z]+$/)) {
+      this.value = this.value.replace(/[^a-zA-Z]/g, '');
+    }
+  });
+
+  $('.js-input-size').change(function () {
+    if (this.value > 220) {
+      this.value = 220;
+    }
+    else if(this.value < 0) {
+      this.value = 0;
+    }
+  });
+</script>
+</body>
+</html>

@@ -1,15 +1,21 @@
 import React, {useState} from "react";
 import classes from "classnames";
 
+import {LOCALES} from "../../../i18n";
+
 import styles from './index.module.scss';
 
-import {LOCALES} from "../../../i18n";
+const setLanguage = (lang) => {
+    localStorage.setItem('language', JSON.stringify(lang));
+};
 
 const Lang = ({lang, setLang}) => {
     const [active, setActive] = useState(lang);
     const [dropdown, setDropdown] = useState(false);
 
     const handleButton = (lang) => {
+        setLanguage(lang)
+
         setLang(LOCALES[lang])
         setActive(LOCALES[lang])
         setDropdown(!dropdown)

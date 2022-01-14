@@ -15,20 +15,15 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background: linear-gradient(180deg, rgba(16, 24, 34, 0.3) 30%, var(--grey) 140%);
+    background: linear-gradient(180deg, rgba(16, 24, 34, 0.6) 30%, var(--color-secondary) 140%);
     content: '';
   }
 }
 
-.nickname,
-.count {
+.nickname {
   position: relative;
   z-index: 1;
-  color: var(--white);
-}
-
-.nickname {
-  margin-bottom: 10px;
+  color: var(--color-white);
   font-size: 20px;
   text-align: center;
   text-transform: uppercase;

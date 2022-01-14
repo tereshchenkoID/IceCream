@@ -1,0 +1,139 @@
+@import "../../styles/config";
+
+$lg: map-get($brackpoints, 'lg');
+
+.wrapper {
+  margin-bottom: 30px;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.sort {
+  @include flex;
+
+  padding: 10px;
+  background-color: var(--color-secondary);
+  border-radius: var(--default-border-radius);
+  min-height: var(--default-height);
+}
+
+.toggle {
+  @include size(35px);
+
+  display: none;
+  padding: 8px;
+  border-radius: var(--default-border-radius);
+  background-color: var(--color-primary);
+  flex-shrink: 0;
+  fill: var(--color-white);
+
+  @include media-max($lg) {
+    display: block;
+  }
+}
+
+.filters {
+
+  //@include media-min(map-get($brackpoints, 'lg')) {
+  //  position: sticky;
+  //  top: 100px;
+  //  overflow-y: auto;
+  //  max-height: calc(100vh - 240px);
+  //}
+
+  @include media-max($lg) {
+    @include flex($direction: column);
+
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    z-index: 11;
+    width: 320px;
+    padding-top: 80px;
+    background-color: var(--color-white);
+    box-shadow: var(--box-shadow-lg);
+    transform: translateX(-100%);
+    transition: var(--default-transition);
+  }
+
+  &.active {
+    transform: translateX(0);
+  }
+}
+
+.scroll {
+  padding: 0 15px 10px;
+  overflow-y: auto;
+  max-height: 100%;
+
+  &::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background-color: var(--color-secondary);
+  }
+
+  &::-webkit-scrollbar-thumb {
+    border: 2px solid transparent;
+    background-clip: content-box;
+    background-color: var(--color-primary);
+  }
+}
+
+.icon {
+  @include size(40px);
+
+  display: none;
+  position: absolute;
+  top: 20px;
+  right: 15px;
+
+  @include media-max($lg) {
+    display: block;
+  }
+}
+
+.list {
+  @include flex($align-items: center, $wrap: wrap);
+
+  flex-grow: 1;
+  margin-right: 20px;
+}
+
+.filter {
+  @include flex($align-items: center, $wrap: wrap);
+
+  position: relative;
+  padding: 2px 30px 2px 10px;
+  margin: 5px 10px 5px 0;
+  background-color: var(--color-primary);
+  min-height: 25px;
+  min-width: 50px;
+  border-radius: 20px;
+  color: var(--color-white);
+  font-size: 13px;
+
+  strong,
+  span {
+    margin: 0 2px;
+    line-height: 1;
+  }
+
+  svg {
+    @include size(25px);
+
+    position: absolute;
+    right: 5px;
+    top: 50%;
+    transform: translateY(-50%);
+    fill: var(--color-white);
+  }
+
+  &.alt {
+    padding-right: 10px;
+  }
+}

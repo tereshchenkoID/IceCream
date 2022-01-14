@@ -1,10 +1,7 @@
-import React from "react";
-import {useSelector} from "react-redux";
-
-import classes from "classnames";
+import React, {useState} from "react";
+import classes from 'classnames';
 
 import Menu from "./Menu";
-import Login from "./Login";
 import Lang from "./Lang";
 
 import Logo from "../../Components/Logo";
@@ -13,19 +10,40 @@ import styles from './index.module.scss';
 
 
 const Nav = ({lang, setLang}) => {
-    let { dataUser } = useSelector(state => state.userReducer);
+
+    const [active, setActive] = useState(false);
 
     return (
         <nav className={styles.block}>
-            <div className={classes("container-fluid", styles.fluid)}>
-                <div className={classes("container", styles.container)}>
-                    <Logo />
-                    <Menu role={dataUser.role} />
-                    <Lang
-                        lang={lang}
-                        setLang={setLang}
-                    />
-                    <Login role={dataUser.role} />
+            <div className="container-fluid">
+                <div className="container">
+                    <div className={styles.wrapper}>
+                        <div className={styles.cell}>
+                            <Logo />
+                        </div>
+                        <div className={styles.cell}>
+                            <Menu
+                                active={active}
+                                setActive={setActive}
+                            />
+                        </div>
+                        <div className={styles.cell}>
+                            <Lang
+                                lang={lang}
+                                setLang={setLang}
+                            />
+                        </div>
+                        <div className={styles.cell}>
+                            <div
+                                className={classes(styles.toggle, active && styles.active)}
+                                onClick={() => setActive(!active)}
+                            >
+                                <div />
+                                <div />
+                                <div />
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </nav>

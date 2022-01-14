@@ -1,0 +1,15 @@
+@import '../../styles/config';
+
+.empty {
+  margin: 0 auto;
+}
+
+.icon {
+  @include size(100px);
+
+  margin: 0 auto 20px;
+}
+
+.label {
+  font-size: 20px;
+}
