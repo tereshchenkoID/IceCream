@@ -10,19 +10,23 @@ body {
   min-width: var(--min-width);
 }
 
-a {
+a,
+button {
   cursor: pointer;
+  transition: var(--default-transition);
+}
+
+
+a {
   color: var(--font-color);
-  transition: 0.3s;
   text-decoration: none;
 }
 
 button {
   @include reset-button;
 
-  cursor: pointer;
-  transition: 0.3s;
   font-family: var(--font-family-additional);
+  overflow: hidden;
 
   &:focus {
     outline: none;
@@ -60,7 +64,6 @@ h2 {
 h4 {
   font-size: 30px;
 }
-
 
 svg,
 img {

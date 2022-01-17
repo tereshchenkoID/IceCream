@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from "react";
 import { routes } from './routing/mainRoutes';
 import store from './redux/store'
+
 import {Provider} from 'react-redux'
 import {BrowserRouter} from 'react-router-dom';
 
@@ -9,9 +10,8 @@ import MetaTags from "react-meta-tags";
 import { I18nProvider, LOCALES } from "./i18n";
 
 import Api from "./Components/Api"
-import Preloader from "./Components/Preloader"
 import Routing from "./Components/Routing";
-import Cookie from "./Components/Cookie";
+import Preloader from "./Components/Preloader"
 import Nav from "./Layouts/Nav";
 import Footer from "./Layouts/Footer";
 
@@ -22,7 +22,6 @@ const setLanguage = () => {
 const App = () => {
   const [lang, setLang] = useState(LOCALES[setLanguage()]);
   const [loader, setLoader] = useState(true)
-  const [cookie, setCookie] = useState(JSON.parse(localStorage.getItem('cookie')) || '0')
 
   useEffect(() => {
       setTimeout(() => setLoader(!loader), 1000)
@@ -63,13 +62,6 @@ const App = () => {
                               <Nav lang={lang} setLang={setLang}/>
                               <Routing {...{ routes }} />
                               <Footer />
-                              {
-                                  cookie === '0' &&
-                                  <Cookie
-                                      cookie={cookie}
-                                      setCookie={setCookie}
-                                  />
-                              }
                           </BrowserRouter>
                       </Provider>
                   </I18nProvider>

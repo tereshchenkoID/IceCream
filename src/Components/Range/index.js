@@ -1,8 +1,6 @@
 import React from "react";
 import InputRange from 'react-input-range';
 
-import 'react-input-range/lib/css/index.css';
-
 import styles from './index.module.scss';
 
 const Range = ({data, action, max, min}) => {

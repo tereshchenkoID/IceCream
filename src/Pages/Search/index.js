@@ -351,7 +351,6 @@ const Search = () => {
                                     </button>
                                 </div>
                                 <div className="row">
-
                                     {
                                         (
                                             allCondition(dataCard) &&
@@ -376,29 +375,6 @@ const Search = () => {
                                                 <Empty />
                                             </div>
                                     }
-
-                                    {/*{*/}
-                                    {/*    dataCard.map((item, idx) =>*/}
-                                    {/*        conditionCategory(item) &&*/}
-                                    {/*        conditionDriver(item) &&*/}
-                                    {/*        conditionFamily(item) &&*/}
-                                    {/*        conditionGender(item) &&*/}
-                                    {/*        conditionVaccination(item) &&*/}
-                                    {/*        conditionAvailable(item) &&*/}
-                                    {/*        getAge(item.age) >= age.min && getAge(item.age) <= age.max &&*/}
-                                    {/*        <div key={idx} className={classes("col", "col-12", 'col-sm-6', "col-padding-vertical")}>*/}
-                                    {/*            <ProfileCard*/}
-                                    {/*                setting={dataSetting}*/}
-                                    {/*                data={item}*/}
-                                    {/*                lang={lang}*/}
-                                    {/*                favArray={favArray}*/}
-                                    {/*                setFavArray={setFavArray}*/}
-                                    {/*                teamArray={teamArray}*/}
-                                    {/*                setTeamArray={setTeamArray}*/}
-                                    {/*            />*/}
-                                    {/*        </div>*/}
-                                    {/*    )*/}
-                                    {/*}*/}
                                 </div>
                             </div>
                         </div>

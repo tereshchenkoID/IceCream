@@ -18,6 +18,7 @@ const Form = () => {
         formData.set('name', formData.get('name'))
         formData.set('subject', formData.get('subject'))
         formData.set('message', formData.get('message'))
+        formData.set('type', '2')
 
         fetch('https://global-workers.eu/registration/mail.php', {
             method: 'POST',
