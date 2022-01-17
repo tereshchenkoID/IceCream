@@ -6,10 +6,15 @@ import styles from './index.module.scss';
 
 const Logo = () => {
     return (
-        <div className={styles.block} style={{backgroundImage: 'url(/img/logo.webp)'}}>
+        <div className={styles.block}>
             <NavLink
                 to="/main"
-            />
+            >
+                <img src="/img/logo.webp"
+                     alt="Global Workers"
+                     loading={"lazy"}
+                />
+            </NavLink>
         </div>
     );
 }

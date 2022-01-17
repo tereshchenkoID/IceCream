@@ -6,10 +6,9 @@
 
   position: relative;
   padding: 10px;
-  background-size: cover;
-  background-repeat: no-repeat;
+  overflow: hidden;
 
-  &::before {
+  &::after {
     position: absolute;
     top: 0;
     left: 0;
@@ -18,6 +17,22 @@
     background: linear-gradient(180deg, rgba(16, 24, 34, 0.6) 30%, var(--color-secondary) 140%);
     content: '';
   }
+
+  &:hover {
+
+    .img {
+      transform: scale(1.2);
+    }
+  }
+}
+
+.img {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  transition: var(--default-transition);
 }
 
 .nickname {

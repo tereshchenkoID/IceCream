@@ -9,6 +9,7 @@
 @import 'mixins/ellipsis';
 @import 'mixins/media-max';
 @import 'mixins/media-min';
+@import 'mixins/line-clamp';
 
 @mixin smooth-font {
   -webkit-font-smoothing: antialiased;

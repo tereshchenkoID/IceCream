@@ -94,7 +94,7 @@ const ProfileCard = ({
                     <div className={styles.skills}>
                         {
                             data.skills &&
-                            data.skills.map((category, idx) =>
+                            data.skills.slice(0, 2).map((category, idx) =>
                                 <div key={idx}>
                                     <p className={styles.category}>{setting.job[category.id][lang]}</p>
                                     {
@@ -106,6 +106,7 @@ const ProfileCard = ({
                                 </div>
                             )
                         }
+                        <div>...</div>
                     </div>
                 </div>
             }

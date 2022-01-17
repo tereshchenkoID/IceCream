@@ -303,8 +303,8 @@
       color: var(--color-white);
     }
 
-    @media (hover: hover) {
 
+    @media only screen and (min-width: 1200px) {
       .hobby:hover {
         background-color: var(--color-primary);
         color: var(--color-white);
@@ -377,6 +377,30 @@
 
     input::placeholder {
       font-size: 14px;
+    }
+
+    .popup {
+      display: none;
+      align-items: center;
+      justify-content: center;
+      position: fixed;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      background-color: var(--color-white);
+      z-index: 2;
+    }
+
+    .popup--active {
+      display: flex;
+    }
+
+    .popup__wrapper {
+      padding: 10px;
+      font-size: 20px;
+      text-align: center;
+      color: var(--color-primary);
     }
 
     @media only screen and (min-width: 768px) {
@@ -576,6 +600,12 @@
     </div>
   </form>
 </div>
+
+<div class="popup js-popup">
+  <div class="popup__wrapper">
+    <p data-langkey="success-alert"></p>
+  </div>
+</div>
 <script>
   function Localize () {
     this.lang = 'ua'
@@ -628,7 +658,8 @@
         'text-button-2': 'Continue',
         'text-alert-1': 'Please note that the quality and speed of profile review and processing will depend on the accuracy of the data you provide. Please check the regularity of genital refueling and push',
         'text-alert-2': 'If you have any questions, please email us at',
-        'text-alert-3': 'Required to fill out field mark with start'
+        'text-alert-3': 'Required to fill out field mark with start',
+        'success-alert': 'Congratulations, registration was successful\n'
       },
       'ua': {
         'title': 'Реєстрація користувача',
@@ -678,7 +709,8 @@
         'text-button-2': 'Продовжити',
         'text-alert-1': 'Зверніть увагу на те, що від коректності вказаних вами даних буде залежати якість та швидкість розгляду та обробки профілю. Перевірте, будь ласка, ще раз правильність заповнення полів та натисніть',
         'text-alert-2': 'У випадку виникнення питань, будь ласка, пишіть нам на електронну адресу:',
-        'text-alert-3': 'Обов\'язкові до заповнення поля позначені зірочкою'
+        'text-alert-3': 'Обов\'язкові до заповнення поля позначені зірочкою',
+        'success-alert': 'Вітаємо, реєстрація прошла успішно'
       }
     }
   }
@@ -733,8 +765,7 @@
     const self = this;
     $.ajax({
       method: "GET",
-      url: "http://global-workers.eu/API/setting.json",
-      // url: "../API/setting.json",
+      url: "../API/setting.json",
       async: false,
       dataType: "json",
       success(data){
@@ -984,43 +1015,42 @@
       registration.selectSkills();
       registration.selectHobbies();
 
-      const user = {
-        "id": 0,
-        "photo": registration.photo,
-        "date": 'Y-m-d'.replace('Y', new Date().getFullYear()).replace('m', new Date().getMonth() + 1).replace('d', new Date().getDate()),
-        "name": $(this).find( "input[name='name']" ).val(),
-        "surname": $(this).find( "input[name='surname']" ).val(),
-        "gender": $(this).find( "select[name='gender']" ).val(),
-        "age": $(this).find( "input[name='age']" ).val(),
-        "weight": $(this).find( "input[name='weight']" ).val() || "0",
-        "height": $(this).find( "input[name='height']" ).val() || "0",
-        "country": $(this).find("select[name='country']" ).val(),
-        "region": $(this).find( "select[name='city']" ).val(),
-        "family": $(this).find( "select[name='family']" ).val(),
-        "contact": {
-          "email": $(this).find( "input[name='email']" ).val(),
-          "phone": $(this).find( "input[name='phone']" ).val()
-        },
-        "vaccinated": $(this).find( "input[name='vaccination']:checked" ).val(),
-        "language": registration.language,
-        "driver_license": registration.driver,
-        "hobbies": registration.hobbies,
-        "skills": registration.skills,
-        "eu_allowed_person": $(this).find( "input[name='access']:checked" ).val(),
-        "available": [
-          $(this).find( "input[name='available-from']" ).val(),
-          $(this).find( "input[name='available-to']" ).val()
-        ]
-      }
-
       $.ajax({
         url: './mail.php',
         method: 'post',
         dataType: 'json',
-        data: {user}
+        data: {
+          "type": "1",
+          "id": "",
+          "photo": registration.photo,
+          "date": 'Y-m-d'.replace('Y', new Date().getFullYear()).replace('m', new Date().getMonth() + 1).replace('d', new Date().getDate()),
+          "name": $(this).find( "input[name='name']" ).val(),
+          "surname": $(this).find( "input[name='surname']" ).val(),
+          "gender": $(this).find( "select[name='gender']" ).val(),
+          "age": $(this).find( "input[name='age']" ).val(),
+          "weight": $(this).find( "input[name='weight']" ).val() || "0",
+          "height": $(this).find( "input[name='height']" ).val() || "0",
+          "country": $(this).find("select[name='country']" ).val(),
+          "region": $(this).find( "select[name='city']" ).val(),
+          "family": $(this).find( "select[name='family']" ).val(),
+          "contact": {
+            "email": $(this).find( "input[name='email']" ).val(),
+            "phone": $(this).find( "input[name='phone']" ).val()
+          },
+          "vaccinated": $(this).find( "input[name='vaccination']:checked" ).val(),
+          "language": registration.language,
+          "driver_license": registration.driver,
+          "hobbies": registration.hobbies,
+          "skills": registration.skills,
+          "eu_allowed_person": $(this).find( "input[name='access']:checked" ).val(),
+          "available": [
+            $(this).find( "input[name='available-from']" ).val(),
+            $(this).find( "input[name='available-to']" ).val()
+          ]
+        }
       });
 
-      alert("Registration success");
+      $('.js-popup').toggleClass('popup--active');
 
       $("input").val('');
       $("textarea").val('');
@@ -1031,6 +1061,11 @@
       $('#photo-image').html('')
       $('.js-hobby').removeClass('hobby--active');
       $('.js-form-language').find('select').attr('disabled', true);
+
+      window.setTimeout( function(){
+        window.location.href = "https://global-workers.eu";
+      }, 3000);
+
     });
   };
 

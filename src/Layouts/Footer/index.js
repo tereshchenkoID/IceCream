@@ -5,6 +5,8 @@ import classes from "classnames";
 
 import {translate} from "../../i18n/translate";
 
+import Logo from "../../Components/Logo";
+
 import styles from './index.module.scss';
 
 const Footer = () => {
@@ -15,6 +17,7 @@ const Footer = () => {
                     <div className="container">
                         <div className="row">
                             <div className={classes("col", "col-12", "col-md-6")}>
+                                <Logo />
                             </div>
                             <div className={classes("col", "col-12", "col-md-3", "col-padding-vertical")}>
                                 <div className={styles.list}>
@@ -57,7 +60,16 @@ const Footer = () => {
                                     <div className={styles.item}>
                                         <NavLink
                                             className={styles.link}
-                                            to="/privacy"
+                                            to="/contact"
+                                        >
+                                            {translate('menu_link_8')}
+                                        </NavLink>
+                                    </div>
+                                    <div className={styles.item}>
+                                        <NavLink
+                                            className={styles.link}
+                                            to="../DOC/useful.pdf"
+                                            target="_blank"
                                         >
                                             {translate('menu_link_6')}
                                         </NavLink>
@@ -65,7 +77,8 @@ const Footer = () => {
                                     <div className={styles.item}>
                                         <NavLink
                                             className={styles.link}
-                                            to="/terms"
+                                            to="../DOC/confidential.pdf"
+                                            target="_blank"
                                         >
                                             {translate('menu_link_7')}
                                         </NavLink>

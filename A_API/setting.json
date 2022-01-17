@@ -776,6 +776,13 @@
       "ru": "Шахматы",
       "en": "Chess",
       "de": "Schach"
+    },
+    {
+      "id": "25",
+      "ua": "Спорт",
+      "ru": "Спорт",
+      "en": "Sport",
+      "de": "Sport"
     }
   ],
   "regions":  [

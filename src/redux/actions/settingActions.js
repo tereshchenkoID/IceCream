@@ -5,7 +5,7 @@ import { useRequest } from "../../hooks/useRequest";
 const { get } = useRequest();
 
 export const loadSettingData = () => async dispatch => {
-  let URL = "http://global-workers.eu/API/setting.json";
+  let URL = "https://global-workers.eu/API/setting.json";
   try {
     const data = await get(URL);
 

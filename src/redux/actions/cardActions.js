@@ -5,7 +5,7 @@ import { useRequest } from '../../hooks/useRequest';
 const { get } = useRequest();
 
 export const loadCardData = () => async dispatch => {
-  let URL = "http://global-workers.eu/API/profile.json";
+  let URL = "https://global-workers.eu/API/profile.json";
   try {
     const data = await get(URL);
 

@@ -13,6 +13,10 @@ $count-width: 100 / $count-column;
   &.alt {
     padding: 0;
   }
+
+  &.dark {
+    background-color: #fbfbfb;
+  }
 }
 
 .container {

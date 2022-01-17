@@ -11,6 +11,7 @@ import styles from './index.module.scss';
 import CategoryCard from './CaregoryCard';
 import Title from '../../Components/Title';
 import Header from "../../Layouts/Header";
+import Form from "../../Components/Form";
 
 const Main = () => {
     let { dataSetting } = useSelector(state => state.settingReducer);
@@ -33,7 +34,7 @@ const Main = () => {
                                         <Title
                                             text={translate('main_title_categories')}
                                             url="/search/0"
-                                            link={translate('title_view_all')}
+                                            link={translate('title-view-all')}
                                         />
                                     </div>
                                     {
@@ -46,6 +47,13 @@ const Main = () => {
                                         )
                                     }
                                 </div>
+                            </div>
+                        </div>
+                    </section>
+                    <section className={classes("section", "dark")}>
+                        <div className="container-fluid">
+                            <div className="container">
+                                <Form />
                             </div>
                         </div>
                     </section>

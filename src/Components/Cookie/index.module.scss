@@ -1,0 +1,37 @@
+@import '../../styles/config';
+
+.block {
+  @include flex(center, center, column);
+
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  min-height: 100px;
+  z-index: 21;
+  padding: 20px 10px;
+  background-color: rgba(0, 0, 0, 0.9);
+  color: var(--color-white);
+  text-align: center;
+}
+
+.text {
+  margin: 0 auto 10px;
+  max-width: 600px;
+  font-size: 14px;
+}
+
+.button {
+  @include size(auto, var(--default-height));
+
+  padding: 5px 15px;
+  border-radius: 25px;
+  background-color: var(--color-primary);
+  border: 1px solid var(--color-primary);
+  box-shadow: var(--box-shadow-sm);
+
+  &:hover {
+    background-color: transparent;
+    color: var(--color-primary);
+  }
+}

@@ -4,15 +4,18 @@
   @include flex($justify-content: flex-end, $direction: column);
 
   margin: 0 auto;
-  padding-top: 70px;;
+  padding-top: 70px;
 
-  &:hover {
-    .wrapper {
-      z-index: 2;
-    }
+  @include media-min(map-get($brackpoints, 'lg')) {
 
-    .skills {
-      display: block;
+    &:hover {
+      .wrapper {
+        z-index: 2;
+      }
+
+      .skills {
+        display: block;
+      }
     }
   }
 }

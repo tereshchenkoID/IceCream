@@ -8,8 +8,12 @@ const CategoryCard = ({data, lang}) => {
         <NavLink
             className={styles.block}
             to={`/search/${data.id}`}
-            style={{backgroundImage: `url(/img/${data.id}.webp)`}}
         >
+            <img
+                src={`/img/${data.id}.webp`} alt={`Category ${data.id}`}
+                className={styles.img}
+                loading={"lazy"}
+            />
             <span className={styles.nickname}>{data[lang]}</span>
         </NavLink>
     )
