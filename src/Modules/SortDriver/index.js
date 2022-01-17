@@ -4,7 +4,7 @@ import Checkbox from "../../Components/Checkbox";
 
 import styles from './index.module.scss';
 
-const SortDriver = ({lang, setting, driver, setDriver}) => {
+const SortDriver = ({setting, driver, setDriver}) => {
 
     return (
         <div>

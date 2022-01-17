@@ -237,7 +237,6 @@ const Search = () => {
                                         <div className={styles.wrapper}>
                                             <SortDriver
                                                 setting={dataSetting.driver}
-                                                lang={lang}
                                                 driver={driver}
                                                 setDriver={setDriver}
                                             />

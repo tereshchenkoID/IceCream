@@ -1,13 +1,16 @@
 @import '../../styles/config';
 
-.block {
+.block,
+.item {
   @include flex($align-items: center);
+}
 
+
+.block {
   padding: 30px 0;
 }
 
 .item {
-  @include flex($align-items: center);
 
   &:last-child {
 
@@ -18,7 +21,6 @@
 }
 
 .link {
-  position: relative;
   color: var(--color-primary);
 }
 

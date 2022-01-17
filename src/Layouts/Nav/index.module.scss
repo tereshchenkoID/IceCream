@@ -45,15 +45,15 @@ $md: map-get($brackpoints, 'md');
   @include size(35px);
 
   display: none;
-  border-radius: 3px;
+  border-radius: var(--default-border-radius);
   background-color: var(--color-secondary);
 
   * {
     @include size(25px, 2px);
 
-    transition: var(--default-transition);
     margin: 2px 0;
     border-radius: 2px;
+    transition: var(--default-transition);
     background-color: var(--color-black);
   }
 

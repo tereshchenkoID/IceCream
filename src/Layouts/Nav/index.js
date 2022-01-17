@@ -3,11 +3,9 @@ import classes from 'classnames';
 
 import Menu from "./Menu";
 import Lang from "./Lang";
-
 import Logo from "../../Components/Logo";
 
 import styles from './index.module.scss';
-
 
 const Nav = ({lang, setLang}) => {
 
