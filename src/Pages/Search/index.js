@@ -11,6 +11,7 @@ import getAge from "../../helpers/getAge";
 import getAllStorage from "../../helpers/localStorage";
 import convertData from "../../helpers/convertData";
 
+import Empty from "../../Components/Empty";
 import Breadcrumbs from "../../Components/Breadcrumbs";
 import Title from "../../Components/Title";
 import ProfileCard from "../../Modules/ProfileCard";
@@ -95,7 +96,10 @@ const Search = () => {
     }
 
     const conditionAvailable = (data) => {
-        if (available.min !== 0 && available.max !== 0)
+        if (
+            available.min && available.min !== 0 &&
+            available.max && available.max !== 0
+        )
             return convertAvailable(data.available[0]) <= convertAvailable(available.min) && convertAvailable(data.available[1]) >= convertAvailable(available.max)
         else {
             return true;
@@ -118,6 +122,18 @@ const Search = () => {
         else {
             return data
         }
+    }
+
+    const allCondition = (data) => {
+        return data.filter((item) =>
+            getAge(item.age) >= age.min && getAge(item.age) <= age.max &&
+            conditionFamily(item) &&
+            conditionGender(item) &&
+            conditionVaccination(item) &&
+            conditionDriver(item) &&
+            conditionAvailable(item) &&
+            conditionCategory(item)
+        )
     }
 
     return (
@@ -243,7 +259,7 @@ const Search = () => {
                                             </button>
                                         }
                                         {
-                                            (available.min !== 0 && available.max !== 0) &&
+                                            available.min !== 0 && available.max !== 0 &&
                                                 <button
                                                     className={styles.filter}
                                                     onClick={()=>setAvailable({
@@ -252,7 +268,21 @@ const Search = () => {
                                                     })}
                                                 >
                                                     <span>{translate('sort_label_available')}:</span>
-                                                    <strong>{convertData(available.min)} - {convertData(available.max)}</strong>
+                                                    <strong>
+                                                        {
+                                                            available.min ?
+                                                            convertData(available.min)
+                                                                :
+                                                           <span>{translate('sort_alert_wrong_date')}</span>
+                                                        }
+                                                        -
+                                                        {
+                                                            available.max ?
+                                                            convertData(available.max)
+                                                                :
+                                                            <span>{translate('sort_alert_wrong_date')}</span>
+                                                        }
+                                                    </strong>
                                                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
                                                         <path d="M12,11.2928932 L16.1464466,7.14644661 C16.3417088,6.95118446 16.6582912,6.95118446 16.8535534,7.14644661 C17.0488155,7.34170876 17.0488155,7.65829124 16.8535534,7.85355339 L12.7071068,12 L16.8535534,16.1464466 C17.0488155,16.3417088 17.0488155,16.6582912 16.8535534,16.8535534 C16.6582912,17.0488155 16.3417088,17.0488155 16.1464466,16.8535534 L12,12.7071068 L7.85355339,16.8535534 C7.65829124,17.0488155 7.34170876,17.0488155 7.14644661,16.8535534 C6.95118446,16.6582912 6.95118446,16.3417088 7.14644661,16.1464466 L11.2928932,12 L7.14644661,7.85355339 C6.95118446,7.65829124 6.95118446,7.34170876 7.14644661,7.14644661 C7.34170876,6.95118446 7.65829124,6.95118446 7.85355339,7.14644661 L12,11.2928932 Z"/>
                                                     </svg>
@@ -321,28 +351,54 @@ const Search = () => {
                                     </button>
                                 </div>
                                 <div className="row">
+
                                     {
-                                        dataCard.map((item, idx) =>
-                                            conditionCategory(item) &&
-                                            conditionDriver(item) &&
-                                            conditionFamily(item) &&
-                                            conditionGender(item) &&
-                                            conditionVaccination(item) &&
-                                            conditionAvailable(item) &&
-                                            getAge(item.age) >= age.min && getAge(item.age) <= age.max &&
-                                            <div key={idx} className={classes("col", "col-12", 'col-sm-6', "col-padding-vertical")}>
-                                                <ProfileCard
-                                                    setting={dataSetting}
-                                                    data={item}
-                                                    lang={lang}
-                                                    favArray={favArray}
-                                                    setFavArray={setFavArray}
-                                                    teamArray={teamArray}
-                                                    setTeamArray={setTeamArray}
-                                                />
-                                            </div>
+                                        (
+                                            allCondition(dataCard) &&
+                                            allCondition(dataCard).length > 0
                                         )
+                                            ?
+                                            allCondition(dataCard).map((item, idx) =>
+                                                <div key={idx} className={classes("col", "col-12", 'col-sm-6', "col-padding-vertical")}>
+                                                    <ProfileCard
+                                                        setting={dataSetting}
+                                                        data={item}
+                                                        lang={lang}
+                                                        favArray={favArray}
+                                                        setFavArray={setFavArray}
+                                                        teamArray={teamArray}
+                                                        setTeamArray={setTeamArray}
+                                                    />
+                                                </div>
+                                            )
+                                            :
+                                            <div className={classes("col", "col-12", "col-padding-vertical")}>
+                                                <Empty />
+                                            </div>
                                     }
+
+                                    {/*{*/}
+                                    {/*    dataCard.map((item, idx) =>*/}
+                                    {/*        conditionCategory(item) &&*/}
+                                    {/*        conditionDriver(item) &&*/}
+                                    {/*        conditionFamily(item) &&*/}
+                                    {/*        conditionGender(item) &&*/}
+                                    {/*        conditionVaccination(item) &&*/}
+                                    {/*        conditionAvailable(item) &&*/}
+                                    {/*        getAge(item.age) >= age.min && getAge(item.age) <= age.max &&*/}
+                                    {/*        <div key={idx} className={classes("col", "col-12", 'col-sm-6', "col-padding-vertical")}>*/}
+                                    {/*            <ProfileCard*/}
+                                    {/*                setting={dataSetting}*/}
+                                    {/*                data={item}*/}
+                                    {/*                lang={lang}*/}
+                                    {/*                favArray={favArray}*/}
+                                    {/*                setFavArray={setFavArray}*/}
+                                    {/*                teamArray={teamArray}*/}
+                                    {/*                setTeamArray={setTeamArray}*/}
+                                    {/*            />*/}
+                                    {/*        </div>*/}
+                                    {/*    )*/}
+                                    {/*}*/}
                                 </div>
                             </div>
                         </div>

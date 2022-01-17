@@ -1,3 +1,12 @@
+$base-grid-padding: 	15px;
+$base-grid-margin: 		15px;
+$base-grid-column: 		12;
+
+$grid-padding: $base-grid-padding;
+$grid-margin: $base-grid-margin;
+$count-column: $base-grid-column;
+$count-width: 100 / $count-column;
+
 $brackpoints: (
   'sm': 576,
   'md': 768,

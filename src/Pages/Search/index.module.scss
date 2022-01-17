@@ -123,6 +123,13 @@ $lg: map-get($brackpoints, 'lg');
     line-height: 1;
   }
 
+  strong {
+
+    span {
+      color: var(--color-red);
+    }
+  }
+
   svg {
     @include size(25px);
 

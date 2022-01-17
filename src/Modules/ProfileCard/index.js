@@ -1,4 +1,5 @@
 import React from "react";
+import {NavLink} from "react-router-dom";
 
 import {translate} from "../../i18n/translate";
 
@@ -99,14 +100,25 @@ const ProfileCard = ({
                                     <p className={styles.category}>{setting.job[category.id][lang]}</p>
                                     {
                                         category.list.map((subcategory, idx) =>
-                                            subcategory < setting.job[category.id].list.length - 1 &&
+                                            subcategory < setting.job[category.id].list.length &&
                                             <p key={idx} className={styles.subcategory}>{setting.job[category.id].list[subcategory][lang]}</p>
                                         )
                                     }
                                 </div>
                             )
                         }
-                        <div>...</div>
+                        {
+                            (data.skills.length > 2) &&
+                            <>
+                                <div>...</div>
+                                <NavLink
+                                    className={styles.link}
+                                    to={`/profile/${data.id}`}
+                                >
+                                    {translate('card_more')}
+                                </NavLink>
+                            </>
+                        }
                     </div>
                 </div>
             }

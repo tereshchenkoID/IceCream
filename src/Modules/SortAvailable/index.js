@@ -7,7 +7,6 @@ import {translate} from "../../i18n/translate";
 import styles from './index.module.scss';
 
 const SortAvailable = ({available, setAvailable}) => {
-
     return (
         <div>
             <p>{translate('sort_from')}</p>
@@ -17,6 +16,7 @@ const SortAvailable = ({available, setAvailable}) => {
                 max={getDate(24).toISOString().substring(0, 10)}
                 className={styles.field}
                 onChange={(e) => setAvailable({min: e.target.value, max: available.max})}
+                value={available.min === 0 ? '' : available.min}
             />
             <p>{translate('sort_to')}</p>
             <input
@@ -25,6 +25,7 @@ const SortAvailable = ({available, setAvailable}) => {
                 max={getDate(24).toISOString().substring(0, 10)}
                 className={styles.field}
                 onChange={(e) => setAvailable({min: available.min, max: e.target.value})}
+                value={available.max === 0 ? '' : available.max}
             />
         </div>
     )

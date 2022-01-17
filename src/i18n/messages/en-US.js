@@ -36,6 +36,7 @@ const a = {
         'card_available': 'Available date',
         'card_vaccination': 'Vaccination',
         'card_access': 'Access to EU',
+        'card_more': 'See all',
 
         'section_description_about': 'About',
         'section_description_skills': 'Skills',
@@ -64,6 +65,7 @@ const a = {
         'sort_label_gender': 'Gender',
         'sort_label_vaccination': 'Vaccination',
         'sort_label_family': 'Marital status',
+        'sort_alert_wrong_date': 'Invalid date',
 
         'alert-empty': 'So far empty'
     }

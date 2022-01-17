@@ -6,10 +6,19 @@ $md: map-get($brackpoints, 'md');
   @include flex($align-items: center);
 
   position: relative;
-  min-height: 500px;
-  background-color: var(--color-secondary);
-  background-size: cover;
-  background-position: 50% 50%;
+  height: 500px;
+
+  @include media-max($md) {
+    height: 300px;
+  }
+}
+
+.picture {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
 
   &::before {
     position: absolute;
@@ -17,18 +26,23 @@ $md: map-get($brackpoints, 'md');
     right: 0;
     bottom: 0;
     left: 0;
-    background: linear-gradient(to right, rgba(0, 226, 189, 0.95) 20%, rgba(0, 226, 189, 0.75) 30%, rgba(250, 250, 250, 0.1) 80%, rgba(250, 250, 250, 0) 100%);
+    background: linear-gradient(to right, rgba(0, 226, 189, 0.95) 10%, rgba(0, 226, 189, 0.75) 20%, rgba(250, 250, 250, 0.1) 70%, rgba(250, 250, 250, 0) 100%);
     content: '';
-  }
-
-  @include media-max($md) {
-    min-height: 300px;
   }
 }
 
 .content {
+  @include flex($justify-content: center, $direction: column);
+  @include size(100%);
+
   position: relative;
+  padding: 0 $grid-padding;
+  margin-right: auto;
+  margin-left: auto;
+  min-width: var(--min-width);
+  max-width: var(--max-width);
   z-index: 1;
+  color: var(--color-white);
 }
 
 .title,
@@ -46,9 +60,12 @@ $md: map-get($brackpoints, 'md');
 }
 
 .subtitle {
-  margin-bottom: 10px;
 
   @include media-max($md) {
     font-size: 18px;
   }
+}
+
+.description {
+  font-size: 18px;
 }

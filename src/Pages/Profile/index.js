@@ -160,7 +160,7 @@ const Profile = () => {
                                     <div className={styles.body}>
                                         {
                                             find.skills &&
-                                            find.skills.slice(1, find.skills.length).map((category, idx) =>
+                                            find.skills.map((category, idx) =>
                                                 <div key={idx} className={styles.skill}>
                                                     <p className={styles.category}>{dataSetting.job[category.id][lang]}:</p>
                                                     <div className={styles.list}>

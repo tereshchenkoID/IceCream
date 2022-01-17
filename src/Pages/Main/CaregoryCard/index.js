@@ -10,7 +10,8 @@ const CategoryCard = ({data, lang}) => {
             to={`/search/${data.id}`}
         >
             <img
-                src={`/img/${data.id}.webp`} alt={`Category ${data.id}`}
+                src={`/img/sm/${data.id}.webp`}
+                alt={`Category ${data.id}`}
                 className={styles.img}
                 loading={"lazy"}
             />
