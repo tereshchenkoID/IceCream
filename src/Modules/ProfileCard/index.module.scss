@@ -9,6 +9,7 @@
   @include media-min(map-get($brackpoints, 'lg')) {
 
     &:hover {
+
       .wrapper {
         z-index: 2;
       }
@@ -18,6 +19,11 @@
       }
     }
   }
+}
+
+.block,
+.wrapper {
+  height: 100%;
 }
 
 .wrapper {

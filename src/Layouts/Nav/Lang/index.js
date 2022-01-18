@@ -50,6 +50,18 @@ const Lang = ({lang, setLang}) => {
                 >
                     DE
                 </button>
+                <button
+                    className={classes(styles.button, active === 'ua-ua' && styles.active)}
+                    onClick={() => handleButton('UKRAINIAN')}
+                >
+                    UA
+                </button>
+                <button
+                    className={classes(styles.button, active === 'ru-ru' && styles.active)}
+                    onClick={() => handleButton('RUSSIAN')}
+                >
+                    RU
+                </button>
             </div>
         </div>
     );

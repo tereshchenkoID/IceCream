@@ -7,6 +7,7 @@ import {translate} from "../../i18n/translate";
 import styles from './index.module.scss';
 
 const SortAvailable = ({available, setAvailable}) => {
+
     return (
         <div>
             <p>{translate('sort_from')}</p>

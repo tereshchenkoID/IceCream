@@ -1,8 +1,14 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 
 import styles from './index.module.scss';
 
 const Checkbox = ({item, name, label, date, action}) => {
+    const [reset, setReset] = useState(false)
+
+    useEffect(() => {
+        date.length === 0 && setReset(false)
+    }, [date])
+
     const handleCheckbox = (e) => {
         const data = date.slice();
 
@@ -13,6 +19,7 @@ const Checkbox = ({item, name, label, date, action}) => {
             data.push(e.target.value)
         }
 
+        setReset(!reset)
         action(data);
     };
 
@@ -24,6 +31,7 @@ const Checkbox = ({item, name, label, date, action}) => {
                 value={item.id}
                 className={styles.input}
                 onChange={(e) => handleCheckbox(e)}
+                checked={reset}
             />
             <label
                 htmlFor={`${name}_${label.split(' ').join('-').toLowerCase()}`}

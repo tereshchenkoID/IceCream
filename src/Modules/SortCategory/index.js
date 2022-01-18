@@ -7,7 +7,6 @@ import styles from './index.module.scss';
 import Checkbox from "../../Components/Checkbox";
 
 const SortCategory = ({ categories, id, category, setCategory, lang}) => {
-
     return (
         <div>
             {

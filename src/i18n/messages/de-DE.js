@@ -4,7 +4,7 @@ const a = {
     [LOCALES.GERMAN]: {
         'lang': 'de',
         'menu_link_1': 'Zuhause',
-        'menu_link_2': 'Employers',
+        'menu_link_2': 'Angestellte',
         'menu_link_3': 'Favoritinnen',
         'menu_link_4': 'Team',
         'menu_link_5': 'Einzelheiten',
@@ -12,9 +12,12 @@ const a = {
         'menu_link_7': 'Nutzungsbedingungen',
         'menu_link_8': 'Kontakt',
 
+        'main_title_categories': 'Kategorien',
+
         'header_title': 'Finde deinen nächsten Job',
         'header_subtitle': 'Riesige Community von Designern, Entwicklern und Kreativen, die für Ihr Projekt bereit sind.',
-        'main_title_categories': 'Kategorien',
+        'footer_subtitle_1': 'Navigation',
+        'footer_subtitle_2': 'Nützliche Links',
 
         'title-contact': 'Irgendwelche Fragen? Fühlen Sie sich frei uns zu kontaktieren!',
         'title-reserved': 'Alle Rechte vorbehalten',
@@ -32,7 +35,7 @@ const a = {
         'card_button_send': 'Zum Team hinzufügen',
         'card_button_remove': 'Aus Team entfernen',
         'card_button_profile': 'Profil anzeigen',
-        'card_date': 'Lebenslauf erstellt',
+        'card_date': 'Profil erstellt',
         'card_available': 'Verfügbares Datum',
         'card_vaccination': 'Impfung',
         'card_access': 'Zugang zur EU',
@@ -40,8 +43,6 @@ const a = {
 
         'section_description_about': 'Über',
         'section_description_skills': 'Kompetenzen',
-        'section_description_work': 'Arbeitsgeschichte',
-        'section_description_review': 'Bewertungen',
         'section_description_general': 'Allgemeine Information',
         'section_description_language': 'Sprache',
         'section_description_driver': 'Führerschein',
@@ -65,6 +66,7 @@ const a = {
         'sort_label_gender': 'Geschlecht',
         'sort_label_vaccination': 'Impfung',
         'sort_label_family': 'Familienstand',
+        'sort_label_driver': 'Führerschein',
         'sort_alert_wrong_date': 'Ungültiges Datum',
 
         'alert-empty': 'Bisher leer'

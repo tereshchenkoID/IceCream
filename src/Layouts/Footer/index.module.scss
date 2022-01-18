@@ -22,9 +22,17 @@
     margin-right: 0;
   }
 }
-
+.subtitle,
 .item {
   margin-bottom: 10px;
+}
+
+.subtitle,
+.text {
+  color: var(--color-white);
+}
+
+.item {
 
   &:last-child {
     margin-bottom: 0;
@@ -32,7 +40,6 @@
 }
 
 .text {
-  color: var(--color-white);
   font-size: 14px;
 
   span {
