@@ -98,7 +98,13 @@ const Footer = () => {
                         <div className={styles.text}>
                             <span>©</span>
                             <span>{ new Date().getFullYear() }</span>
-                            <span>Global-Working. {translate('title-reserved')}</span>
+                            <span>Global-Working. {translate('title-reserved')}.</span>
+                            <a
+                                className={styles.mail}
+                                href="mailto:admin@global-workers.eu"
+                            >
+                                admin@global-workers.eu
+                            </a>
                         </div>
                     </div>
                 </div>

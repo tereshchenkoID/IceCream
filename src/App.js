@@ -59,7 +59,10 @@ const App = () => {
                       <Provider store={store}>
                           <BrowserRouter>
                               <Api/>
-                              <Nav lang={lang} setLang={setLang}/>
+                              <Nav
+                                  lang={lang}
+                                  setLang={setLang}
+                              />
                               <Routing {...{ routes }} />
                               <Footer />
                           </BrowserRouter>

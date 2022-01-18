@@ -165,7 +165,7 @@ const Search = () => {
                                     </button>
                                     <div className={styles.scroll}>
                                         <Title
-                                            text={translate('sort_title_categories')}
+                                            text={`${translateString('sort_title_categories')}:`}
                                         />
                                         <div className={styles.wrapper}>
                                             <SortCategory
@@ -177,7 +177,7 @@ const Search = () => {
                                             />
                                         </div>
                                         <Title
-                                            text={translate('sort_title_available')}
+                                            text={`${translateString('sort_title_available')}:`}
                                         />
                                         <div className={styles.wrapper}>
                                             <SortAvailable
@@ -186,7 +186,7 @@ const Search = () => {
                                             />
                                         </div>
                                         <Title
-                                            text={translate('sort_title_age')}
+                                            text={`${translateString('sort_title_age')}:`}
                                         />
                                         <div className={styles.wrapper}>
                                             <SortAge
@@ -197,7 +197,7 @@ const Search = () => {
                                             />
                                         </div>
                                         <Title
-                                            text={translate('sort_title_gender')}
+                                            text={`${translateString('sort_title_gender')}:`}
                                         />
                                         <div className={styles.wrapper}>
                                             <SortGender
@@ -208,7 +208,7 @@ const Search = () => {
                                             />
                                         </div>
                                         <Title
-                                            text={translate('sort_title_vaccination')}
+                                            text={`${translateString('sort_title_vaccination')}:`}
                                         />
                                         <div className={styles.wrapper}>
                                             <SortVaccination
@@ -219,7 +219,7 @@ const Search = () => {
                                             />
                                         </div>
                                         <Title
-                                            text={translate('sort_title_family')}
+                                            text={`${translateString('sort_title_family')}:`}
                                         />
                                         <div className={styles.wrapper}>
                                             <SortFamily
@@ -230,7 +230,7 @@ const Search = () => {
                                             />
                                         </div>
                                         <Title
-                                            text={translate('sort_title_driver')}
+                                            text={`${translateString('sort_title_driver')}:`}
                                         />
                                         <div className={styles.wrapper}>
                                             <SortDriver

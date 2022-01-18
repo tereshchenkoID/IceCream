@@ -8,10 +8,11 @@ const CategoryCard = ({data, lang}) => {
         <NavLink
             className={styles.block}
             to={`/search/${data.id}`}
+            title={data[lang]}
         >
             <img
                 src={`/img/sm/${data.id}.webp`}
-                alt={`Category ${data.id}`}
+                alt={data[lang]}
                 className={styles.img}
                 loading={"lazy"}
             />

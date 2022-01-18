@@ -8,8 +8,8 @@ const Link = ({url, text}) => {
     return (
         <div className={styles.block}>
             <NavLink
-                className={styles.link}
                 to={url}
+                className={styles.link}
             >
                 {text}
             </NavLink>

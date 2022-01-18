@@ -7,16 +7,16 @@ import {translate} from "../../i18n/translate";
 import styles from './index.module.scss';
 
 const Header = ({lang, dataSetting}) => {
-
     const settings = {
         dots: true,
         arrows: false,
         infinite: true,
         autoplay: true,
-        speed: 1000,
+        speed: 500,
         autoplaySpeed: 5000,
         slidesToShow: 1,
-        slidesToScroll: 1
+        slidesToScroll: 1,
+        fade: true
     };
 
     return (

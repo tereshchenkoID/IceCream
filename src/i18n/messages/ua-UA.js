@@ -19,7 +19,7 @@ const a = {
         'footer_subtitle_1': 'Навігація',
         'footer_subtitle_2': 'Корисні посилання',
 
-        'title-reserved': 'All Rights Reserved',
+        'title-reserved': 'Всі права захищені',
         'title-contact': 'Є питання? Не соромтеся зв\'язатися з нами!',
         'title-view-all': 'Дивитись все',
 
@@ -38,10 +38,10 @@ const a = {
         'card_date': 'Профіль створено',
         'card_available': 'Доступні дати',
         'card_vaccination': 'Вакцинація',
-        'card_access': 'В\'їзд в EU',
-        'card_more': 'Дивитись все',
+        'card_access': 'Заборона в\'їзду в ЄС',
+        'card_more': 'Дивитись всi',
 
-        'section_description_about': 'Про мне',
+        'section_description_about': 'Хоббі',
         'section_description_skills': 'Навички',
         'section_description_general': 'Голавна інформация',
         'section_description_language': 'Мови',
@@ -58,7 +58,7 @@ const a = {
         'sort_title_driver': 'Посвідчення водія',
         'sort_title_weight': 'Вага',
         'sort_title_height': 'Зріст',
-        'sort_title_access': 'В\'їзд в EU',
+        'sort_title_access': 'Заборона в\'їзду в ЄС',
 
         'sort_label_category': 'Категорія',
         'sort_label_available': 'Доступні дати',

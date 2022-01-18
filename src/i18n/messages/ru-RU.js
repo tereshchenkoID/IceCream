@@ -17,17 +17,17 @@ const a = {
         'header_title': 'Find your next job',
         'header_subtitle': 'Huge community of designers, developers and creatives ready for your project.',
         'footer_subtitle_1': 'Навигация',
-        'footer_subtitle_2': 'Полезные Ссылки',
+        'footer_subtitle_2': 'Полезные сылки',
 
-        'title-reserved': 'All Rights Reserved',
+        'title-reserved': 'Все права защищены',
         'title-contact': 'Есть вопросы? Не стесняйтесь связаться с нами!',
-        'title-view-all': 'Смотреть Все',
+        'title-view-all': 'Смотреть все',
 
         'contact_name': 'Ваше Имя',
         'contact_email': 'Email адрес',
         'contact_subject': 'Тема',
         'contact_message': 'Сообщение',
-        'contact_button': 'Отправить Сообщение',
+        'contact_button': 'Отправить сообщение',
         'contact_alert': 'Спасибо, мы свяжемся с вами как можно скорее!',
 
         'card_age': 'Возраст',
@@ -38,10 +38,10 @@ const a = {
         'card_date': 'Профиль создан',
         'card_available': 'Доступные даты',
         'card_vaccination': 'Вакцинация',
-        'card_access': 'Вьезд в EU',
+        'card_access': 'Запрет на вьезд в ЕС',
         'card_more': 'Смотреть все',
 
-        'section_description_about': 'О мне',
+        'section_description_about': 'Хобби',
         'section_description_skills': 'Навыки',
         'section_description_general': 'Главная информация',
         'section_description_language': 'Языки',
@@ -58,7 +58,7 @@ const a = {
         'sort_title_driver': 'Водильское удостоверение',
         'sort_title_weight': 'Вес',
         'sort_title_height': 'Рост',
-        'sort_title_access': 'Вьезд в EU',
+        'sort_title_access': 'Запрет на вьезд в ЕС',
 
         'sort_label_category': 'Категория',
         'sort_label_available': 'Доступные даты',

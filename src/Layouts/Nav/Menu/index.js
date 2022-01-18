@@ -25,14 +25,6 @@ const Menu = ({active, setActive}) => {
             </div>
             <NavLink
                 activeClassName={styles.active}
-                className={styles.link}
-                to="/main"
-                onClick={() => setActive(false)}
-            >
-                {translate("menu_link_1")}
-            </NavLink>
-            <NavLink
-                activeClassName={styles.active}
                 className={classes(styles.link, checkLocation('search') && styles.active)}
                 to="/search/0"
                 onClick={() => setActive(false)}
