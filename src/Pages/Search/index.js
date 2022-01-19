@@ -14,6 +14,7 @@ import convertData from "../../helpers/convertData";
 import Empty from "../../Components/Empty";
 import Breadcrumbs from "../../Components/Breadcrumbs";
 import Title from "../../Components/Title";
+import Sort from "../../Modules/Sort";
 import ProfileCard from "../../Modules/ProfileCard";
 import SortAge from '../../Modules/SortAge';
 import SortGender from '../../Modules/SortGender';
@@ -52,6 +53,7 @@ const Search = () => {
     const [teamArray, setTeamArray] = useState(getAllStorage('team'));
 
     const values = [0, 80];
+    const [sort, setSort] = useState(0);
     const [age, setAge] = useState({min: values[0], max: values[1]});
     const [gender, setGender] = useState('0');
     const [family, setFamily] = useState('0');
@@ -122,8 +124,34 @@ const Search = () => {
         }
     }
 
+    const sortData = (data) => {
+        if (sort === 1) {
+            data.sort((a, b) => {
+                return convertAvailable(a.date) - convertAvailable(b.date);
+            })
+        }
+
+        if (sort === 2) {
+            data.sort((a, b) => {
+                return convertAvailable(b.date) - convertAvailable(a.date);
+            })
+        }
+
+        if (sort === 3) {
+            data.sort((a, b) => {
+                return convertAvailable(b.age) - convertAvailable(a.age);
+            })
+        }
+
+        if (sort === 4) {
+            data.sort((a, b) => {
+                return convertAvailable(a.age) - convertAvailable(b.age);
+            })
+        }
+    }
+
     const allCondition = (data) => {
-        return data.filter((item) =>
+        const a = data.filter((item) =>
             getAge(item.age) >= age.min && getAge(item.age) <= age.max &&
             conditionFamily(item) &&
             conditionGender(item) &&
@@ -132,6 +160,12 @@ const Search = () => {
             conditionAvailable(item) &&
             conditionCategory(item)
         )
+
+        if (sort !== 0) {
+            sortData(a)
+        }
+
+        return a
     }
 
     return (
@@ -371,6 +405,11 @@ const Search = () => {
                                         </svg>
                                     </button>
                                 </div>
+                                <Sort
+                                    sort={sort}
+                                    setSort={setSort}
+                                    lang={lang}
+                                />
                                 <div className="row">
                                     {
                                         (

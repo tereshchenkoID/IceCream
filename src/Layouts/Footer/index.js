@@ -25,14 +25,6 @@ const Footer = () => {
                                     <div className={styles.item}>
                                         <NavLink
                                             className={styles.link}
-                                            to="/main"
-                                        >
-                                            {translate('menu_link_1')}
-                                        </NavLink>
-                                    </div>
-                                    <div className={styles.item}>
-                                        <NavLink
-                                            className={styles.link}
                                             to="/search"
                                         >
                                             {translate('menu_link_2')}

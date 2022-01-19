@@ -22,6 +22,7 @@ const a = {
         'title-reserved': 'Всі права захищені',
         'title-contact': 'Є питання? Не соромтеся зв\'язатися з нами!',
         'title-view-all': 'Дивитись все',
+        'title-sort-by': 'Сортування',
 
         'contact_name': 'Ваше ім\'я',
         'contact_email': 'Email адреса',

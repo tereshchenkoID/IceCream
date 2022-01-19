@@ -51,16 +51,16 @@ const ProfileCard = ({
                             <div className={styles.body}>
                                 <div className={styles.info}>
                                     <div className={styles.cell}>
-                                        <p className={styles.label}>{translate('card_access')}: </p>
-                                        <p className={styles.value}>{setting.access[data.eu_allowed_person][lang]}</p>
+                                        <p className={styles.label}>{translate('card_age')}: </p>
+                                        <p className={styles.value}>{getAge(data.age)}</p>
                                     </div>
                                     <div className={styles.cell}>
                                         <p className={styles.label}>{translate('card_gender')}: </p>
                                         <p className={styles.value}>{setting.gender[data.gender][lang]}</p>
                                     </div>
                                     <div className={styles.cell}>
-                                        <p className={styles.label}>{translate('card_age')}: </p>
-                                        <p className={styles.value}>{getAge(data.age)}</p>
+                                        <p className={styles.label}>{translate('card_access')}: </p>
+                                        <p className={styles.value}>{setting.access[data.eu_allowed_person][lang]}</p>
                                     </div>
                                     <div className={styles.cell}>
                                         <p className={styles.label}>{translate('card_vaccination')}: </p>

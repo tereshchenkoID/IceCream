@@ -22,6 +22,7 @@ const a = {
         'title-reserved': 'All Rights Reserved',
         'title-contact': 'Any questions? Feel free to contact us!',
         'title-view-all': 'View all',
+        'title-sort-by': 'Sorting',
 
         'contact_name': 'Your name',
         'contact_email': 'Email address',

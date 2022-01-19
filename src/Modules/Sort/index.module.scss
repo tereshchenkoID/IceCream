@@ -1,0 +1,105 @@
+@import "../../styles/config";
+
+.block {
+  @include flex(flex-end, center);
+  @include size(100%, var(--default-height));
+
+  position: relative;
+  padding: 0 10px;
+  margin-bottom: 20px;
+
+  &.active {
+
+    .dropdown {
+      display: block;
+    }
+  }
+}
+
+.text {
+  margin-right: 5px;
+  color: var(--color-title);
+}
+
+.label {
+  cursor: pointer;
+
+  span {
+
+    &:last-child {
+      color: var(--color-primary);
+      margin-left: 5px;
+    }
+  }
+}
+
+.dropdown {
+  display: none;
+  position: absolute;
+  top: 100%;
+  right: 0;
+  min-width: 150px;
+  background-color: var(--color-white);
+  box-shadow: var(--box-shadow-sm);
+  border-radius: var(--default-border-radius);
+  z-index: 3;
+
+  &::before {
+    @include size(0);
+
+    position: absolute;
+    top: -6px;
+    right: 25px;
+    border-right: 6px solid transparent;
+    border-bottom: 6px solid var(--color-border);
+    border-left: 6px solid transparent;
+    content: '';
+  }
+}
+
+.actions,
+.button {
+  @include flex(center, center);
+}
+
+.actions {
+  margin-right: 0;
+  margin-left: 15px;
+}
+
+.button {
+  @include size(30px);
+
+  background-color: var(--color-secondary);
+  border-radius: var(--default-border-radius);
+  margin: 0 2px;
+  line-height: 1;
+
+  &:first-child {
+    margin-left: 0;
+  }
+
+  &:last-child {
+    margin-right: 0;
+    border-bottom: 0;
+  }
+
+  &:hover,
+  &.active {
+    background-color: var(--color-primary);
+    color: var(--color-white);
+  }
+}
+
+.item {
+  @include size(100%, 40px);
+  @include flex(space-between, center);
+
+  padding: 0 15px;
+  border-bottom: 1px solid var(--color-secondary);
+  cursor: pointer;
+
+  &:last-child {
+    border-bottom: 0;
+  }
+}

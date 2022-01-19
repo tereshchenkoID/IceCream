@@ -35,14 +35,6 @@ $lg: map-get($brackpoints, 'lg');
 }
 
 .filters {
-
-  //@include media-min(map-get($brackpoints, 'lg')) {
-  //  position: sticky;
-  //  top: 100px;
-  //  overflow-y: auto;
-  //  max-height: calc(100vh - 240px);
-  //}
-
   @include media-max($lg) {
     @include flex($direction: column);
 

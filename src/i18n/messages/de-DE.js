@@ -22,6 +22,7 @@ const a = {
         'title-contact': 'Irgendwelche Fragen? Fühlen Sie sich frei uns zu kontaktieren!',
         'title-reserved': 'Alle Rechte vorbehalten',
         'title-view-all': 'Alle ansehen',
+        'title-sort-by': 'Sortierung',
 
         'contact_name': 'Dein Name',
         'contact_email': 'E-Mail-Addresse',
