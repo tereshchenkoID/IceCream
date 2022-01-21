@@ -11,11 +11,24 @@ const a = {
         'menu_link_6': 'Datenschutz-bestimmungen',
         'menu_link_7': 'Nutzungsbedingungen',
         'menu_link_8': 'Kontakt',
+        'menu_link_9': 'Etwa',
 
         'main_title_categories': 'Kategorien',
 
-        'header_title': 'Finde deinen nächsten Job',
-        'header_subtitle': 'Riesige Community von Designern, Entwicklern und Kreativen, die für Ihr Projekt bereit sind.',
+        'header_title_1': 'MÖCHTEN SIE SCHNELL EINEN ARBEITNEHMER FINDEN?',
+        'header_title_2': 'WOLLEN SIE DER ERSTE IN DER BRANCHE SEIN?',
+        'header_title_3': 'MÖCHTEN SIE UNABHÄNGIG UND FLEXIBEL SEIN?',
+        'header_subtitle_1': 'Diese Möglichkeit stellen wir Ihnen nach Anmeldung zur Verfügung.',
+        'header_subtitle_2': 'Wir haben eine Webplattform geschaffen, die einen Wettbewerbsvorteil bei der Beschäftigung bietet.',
+        'header_subtitle_3': 'Wir nehmen Ihnen den Umgang mit Vermittlern und Bürokratie ab.',
+
+        'about_title_1': 'UNSERE INTERNETSEITE',
+        'about_title_2': 'WER WIR SIND',
+        'about_title_3': 'WAS WIR TUN',
+        'about_description_1': 'Wir haben für Sie einen einzigartigen digitalen Raum geschaffen, der zeitliche und bürokratische Hürden bei der Suche und Einstellung von Arbeitern Ihres Bedarfs aus allen wichtigen Wirtschaftszweigen überwindet.',
+        'about_description_2': 'Wir sind zuverlässige, talentierte und erfahrene Fachleute, die ein eigenes Team aufgebaut haben, um Ihnen die Möglichkeit zu geben, schnell und ohne Hindernisse die von Ihnen benötigten Personen zu finden und für einen von Ihnen festgelegten Zeitraum in Ihren Arbeitsteams zusammenzufassen. Unser Team hat sich in erster Linie um die Idee versammelt, ein solches wirtschaftlich-digitales Phänomen zu schaffen, das zur Entwicklung und Verbesserung der Beziehungen im Bereich der Beschäftigung beitragen und so den wirtschaftlichen und sozialen Wohlstand der Arbeiterberufe fördern würde.',
+        'about_description_3': 'Ab sofort haben wir eine einzigartige Webplattform entwickelt, die es Arbeitgebern und Arbeitssuchenden ermöglicht, direkte Arbeitsbeziehungen ohne unnötige Vermittler herzustellen. Wir haben den Bedarf an Vermittlungsleistungen eliminiert, die in der Regel temporäre, räumliche, finanzielle und bürokratische Hürden zwischen Arbeitssuchenden und Stellenangeboten schaffen.',
+
         'footer_subtitle_1': 'Navigation',
         'footer_subtitle_2': 'Nützliche links',
 

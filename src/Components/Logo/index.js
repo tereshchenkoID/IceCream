@@ -4,13 +4,14 @@ import {NavLink} from "react-router-dom";
 
 import styles from './index.module.scss';
 
-const Logo = () => {
+const Logo = ({isLight}) => {
+    const path = isLight ? 'logo-white' : 'logo'
     return (
         <div className={styles.block}>
             <NavLink
                 to="/main"
             >
-                <img src="/img/logo.webp"
+                <img src={`/img/${path}.webp`}
                      alt="Global Workers"
                      loading={"lazy"}
                 />

@@ -17,11 +17,21 @@ const Footer = () => {
                     <div className="container">
                         <div className="row">
                             <div className={classes("col", "col-12", "col-md-6")}>
-                                <Logo />
+                                <Logo isLight={true}/>
+
+
                             </div>
                             <div className={classes("col", "col-12", "col-md-3", "col-padding-vertical")}>
                                 <div className={styles.list}>
                                     <div className={styles.subtitle}>{translate('footer_subtitle_1')}</div>
+                                    <div className={styles.item}>
+                                        <NavLink
+                                            className={styles.link}
+                                            to="/about"
+                                        >
+                                            {translate("menu_link_9")}
+                                        </NavLink>
+                                    </div>
                                     <div className={styles.item}>
                                         <NavLink
                                             className={styles.link}
@@ -77,6 +87,14 @@ const Footer = () => {
                                             {translate('menu_link_7')}
                                         </NavLink>
                                     </div>
+                                    <div className={styles.item}>
+                                        <a
+                                            className={styles.mail}
+                                            href="mailto:admin@global-workers.eu"
+                                        >
+                                            admin@global-workers.eu
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -91,12 +109,6 @@ const Footer = () => {
                             <span>©</span>
                             <span>{ new Date().getFullYear() }</span>
                             <span>Global-Working. {translate('title-reserved')}.</span>
-                            <a
-                                className={styles.mail}
-                                href="mailto:admin@global-workers.eu"
-                            >
-                                admin@global-workers.eu
-                            </a>
                         </div>
                     </div>
                 </div>

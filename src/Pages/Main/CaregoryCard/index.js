@@ -11,11 +11,10 @@ const CategoryCard = ({data, lang}) => {
             title={data[lang]}
         >
             <img
-                src={`/img/sm/${data.id}.webp`}
+                src={`/img/categories/576/${data.id}.webp`}
                 alt={data[lang]}
                 className={styles.img}
-                loading={"lazy"}
-            />
+                loading={"lazy"} />
             <span className={styles.nickname}>{data[lang]}</span>
         </NavLink>
     )

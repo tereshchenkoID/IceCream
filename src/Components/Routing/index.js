@@ -3,7 +3,7 @@ import { Switch, Route } from 'react-router-dom'
 
 const Routing = ({ routes }) => {
     return (
-      <Switch>
+       <Switch>
           {
               routes.map(item =>
                   <Route

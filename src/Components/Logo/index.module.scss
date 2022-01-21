@@ -1,10 +1,7 @@
 @import '../../styles/config';
 
 .block {
-  @include size(124px, 58px);
-
-  background-size: cover;
-  cursor: pointer;
+  @include size(130px, 60px);
 
   a {
     @include size(100%);

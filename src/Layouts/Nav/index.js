@@ -17,7 +17,7 @@ const Nav = ({lang, setLang}) => {
                 <div className="container">
                     <div className={styles.wrapper}>
                         <div className={styles.cell}>
-                            <Logo />
+                            <Logo isLight={false}/>
                         </div>
                         <div className={styles.cell}>
                             <Menu

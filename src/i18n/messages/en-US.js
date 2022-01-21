@@ -11,11 +11,24 @@ const a = {
         'menu_link_6': 'Privacy policy',
         'menu_link_7': 'Terms of use',
         'menu_link_8': 'Contact',
+        'menu_link_9': 'About',
 
         'main_title_categories': 'Categories',
 
-        'header_title': 'Find your next job',
-        'header_subtitle': 'Huge community of designers, developers and creatives ready for your project.',
+        'header_title_1': 'WANT TO FIND A WORKER QUICKLY?',
+        'header_title_2': 'WANT TO BE THE FIRST IN THE INDUSTRY?',
+        'header_title_3': 'WANT TO BE INDEPENDENT AND FLEXIBLE?',
+        'header_subtitle_1': 'We provide you with this opportunity after registration.',
+        'header_subtitle_2': 'We have created a web platform that provides a competitive advantage in employment.',
+        'header_subtitle_3': 'We deprive you of the need to deal with intermediaries and bureaucracy.',
+
+        'about_title_1': 'OUR WEBSITE',
+        'about_title_2': 'WHO WE ARE',
+        'about_title_3': 'WHAT WE DO',
+        'about_description_1': 'We have created for you a unique digital space that overcomes timing and bureaucratic barriers while searching for and hiring the blue-collar workers of your demand from all of the main sectors of the economy.',
+        'about_description_2': 'We are reliable, talented and experienced professionals who have built up our own team in order to provide you with the opportunity to quickly and without any obstacles find the people you need and combine them into your working teams for a period of time specified by you. Our team was gathered, first of all, around the idea of creating such an economic-digital phenomenon that would contribute to the development and improvement of relations in the field of employment, thus encouraging the economic and social prosperity of blue-collar professions.',
+        'about_description_3': 'As of now we have engineered a unique web platform that allows employers and job seekers to establish direct working connections without unnecessary intermediaries. We have eliminated the need for agency services, which usually create temporary, spatial, financial and bureaucratic obstacles between those who are looking for work and those who have vacancies.',
+
         'footer_subtitle_1': 'Navigation',
         'footer_subtitle_2': 'Useful links',
 

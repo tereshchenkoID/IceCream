@@ -46,7 +46,7 @@ const Main = () => {
                                             dataSetting.job.slice(1, dataSetting.job.length).map((item, idx) =>
                                                 <div key={idx} className={classes("col", "col-12", "col-sm-6", "col-md-4", "col-lg-3", "col-padding-vertical")}>
                                                     <div className={styles.category}>
-                                                        <CategoryCard
+                                                         <CategoryCard
                                                             data={item}
                                                             lang={lang}
                                                         />

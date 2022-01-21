@@ -7,6 +7,7 @@ import Profile from "../Pages/Profile";
 import Favourite from "../Pages/Favourite";
 import Team from "../Pages/Team";
 import Contact from "../Pages/Contact";
+import About from "../Pages/About";
 
 export const routes = [
   {
@@ -32,6 +33,11 @@ export const routes = [
   {
     path: '/contact',
     component: Contact,
+    exact: false
+  },
+  {
+    path: '/about',
+    component: About,
     exact: false
   },
   {

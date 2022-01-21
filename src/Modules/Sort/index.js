@@ -52,7 +52,6 @@ const settings = [
 
 const Sort = ({lang, sort, setSort}) => {
     const [active, setActive] = useState(false)
-
     const [category, setCategory] = useState(sort);
 
     const handleButton = (parent, child) => {

@@ -17,12 +17,20 @@ import Breadcrumbs from "../../Components/Breadcrumbs";
 
 import styles from './index.module.scss';
 
+const random = () => {
+    const min = 0;
+    const max = 7;
+
+    return (Math.random() * (max - min) + min).toFixed(0);
+}
+
 const Profile = () => {
     let { id } = useParams();
 
     let { dataCard } = useSelector(state => state.cardReducer);
     let { dataSetting } = useSelector(state => state.settingReducer);
 
+    const idx = random();
     const [lang] = useState(translateString('lang'));
 
     const [find, setFind] = useState({});
@@ -58,7 +66,18 @@ const Profile = () => {
                         </div>
                     </section>
 
-                    <section className={styles.header} style={{backgroundImage: 'url(/img/profile-bg.webp)'}}>
+                    <section className={styles.header}>
+                        <div className={styles.picture}>
+                            <picture>
+                                <source media="(max-width: 576px)" srcSet={`/img/service/576/1x/${idx}.webp 1x, /img/service/576/2x/${idx}@2x.webp 2x`}/>
+                                <source media="(max-width: 768px)" srcSet={`/img/service/768/1x/${idx}.webp 1x, /img/service/768/2x/${idx}@2x.webp 2x`}/>
+                                <source media="(max-width: 992px)" srcSet={`/img/service/992/1x/${idx}.webp 1x, /img/service/992/2x/${idx}@2x.webp 2x`}/>
+                                <source media="(max-width: 1200px)" srcSet={`/img/service/1200/1x/${idx}.webp 1x, /img/service/1200/2x/${idx}@2x.webp 2x`}/>
+                                <source media="(max-width: 1600px)" srcSet={`/img/service/1600/1x/${idx}.webp 1x, /img/service/1600/2x/${idx}@2x.webp 2x`}/>
+                                <source media="(min-width: 2048px)" srcSet={`/img/service/2048/1x/${idx}.webp 1x, /img/service/2048/2x/${idx}@2x.webp 2x`}/>
+                                <img src={"/img/service/1600/1x/4.webp"} alt={`Slide ${idx}`} />
+                            </picture>
+                        </div>
                         <div className="container-fluid">
                             <div className="container">
                                 <div className={styles.card}>

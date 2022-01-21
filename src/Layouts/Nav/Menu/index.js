@@ -1,17 +1,12 @@
 import React from "react";
 import classes from 'classnames';
-import {NavLink, useLocation} from "react-router-dom";
+import {NavLink} from "react-router-dom";
 
 import styles from './index.module.scss';
 
 import {translate} from "../../../i18n/translate";
 
 const Menu = ({active, setActive}) => {
-    const location = useLocation();
-
-    const checkLocation = (name) => {
-        return location.pathname.indexOf(name) !== -1
-    }
 
     return (
         <menu className={classes(styles.block, active && styles.active)}>
@@ -25,13 +20,20 @@ const Menu = ({active, setActive}) => {
             </div>
             <NavLink
                 activeClassName={styles.active}
-                className={classes(styles.link, checkLocation('search') && styles.active)}
+                className={styles.link}
+                to="/about"
+                onClick={() => setActive(false)}
+            >
+                {translate("menu_link_9")}
+            </NavLink>
+            <NavLink
+                activeClassName={styles.active}
+                className={styles.link}
                 to="/search/0"
                 onClick={() => setActive(false)}
             >
                 {translate("menu_link_2")}
             </NavLink>
-
             <NavLink
                 activeClassName={styles.active}
                 className={styles.link}
