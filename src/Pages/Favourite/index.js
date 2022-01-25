@@ -38,7 +38,7 @@ const Favourite = () => {
 
     return (
         <main>
-            <ReactTitle title="Global Workers | Bookmarks" />
+            <ReactTitle title={`Global Workers | ${translateString('menu_link_3')}`} />
             <section className={classes("section", "alt")}>
                 <div className="container-fluid">
                     <div className="container">

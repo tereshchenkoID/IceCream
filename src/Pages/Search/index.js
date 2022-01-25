@@ -170,7 +170,7 @@ const Search = () => {
 
     return (
         <main>
-            <ReactTitle title="Global Workers | Search" />
+            <ReactTitle title={`Global Workers | ${translateString('menu_link_2')}`} />
             <section className={classes("section", "alt")}>
                 <div className="container-fluid">
                     <div className="container">

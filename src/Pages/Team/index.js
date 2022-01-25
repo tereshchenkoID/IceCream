@@ -38,7 +38,7 @@ const Team = () => {
 
     return (
         <main>
-            <ReactTitle title="Global Workers | Team" />
+            <ReactTitle title={`Global Workers | ${translateString('menu_link_4')}`} />
             <section className={classes("section", "alt")}>
                 <div className="container-fluid">
                     <div className="container">

@@ -13,6 +13,9 @@ const a = {
         'menu_link_8': 'Contact',
         'menu_link_9': 'About',
 
+        'meta_description': 'Find your seasonal job in Germany. Employment in the field of agriculture without intermediaries',
+        'meta_keywords': 'Part-time work in Germany, seasonal work in Germany, export work abroad, work in the fields in Germany, harvesting in Germany ',
+
         'main_title_categories': 'Categories',
 
         'header_title_1': 'WANT TO FIND A WORKER QUICKLY?',

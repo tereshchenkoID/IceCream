@@ -398,9 +398,20 @@
 
     .popup__wrapper {
       padding: 10px;
+      max-width: 600px;
       font-size: 20px;
       text-align: center;
+    }
+
+    .popup__wrapper p {
+      margin-bottom: 10px;
+      line-height: 1.5;
+    }
+
+    .popup__wrapper p:first-child {
       color: var(--color-primary);
+      font-size: 18px;
+      font-weight: 500;
     }
 
     @media only screen and (min-width: 768px) {
@@ -604,8 +615,12 @@
 <div class="popup js-popup">
   <div class="popup__wrapper">
     <p data-langkey="success-alert"></p>
+    <p data-langkey="success-alert-1"></p>
+    <p data-langkey="success-alert-2"></p>
+    <a href="mailto:admin@global-workers.eu">admin@global-workers.eu</a>
   </div>
 </div>
+
 <script>
   function Localize () {
     this.lang = 'ua'
@@ -659,7 +674,9 @@
         'text-alert-1': 'Please note that the quality and speed of profile review and processing will depend on the accuracy of the data you provide. Please check the regularity of genital refueling and push',
         'text-alert-2': 'If you have any questions, please email us at',
         'text-alert-3': 'Required to fill out field mark with start',
-        'success-alert': 'Congratulations, registration was successful\n'
+        'success-alert': 'Congratulations, registration was successful',
+        'success-alert-1': 'After checking the data you will be automatically redirected to the portal, please do not close the page until the end of the check',
+        'success-alert-2': 'In case the confirmation of successful registration has not been received yet, please contact the portal administration via the feedback form or by sending a question to the address:'
       },
       'ua': {
         'title': 'Реєстрація користувача',
@@ -710,7 +727,9 @@
         'text-alert-1': 'Зверніть увагу на те, що від коректності вказаних вами даних буде залежати якість та швидкість розгляду та обробки профілю. Перевірте, будь ласка, ще раз правильність заповнення полів та натисніть',
         'text-alert-2': 'У випадку виникнення питань, будь ласка, пишіть нам на електронну адресу:',
         'text-alert-3': 'Обов\'язкові до заповнення поля позначені зірочкою',
-        'success-alert': 'Вітаємо, реєстрація прошла успішно'
+        'success-alert': 'Вітаємо, реєстрація прошла успішно',
+        'success-alert-1': 'Після перевірки даних Вас буде автоматично перенаправлено на портал, будь ласка не закрывайте сторінку до кінця перевірки',
+        'success-alert-2': 'У випадку, якщо не прийшло підтвердження на пошту про успішну реєстрацію, зверніться до адміністрації порталу через форму зворотнього зв`язку або відправте запит за адресою:'
       }
     }
   }
@@ -1015,6 +1034,8 @@
       registration.selectSkills();
       registration.selectHobbies();
 
+      $('.js-popup').toggleClass('popup--active');
+
       $.ajax({
         url: './mail.php',
         method: 'post',
@@ -1047,24 +1068,25 @@
             $(this).find( "input[name='available-from']" ).val(),
             $(this).find( "input[name='available-to']" ).val()
           ]
+        },
+        complete: function(data) {
+          $("input").val('');
+          $("textarea").val('');
+          $('input[type="radio"]').prop('checked', false);
+          $('input[type="checkbox"]').prop('checked', false);
+          $('select').prop('selectedIndex', 0);
+          $('button').attr('disabled', true)
+          $('#photo-image').html('')
+          $('.js-hobby').removeClass('hobby--active');
+          $('.js-form-language').find('select').attr('disabled', true);
+
+          if(data.readyState === 4) {
+            window.setTimeout( function(){
+              window.location.href = "https://global-workers.eu";
+            }, 3000);
+          }
         }
       });
-
-      $('.js-popup').toggleClass('popup--active');
-
-      $("input").val('');
-      $("textarea").val('');
-      $('input[type="radio"]').prop('checked', false);
-      $('input[type="checkbox"]').prop('checked', false);
-      $('select').prop('selectedIndex', 0);
-      $('button').attr('disabled', true)
-      $('#photo-image').html('')
-      $('.js-hobby').removeClass('hobby--active');
-      $('.js-form-language').find('select').attr('disabled', true);
-
-      window.setTimeout( function(){
-        window.location.href = "https://global-workers.eu";
-      }, 3000);
     });
   };
 

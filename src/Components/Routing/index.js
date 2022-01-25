@@ -6,9 +6,9 @@ const Routing = ({ routes }) => {
        <Switch>
           {
               routes.map(item =>
-                  <Route
-                      key={new Date().getTime()} {...item}
-                  />
+                 <Route
+                     key={new Date().getTime()} {...item}
+                 />
               )
           }
       </Switch>

@@ -2,7 +2,7 @@ import React from "react";
 import {ReactTitle} from 'react-meta-tags';
 import classes from "classnames";
 
-import {translate} from "../../i18n/translate";
+import {translate, translateString} from "../../i18n/translate";
 
 import styles from './index.module.scss';
 
@@ -21,7 +21,7 @@ const Main = () => {
 
     return (
         <main>
-            <ReactTitle title="Global Workers | About" />
+            <ReactTitle title={`Global Workers | ${translateString('menu_link_9')}`} />
             <section className={classes("section", "alt")}>
                 <div className="container-fluid">
                     <div className="container">

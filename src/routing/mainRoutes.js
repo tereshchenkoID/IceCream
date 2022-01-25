@@ -1,19 +1,29 @@
-import React from 'react'
+import React, {lazy} from 'react'
 import { Redirect } from 'react-router-dom'
 
-import Main from "../Pages/Main";
-import Search from "../Pages/Search";
-import Profile from "../Pages/Profile";
-import Favourite from "../Pages/Favourite";
-import Team from "../Pages/Team";
-import Contact from "../Pages/Contact";
-import About from "../Pages/About";
+const Main = lazy( () => import("../Pages/Main"));
+const Search = lazy( () => import("../Pages/Search"));
+const Profile  = lazy( () => import("../Pages/Profile"));
+const Favourite = lazy( () => import( "../Pages/Favourite"));
+const Team = lazy( () => import("../Pages/Team"));
+const Contact  = lazy( () => import("../Pages/Contact"));
+const About = lazy( () => import("../Pages/About"));
 
 export const routes = [
   {
     path: '/main',
     component: Main,
     exact: true
+  },
+  {
+    path: '/contact',
+    component: Contact,
+    exact: false
+  },
+  {
+    path: '/about',
+    component: About,
+    exact: false
   },
   {
     path: '/search/:id([0-8])',
@@ -28,16 +38,6 @@ export const routes = [
   {
     path: '/favourite',
     component: Favourite,
-    exact: false
-  },
-  {
-    path: '/contact',
-    component: Contact,
-    exact: false
-  },
-  {
-    path: '/about',
-    component: About,
     exact: false
   },
   {

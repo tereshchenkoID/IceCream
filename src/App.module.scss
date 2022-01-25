@@ -1,0 +1,7 @@
+@import "./styles/config";
+
+.preloader {
+  @include size(100%, 300px);
+
+  position: relative;
+}

@@ -13,6 +13,9 @@ const a = {
         'menu_link_8': 'Kontakt',
         'menu_link_9': 'Etwa',
 
+        'meta_description': 'Teilzeitarbeit in Deutschland, Saisonarbeit in Deutschland, Exportarbeit ins Ausland, Feldarbeit in Deutschland, Ernte in Deutschland',
+        'meta_keywords': 'Keywords',
+
         'main_title_categories': 'Kategorien',
 
         'header_title_1': 'MÖCHTEN SIE SCHNELL EINEN ARBEITNEHMER FINDEN?',
