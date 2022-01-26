@@ -63,6 +63,7 @@ $md: map-get($brackpoints, 'md');
   margin-bottom: 10px;
   text-transform: uppercase;
   font-weight: var(--bold);
+  font-size: 50px;
 
   @include media-max($md) {
     font-size: 20px;
@@ -72,10 +73,6 @@ $md: map-get($brackpoints, 'md');
 .subtitle {
 
   @include media-max($md) {
-    font-size: 18px;
+    font-size: 16px;
   }
-}
-
-.description {
-  font-size: 18px;
 }

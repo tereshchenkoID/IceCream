@@ -1,0 +1,49 @@
+@import "../../styles/config";
+
+$sm: map-get($brackpoints, 'sm');
+
+.content {
+  text-align: center;
+}
+
+.title {
+  @include flex(center, center);
+
+  margin-bottom: 20px;
+  font-size: 200px;
+  font-weight: var(--medium);
+
+  span {
+    margin: 0 10px;
+
+    &:nth-child(2) {
+      color: var(--color-primary);
+    }
+
+    &:nth-child(4) {
+      @include size(150px);
+
+      border-radius: 50%;
+      border: 10px solid var(--color-primary);
+      color: var(--color-primary);
+      font-weight: var(--font-weight);
+      font-size: 130px;
+
+      @include media-max($sm) {
+        display: none;
+      }
+    }
+  }
+
+  @include media-max($sm) {
+    font-size: 110px;
+  }
+}
+
+.subtitle {
+  font-size: 25px;
+
+  @include media-max($sm) {
+    font-size: 20px;
+  }
+}

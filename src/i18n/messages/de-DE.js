@@ -12,6 +12,26 @@ const a = {
         'menu_link_7': 'Nutzungsbedingungen',
         'menu_link_8': 'Kontakt',
         'menu_link_9': 'Etwa',
+        'menu_link_10': '404 Nicht gefunden',
+
+        "team_1_text": "Ich bin Softwareentwickler, habe eine Ausbildung in Cyber Defense und Kryptografie. Mag Sport, Tracking und DIY.",
+        "team_2_text": "Ich bin HTML-Entwickler mit funktechnischem Hintergrund. Ich liebe Schach, Angeln.",
+        "team_3_text": "Ich bin QA-Ingenieur für Automatisierung mit solider Erfahrung in Wirtschaft und Finanzen.",
+        "team_4_text": "Ich bin gelernter Telekommunikationstechniker. Extra hohe Ausbildung in Internationaler Wirtschaft. Liebt die Landwirtschaft und Landwirtschaft. Leben und Arbeiten in Deutschland.",
+
+        "team_1_slogan": "Ich setze mir gerne Ziele und überwinde Schwierigkeiten!",
+        "team_2_slogan": "Alles muss kreativ sein.",
+        "team_3_slogan": "Lust auf meine Doktorarbeit über Investitionen in der Landwirtschaft.",
+        "team_4_slogan": "Warten Sie nicht auf Gelegenheiten. Erstelle es.",
+
+        'about_title_1': 'WER WIR SIND',
+        'about_title_2': 'IDEE',
+        'about_title_3': 'WAS WIR TUN',
+        'about_description_1': 'Wir sind zuverlässige, talentierte und erfahrene Fachleute, die ein eigenes Team aufgebaut haben, um Ihnen die Möglichkeit zu geben, schnell und ohne Hindernisse die von Ihnen benötigten Personen zu finden und für einen von Ihnen festgelegten Zeitraum in Ihren Arbeitsteams zusammenzufassen.',
+        'about_description_2': 'Unser Team hat sich in erster Linie um die Idee versammelt, ein solches wirtschaftlich-digitales Phänomen zu schaffen, das zur Entwicklung und Verbesserung der Beziehungen im Bereich der Beschäftigung beitragen und so den wirtschaftlichen und sozialen Wohlstand der Arbeiterberufe fördern würde.',
+        'about_description_3': 'Ab sofort haben wir eine einzigartige Webplattform entwickelt, die es Arbeitgebern und Arbeitssuchenden ermöglicht, direkte Arbeitsbeziehungen ohne unnötige Vermittler herzustellen. Wir haben den Bedarf an Vermittlungsleistungen eliminiert, die in der Regel temporäre, räumliche, finanzielle und bürokratische Hürden zwischen Arbeitssuchenden und Stellenangeboten schaffen.',
+
+        '404_title': 'Es tut uns leid, aber die Seite, nach der Sie gesucht haben, existiert nicht',
 
         'meta_description': 'Teilzeitarbeit in Deutschland, Saisonarbeit in Deutschland, Exportarbeit ins Ausland, Feldarbeit in Deutschland, Ernte in Deutschland',
         'meta_keywords': 'Keywords',
@@ -24,13 +44,6 @@ const a = {
         'header_subtitle_1': 'Diese Möglichkeit stellen wir Ihnen nach Anmeldung zur Verfügung.',
         'header_subtitle_2': 'Wir haben eine Webplattform geschaffen, die einen Wettbewerbsvorteil bei der Beschäftigung bietet.',
         'header_subtitle_3': 'Wir nehmen Ihnen den Umgang mit Vermittlern und Bürokratie ab.',
-
-        'about_title_1': 'UNSERE INTERNETSEITE',
-        'about_title_2': 'WER WIR SIND',
-        'about_title_3': 'WAS WIR TUN',
-        'about_description_1': 'Wir haben für Sie einen einzigartigen digitalen Raum geschaffen, der zeitliche und bürokratische Hürden bei der Suche und Einstellung von Arbeitern Ihres Bedarfs aus allen wichtigen Wirtschaftszweigen überwindet.',
-        'about_description_2': 'Wir sind zuverlässige, talentierte und erfahrene Fachleute, die ein eigenes Team aufgebaut haben, um Ihnen die Möglichkeit zu geben, schnell und ohne Hindernisse die von Ihnen benötigten Personen zu finden und für einen von Ihnen festgelegten Zeitraum in Ihren Arbeitsteams zusammenzufassen. Unser Team hat sich in erster Linie um die Idee versammelt, ein solches wirtschaftlich-digitales Phänomen zu schaffen, das zur Entwicklung und Verbesserung der Beziehungen im Bereich der Beschäftigung beitragen und so den wirtschaftlichen und sozialen Wohlstand der Arbeiterberufe fördern würde.',
-        'about_description_3': 'Ab sofort haben wir eine einzigartige Webplattform entwickelt, die es Arbeitgebern und Arbeitssuchenden ermöglicht, direkte Arbeitsbeziehungen ohne unnötige Vermittler herzustellen. Wir haben den Bedarf an Vermittlungsleistungen eliminiert, die in der Regel temporäre, räumliche, finanzielle und bürokratische Hürden zwischen Arbeitssuchenden und Stellenangeboten schaffen.',
 
         'footer_subtitle_1': 'Navigation',
         'footer_subtitle_2': 'Nützliche links',

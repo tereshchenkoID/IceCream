@@ -21,7 +21,7 @@ const getFav = (arr, name) => {
 const Favourite = () => {
     const breadcrumbs = [
         {
-            url: "/main",
+            url: "/",
             text: translate("menu_link_1")
         },
         {

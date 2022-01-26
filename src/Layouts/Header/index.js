@@ -34,7 +34,7 @@ const Header = () => {
                        </picture>
                    </div>
                    <div className={styles.content}>
-                       <h2 className={styles.title}>{translate('header_title_1')}</h2>
+                       <h1 className={styles.title}>{translate('header_title_1')}</h1>
                        <h4 className={styles.subtitle}>{translate('header_subtitle_1')}</h4>
                    </div>
                </>

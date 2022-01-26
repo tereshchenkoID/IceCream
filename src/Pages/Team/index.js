@@ -21,7 +21,7 @@ const getTeam = (arr, name) => {
 const Team = () => {
     const breadcrumbs = [
         {
-            url: "/main",
+            url: "/",
             text: translate("menu_link_1")
         },
         {

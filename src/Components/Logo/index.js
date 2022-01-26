@@ -9,7 +9,7 @@ const Logo = ({isLight}) => {
     return (
         <div className={styles.block}>
             <NavLink
-                to="/main"
+                to="/"
             >
                 <img src={`/img/${path}.webp`}
                      alt="Global Workers"

@@ -12,7 +12,7 @@ import Breadcrumbs from "../../Components/Breadcrumbs";
 const Main = () => {
     const breadcrumbs = [
         {
-            url: "/main",
+            url: "/",
             text: translate("menu_link_1")
         },
         {

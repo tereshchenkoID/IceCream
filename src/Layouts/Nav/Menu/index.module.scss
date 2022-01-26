@@ -5,6 +5,8 @@ $md: map-get($brackpoints, 'md');
 .block {
   @include flex($align-items: center);
 
+  padding-left: 40px;
+
   @include media-max($md) {
     flex-direction: column;
     position: fixed;
@@ -28,11 +30,21 @@ $md: map-get($brackpoints, 'md');
   }
 }
 
+.item {
+  margin: 0 10px;
+  list-style: none;
+
+  &:first-child {
+    margin: 0;
+  }
+
+  @include media-max($md) {
+    width: 100%;
+  }
+}
+
 .link {
   @include flex(center, center);
-
-  position: relative;
-  margin: 0 10px;
 
   &.active,
   &:hover {
@@ -41,7 +53,6 @@ $md: map-get($brackpoints, 'md');
 
   @include media-max($md) {
     justify-content: flex-start;
-    margin: 0;
     padding: 10px 20px;
     width: 100%;
   }

@@ -1,0 +1,72 @@
+@import "../../styles/config";
+
+.block{
+  @include size(100%);
+
+  position: relative;
+  overflow: hidden;
+  min-height: 450px;
+  padding-top: 250px;
+  padding-bottom: 40px;
+  border-radius: var(--default-border-radius);
+
+  &::before {
+    position: absolute;
+    top: 180px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: var(--color-black);
+    z-index: 1;
+    content: '';
+  }
+}
+
+.background {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  height: 300px;
+}
+
+.content {
+  position: relative;
+  padding: 0 20px;
+  z-index: 1;
+}
+
+.title,
+.text {
+  margin-bottom: 10px;
+  color: var(--color-white);
+}
+
+.title {
+  font-weight: var(--font-weight);
+}
+
+.text {
+  letter-spacing: 0.5px;
+  line-height: 1.3;
+  font-size: 14px;
+}
+
+.photo {
+  @include size(120px);
+
+  position: absolute;
+  top: 120px;
+  left: 30px;
+  z-index: 1;
+  overflow: hidden;
+  border-radius: 50%;
+  background-color: var(--color-secondary);
+  border: 3px solid var(--color-primary);
+}
+
+.quotes {
+  font-style: italic;
+  color: var(--color-primary);
+  line-height: 1.5;
+}

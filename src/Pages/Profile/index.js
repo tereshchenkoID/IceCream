@@ -40,7 +40,7 @@ const Profile = () => {
 
     const breadcrumbs = [
         {
-            url: "/main",
+            url: "/",
             text: translate("menu_link_1")
         },
         {
@@ -76,7 +76,7 @@ const Profile = () => {
                                     <source media="(max-width: 1200px)" srcSet={`/img/service/1200/1x/${idx}.webp 1x, /img/service/1200/2x/${idx}@2x.webp 2x`}/>
                                     <source media="(max-width: 1600px)" srcSet={`/img/service/1600/1x/${idx}.webp 1x, /img/service/1600/2x/${idx}@2x.webp 2x`}/>
                                     <source media="(min-width: 2048px)" srcSet={`/img/service/2048/1x/${idx}.webp 1x, /img/service/2048/2x/${idx}@2x.webp 2x`}/>
-                                    <img src={`/img/service/1600/1x/${idx}.webp`} alt={`Image ${idx}`} />
+                                    <img src={`/img/service/1600/1x/${idx}.webp`} alt={`Profile ${idx}`} />
                                 </picture>
                             </div>
                             <div className="container-fluid">

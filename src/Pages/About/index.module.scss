@@ -1,46 +1,26 @@
 @import "../../styles/config";
 
 .content {
-  padding: 0 10px;
+  min-height: 100%;
+  background-color: var(--color-white);
+  border-radius: var(--default-border-radius);
+  box-shadow: var(--box-shadow-sm);
+  border: 1px solid var(--color-primary);
+  max-width: 500px;
+  margin: 0 auto;
   text-align: center;
-
-  p {
-    margin-bottom: 20px;
-    letter-spacing: 1px;
-    line-height: 1.5;
-  }
 }
 
 .title {
-  margin-bottom: 20px;
-}
-
-.icon {
-  @include flex(center, center);
-  @include size(58px);
-
-  margin: 0 auto 30px;
-  border-radius: 33% 66% 70% 30%/49% 62% 38% 51%;
-  box-shadow: 0 0 0 5px rgba(102, 103, 107, 0.1);
+  padding: 20px 10px;
   background-color: var(--color-primary);
-  animation: pulse 2s infinite;
+  font-family: var(--font-family-additional);
+  font-weight: var(--medium);
+  font-size: 30px;
   color: var(--color-white);
-
-  svg {
-    @include size(25px);
-
-    fill: var(--color-white);
-  }
 }
 
-@keyframes pulse {
-
-  0%,
-  100% {
-    box-shadow: 0 0 0 5px rgba(102, 103, 107, 0.15);
-  }
-
-  50% {
-    box-shadow: 0 0 0 8px rgba(102, 103, 107, 0.15);
-  }
+.text {
+  padding: 20px;
+  line-height: 1.5;
 }

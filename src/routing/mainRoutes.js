@@ -8,10 +8,11 @@ const Favourite = lazy( () => import( "../Pages/Favourite"));
 const Team = lazy( () => import("../Pages/Team"));
 const Contact  = lazy( () => import("../Pages/Contact"));
 const About = lazy( () => import("../Pages/About"));
+const NotFound = lazy( () => import("../Pages/NotFound"));
 
 export const routes = [
   {
-    path: '/main',
+    path: '/',
     component: Main,
     exact: true
   },
@@ -46,6 +47,11 @@ export const routes = [
     exact: false
   },
   {
-    component: () => <Redirect to="/main" />
+    path: '/404',
+    component: NotFound,
+    exact: false
   },
+  {
+    component: () => <Redirect to="/404" />
+  }
 ]

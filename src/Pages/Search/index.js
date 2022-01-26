@@ -34,7 +34,7 @@ const convertAvailable = function(date) {
 const Search = () => {
     const breadcrumbs = [
         {
-            url: "/main",
+            url: "/",
             text: translate("menu_link_1")
         },
         {

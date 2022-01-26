@@ -6,6 +6,7 @@ import classes from "classnames";
 import {translate} from "../../i18n/translate";
 
 import Logo from "../../Components/Logo";
+import Social from "../../Components/Social";
 
 import styles from './index.module.scss';
 
@@ -18,8 +19,6 @@ const Footer = () => {
                         <div className="row">
                             <div className={classes("col", "col-12", "col-md-6")}>
                                 <Logo isLight={true}/>
-
-
                             </div>
                             <div className={classes("col", "col-12", "col-md-3", "col-padding-vertical")}>
                                 <div className={styles.list}>
@@ -87,14 +86,7 @@ const Footer = () => {
                                             {translate('menu_link_7')}
                                         </NavLink>
                                     </div>
-                                    <div className={styles.item}>
-                                        <a
-                                            className={styles.mail}
-                                            href="mailto:admin@global-workers.eu"
-                                        >
-                                            admin@global-workers.eu
-                                        </a>
-                                    </div>
+                                    <Social />
                                 </div>
                             </div>
                         </div>
