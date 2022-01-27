@@ -13,6 +13,11 @@
  		if($_SERVER["REQUEST_METHOD"] == "POST"){
 
 						if($_POST["type"] == '1') {
+         $file = 'people.txt';
+         $current = file_get_contents($file);
+         $current .= "[".$_POST['name']."] - ".$_POST["contact"]["email"];
+         file_put_contents($file, $current);
+
 									mail($to, "Resume request", json_encode($_POST), $headers);
 
 									mail(

@@ -27,8 +27,8 @@ const a = {
         'about_title_1': 'WHO WE ARE',
         'about_title_2': 'IDEA',
         'about_title_3': 'WHAT WE DO',
-        'about_description_1': 'We are reliable, talented and experienced professionals who have built up our own team in order to provide you with the opportunity to quickly and without any obstacles find the people you need and combine them into your working teams for a period of time specified by you.',
-        'about_description_2': 'Our team was gathered, first of all, around the idea of creating such an economic-digital phenomenon that would contribute to the development and improvement of relations in the field of employment, thus encouraging the economic and social prosperity of blue-collar professions.',
+        'about_description_1': 'We are reliable, talented and experienced professionals who have built up our own team in order to provide you with the opportunity to find labourers you need, quickly and without any obstacles, and to combine them into your working teams for a specified period of time.',
+        'about_description_2': 'Our team was gathered, first of all, around the idea of creating such an economic-digital phenomenon that would contribute to the development and improvement of relations in the field of employment, thus, encouraging the economic and social prosperity of working occupation.',
         'about_description_3': 'As of now we have engineered a unique web platform that allows employers and job seekers to establish direct working connections without unnecessary intermediaries. We have eliminated the need for agency services, which usually create temporary, spatial, financial and bureaucratic obstacles between those who are looking for work and those who have vacancies.',
 
         '404_title': 'We\'re sorry, but the page you were looking for doesn\'t exist',
@@ -38,12 +38,12 @@ const a = {
 
         'main_title_categories': 'Categories',
 
-        'header_title_1': 'WANT TO FIND A WORKER QUICKLY?',
+        'header_title_1': 'WANT TO FIND A LABOURERS QUICKLY?',
         'header_title_2': 'WANT TO BE THE FIRST IN THE INDUSTRY?',
         'header_title_3': 'WANT TO BE INDEPENDENT AND FLEXIBLE?',
         'header_subtitle_1': 'We provide you with this opportunity after registration.',
         'header_subtitle_2': 'We have created a web platform that provides a competitive advantage in employment.',
-        'header_subtitle_3': 'We deprive you of the need to deal with intermediaries and bureaucracy.',
+        'header_subtitle_3': 'We relieve you of the need to deal with mediators and bureaucracy.',
 
         'footer_subtitle_1': 'Navigation',
         'footer_subtitle_2': 'Useful links',
