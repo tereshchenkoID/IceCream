@@ -14,15 +14,15 @@ const a = {
         'menu_link_9': 'Etwa',
         'menu_link_10': '404 Nicht gefunden',
 
-        "team_1_text": "Ich bin Softwareentwickler, habe eine Ausbildung in Cyber Defense und Kryptografie. Mag Sport, Tracking und DIY.",
-        "team_2_text": "Ich bin HTML-Entwickler mit funktechnischem Hintergrund. Ich liebe Schach, Angeln.",
-        "team_3_text": "Ich bin QA-Ingenieur für Automatisierung mit solider Erfahrung in Wirtschaft und Finanzen.",
-        "team_4_text": "Ich bin gelernter Telekommunikationstechniker. Extra hohe Ausbildung in Internationaler Wirtschaft. Liebt die Landwirtschaft und Landwirtschaft. Leben und Arbeiten in Deutschland.",
+        "team_1_text": "Ich bin ein Softwareentwickler mit Ausbildung in Cyber Defense und Kryptografie. Mag Sport, Tracking und DIY.",
+        "team_2_text": "Ich bin ein HTML-Entwickler mit funktechnischem Hintergrund. Ich mag Schach und Angeln.",
+        "team_3_text": "Ich bin der QA-Ingenieur in Automatisierung mit solider Erfahrung in Wirtschaft und Finanzen.",
+        "team_4_text": "Ich bin gelernter Telekommunikationstechniker. Hochschulabschluss in Internationaler Wirtschaft. Mag die Landwirtschaft und den Landbau. Lebe und arbeite in Deutschland.",
 
-        "team_1_slogan": "Ich setze mir gerne Ziele und überwinde Schwierigkeiten!",
+        "team_1_slogan": "Ich setze mir gerne neue Ziele und überwinde die dadurch entstehende Schwierigkeiten!",
         "team_2_slogan": "Alles muss kreativ sein.",
-        "team_3_slogan": "Lust auf meine Doktorarbeit über Investitionen in der Landwirtschaft.",
-        "team_4_slogan": "Warten Sie nicht auf Gelegenheiten. Erstelle es.",
+        "team_3_slogan": "Es macht mir viel  Spaß die Doktorarbeit über Investitionen in der Landwirtschaft zu schreiben",
+        "team_4_slogan": "Warte auf Gelegenheit nicht, sondern kreiere sie!",
 
         'about_title_1': 'WER WIR SIND',
         'about_title_2': 'IDEE',

@@ -30,7 +30,7 @@ const Header = () => {
                            <source media="(max-width: 1200px)" srcSet={`/img/service/1200/1x/1.webp 1x, /img/service/1200/2x/1@2x.webp 2x`}/>
                            <source media="(max-width: 1600px)" srcSet={`/img/service/1600/1x/1.webp 1x, /img/service/1600/2x/1@2x.webp 2x`}/>
                            <source media="(min-width: 2000px)" srcSet={`/img/service/2048/1x/1.webp 1x, /img/service/2047/2x/1@2x.webp 2x`}/>
-                           <img src={"/img/service/1600/1x/1.webp"} alt={`Slide 1`} />
+                           <img src={"/img/service/1600/1x/1.webp"} alt={`Slide 1`} loading={"lazy"}/>
                        </picture>
                    </div>
                    <div className={styles.content}>
@@ -47,7 +47,7 @@ const Header = () => {
                            <source media="(max-width: 1200px)" srcSet={`/img/service/1200/1x/2.webp 1x, /img/service/1200/2x/2@2x.webp 2x`}/>
                            <source media="(max-width: 1600px)" srcSet={`/img/service/1600/1x/2.webp 1x, /img/service/1600/2x/2@2x.webp 2x`}/>
                            <source media="(min-width: 2000px)" srcSet={`/img/service/2048/1x/2.webp 1x, /img/service/2047/2x/2@2x.webp 2x`}/>
-                           <img src={"/img/service/1600/1x/2.webp"} alt={`Slide 2`} />
+                           <img src={"/img/service/1600/1x/2.webp"} alt={`Slide 2`} loading={"lazy"}/>
                        </picture>
                    </div>
                    <div className={styles.content}>
@@ -64,7 +64,7 @@ const Header = () => {
                            <source media="(max-width: 1200px)" srcSet={`/img/service/1200/1x/3.webp 1x, /img/service/1200/2x/2@2x.webp 2x`}/>
                            <source media="(max-width: 1600px)" srcSet={`/img/service/1600/1x/3.webp 1x, /img/service/1600/2x/2@2x.webp 2x`}/>
                            <source media="(min-width: 2000px)" srcSet={`/img/service/2048/1x/3.webp 1x, /img/service/2047/2x/2@2x.webp 2x`}/>
-                           <img src={"/img/service/1600/1x/3.webp"} alt={`Slide 3`} />
+                           <img src={"/img/service/1600/1x/3.webp"} alt={`Slide 3`} loading={"lazy"}/>
                        </picture>
                    </div>
                    <div className={styles.content}>

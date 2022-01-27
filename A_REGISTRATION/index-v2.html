@@ -164,13 +164,6 @@
       margin-right: 0;
     }
 
-    .form__error {
-      margin-top: 10px;
-      margin-bottom: 5px;
-      font-size: 18px;
-      color: #f00;
-    }
-
     .form__subtitle {
       margin-bottom: 10px;
       font-weight: 500;
@@ -183,23 +176,11 @@
     }
 
     .form__photo {
-      position: relative;
       margin-top: 10px;
       background-color: var(--color-secondary);
       width: 120px;
       height: 120px;
       overflow: hidden;
-    }
-
-    .form__photo.form__photo--error:before {
-      position: absolute;
-      top: 0;
-      right: 0;
-      bottom: 0;
-      left: 0;
-      background-color: #f00;
-      opacity: 0.6;
-      content: '';
     }
 
     .form__languages {
@@ -415,12 +396,6 @@
       display: flex;
     }
 
-    .popup__timer {
-      margin-bottom: 10px;
-      font-size: 20px;
-      color: #f00;
-    }
-
     .popup__wrapper {
       padding: 10px;
       max-width: 600px;
@@ -433,15 +408,10 @@
       line-height: 1.5;
     }
 
-    .popup__wrapper p:nth-child(1) {
+    .popup__wrapper p:first-child {
       color: var(--color-primary);
       font-size: 18px;
       font-weight: 500;
-    }
-
-    .popup__wrapper p:nth-child(3) {
-      color: #f00;
-      text-decoration: underline;
     }
 
     @media only screen and (min-width: 768px) {
@@ -490,13 +460,9 @@
         <legend data-langkey="subtitle-0" class="legend"></legend>
         <div class="form__block">
           <div class="form__wrapper">
-            <p class="form__subtitle form__subtitle--required" >
-              <span data-langkey="subtitle-photo"></span>
-              <span>,</span>
-              <span class="form__subtitle">(max 8 Mb)</span>
-            </p>
+            <p class="form__subtitle" data-langkey="subtitle-photo"></p>
             <div class="file">
-              <input type="file" class="file__input" id="photo" name="photo" onchange="registration.encodeImageFileAsURL()" required>
+              <input type="file" class="file__input" id="photo" name="photo" multiple="multiple" accept=".txt,image/*" required>
               <label for="photo" class="file__label">
                 <span class="file__icon">
                   <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABmJLR0QA/wD/AP+gvaeTAAAAmElEQVRYhe2W6wqAIAxGv3oIk16xHje6PI39aMIQ08pWFDswgpzueCEDFKUMR3GZ+iYRFVABFVCB/wt0AOyJcS31uYUe2/d+ikjE7gJLuY76FmMADDTgAqBNCDQsdw5yRSS4gFjxlIQXEC/u4fvrny54d+awXoKvBA/RmeckHi3usQBGCvFl38NQfJcq0170x3ukzuuXkaKsGmc1NEc7CmkAAAAASUVORK5CYII="/>
@@ -504,122 +470,121 @@
                 <span class="file__text" data-langkey="placeholder-file"></span>
               </label>
             </div>
-            <p class="form__error js-error"></p>
-            <div class="form__photo js-form-photo" id="photo-image"></div>
+            <div class="form__photo" id="photo-image"></div>
           </div>
         </div>
-        <div class="form__block">
-          <p data-langkey="subtitle-alert"></p>
-        </div>
-        <div class="form__block">
-          <p class="form__subtitle form__subtitle--required" data-langkey="subtitle-name"></p>
-          <input type="text" data-langkey="placeholder-name" class="field js-input-full-name" name="name" required>
-        </div>
-        <div class="form__block">
-          <p class="form__subtitle form__subtitle--required" data-langkey="subtitle-surname"></p>
-          <input type="text" data-langkey="placeholder-surname" class="field js-input-full-name" name="surname" required>
-        </div>
-        <div class="form__block">
-          <div class="form__wrapper">
-            <p class="form__subtitle form__subtitle--required" data-langkey="subtitle-age"></p>
-            <input type="date" class="field" name="age" required>
-          </div>
-        </div>
-        <div class="form__block">
-          <div class="form__wrapper">
-            <p class="form__subtitle form__subtitle--required" data-langkey="subtitle-gender"></p>
-            <div id="gender-list"></div>
-          </div>
-        </div>
-        <div class="form__block">
-          <div class="form__wrapper">
-            <p class="form__subtitle" data-langkey="subtitle-family"></p>
-            <div id="family-list"></div>
-          </div>
-        </div>
-        <div class="form__block">
-          <p class="form__subtitle" data-langkey="subtitle-height"></p>
-          <input type="number" data-langkey="placeholder-height" class="field js-input-size" name="height">
-        </div>
-        <div class="form__block">
-          <p class="form__subtitle" data-langkey="subtitle-weight"></p>
-          <input type="number" data-langkey="placeholder-weight" class="field js-input-size" name="weight">
-        </div>
+<!--        <div class="form__block">-->
+<!--          <p data-langkey="subtitle-alert"></p>-->
+<!--        </div>-->
+<!--        <div class="form__block">-->
+<!--          <p class="form__subtitle form__subtitle&#45;&#45;required" data-langkey="subtitle-name"></p>-->
+<!--          <input type="text" data-langkey="placeholder-name" class="field js-input-full-name" name="name" required>-->
+<!--        </div>-->
+<!--        <div class="form__block">-->
+<!--          <p class="form__subtitle form__subtitle&#45;&#45;required" data-langkey="subtitle-surname"></p>-->
+<!--          <input type="text" data-langkey="placeholder-surname" class="field js-input-full-name" name="surname" required>-->
+<!--        </div>-->
+<!--        <div class="form__block">-->
+<!--          <div class="form__wrapper">-->
+<!--            <p class="form__subtitle form__subtitle&#45;&#45;required" data-langkey="subtitle-age"></p>-->
+<!--            <input type="date" class="field" name="age" required>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--        <div class="form__block">-->
+<!--          <div class="form__wrapper">-->
+<!--            <p class="form__subtitle form__subtitle&#45;&#45;required" data-langkey="subtitle-gender"></p>-->
+<!--            <div id="gender-list"></div>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--        <div class="form__block">-->
+<!--          <div class="form__wrapper">-->
+<!--            <p class="form__subtitle" data-langkey="subtitle-family"></p>-->
+<!--            <div id="family-list"></div>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--        <div class="form__block">-->
+<!--          <p class="form__subtitle" data-langkey="subtitle-height"></p>-->
+<!--          <input type="number" data-langkey="placeholder-height" class="field js-input-size" name="height">-->
+<!--        </div>-->
+<!--        <div class="form__block">-->
+<!--          <p class="form__subtitle" data-langkey="subtitle-weight"></p>-->
+<!--          <input type="number" data-langkey="placeholder-weight" class="field js-input-size" name="weight">-->
+<!--        </div>-->
       </fieldset>
 
-      <fieldset class="fieldset">
-        <legend data-langkey="subtitle-1" class="legend"></legend>
-        <div class="form__block">
-          <p class="form__subtitle form__subtitle--required" data-langkey="subtitle-email"></p>
-          <input type="email" data-langkey="placeholder-email" pattern="[^@\s]+@[^@\s]+\.[^@\s]+" class="field" name="email" required>
-        </div>
-        <div class="form__block">
-          <p class="form__subtitle form__subtitle--required" data-langkey="subtitle-phone"></p>
-          <input type="tel" data-langkey="placeholder-phone" class="field" name="phone" required>
-        </div>
-        <div class="form__block">
-          <p class="form__subtitle form__subtitle--required" data-langkey="subtitle-country"></p>
-          <div id="country-list" style="width: 100%;"></div>
-        </div>
-        <div class="form__block">
-          <p class="form__subtitle form__subtitle--required" data-langkey="subtitle-region"></p>
-          <div id="city-list" style="width: 100%;"></div>
-        </div>
-      </fieldset>
+<!--      <fieldset class="fieldset">-->
+<!--        <legend data-langkey="subtitle-1" class="legend"></legend>-->
+<!--        <div class="form__block">-->
+<!--          <p class="form__subtitle form__subtitle&#45;&#45;required" data-langkey="subtitle-email"></p>-->
+<!--          <input type="email" data-langkey="placeholder-email" pattern="[^@\s]+@[^@\s]+\.[^@\s]+" class="field" name="email" required>-->
+<!--        </div>-->
+<!--        <div class="form__block">-->
+<!--          <p class="form__subtitle form__subtitle&#45;&#45;required" data-langkey="subtitle-phone"></p>-->
+<!--          <input type="tel" data-langkey="placeholder-phone" class="field" name="phone" pattern="[0-9]{3}[0-9]{3}[0-9]{4}" required>-->
+<!--        </div>-->
+<!--        <div class="form__block">-->
+<!--          <p class="form__subtitle form__subtitle&#45;&#45;required" data-langkey="subtitle-country"></p>-->
+<!--          <div id="country-list" style="width: 100%;"></div>-->
+<!--        </div>-->
+<!--        <div class="form__block">-->
+<!--          <p class="form__subtitle form__subtitle&#45;&#45;required" data-langkey="subtitle-region"></p>-->
+<!--          <div id="city-list" style="width: 100%;"></div>-->
+<!--        </div>-->
+<!--      </fieldset>-->
 
-      <fieldset class="fieldset">
-        <legend data-langkey="subtitle-2" class="legend"></legend>
-        <div class="form__block">
-          <div class="form__wrapper">
-            <p class="form__subtitle form__subtitle--required" data-langkey="subtitle-access"></p>
-            <div id="access-list"></div>
-          </div>
-        </div>
-        <div class="form__block">
-          <div class="form__wrapper">
-            <p class="form__subtitle form__subtitle--required" data-langkey="subtitle-available-from"></p>
-            <input type="date" class="field" name="available-from" required>
-          </div>
-          <div class="form__wrapper">
-            <p class="form__subtitle form__subtitle--required" data-langkey="subtitle-available-to"></p>
-            <input type="date" class="field" name="available-to" required>
-          </div>
-        </div>
-        <div class="form__block">
-          <div class="form__wrapper">
-            <p class="form__subtitle" data-langkey="subtitle-skills">Skills (Please choose which you needed)  *</p>
-            <div class="skills" id="skills-list"></div>
-          </div>
-        </div>
-      </fieldset>
+<!--      <fieldset class="fieldset">-->
+<!--        <legend data-langkey="subtitle-2" class="legend"></legend>-->
+<!--        <div class="form__block">-->
+<!--          <div class="form__wrapper">-->
+<!--            <p class="form__subtitle form__subtitle&#45;&#45;required" data-langkey="subtitle-access"></p>-->
+<!--            <div id="access-list"></div>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--        <div class="form__block">-->
+<!--          <div class="form__wrapper">-->
+<!--            <p class="form__subtitle form__subtitle&#45;&#45;required" data-langkey="subtitle-available-from"></p>-->
+<!--            <input type="date" class="field" name="available-from" required>-->
+<!--          </div>-->
+<!--          <div class="form__wrapper">-->
+<!--            <p class="form__subtitle form__subtitle&#45;&#45;required" data-langkey="subtitle-available-to"></p>-->
+<!--            <input type="date" class="field" name="available-to" required>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--        <div class="form__block">-->
+<!--          <div class="form__wrapper">-->
+<!--            <p class="form__subtitle" data-langkey="subtitle-skills">Skills (Please choose which you needed)  *</p>-->
+<!--            <div class="skills" id="skills-list"></div>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </fieldset>-->
 
-      <fieldset class="fieldset">
-        <legend data-langkey="subtitle-3" class="legend"></legend>
-        <div class="form__block">
-          <div class="form__wrapper">
-            <p class="form__subtitle form__subtitle--required" data-langkey="subtitle-vaccination"></p>
-            <div id="vaccination-list"></div>
-          </div>
-        </div>
-        <div class="form__block">
-          <div class="form__wrapper">
-            <p class="form__subtitle" data-langkey="subtitle-driver"></p>
-            <div id="driver-list"></div>
-          </div>
-        </div>
-        <div class="form__block">
-          <div class="form__wrapper">
-            <p class="form__subtitle" data-langkey="subtitle-languages"></p>
-            <div class="form__languages" id="languages-list"></div>
-          </div>
-        </div>
-        <div class="form__block">
-          <div class="form__wrapper">
-            <p class="form__subtitle" data-langkey="subtitle-about"></p>
-            <div id="hobbies-list"></div>
-          </div>
-        </div>
-      </fieldset>
+<!--      <fieldset class="fieldset">-->
+<!--        <legend data-langkey="subtitle-3" class="legend"></legend>-->
+<!--        <div class="form__block">-->
+<!--          <div class="form__wrapper">-->
+<!--            <p class="form__subtitle form__subtitle&#45;&#45;required" data-langkey="subtitle-vaccination"></p>-->
+<!--            <div id="vaccination-list"></div>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--        <div class="form__block">-->
+<!--          <div class="form__wrapper">-->
+<!--            <p class="form__subtitle" data-langkey="subtitle-driver"></p>-->
+<!--            <div id="driver-list"></div>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--        <div class="form__block">-->
+<!--          <div class="form__wrapper">-->
+<!--            <p class="form__subtitle" data-langkey="subtitle-languages"></p>-->
+<!--            <div class="form__languages" id="languages-list"></div>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--        <div class="form__block">-->
+<!--          <div class="form__wrapper">-->
+<!--            <p class="form__subtitle" data-langkey="subtitle-about"></p>-->
+<!--            <div id="hobbies-list"></div>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </fieldset>-->
     </div>
     <div class="form__block">
       <div class="rules">
@@ -650,7 +615,6 @@
 <div class="popup js-popup">
   <div class="popup__wrapper">
     <p data-langkey="success-alert"></p>
-    <div class="popup__timer" id="timer"></div>
     <p data-langkey="success-alert-1"></p>
     <p data-langkey="success-alert-2"></p>
     <a href="mailto:admin@global-workers.eu">admin@global-workers.eu</a>
@@ -763,7 +727,7 @@
         'text-alert-1': 'Зверніть увагу на те, що від коректності вказаних вами даних буде залежати якість та швидкість розгляду та обробки профілю. Перевірте, будь ласка, ще раз правильність заповнення полів та натисніть',
         'text-alert-2': 'У випадку виникнення питань, будь ласка, пишіть нам на електронну адресу:',
         'text-alert-3': 'Обов\'язкові до заповнення поля позначені зірочкою',
-        'success-alert': 'Вітаємо, реєстрація пройшла успішно',
+        'success-alert': 'Вітаємо, реєстрація прошла успішно',
         'success-alert-1': 'Після перевірки даних Вас буде автоматично перенаправлено на портал, будь ласка не закрывайте сторінку до кінця перевірки',
         'success-alert-2': 'У випадку, якщо не прийшло підтвердження на пошту про успішну реєстрацію, зверніться до адміністрації порталу через форму зворотнього зв`язку або відправте запит за адресою:'
       }
@@ -1049,52 +1013,31 @@
   const registration = new Registration();
 
   registration.getSettings();
-  registration.drawSkills();
-  registration.drawCountry();
-  registration.drawRegions('0');
-  registration.drawDriver();
-  registration.drawGender();
-  registration.drawVaccination();
-  registration.drawLanguages();
-  registration.drawAccess();
-  registration.drawFamily();
-  registration.drawHobbies();
+  // registration.drawSkills();
+  // registration.drawCountry();
+  // registration.drawRegions('0');
+  // registration.drawDriver();
+  // registration.drawGender();
+  // registration.drawVaccination();
+  // registration.drawLanguages();
+  // registration.drawAccess();
+  // registration.drawFamily();
+  // registration.drawHobbies();
 
-  let photoSize = 0;
-  let timer;
-  let x = 45;
 
-  function countdown(){
-    $('#timer').html(`0 : ${x}`);
-    x--;
-    if (x < 0){
-      clearTimeout(timer);
-    }
-    else {
-      timer = setTimeout(countdown, 1000);
-    }
-  }
-
+  let files;
 
   $('input[type=file]').change(function(){
-    const size = (this.files[0].size / 1024 / 1024).toFixed(2)
-    photoSize = size;
-
-    if (size > 8) {
-      $('.js-error').html('Error, max photo size 8 Mb')
-      $('.js-form-photo').addClass('form__photo--error')
-    }
-    else {
-      $('.js-error').html('')
-      $('.js-form-photo').removeClass('form__photo--error')
-    }
+    files = this.files;
+    console.log(files)
   });
-  // console.log($('input[type=file]').files[0].size / 1024 / 1024)
 
   window.onload = () => {
     localize.switchLanguage();
 
     $("#form").on("submit", function(){
+
+
       event.preventDefault();
 
       registration.selectLanguage();
@@ -1102,57 +1045,76 @@
       registration.selectHobbies();
 
       $('.js-popup').toggleClass('popup--active');
-      countdown();
+
+      //https://global-workers.eu/registration/upload.php
+
+
+
+      let data = new FormData();
+
+      $.each( files, function( key, value ){
+        data.append( key, value );
+      });
+
+      data.append( 'my_file_upload', 1);
 
       $.ajax({
-        url: './mail.php',
+        url: 'https://global-workers.eu/registration/upload.php',
         method: 'post',
         dataType: 'json',
-        data: {
-          "type": "1",
-          "id": "",
-          "photo": photoSize < 8 ? registration.photo : 'null',
-          "date": 'Y-m-d'.replace('Y', new Date().getFullYear()).replace('m', new Date().getMonth() + 1).replace('d', new Date().getDate()),
-          "name": $(this).find( "input[name='name']" ).val(),
-          "surname": $(this).find( "input[name='surname']" ).val(),
-          "gender": $(this).find( "select[name='gender']" ).val(),
-          "age": $(this).find( "input[name='age']" ).val(),
-          "weight": $(this).find( "input[name='weight']" ).val() || "0",
-          "height": $(this).find( "input[name='height']" ).val() || "0",
-          "country": $(this).find("select[name='country']" ).val(),
-          "region": $(this).find( "select[name='city']" ).val(),
-          "family": $(this).find( "select[name='family']" ).val(),
-          "contact": {
-            "email": $(this).find( "input[name='email']" ).val(),
-            "phone": $(this).find( "input[name='phone']" ).val()
-          },
-          "vaccinated": $(this).find( "input[name='vaccination']:checked" ).val(),
-          "language": registration.language,
-          "driver_license": registration.driver,
-          "hobbies": registration.hobbies,
-          "skills": registration.skills,
-          "eu_allowed_person": $(this).find( "input[name='access']:checked" ).val(),
-          "available": [
-            $(this).find( "input[name='available-from']" ).val(),
-            $(this).find( "input[name='available-to']" ).val()
-          ]
-        },
-        complete: function(data) {
-          $("input").val('');
-          $("textarea").val('');
-          $('input[type="radio"]').prop('checked', false);
-          $('input[type="checkbox"]').prop('checked', false);
-          $('select').prop('selectedIndex', 0);
-          $('button').attr('disabled', true)
-          $('#photo-image').html('')
-          $('.js-hobby').removeClass('hobby--active');
-          $('.js-form-language').find('select').attr('disabled', true);
+        data: data,
+        cache       : false,
+        contentType : false,
+        processData : false,
 
-          if(data.readyState === 4) {
-            window.setTimeout( function(){
-              window.location.href = "https://global-workers.eu";
-            }, 3000);
-          }
+
+        // data: {
+        //   "type": "1",
+        //   "id": "",
+        //   "photo": registration.photo,
+        //   "date": 'Y-m-d'.replace('Y', new Date().getFullYear()).replace('m', new Date().getMonth() + 1).replace('d', new Date().getDate()),
+        //   "name": $(this).find( "input[name='name']" ).val(),
+        //   "surname": $(this).find( "input[name='surname']" ).val(),
+        //   "gender": $(this).find( "select[name='gender']" ).val(),
+        //   "age": $(this).find( "input[name='age']" ).val(),
+        //   "weight": $(this).find( "input[name='weight']" ).val() || "0",
+        //   "height": $(this).find( "input[name='height']" ).val() || "0",
+        //   "country": $(this).find("select[name='country']" ).val(),
+        //   "region": $(this).find( "select[name='city']" ).val(),
+        //   "family": $(this).find( "select[name='family']" ).val(),
+        //   "contact": {
+        //     "email": $(this).find( "input[name='email']" ).val(),
+        //     "phone": $(this).find( "input[name='phone']" ).val()
+        //   },
+        //   "vaccinated": $(this).find( "input[name='vaccination']:checked" ).val(),
+        //   "language": registration.language,
+        //   "driver_license": registration.driver,
+        //   "hobbies": registration.hobbies,
+        //   "skills": registration.skills,
+        //   "eu_allowed_person": $(this).find( "input[name='access']:checked" ).val(),
+        //   "available": [
+        //     $(this).find( "input[name='available-from']" ).val(),
+        //     $(this).find( "input[name='available-to']" ).val()
+        //   ]
+        // },
+        complete: function(data) {
+          console.log(data)
+
+          // $("input").val('');
+          // $("textarea").val('');
+          // $('input[type="radio"]').prop('checked', false);
+          // $('input[type="checkbox"]').prop('checked', false);
+          // $('select').prop('selectedIndex', 0);
+          // $('button').attr('disabled', true)
+          // $('#photo-image').html('')
+          // $('.js-hobby').removeClass('hobby--active');
+          // $('.js-form-language').find('select').attr('disabled', true);
+          //
+          // if(data.readyState === 4) {
+          //   window.setTimeout( function(){
+          //     window.location.href = "https://global-workers.eu";
+          //   }, 3000);
+          // }
         }
       });
     });

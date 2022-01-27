@@ -14,9 +14,9 @@ const a = {
         'menu_link_9': 'About',
         'menu_link_10': '404 Not Found',
 
-        "team_1_text": "Ich bin Softwareentwickler mit Ausbildung in Cyber Defense und Kryptografie. Mag Sport, Tracking und DIY.",
+        "team_1_text": "I am a software developer with education in cyber defense and cryptography. I am fond of sports, trekking and DIY.",
         "team_2_text": "I am an HTML developer, with a radio engineering background. I love chess, fishing.",
-        "team_3_text": "I am Automation QA Engineer with solid experience in economics and finance.",
+        "team_3_text": "I am Automation QA Engineer with solid experince in economics and finance.",
         "team_4_text": "I am a qualified telecommunications engineer. Extra high education in International economics. Fond of agriculture and farming. Living and working in Germany.",
 
         "team_1_slogan": "I like to set goals and overcome difficulties!",
