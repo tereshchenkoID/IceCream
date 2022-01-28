@@ -11,10 +11,14 @@ const Logo = ({isLight}) => {
             <NavLink
                 to="/"
             >
-                <img src={`/img/${path}.webp`}
-                     alt="Global Workers"
-                     loading={"lazy"}
-                />
+                <picture>
+                    <source srcSet={`/img/logo/1x/${path}.webp 1x, /img/logo/2x/${path}@2x.webp 2x`}/>
+                    <img
+                        src={`/img/logo/1x/${path}.webp`}
+                        alt={"Global Workers"}
+                        loading={"lazy"}
+                    />
+                </picture>
             </NavLink>
         </div>
     );

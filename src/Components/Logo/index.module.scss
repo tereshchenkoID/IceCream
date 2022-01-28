@@ -3,9 +3,7 @@
 .block {
   @include size(130px, 60px);
 
-  a {
-    @include size(100%);
-
-    display: block;
+  picture {
+    transform: translateX(-10px);
   }
 }

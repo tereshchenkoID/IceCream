@@ -31,7 +31,7 @@ $md: map-get($brackpoints, 'md');
   }
 
   &::before {
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0.4);
   }
 
   &::after {
@@ -47,9 +47,9 @@ $md: map-get($brackpoints, 'md');
   padding: 0 $grid-padding;
   margin-right: auto;
   margin-left: auto;
+  z-index: 1;
   min-width: var(--min-width);
   max-width: var(--max-width);
-  z-index: 1;
   color: var(--color-white);
 }
 

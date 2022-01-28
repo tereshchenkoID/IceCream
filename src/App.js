@@ -51,6 +51,23 @@ const App = () => {
                         <Routing {...{ routes }} />
                       </Suspense>
                       <Footer />
+                      <button
+                          className={styles.scroll}
+                          onClick={() => window.scrollTo(0, 0)}
+                      >
+                          <svg
+                              width="32px"
+                              height="32px"
+                              viewBox="0 0 32 32"
+                              fill="none"
+                              stroke="currentcolor"
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth="2"
+                          >
+                              <path d="M6 10 L16 2 26 10 M16 2 L16 30" />
+                          </svg>
+                      </button>
                   </BrowserRouter>
               </Provider>
           </I18nProvider>

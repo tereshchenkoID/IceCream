@@ -10,7 +10,7 @@ const Api = () => {
     useEffect(() => {
         dispatch(loadSettingData());
         dispatch(loadCardData());
-    }, []);
+    }, [dispatch]);
 
     return true;
 }
