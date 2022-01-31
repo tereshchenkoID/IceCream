@@ -34,7 +34,7 @@ const Footer = () => {
                                     <div className={styles.item}>
                                         <NavLink
                                             className={styles.link}
-                                            to="/search"
+                                            to="/search/0"
                                         >
                                             {translate('menu_link_2')}
                                         </NavLink>
