@@ -1,65 +1,50 @@
 [
   {
     "id": "0",
-    "contact":{
-      "email":"nazaruk28021978@gmail.com",
-      "phone":"0677917966"
-    }
+    "contact":{"email":"nazaruk28021978@gmail.com", "phone":"0677917966"}
   },
   {
     "id": "1",
-    "contact":{
-      "email":"yana.prykaz@gmail.com",
-      "phone":"0960455856"
-    }
+    "contact":{"email":"yana.prykaz@gmail.com", "phone":"0960455856"}
   },
   {
     "id": "2",
-    "contact":{
-      "email":"mariaa55580@gmail.com",
-      "phone":"0677621344"
-    }
+    "contact":{"email":"mariaa55580@gmail.com", "phone":"0677621344"}
   },
   {
     "id": "3",
-    "contact":{
-      "email":"akbarcelona777@gmail.com",
-      "phone":"0988015735"
-    }
+    "contact":{"email":"akbarcelona777@gmail.com", "phone":"0988015735"}
   },
   {
     "id": "4",
-    "contact":{
-      "email":"mariaa55580@gmail.com",
-      "phone":"0677621344"
-    }
+    "contact":{"email":"mariaa55580@gmail.com", "phone":"0677621344"}
   },
   {
     "id": "5",
-    "contact":{
-      "email":"kseniyaa1979@gmai.com",
-      "phone":"+380666029573"
-    }
+    "contact":{"email":"kseniyaa1979@gmai.com", "phone":"+380666029573"}
   },
   {
     "id": "6",
-    "contact":{
-      "email":"mariaa55580@gmail.com",
-      "phone":"0987995495"
-    }
+    "contact":{"email":"mariaa55580@gmail.com", "phone":"0987995495"}
   },
   {
     "id": "7",
-    "contact":{
-      "email":"mariaa55580@gmail.com",
-      "phone":"0987995495"
-    }
+    "contact":{"email":"mariaa55580@gmail.com", "phone":"0987995495"}
   },
   {
     "id": "8",
-    "contact":{
-      "email":"nataliapilipuk4@gmail.com",
-      "phone":"0953856195"
-    }
+    "contact":{"email":"nataliapilipuk4@gmail.com", "phone":"0953856195"}
+  },
+  {
+    "id": "9",
+    "contact":{"email":"pilipukoleksandr2@gmail.com", "phone":"0669142230"}
+  },
+  {
+    "id": "10",
+    "contact":{"email":"tatyana1sakharuk@gmail.com", "phone":"+380974185771"}
+  },
+  {
+    "id": "11",
+    "contact": {"email": "budowaguro@gmail.com", "phone": "+380639815119"}
   }
 ]

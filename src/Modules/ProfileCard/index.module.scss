@@ -117,15 +117,21 @@
   padding: 10px 15px;
   background-color: #fcfcfc;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-}
+  overflow-y: auto;
+  max-height: 195px;
 
-.link {
-  display: block;
-  margin-top: 10px;
-  color: var(--color-primary);
+  &::-webkit-scrollbar {
+    width: 10px;
+  }
 
-  &:hover {
-    text-decoration: underline;
+  &::-webkit-scrollbar-track {
+    background-color: var(--color-secondary);
+  }
+
+  &::-webkit-scrollbar-thumb {
+    border: 2px solid transparent;
+    background-clip: content-box;
+    background-color: var(--color-primary);
   }
 }
 

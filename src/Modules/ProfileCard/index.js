@@ -1,5 +1,4 @@
 import React from "react";
-import {NavLink} from "react-router-dom";
 
 import {translate} from "../../i18n/translate";
 
@@ -82,7 +81,6 @@ const ProfileCard = ({
                                     </div>
                                 </div>
                             </div>
-
                             <div className={styles.footer}>
                                 <div className={styles.button}>
                                     <Team
@@ -100,34 +98,24 @@ const ProfileCard = ({
                             </div>
                         </div>
                     </div>
-                    <div className={styles.skills}>
-                        {
-                            data.skills &&
-                            data.skills.slice(0, 2).map((category, idx) =>
-                                <div key={idx}>
-                                    <p className={styles.category}>{setting.job[category.id][lang]}</p>
-                                    {
-                                        category.list.map((subcategory, idx) =>
-                                            subcategory < setting.job[category.id].list.length &&
-                                            <p key={idx} className={styles.subcategory}>{setting.job[category.id].list[subcategory][lang]}</p>
-                                        )
-                                    }
-                                </div>
-                            )
-                        }
-                        {
-                            (data.skills.length > 2) &&
-                            <>
-                                <div>...</div>
-                                <NavLink
-                                    className={styles.link}
-                                    to={`/profile/${data.id}`}
-                                >
-                                    {translate('card_more')}
-                                </NavLink>
-                            </>
-                        }
-                    </div>
+                    {
+                        data.skills &&
+                        <div className={styles.skills}>
+                            {
+                                data.skills.map((category, idx) =>
+                                    <div key={idx}>
+                                        <p className={styles.category}>{setting.job[category.id][lang]}</p>
+                                        {
+                                            category.list.map((subcategory, idx) =>
+                                                subcategory < setting.job[category.id].list.length &&
+                                                <p key={idx} className={styles.subcategory}>{setting.job[category.id].list[subcategory][lang]}</p>
+                                            )
+                                        }
+                                    </div>
+                                )
+                            }
+                        </div>
+                    }
                 </div>
             }
         </div>
