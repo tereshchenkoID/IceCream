@@ -40,5 +40,26 @@
       "email":"kseniyaa1979@gmai.com",
       "phone":"+380666029573"
     }
+  },
+  {
+    "id": "6",
+    "contact":{
+      "email":"mariaa55580@gmail.com",
+      "phone":"0987995495"
+    }
+  },
+  {
+    "id": "7",
+    "contact":{
+      "email":"mariaa55580@gmail.com",
+      "phone":"0987995495"
+    }
+  },
+  {
+    "id": "8",
+    "contact":{
+      "email":"nataliapilipuk4@gmail.com",
+      "phone":"0953856195"
+    }
   }
 ]
