@@ -46,5 +46,13 @@
   {
     "id": "11",
     "contact": {"email": "budowaguro@gmail.com", "phone": "+380639815119"}
+  },
+  {
+    "id": "12",
+    "contact":{"email":"stepankorneluk053@gmail.com", "phone":"+380987184636"}
+  },
+  {
+    "id": "13",
+    "contact":{"email":"pasha2019@gmail.com", "phone":"+380635664112"}
   }
 ]

@@ -26,6 +26,14 @@ const Footer = () => {
                                     <div className={styles.item}>
                                         <NavLink
                                             className={styles.link}
+                                            to="/"
+                                        >
+                                            {translate("menu_link_1")}
+                                        </NavLink>
+                                    </div>
+                                    <div className={styles.item}>
+                                        <NavLink
+                                            className={styles.link}
                                             to="/about"
                                         >
                                             {translate("menu_link_9")}
@@ -68,6 +76,15 @@ const Footer = () => {
                             <div className={classes("col", "col-12", "col-md-3", "col-padding-vertical")}>
                                 <div className={styles.list}>
                                     <div className={styles.subtitle}>{translate('footer_subtitle_2')}</div>
+                                    <div className={styles.item}>
+                                        <NavLink
+                                            className={styles.link}
+                                            to="../DOC/about.pdf"
+                                            target="_blank"
+                                        >
+                                            {translate('menu_link_9')}
+                                        </NavLink>
+                                    </div>
                                     <div className={styles.item}>
                                         <NavLink
                                             className={styles.link}
