@@ -803,7 +803,7 @@
           <p>3. Ваші гроші не оподатковуються.</p>
         </li>
       </ul>
-      <p>Ще більше про ваші індивідуальні умови працевлаштування ви зможете дізнатися після реєстрації на нашому сайті та після визначення вашого безпосереднього роботодавця.</p>
+      <p>Ще більше про умови праці ви можете дізнатися, завантаживши даний <a href="https://global-workers.eu/DOC/about.pdf" target="_blank">ФАЙЛ</a> з описом роботи платформи, а про ваші індивідуальні умови працевлаштування ви вже зможете дізнатися після реєстрації на нашому сайті та після визначення вашого безпосереднього роботодавця.</p>
       <p>Також, у разі виникнення питань, будь ласка, звертайтеся за електронною адресою: <a href="mailto:admin@global-workers.eu">admin@global-workers.eu</a></p>
     </div>
     <div class="conditions__item">
@@ -1008,7 +1008,7 @@
   Registration.prototype.drawGender = function() {
     let html = '';
 
-    html += `<select class="select" name="gender">
+    html += `<select class="select" name="gender" required>
                 <option disabled selected data-langkey="placeholder-gender"></option>`;
 
     this.settings.gender.slice(1, this.settings.gender.length).map(function(i) {
