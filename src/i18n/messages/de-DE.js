@@ -81,6 +81,7 @@ const a = {
         'sort_to': 'Dann',
         'sort_title_categories': 'Kategorien',
         'sort_title_available': 'Verfügbare termine',
+        'sort_title_photo': 'Mit Foto',
         'sort_title_age': 'Alter',
         'sort_title_gender': 'Geschlecht',
         'sort_title_vaccination': 'Impfung',

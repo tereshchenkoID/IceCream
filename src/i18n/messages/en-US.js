@@ -81,6 +81,7 @@ const a = {
         'sort_to': 'To',
         'sort_title_categories': 'Categories',
         'sort_title_available': 'Available dates',
+        'sort_title_photo': 'With photo',
         'sort_title_age': 'Age',
         'sort_title_gender': 'Gender',
         'sort_title_vaccination': 'Vaccination',

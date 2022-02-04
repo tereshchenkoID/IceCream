@@ -91,20 +91,11 @@ const Profile = () => {
                                                 />
                                             </div>
                                             <div className={styles.photo}>
-                                                {
-                                                    find.photo ?
-                                                        <img
-                                                            src={find.photo}
-                                                            alt={find.photo}
-                                                            loading={'lazy'}
-                                                        />
-                                                        :
-                                                        <img
-                                                            src={"/img/no-photo.webp"}
-                                                            alt={"No photo"}
-                                                            loading={'lazy'}
-                                                        />
-                                                }
+                                                <img
+                                                    src={find.photo ? find.photo : "/img/no-photo.webp"}
+                                                    alt={find.photo ? find.photo : "Empty"}
+                                                    loading={'lazy'}
+                                                />
                                             </div>
                                         </div>
 

@@ -1,0 +1,37 @@
+@import '../../styles/config';
+
+.block {
+  @include flex($align-items: center);
+}
+
+.item {
+  @include size(50px, 25px);
+
+  position: relative;
+  background-color: var(--color-secondary);
+  border-radius: var(--default-border-radius);
+  overflow: hidden;
+  cursor: pointer;
+
+  &.active {
+    background-color: var(--color-text);
+
+    .slide {
+      transform: translateX(100%);
+    }
+  }
+}
+
+.slide {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 50%;
+  background-color: var(--color-primary);
+  transition: var(--default-transition);
+}
+
+.label {
+  margin-left: 20px;
+}

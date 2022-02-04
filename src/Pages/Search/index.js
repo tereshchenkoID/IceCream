@@ -11,6 +11,7 @@ import getAge from "../../helpers/getAge";
 import getAllStorage from "../../helpers/localStorage";
 import convertData from "../../helpers/convertData";
 
+import Toggle from "../../Components/Toggle";
 import Empty from "../../Components/Empty";
 import Breadcrumbs from "../../Components/Breadcrumbs";
 import Title from "../../Components/Title";
@@ -54,6 +55,7 @@ const Search = () => {
 
     const values = [0, 80];
     const [sort, setSort] = useState(0);
+    const [photo, setPhoto] = useState(false);
     const [age, setAge] = useState({min: values[0], max: values[1]});
     const [gender, setGender] = useState('0');
     const [family, setFamily] = useState('0');
@@ -74,6 +76,11 @@ const Search = () => {
 
     const conditionGender = (data) => {
         if (gender !== '0') return data.gender === gender
+        else return true
+    }
+
+    const conditionPhoto = (data) => {
+        if (photo) return data.photo
         else return true
     }
 
@@ -153,6 +160,7 @@ const Search = () => {
     const allCondition = (data) => {
         const a = data.filter((item) =>
             getAge(item.age) >= age.min && getAge(item.age) <= age.max &&
+            conditionPhoto(item) &&
             conditionFamily(item) &&
             conditionGender(item) &&
             conditionVaccination(item) &&
@@ -208,6 +216,15 @@ const Search = () => {
                                                 category={category}
                                                 setCategory={setCategory}
                                                 lang={lang}
+                                            />
+                                        </div>
+                                        <Title
+                                            text={`${translateString('sort_title_photo')}:`}
+                                        />
+                                        <div className={styles.wrapper}>
+                                            <Toggle
+                                                date={photo}
+                                                action={setPhoto}
                                             />
                                         </div>
                                         <Title

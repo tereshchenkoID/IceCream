@@ -2,11 +2,11 @@
 
 .block {
   @include flex(flex-end, center);
-  @include size(100%, var(--default-height));
 
   position: relative;
   padding: 0 10px;
   margin-bottom: 20px;
+  height: var(--default-height);
 
   &.active {
 

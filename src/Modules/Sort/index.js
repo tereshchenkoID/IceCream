@@ -78,7 +78,6 @@ const Sort = ({lang, sort, setSort}) => {
                     }
                 </span>
             </p>
-
             <div className={styles.dropdown}>
                 {
                     settings.map((item, idx) =>

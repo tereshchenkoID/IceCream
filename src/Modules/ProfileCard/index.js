@@ -26,20 +26,11 @@ const ProfileCard = ({
             {
                 <div className={styles.wrapper} >
                     <div className={styles.photo}>
-                        {
-                            data.photo ?
-                            <img
-                                src={data.photo}
-                                alt={data.photo}
-                                loading={'lazy'}
-                            />
-                                :
-                            <img
-                                src={"/img/no-photo.webp"}
-                                alt={"No photo"}
-                                loading={'lazy'}
-                            />
-                        }
+                        <img
+                            src={data.photo ? data.photo : "/img/no-photo.webp"}
+                            alt={data.photo ? data.photo : "Empty"}
+                            loading={'lazy'}
+                        />
                     </div>
                     <div className={styles.content}>
                         <div className={styles.favourite}>

@@ -81,6 +81,7 @@ const a = {
         'sort_to': 'По',
         'sort_title_categories': 'Категорії',
         'sort_title_available': 'Доступні дати',
+        'sort_title_photo': 'З фото',
         'sort_title_age': 'Вік',
         'sort_title_gender': 'Стать',
         'sort_title_vaccination': 'Вакцинація',
