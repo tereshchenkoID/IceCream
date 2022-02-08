@@ -57,7 +57,8 @@ const a = {
         'contact_email': 'E-Mail-Addresse',
         'contact_subject': 'Gegenstand',
         'contact_message': 'Nachricht',
-        'contact_button': 'Nachricht abschicken',
+        'contact_button-1': 'Nachricht abschicken',
+        'contact_button-2': 'Anfrage senden',
         'contact_alert': 'Vielen Dank, wir werden uns schnellstmöglich mit Ihnen in Verbindung setzen!',
 
         'card_age': 'Alter',

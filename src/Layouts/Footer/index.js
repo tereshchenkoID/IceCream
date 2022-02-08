@@ -22,7 +22,7 @@ const Footer = () => {
                             </div>
                             <div className={classes("col", "col-12", "col-md-3", "col-padding-vertical")}>
                                 <div className={styles.list}>
-                                    <div className={styles.subtitle}>{translate('footer_subtitle_1')}</div>
+                                    <div className={styles.subtitle}>{translate('footer_subtitle_1')}:</div>
                                     <div className={styles.item}>
                                         <NavLink
                                             className={styles.link}
@@ -75,7 +75,7 @@ const Footer = () => {
                             </div>
                             <div className={classes("col", "col-12", "col-md-3", "col-padding-vertical")}>
                                 <div className={styles.list}>
-                                    <div className={styles.subtitle}>{translate('footer_subtitle_2')}</div>
+                                    <div className={styles.subtitle}>{translate('footer_subtitle_2')}:</div>
                                     <div className={styles.item}>
                                         <NavLink
                                             className={styles.link}

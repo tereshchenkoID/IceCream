@@ -57,7 +57,8 @@ const a = {
         'contact_email': 'Email адрес',
         'contact_subject': 'Тема',
         'contact_message': 'Сообщение',
-        'contact_button': 'Отправить сообщение',
+        'contact_button-1': 'Отправить сообщение',
+        'contact_button-2': 'Отправить запрос',
         'contact_alert': 'Спасибо, мы свяжемся с вами как можно скорее!',
 
         'card_age': 'Возраст',

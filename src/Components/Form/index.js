@@ -102,7 +102,7 @@ const Form = () => {
                         type="submit"
                         className={styles.button}
                     >
-                        {translate('contact_button')}
+                        {translate('contact_button-1')}
                     </button>
                 </div>
             </form>

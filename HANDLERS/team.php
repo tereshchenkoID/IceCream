@@ -1,4 +1,6 @@
-[
+<?php
+
+$json_data = '[
   {
     "id": "0",
     "contact":{"email":"nazaruk28021978@gmail.com", "phone":"0677917966"}
@@ -91,4 +93,54 @@
     "id": "22",
     "contact":{"email":"mariaa55580@gmail.com", "phone":"0683980244"}
   }
-]
+]';
+
+
+$headers = 'MIME-Version: 1.0' . "\r\n";
+$headers .= 'Content-type: text/html; charset=utf-8' . "\r\n";
+$headers .= "From:" . "admin@global-workers.eu";
+
+$recipients = array(
+  "tereschenko23041991@gmail.com",
+//   "admin@global-workers.eu"
+);
+
+$to = implode(",", $recipients);
+
+$json = json_decode($json_data, true);
+
+
+if($_SERVER["REQUEST_METHOD"] == "POST"){
+
+    if($_POST["type"] == '1' && $_POST["team"]) {
+        $contact = 'Team: <br>';
+
+        for ($i = 0; $i < count(explode(",", $_POST["team"])); $i++) {
+
+            foreach ($json as $id => $value) {
+                if ($_POST["team"][$i] == $id) {
+                    $contact .= '['.$id.'] : ['.$value['contact']['email'].'] : ['.$value['contact']['phone'].']<br>';
+                }
+            }
+        }
+
+        $contact .= '<br>';
+        $contact .= 'Customer: <br>';
+        $contact .= '['.$_POST["email"].']'.': ['.$_POST["name"].']<br>';
+
+        mail(
+            $to,
+            "Team request",
+            $contact,
+            $headers
+        );
+    }
+    else {
+        header('Location: https://global-workers.eu/404');
+    }
+}
+else {
+				header('Location: https://global-workers.eu/404');
+}
+
+?>
