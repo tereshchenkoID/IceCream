@@ -92,7 +92,7 @@ const Profile = () => {
                                             </div>
                                             <div className={styles.photo}>
                                                 <img
-                                                    src={find.photo ? find.photo : "/img/no-photo.webp"}
+                                                    src={find.photo ? `/img/profile/${find.photo}` : "/img/no-photo.webp"}
                                                     alt={find.photo ? find.photo : "Empty"}
                                                     loading={'lazy'}
                                                 />
@@ -105,11 +105,11 @@ const Profile = () => {
                                             </div>
                                             <div className={styles.wrap}>
                                                 <div className={styles.column}>
-                                                    <p className={styles.label}>{translate('card_available')}: </p>
+                                                    <p className={styles.label}>{translate('profile_available')}: </p>
                                                     <p className={styles.text}>{convertData(find.available[0])} - {convertData(find.available[1])}</p>
                                                 </div>
                                                 <div className={styles.column}>
-                                                    <p className={styles.label}>{translate('card_date')}:</p>
+                                                    <p className={styles.label}>{translate('profile_date')}:</p>
                                                     <p className={styles.text}>{convertData(find.date)}</p>
                                                 </div>
                                             </div>
@@ -136,39 +136,39 @@ const Profile = () => {
                                         <div className={styles.title}>{translate('section_description_general')}:</div>
                                         <div className={styles.body}>
                                             <div className={styles.row}>
-                                                <p className={styles.cell}>{translate('sort_title_age')}</p>
+                                                <p className={styles.cell}>{translate('profile_age')}</p>
                                                 <strong className={styles.cell}>{getAge(find.age)}</strong>
                                             </div>
                                             <div className={styles.row}>
-                                                <p className={styles.cell}>{translate('sort_title_gender')}</p>
+                                                <p className={styles.cell}>{translate('profile_gender')}</p>
                                                 <strong className={styles.cell}>{dataSetting.gender[find.gender][lang]}</strong>
                                             </div>
                                             <div className={styles.row}>
-                                                <p className={styles.cell}>{translate('sort_title_vaccination')}</p>
+                                                <p className={styles.cell}>{translate('profile_vaccination')}</p>
                                                 <strong className={styles.cell}>{dataSetting.vaccination[find.vaccinated][lang]}</strong>
                                             </div>
                                             <div className={styles.row}>
-                                                <p className={styles.cell}>{translate('sort_title_access')}</p>
+                                                <p className={styles.cell}>{translate('profile_access')}</p>
                                                 <strong className={styles.cell}>{dataSetting.access[find.eu_allowed_person][lang]}</strong>
                                             </div>
                                             {
                                                 find.family &&
                                                 <div className={styles.row}>
-                                                    <p className={styles.cell}>{translate('sort_title_family')}</p>
+                                                    <p className={styles.cell}>{translate('profile_family')}</p>
                                                     <strong className={styles.cell}>{dataSetting.family[find.family][lang]}</strong>
                                                 </div>
                                             }
                                             {
-                                                find.weight !== '0' &&
+                                                find.weight &&
                                                 <div className={styles.row}>
-                                                    <p className={styles.cell}>{translate('sort_title_weight')}</p>
+                                                    <p className={styles.cell}>{translate('profile_weight')}</p>
                                                     <strong className={styles.cell}>{find.weight} kg</strong>
                                                 </div>
                                             }
                                             {
-                                                find.height !== '0' &&
+                                                find.height &&
                                                 <div className={styles.row}>
-                                                    <p className={styles.cell}>{translate('sort_title_height')}</p>
+                                                    <p className={styles.cell}>{translate('profile_height')}</p>
                                                     <strong className={styles.cell}>{find.height} cm</strong>
                                                 </div>
                                             }

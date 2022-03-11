@@ -11,6 +11,7 @@ import {translate, translateString} from "../../i18n/translate";
 import Breadcrumbs from "../../Components/Breadcrumbs";
 import ProfileCard from "../../Modules/ProfileCard";
 import Empty from "../../Components/Empty";
+import Button from "../../Components/Button";
 
 import styles from './index.module.scss';
 
@@ -44,10 +45,9 @@ const Team = () => {
 
         formData.set('email', formData.get('email'))
         formData.set('name', formData.get('name'))
-        formData.set('type', '1')
         formData.set('team', teamArray)
 
-        fetch('https://global-workers.eu/handlers/team.php', {
+        fetch('https://global-workers.eu/server/team/send', {
             method: 'POST',
             body: formData
         })
@@ -57,6 +57,8 @@ const Team = () => {
 
             setTimeout(() => {
                 setAlert(false)
+                setTeamArray([])
+                localStorage['team'] = '[]'
             }, 5000);
         })
         .catch(error => console.log("Error", error));
@@ -150,12 +152,11 @@ const Team = () => {
                                         />
                                     </div>
                                     <div className={styles.item}>
-                                        <button
-                                            type="submit"
-                                            className={styles.button}
-                                        >
-                                            {translate('contact_button-2')}
-                                        </button>
+                                        <Button
+                                            type={"submit"}
+                                            action={false}
+                                            placeholder={translate('contact_button-2')}
+                                        />
                                     </div>
                                 </form>
                             }

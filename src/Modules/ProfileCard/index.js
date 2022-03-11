@@ -27,7 +27,7 @@ const ProfileCard = ({
                 <div className={styles.wrapper} >
                     <div className={styles.photo}>
                         <img
-                            src={data.photo ? data.photo : "/img/no-photo.webp"}
+                            src={data.photo ? `/img/profile/${data.photo}` : "/img/no-photo.webp"}
                             alt={data.photo ? data.photo : "Empty"}
                             loading={'lazy'}
                         />
@@ -45,29 +45,28 @@ const ProfileCard = ({
                             <div className={styles.head}>
                                 <div className={styles.name}>{data.surname} {data.name}</div>
                             </div>
-
                             <div className={styles.body}>
                                 <div className={styles.info}>
                                     <div className={styles.cell}>
-                                        <p className={styles.label}>{translate('card_age')}: </p>
+                                        <p className={styles.label}>{translate('profile_age')}: </p>
                                         <p className={styles.value}>{getAge(data.age)}</p>
                                     </div>
                                     <div className={styles.cell}>
-                                        <p className={styles.label}>{translate('card_gender')}: </p>
+                                        <p className={styles.label}>{translate('profile_gender')}: </p>
                                         <p className={styles.value}>{setting.gender[data.gender][lang]}</p>
                                     </div>
                                     <div className={styles.cell}>
-                                        <p className={styles.label}>{translate('card_access')}: </p>
+                                        <p className={styles.label}>{translate('profile_access')}: </p>
                                         <p className={styles.value}>{setting.access[data.eu_allowed_person][lang]}</p>
                                     </div>
                                     <div className={styles.cell}>
-                                        <p className={styles.label}>{translate('card_vaccination')}: </p>
+                                        <p className={styles.label}>{translate('profile_vaccination')}: </p>
                                         <p className={styles.value}>{setting.vaccination[data.vaccinated][lang]}</p>
                                     </div>
                                 </div>
                                 <div className={styles.info}>
                                     <div className={styles.cell}>
-                                        <p className={styles.label}>{translate('card_available')}: </p>
+                                        <p className={styles.label}>{translate('profile_available')}: </p>
                                         <p className={styles.value}>{convertData(data.available[0])} - {convertData(data.available[1])}</p>
                                     </div>
                                 </div>
@@ -83,7 +82,7 @@ const ProfileCard = ({
                                 <div className={styles.button}>
                                     <Link
                                         url={`/profile/${data.id}`}
-                                        text={translate('card_button_profile')}
+                                        text={translate('profile_button_profile')}
                                     />
                                 </div>
                             </div>

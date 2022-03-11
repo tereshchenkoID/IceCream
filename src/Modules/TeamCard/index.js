@@ -4,7 +4,6 @@ import styles from './index.module.scss';
 
 import {translate} from "../../i18n/translate";
 
-
 const TeamCard = ({id, name}) => {
     return (
         <div className={styles.block}>

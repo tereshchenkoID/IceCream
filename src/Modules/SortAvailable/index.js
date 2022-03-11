@@ -10,14 +10,13 @@ const SortAvailable = ({available, setAvailable}) => {
 
     return (
         <div>
-            <p>{translate('sort_from')}</p>
             <input
                 type="date"
                 min={getDate(0).toISOString().substring(0, 10)}
                 max={getDate(24).toISOString().substring(0, 10)}
                 className={styles.field}
-                onChange={(e) => setAvailable({min: e.target.value, max: available.max})}
                 value={available.min === 0 ? '' : available.min}
+                onChange={(e) => setAvailable({min: e.target.value, max: available.max})}
             />
             <p>{translate('sort_to')}</p>
             <input
@@ -25,8 +24,8 @@ const SortAvailable = ({available, setAvailable}) => {
                 min={getDate(0).toISOString().substring(0, 10)}
                 max={getDate(24).toISOString().substring(0, 10)}
                 className={styles.field}
-                onChange={(e) => setAvailable({min: available.min, max: e.target.value})}
                 value={available.max === 0 ? '' : available.max}
+                onChange={(e) => setAvailable({min: available.min, max: e.target.value})}
             />
         </div>
     )

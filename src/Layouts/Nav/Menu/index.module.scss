@@ -5,7 +5,7 @@ $md: map-get($brackpoints, 'md');
 .block {
   @include flex($align-items: center);
 
-  padding-left: 40px;
+  padding-left: 30px;
 
   @include media-max($md) {
     flex-direction: column;

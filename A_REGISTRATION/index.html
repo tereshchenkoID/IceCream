@@ -978,7 +978,7 @@
     const self = this;
     $.ajax({
       method: "GET",
-      url: "../API/setting.json",
+      url: "https://global-workers.eu/server/settings/show",
       async: false,
       dataType: "json",
       success(data){
@@ -1262,11 +1262,10 @@
       countdown();
 
       $.ajax({
-        url: './mail.php',
+        url: 'https://global-workers.eu/server/registration/send',
         method: 'post',
         dataType: 'json',
         data: {
-          "type": "1",
           "id": "",
           "photo": photoSize < 8 ? registration.photo : 'null',
           "date": new Date().toJSON().slice(0,10),

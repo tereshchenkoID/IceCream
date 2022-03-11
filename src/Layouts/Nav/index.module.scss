@@ -3,8 +3,6 @@
 $md: map-get($brackpoints, 'md');
 
 .block {
-  @include flex($align-items: center);
-
   position: sticky;
   top: 0;
   z-index: 11;
@@ -12,10 +10,38 @@ $md: map-get($brackpoints, 'md');
   box-shadow: var(--box-shadow-sm)
 }
 
-.wrapper {
-  @include flex(space-between, center);
+.top {
 
-  height: 80px;
+  .wrapper {
+    @include flex(space-between, center);
+
+    height: 80px;
+  }
+}
+
+.bottom {
+  @include flex($align-items: center);
+
+  border-top: 1px solid var(--color-secondary);
+
+  .wrapper {
+    @include flex($align-items: center);
+
+    height: 50px;
+    overflow-x: auto;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+    &::-webkit-scrollbar-track {
+      display: none;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      display: none;
+    }
+  }
 }
 
 .cell {
@@ -31,11 +57,21 @@ $md: map-get($brackpoints, 'md');
     flex-grow: 1;
   }
 
+  &:nth-child(3) {
+    z-index: 1;
+  }
+
   &:nth-child(4) {
+    padding-left: 10px;
+    margin-left: 10px;
+    border-left: 1px solid var(--color-secondary);
+  }
+
+  &:nth-child(5) {
 
     @include media-max($md) {
-      margin-left: 15px;
-      padding-left: 15px;
+      margin-left: 10px;
+      padding-left: 10px;
       border-left: 1px solid var(--color-secondary);
     }
   }
@@ -80,3 +116,23 @@ $md: map-get($brackpoints, 'md');
     }
   }
 }
+
+.item {
+  margin-right: 20px;
+  flex-shrink: 0;
+
+  &:last-child {
+    margin-right: 0;
+  }
+}
+
+.link {
+  white-space: nowrap;
+
+  &:hover,
+  &.active {
+    color: var(--color-primary);
+  }
+}
+
+

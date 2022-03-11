@@ -1,0 +1,20 @@
+@import '../../../styles/config';
+
+.block {
+  @include flex($align-items: center);
+
+  position: relative;
+  height: 100%;
+  margin-right: 0;
+  margin-left: auto;
+}
+
+.photo {
+  @include size(50px);
+
+  border: 0;
+  border-radius: 50%;
+  flex-shrink: 0;
+  background-color: var(--color-secondary);
+  overflow: hidden;
+}

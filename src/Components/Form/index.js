@@ -4,6 +4,7 @@ import classes from "classnames";
 import {translate, translateString} from "../../i18n/translate";
 
 import Title from "../Title";
+import Button from "../Button";
 
 import styles from './index.module.scss';
 
@@ -18,9 +19,8 @@ const Form = () => {
         formData.set('name', formData.get('name'))
         formData.set('subject', formData.get('subject'))
         formData.set('message', formData.get('message'))
-        formData.set('type', '2')
 
-        fetch('https://global-workers.eu/registration/mail.php', {
+        fetch('https://global-workers.eu/server/feedback/send', {
             method: 'POST',
             body: formData
         })
@@ -98,12 +98,11 @@ const Form = () => {
                     />
                 </div>
                 <div className={styles.item}>
-                    <button
-                        type="submit"
-                        className={styles.button}
-                    >
-                        {translate('contact_button-1')}
-                    </button>
+                    <Button
+                        type={"submit"}
+                        action={false}
+                        placeholder={translate('contact_button-1')}
+                    />
                 </div>
             </form>
         </div>

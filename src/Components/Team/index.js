@@ -34,9 +34,9 @@ const Team = ({id, teamArray, setTeamArray}) => {
             {
                 getTeam(id, teamArray)
                     ?
-                translate('card_button_remove')
+                translate('profile_button_remove')
                     :
-                translate('card_button_send')
+                translate('profile_button_send')
             }
         </button>
     );

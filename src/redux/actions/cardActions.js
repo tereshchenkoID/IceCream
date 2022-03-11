@@ -1,11 +1,11 @@
-import { types } from '../types/types';
+import { types, request } from '../types/types';
 import { useRequest } from '../../hooks/useRequest';
 
 // eslint-disable-next-line react-hooks/rules-of-hooks
 const { get } = useRequest();
 
 export const loadCardData = () => async dispatch => {
-  let URL = "https://global-workers.eu/API/profile.json";
+  let URL = `${request.PATH}profile/show`;
   try {
     const data = await get(URL);
 

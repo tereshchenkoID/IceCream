@@ -9,49 +9,98 @@ const Team = lazy( () => import("../Pages/Team"));
 const Contact  = lazy( () => import("../Pages/Contact"));
 const About = lazy( () => import("../Pages/About"));
 const NotFound = lazy( () => import("../Pages/NotFound"));
+const Login = lazy( () => import("../Pages/Login"));
+
+const AccountApplicant = lazy( () => import("../Pages/Account/Applicant"));
+const AccountPersonal = lazy( () => import("../Pages/Account/Personal"));
+const AccountSettings = lazy( () => import("../Pages/Account/Settings"));
+const AccountContact = lazy(() => import("../Pages/Account/Contact"));
 
 export const routes = [
   {
     path: '/',
     component: Main,
-    exact: true
+    exact: true,
+    role: [0, 1]
   },
   {
     path: '/contact',
     component: Contact,
-    exact: false
+    exact: false,
+    role: [0, 1]
   },
   {
     path: '/about',
     component: About,
-    exact: false
+    exact: false,
+    role: [0, 1]
   },
   {
     path: '/search/:id([0-8])',
     component: Search,
-    exact: false
+    exact: false,
+    role: [0, 1]
   },
   {
     path: '/team',
     component: Team,
-    exact: false
+    exact: false,
+    role: [0, 1]
   },
   {
     path: '/favourite',
     component: Favourite,
-    exact: false
+    exact: false,
+    role: [0, 1]
   },
   {
     path: '/profile/:id(\\d+)',
     component: Profile,
-    exact: false
+    exact: false,
+    role: [0, 1]
+  },
+  {
+    path: '/my/personal',
+    component: AccountPersonal,
+    exact: false,
+    role: [1]
+  },
+  {
+    path: '/my/applicant',
+    component: AccountApplicant,
+    exact: false,
+    role: [1]
+  },
+  {
+    path: '/my/settings',
+    component: AccountSettings,
+    exact: false,
+    role: [1]
+  },
+  {
+    path: '/my/contact',
+    component: AccountContact,
+    exact: false,
+    role: [1]
+  },
+  {
+    path: '/login',
+    component: Login,
+    exact: false,
+    role: [0]
   },
   {
     path: '/404',
     component: NotFound,
-    exact: false
+    exact: false,
+    role: [0, 1]
   },
   {
-    component: () => <Redirect to="/404" />
+    component: () => <Redirect to="/404" />,
+    role: [0]
+  },
+  {
+    component: () => <Redirect to="/my/personal" />,
+    role: [1]
   }
 ]

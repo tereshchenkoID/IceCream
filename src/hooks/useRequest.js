@@ -24,7 +24,7 @@ export const useRequest = () => {
       const req = await axios({
         method: 'post',
         url: url,
-        data: data,
+        data: data
       })
 
       const res = await req.data
