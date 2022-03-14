@@ -5,6 +5,7 @@ import {useSelector} from "react-redux";
 import classes from "classnames";
 
 import request from "../_helpers/request";
+import list from "../_helpers/list";
 
 import {translate, translateString} from "../../../i18n/translate";
 
@@ -15,15 +16,6 @@ import Loader from "../../../Components/Loader";
 import Breadcrumbs from "../../../Components/Breadcrumbs";
 
 import styles from './index.module.scss';
-
-const actionList = (data, action, id) => {
-    const result = [...data]
-    const find = result.find((e) => {return e === id})
-    find ? result.splice(result.indexOf(find), 1) : result.push(id)
-    action(result)
-
-    return result
-}
 
 const Personal = () => {
     let { dataProfile } = useSelector(state => state.profileReducer);
@@ -61,26 +53,6 @@ const Personal = () => {
     const [height, setHeight] = useState(0);
     const [weight, setWeight] = useState(0);
 
-    const init = () => {
-        setName(dataProfile[0].name);
-        setSurname(dataProfile[0].surname);
-        setHeight(dataProfile[0].height || 0);
-        setWeight(dataProfile[0].weight || 0);
-        setAge(dataProfile[0].age);
-        setGender(dataProfile[0].gender)
-        setFamily(dataProfile[0].family)
-        setDriver(dataProfile[0].driver_license || [])
-        setHobbies(dataProfile[0].hobbies || [])
-        setCountry({
-            toggle: false,
-            value: dataProfile[0].country
-        })
-        setRegion({
-            toggle: false,
-            value: dataProfile[0].region
-        })
-    }
-
     const handleSubmit = (e) => {
         e.preventDefault();
 
@@ -104,7 +76,7 @@ const Personal = () => {
 
     const handleDriver = (item) => {
         const formData = new FormData();
-        const data = actionList(driver, setDriver, item.id);
+        const data = list(driver, setDriver, item.id);
 
         formData.set('type', '6')
         formData.set('driver', data ? data.join() : null)
@@ -114,7 +86,7 @@ const Personal = () => {
 
     const handleHobbies = (item) => {
         const formData = new FormData();
-        const data = actionList(hobbies, setHobbies, item.id);
+        const data = list(hobbies, setHobbies, item.id);
 
         formData.set('type', '7')
         formData.set('hobbies', data ? data.join() : null)
@@ -124,7 +96,25 @@ const Personal = () => {
 
     useEffect(() => {
         dataProfile &&
-        dataProfile.length > 0 && init()
+        dataProfile.length > 0 &&
+
+            setName(dataProfile[0].name);
+            setSurname(dataProfile[0].surname);
+            setHeight(dataProfile[0].height || 0);
+            setWeight(dataProfile[0].weight || 0);
+            setAge(dataProfile[0].age);
+            setGender(dataProfile[0].gender)
+            setFamily(dataProfile[0].family)
+            setDriver(dataProfile[0].driver_license || [])
+            setHobbies(dataProfile[0].hobbies || [])
+            setCountry({
+                toggle: false,
+                value: dataProfile[0].country
+            })
+            setRegion({
+                toggle: false,
+                value: dataProfile[0].region
+            })
     }, [dataProfile]);
 
     return (

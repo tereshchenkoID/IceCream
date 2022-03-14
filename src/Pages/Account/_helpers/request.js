@@ -1,3 +1,5 @@
+import { server } from '../../../redux/types/types';
+
 const request = (
     formData,
     setLoader,
@@ -6,7 +8,7 @@ const request = (
 
     formData.set('id', localStorage.getItem('user_id'))
 
-    fetch('http://localhost:8888/user/update', {
+    fetch(`${server.PATH}user/update`, {
         method: 'POST',
         body: formData
     })
@@ -14,7 +16,7 @@ const request = (
             preloader &&
             setTimeout(() => {
                 success.ok && setLoader(false)
-            }, 3000);
+            }, 2000);
         })
         .catch(error => console.log("Error", error));
 }

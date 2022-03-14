@@ -1,11 +1,11 @@
-import { types, request } from "../types/types";
+import { types, server } from "../types/types";
 import { useRequest } from "../../hooks/useRequest";
 
 // eslint-disable-next-line react-hooks/rules-of-hooks
 const { get } = useRequest();
 
 export const loadSettingData = () => async dispatch => {
-  let URL = `${request.PATH}settings/show`;
+  let URL = `${server.PATH}settings/show`;
   try {
     const data = await get(URL);
 

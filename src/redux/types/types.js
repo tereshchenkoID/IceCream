@@ -7,7 +7,7 @@ export const types = {
   SET_USER_DATA: 'SET_USER_DATA'
 };
 
-export const request = {
+export const server = {
   PATH: 'http://localhost:8888/',
   // PATH: 'https://global-workers.eu/server/',
 }

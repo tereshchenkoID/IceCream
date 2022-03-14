@@ -1,11 +1,11 @@
-import { types, request } from '../types/types';
+import { types, server } from '../types/types';
 import { useRequest } from '../../hooks/useRequest';
 
 // eslint-disable-next-line react-hooks/rules-of-hooks
 const { post } = useRequest();
 
 export const loadProfileData = (id) => async dispatch => {
-  let URL = `${request.PATH}profile/show`;
+  let URL = `${server.PATH}profile/show`;
   const formData = new FormData();
   formData.set('id', id)
 

@@ -37,10 +37,6 @@ const Settings = () => {
 
     // const [error, setError] = useState('');
 
-    const init = () => {
-        setVisibility(dataProfile[0].visibility)
-    }
-
     const handleSubmit = (e) => {
         e.preventDefault();
 
@@ -72,7 +68,8 @@ const Settings = () => {
 
     useEffect(() => {
         dataProfile &&
-        dataProfile.length > 0 && init()
+        dataProfile.length > 0 &&
+            setVisibility(dataProfile[0].visibility)
     }, [dataProfile]);
 
     return (
@@ -128,52 +125,50 @@ const Settings = () => {
                                     <div className={styles.title}>{translate('section_description_password')}:</div>
                                 </div>
                                 <div className={styles.body}>
-                                    <div className={styles.wrap}>
-                                        <div className="row">
-                                            {/*{*/}
-                                            {/*    error &&*/}
-                                            {/*    <div className={classes("col", "col-12", "col-padding-vertical")}>*/}
-                                            {/*        <div className={styles.error}>*/}
-                                            {/*            {error}*/}
-                                            {/*        </div>*/}
-                                            {/*    </div>*/}
-                                            {/*}*/}
-                                            <div className={classes("col", "col-12", "col-lg-4", "col-padding-vertical")}>
-                                                <p className={styles.label}>{translate('profile_current_password')} <span>*</span></p>
-                                                <Password
-                                                    data={currentPassword}
-                                                    action={setCurrentPassword}
-                                                    placeholder={false}
-                                                    required={false}
-                                                />
-                                            </div>
-                                            <div className={classes("col", "col-12", "col-lg-4", "col-padding-vertical")}>
-                                                <p className={styles.label}>{translate('profile_new_password')} <span>*</span></p>
-                                                <Password
-                                                    data={newPassword}
-                                                    action={setNewPassword}
-                                                    placeholder={false}
-                                                    required={false}
-                                                />
-                                            </div>
-                                            <div className={classes("col", "col-12", "col-lg-4", "col-padding-vertical")}>
-                                                <p className={styles.label}>{translate('profile_repeat_password')} <span>*</span></p>
-                                                <Password
-                                                    data={repeatPassword}
-                                                    action={setRepeatPassword}
-                                                    placeholder={false}
-                                                    required={false}
-                                                />
-                                            </div>
-                                            <div className={classes("col", "col-12", "col-lg-4", "col-padding-vertical")}>
-                                                <GeneratePassword />
-                                            </div>
-                                            <div className={classes("col", "col-12", "col-padding-vertical")}>
-                                                <Button
-                                                    type={"submit"}
-                                                    placeholder={translate('profile_button_save_settings')}
-                                                />
-                                            </div>
+                                    <div className="row">
+                                        {/*{*/}
+                                        {/*    error &&*/}
+                                        {/*    <div className={classes("col", "col-12", "col-padding-vertical")}>*/}
+                                        {/*        <div className={styles.error}>*/}
+                                        {/*            {error}*/}
+                                        {/*        </div>*/}
+                                        {/*    </div>*/}
+                                        {/*}*/}
+                                        <div className={classes("col", "col-12", "col-lg-4", "col-padding-vertical")}>
+                                            <p className={styles.label}>{translate('profile_current_password')} <span>*</span></p>
+                                            <Password
+                                                data={currentPassword}
+                                                action={setCurrentPassword}
+                                                placeholder={false}
+                                                required={false}
+                                            />
+                                        </div>
+                                        <div className={classes("col", "col-12", "col-lg-4", "col-padding-vertical")}>
+                                            <p className={styles.label}>{translate('profile_new_password')} <span>*</span></p>
+                                            <Password
+                                                data={newPassword}
+                                                action={setNewPassword}
+                                                placeholder={false}
+                                                required={false}
+                                            />
+                                        </div>
+                                        <div className={classes("col", "col-12", "col-lg-4", "col-padding-vertical")}>
+                                            <p className={styles.label}>{translate('profile_repeat_password')} <span>*</span></p>
+                                            <Password
+                                                data={repeatPassword}
+                                                action={setRepeatPassword}
+                                                placeholder={false}
+                                                required={false}
+                                            />
+                                        </div>
+                                        <div className={classes("col", "col-12", "col-lg-4", "col-padding-vertical")}>
+                                            <GeneratePassword />
+                                        </div>
+                                        <div className={classes("col", "col-12", "col-padding-vertical")}>
+                                            <Button
+                                                type={"submit"}
+                                                placeholder={translate('profile_button_save_settings')}
+                                            />
                                         </div>
                                     </div>
                                 </div>

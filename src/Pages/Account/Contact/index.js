@@ -32,11 +32,6 @@ const Contact = () => {
     const [email, setEmail] = useState();
     const [phone, setPhone] = useState();
 
-    const init = () => {
-        setEmail(dataProfile[0].contact.email)
-        setPhone(dataProfile[0].contact.phone)
-    }
-
     const handleSubmit = (e) => {
         e.preventDefault();
 
@@ -53,7 +48,9 @@ const Contact = () => {
 
     useEffect(() => {
         dataProfile &&
-        dataProfile.length > 0 && init()
+        dataProfile.length > 0 &&
+            setEmail(dataProfile[0].contact.email)
+            setPhone(dataProfile[0].contact.phone)
     }, [dataProfile]);
 
     return (
@@ -88,34 +85,32 @@ const Contact = () => {
                                     <div className={styles.title}>{translate('section_description_contact')}:</div>
                                 </div>
                                 <div className={styles.body}>
-                                    <div className={styles.wrap}>
-                                        <div className="row">
-                                            <div className={classes("col", "col-12", "col-lg-6", "col-padding-vertical")}>
-                                                <p className={styles.label}>{translate('profile_email')} <span>*</span></p>
-                                                <Field
-                                                    type={"email"}
-                                                    required={true}
-                                                    placeholder={false}
-                                                    data={email || ''}
-                                                    action={setEmail}
-                                                />
-                                            </div>
-                                            <div className={classes("col", "col-12", "col-lg-6", "col-padding-vertical")}>
-                                                <p className={styles.label}>{translate('profile_phone')} <span>*</span></p>
-                                                <Field
-                                                    type={"text"}
-                                                    required={true}
-                                                    placeholder={false}
-                                                    data={phone || ''}
-                                                    action={setPhone}
-                                                />
-                                            </div>
-                                            <div className={classes("col", "col-12", "col-padding-vertical")}>
-                                                <Button
-                                                    type={"submit"}
-                                                    placeholder={translate('profile_button_save_settings')}
-                                                />
-                                            </div>
+                                    <div className="row">
+                                        <div className={classes("col", "col-12", "col-lg-6", "col-padding-vertical")}>
+                                            <p className={styles.label}>{translate('profile_email')} <span>*</span></p>
+                                            <Field
+                                                type={"email"}
+                                                required={true}
+                                                placeholder={false}
+                                                data={email || ''}
+                                                action={setEmail}
+                                            />
+                                        </div>
+                                        <div className={classes("col", "col-12", "col-lg-6", "col-padding-vertical")}>
+                                            <p className={styles.label}>{translate('profile_phone')} <span>*</span></p>
+                                            <Field
+                                                type={"text"}
+                                                required={true}
+                                                placeholder={false}
+                                                data={phone || ''}
+                                                action={setPhone}
+                                            />
+                                        </div>
+                                        <div className={classes("col", "col-12", "col-padding-vertical")}>
+                                            <Button
+                                                type={"submit"}
+                                                placeholder={translate('profile_button_save_settings')}
+                                            />
                                         </div>
                                     </div>
                                 </div>

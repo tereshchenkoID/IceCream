@@ -10,8 +10,8 @@ import {translate, translateString} from "../../../i18n/translate";
 
 import Button from "../../../Components/Button";
 import Radio from "../../../Components/Radio";
-import Breadcrumbs from "../../../Components/Breadcrumbs";
 import Loader from "../../../Components/Loader";
+import Breadcrumbs from "../../../Components/Breadcrumbs";
 
 import styles from './index.module.scss';
 
@@ -41,17 +41,6 @@ const Applicant = () => {
 
     const [language, setLanguage] = useState([]);
     const [skills, setSkills] = useState([]);
-
-    const init = () => {
-        setAccess(dataProfile[0].eu_allowed_person)
-        setVaccination(dataProfile[0].vaccinated)
-        setLanguage(dataProfile[0].language || [])
-        setSkills(dataProfile[0].skills || [])
-        setAvailable({
-            min: dataProfile[0].available[0],
-            max: dataProfile[0].available[1],
-        })
-    }
 
     const handleLanguage = (data) => {
         const a = [...language]
@@ -132,8 +121,8 @@ const Applicant = () => {
         const formData = new FormData(e.target);
 
         formData.set('type', '2')
-        formData.set('vaccination', vaccination)
         formData.set('access', access)
+        formData.set('vaccination', vaccination)
         formData.set('available_from', available.min)
         formData.set('available_to', available.max)
 
@@ -142,7 +131,15 @@ const Applicant = () => {
 
     useEffect(() => {
         dataProfile &&
-        dataProfile.length > 0 && init()
+        dataProfile.length > 0 &&
+            setAccess(dataProfile[0].eu_allowed_person)
+            setVaccination(dataProfile[0].vaccinated)
+            setLanguage(dataProfile[0].language || [])
+            setSkills(dataProfile[0].skills || [])
+            setAvailable({
+                min: dataProfile[0].available[0],
+                max: dataProfile[0].available[1],
+            })
     }, [dataProfile]);
 
     return (
