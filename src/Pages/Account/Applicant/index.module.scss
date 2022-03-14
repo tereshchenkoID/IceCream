@@ -10,11 +10,15 @@
   z-index: 3;
 }
 
+.wrapper,
+.form {
+  margin-bottom: 50px;
+}
+
 .wrapper {
   background-color: var(--color-white);
   box-shadow: var(--box-shadow-lg);
   border-radius: var(--default-border-radius);
-  margin-bottom: 50px;
 
   &:last-child {
     margin-bottom: 0;
@@ -27,6 +31,7 @@
 }
 
 .form {
+  position: relative;
 
   &.disabled {
     pointer-events: none;

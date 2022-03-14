@@ -127,7 +127,8 @@ const a = {
         'sort_label_driver': 'Driver license',
         'sort_alert_wrong_date': 'Invalid date',
 
-        'alert-empty': 'So far empty'
+        'alert-empty': 'So far empty',
+        'alert-authorization': 'Invalid email address or password'
     }
 }
 

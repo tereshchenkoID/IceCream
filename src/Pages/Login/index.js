@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import {useDispatch} from "react-redux";
 import {ReactTitle} from "react-meta-tags";
 
@@ -6,8 +6,8 @@ import classes from "classnames";
 
 import {translate, translateString} from "../../i18n/translate";
 
-import { setUserData } from "../../redux/actions/userActions";
 import { loadProfileData } from "../../redux/actions/profileActions";
+import { setUserData } from "../../redux/actions/userActions";
 
 import Button from "../../Components/Button";
 import Field from "../../Components/Field";
@@ -31,18 +31,10 @@ const Login = () => {
 
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
-    // const [error, setError] = useState('')
+    const [error, setError] = useState('')
 
     const handleSubmit = (e) => {
         e.preventDefault();
-
-        // if (email.length === 0) {
-        //     setError('Email is empty')
-        // }
-        //
-        // if (password.length === 0) {
-        //     setError('Password is empty')
-        // }
 
         if (email.length > 0 && password.length > 0) {
             const formData = new FormData(e.target);
@@ -60,16 +52,24 @@ const Login = () => {
                         dispatch(setUserData(1));
                         dispatch(loadProfileData(success[0].id))
 
-                        localStorage.setItem('user_role', '1');
-                        localStorage.setItem('user_id', success[0].id.toString());
+                        localStorage.setItem('user_role', '1')
+                        localStorage.setItem('user_id', success[0].id.toString())
+
+                        setError('')
                     }
-                    // else {
-                    //     setError('Wrong email or password')
-                    // }
+                    else {
+                        setError(translate("alert-authorization"))
+                    }
                 })
                 .catch(error => console.log("Error", error));
         }
     }
+
+    useEffect(() => {
+        return () => {
+            setError('');
+        }
+    }, []);
 
     return (
         <main>
@@ -86,13 +86,16 @@ const Login = () => {
                     <div className="container">
                         <form onSubmit={handleSubmit}>
                             <div className={styles.form}>
-                                {/*<div className={styles.wrap}>*/}
-                                {/*    <div className={styles.error}>{error}</div>*/}
-                                {/*</div>*/}
+                                {
+                                    error &&
+                                    <div className={styles.wrap}>
+                                        <div className={styles.error}>{error}</div>
+                                    </div>
+                                }
                                 <div className={styles.wrap}>
                                     <Field
                                         type={"email"}
-                                        required={false}
+                                        required={true}
                                         placeholder={'profile_email'}
                                         data={email || ''}
                                         action={setEmail}

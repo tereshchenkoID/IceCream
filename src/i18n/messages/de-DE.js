@@ -127,7 +127,8 @@ const a = {
         'sort_label_driver': 'Führerschein',
         'sort_alert_wrong_date': 'Ungültiges Datum',
 
-        'alert-empty': 'Bisher leer'
+        'alert-empty': 'Bisher leer',
+        'alert-authorization': 'Ungültige Emailadresse oder Passwort'
     }
 }
 

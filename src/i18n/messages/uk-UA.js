@@ -126,7 +126,8 @@ const a = {
         'sort_label_driver': 'Посвідчення водія',
         'sort_alert_wrong_date': 'Невірна дата',
 
-        'alert-empty': 'Поки що порожньо'
+        'alert-empty': 'Поки що порожньо',
+        'alert-authorization': 'Невірна електронна адреса чи пароль'
     }
 }
 

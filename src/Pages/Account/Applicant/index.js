@@ -4,6 +4,8 @@ import {useSelector} from "react-redux";
 
 import classes from "classnames";
 
+import request from "../_helpers/request";
+
 import {translate, translateString} from "../../../i18n/translate";
 
 import Button from "../../../Components/Button";
@@ -32,18 +34,19 @@ const Applicant = () => {
     const [loader, setLoader] = useState(false);
     const [access, setAccess] = useState();
     const [vaccination, setVaccination] = useState();
-    const [language, setLanguage] = useState([]);
-    const [skills, setSkills] = useState([]);
     const [available, setAvailable] = useState({
         min: '',
         max: ''
     });
 
+    const [language, setLanguage] = useState([]);
+    const [skills, setSkills] = useState([]);
+
     const init = () => {
         setAccess(dataProfile[0].eu_allowed_person)
         setVaccination(dataProfile[0].vaccinated)
-        setLanguage(dataProfile[0].language)
-        setSkills(dataProfile[0].skills)
+        setLanguage(dataProfile[0].language || [])
+        setSkills(dataProfile[0].skills || [])
         setAvailable({
             min: dataProfile[0].available[0],
             max: dataProfile[0].available[1],
@@ -73,6 +76,13 @@ const Applicant = () => {
         }
 
         setLanguage(a)
+
+        const formData = new FormData();
+
+        formData.set('type', '8')
+        formData.set('language', JSON.stringify(a))
+
+        request(formData, setLoader, false)
     }
 
     const handleSkill = (c_id, i_id) => {
@@ -104,6 +114,14 @@ const Applicant = () => {
         }
 
         setSkills(a)
+
+        const formData = new FormData();
+
+        formData.set('type', '9')
+        formData.set('skills', JSON.stringify(a))
+
+        request(formData, setLoader, false)
+
     }
 
     const handleSubmit = (e) => {
@@ -113,26 +131,13 @@ const Applicant = () => {
 
         const formData = new FormData(e.target);
 
-        formData.set('id', localStorage.getItem('user_id'))
         formData.set('type', '2')
-        formData.set('vaccinated', vaccination)
+        formData.set('vaccination', vaccination)
         formData.set('access', access)
         formData.set('available_from', available.min)
         formData.set('available_to', available.max)
-        // formData.set('skills', skills.join())
-        // formData.set('language', language.join())
 
-
-        fetch('http://localhost:8888/user/update', {
-            method: 'POST',
-            body: formData
-        })
-            .then(success => {
-                setTimeout(() => {
-                    success.ok && setLoader(false)
-                }, 3000);
-            })
-            .catch(error => console.log("Error", error));
+        request(formData, setLoader, true)
     }
 
     useEffect(() => {
@@ -143,12 +148,6 @@ const Applicant = () => {
     return (
         <main>
             <ReactTitle title={`Global Workers | ${translateString('menu_link_12')}`} />
-            {
-                loader &&
-                <div className={styles.loader}>
-                    <Loader />
-                </div>
-            }
             <section className={classes("section", "alt")}>
                 <div className="container-fluid">
                     <div className="container">
@@ -166,6 +165,12 @@ const Applicant = () => {
                             )}
                             onSubmit={handleSubmit}
                         >
+                            {
+                                loader &&
+                                <div className={styles.loader}>
+                                    <Loader />
+                                </div>
+                            }
                             <div className={styles.wrapper}>
                                 <div className={styles.head}>
                                     <div className={styles.title}>{translate('section_description_work')}:</div>
@@ -241,108 +246,109 @@ const Applicant = () => {
                                                     )
                                                 }
                                             </div>
+                                            <div className={classes("col", "col-12", "col-padding-vertical")}>
+                                                <Button
+                                                    type={"submit"}
+                                                    placeholder={translate('profile_button_save_settings')}
+                                                />
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-
-                            <div className={styles.wrapper}>
-                                <div className={styles.head}>
-                                    <div className={styles.title}>{translate('section_description_skills')}:</div>
-                                </div>
-                                <div className={styles.body}>
-                                    <div className="row">
-                                        {
-                                            dataSetting.job.map((c_item, c_idx) =>
-                                                c_idx !== 0 &&
-                                                <div
-                                                    key={c_idx}
-                                                    className={classes("col", "col-12", "col-lg-6", "col-padding-vertical")}
-                                                >
-                                                    <p className={styles.label}>{c_item[lang]}</p>
-                                                    <div className={styles.list}>
-                                                        {
-                                                            c_item.list &&
-                                                            c_item.list.map((i_item, i_idx) =>
-                                                                <div
-                                                                    key={i_idx}
-                                                                    className={classes(
-                                                                        styles.item,
-                                                                        skills.find((e) => {
-                                                                            return e.id === c_idx.toString() && e.list.find((i) => {
-                                                                                return i === i_idx.toString()
-                                                                            })
-                                                                        }) && styles.active
-                                                                    )}
-                                                                    onClick={() => {
-                                                                        handleSkill(
-                                                                            c_idx.toString(),
-                                                                            i_idx.toString()
-                                                                        )
-                                                                    }}
-                                                                >
-                                                                    <span>{i_item[lang]}</span>
-                                                                </div>
-                                                            )
-                                                        }
-                                                    </div>
-                                                </div>
-                                            )
-                                        }
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div className={styles.wrapper}>
-                                <div className={styles.head}>
-                                    <div className={styles.title}>{translate('section_description_language')}:</div>
-                                </div>
-                                <div className={styles.body}>
-                                    <div className="row">
-                                        {
-                                            dataSetting.language.list.map((c_item, c_idx) =>
-                                                <div
-                                                    key={c_idx}
-                                                    className={classes("col", "col-12", "col-lg-6", "col-padding-vertical")}
-                                                >
-                                                    <p className={styles.label}>{c_item[lang]}</p>
-                                                    <div className={styles.list}>
-                                                        {
-                                                            dataSetting.language.level.map((i_item, i_idx) =>
-                                                                <div
-                                                                    key={i_idx}
-                                                                    className={classes(
-                                                                        styles.item,
-                                                                        language.find((e) => {
-                                                                            return e.lang === c_idx.toString() && e.level === i_idx.toString()
-                                                                        }) && styles.active
-                                                                    )}
-                                                                    onClick={() => {
-                                                                        handleLanguage(
-                                                                            {
-                                                                                lang: c_idx.toString(),
-                                                                                level: i_idx.toString()
-                                                                            }
-                                                                        )
-                                                                    }}
-                                                                >
-                                                                    <span>{i_item[lang]}</span>
-                                                                </div>
-                                                            )
-                                                        }
-                                                    </div>
-                                                </div>
-                                            )
-                                        }
-                                    </div>
-                                </div>
-                            </div>
-
-                            <Button
-                                type={"submit"}
-                                placeholder={translate('profile_button_save_settings')}
-                            />
                         </form>
+
+                        <div className={styles.wrapper}>
+                            <div className={styles.head}>
+                                <div className={styles.title}>{translate('section_description_language')}:</div>
+                            </div>
+                            <div className={styles.body}>
+                                <div className="row">
+                                    {
+                                        dataSetting.language.list.map((c_item, c_idx) =>
+                                            <div
+                                                key={c_idx}
+                                                className={classes("col", "col-12", "col-lg-6", "col-padding-vertical")}
+                                            >
+                                                <p className={styles.label}>{c_item[lang]}</p>
+                                                <div className={styles.list}>
+                                                    {
+                                                        dataSetting.language.level.map((i_item, i_idx) =>
+                                                            <div
+                                                                key={i_idx}
+                                                                className={classes(
+                                                                    styles.item,
+                                                                    language && language.find((e) => {
+                                                                        return e.lang === c_idx.toString() && e.level === i_idx.toString()
+                                                                    }) && styles.active
+                                                                )}
+                                                                onClick={() => {
+                                                                    handleLanguage(
+                                                                        {
+                                                                            lang: c_idx.toString(),
+                                                                            level: i_idx.toString()
+                                                                        }
+                                                                    )
+                                                                }}
+                                                            >
+                                                                <span>{i_item[lang]}</span>
+                                                            </div>
+                                                        )
+                                                    }
+                                                </div>
+                                            </div>
+                                        )
+                                    }
+                                </div>
+                            </div>
+                        </div>
+
+                        <div className={styles.wrapper}>
+                            <div className={styles.head}>
+                                <div className={styles.title}>{translate('section_description_skills')}:</div>
+                            </div>
+                            <div className={styles.body}>
+                                <div className="row">
+                                    {
+                                        dataSetting.job.map((c_item, c_idx) =>
+                                            c_idx !== 0 &&
+                                            <div
+                                                key={c_idx}
+                                                className={classes("col", "col-12", "col-lg-6", "col-padding-vertical")}
+                                            >
+                                                <p className={styles.label}>{c_item[lang]}</p>
+                                                <div className={styles.list}>
+                                                    {
+                                                        c_item.list &&
+                                                        c_item.list.map((i_item, i_idx) =>
+                                                            <div
+                                                                key={i_idx}
+                                                                className={classes(
+                                                                    styles.item,
+                                                                    skills.find((e) => {
+                                                                        return e.id === c_idx.toString() && e.list.find((i) => {
+                                                                            return i === i_idx.toString()
+                                                                        })
+                                                                    }) && styles.active
+                                                                )}
+                                                                onClick={() => {
+                                                                    handleSkill(
+                                                                        c_idx.toString(),
+                                                                        i_idx.toString()
+                                                                    )
+                                                                }}
+                                                            >
+                                                                <span>{i_item[lang]}</span>
+                                                            </div>
+                                                        )
+                                                    }
+                                                </div>
+                                            </div>
+                                        )
+                                    }
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </section>

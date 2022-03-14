@@ -4,6 +4,8 @@ import {useSelector} from "react-redux";
 
 import classes from "classnames";
 
+import request from "../_helpers/request";
+
 import {translate, translateString} from "../../../i18n/translate";
 
 import GeneratePassword from "../../../Modules/GeneratePassword";
@@ -33,23 +35,10 @@ const Settings = () => {
     const [repeatPassword, setRepeatPassword] = useState();
     const [visibility, setVisibility] = useState('1');
 
-    const [error, setError] = useState('');
+    // const [error, setError] = useState('');
 
     const init = () => {
         setVisibility(dataProfile[0].visibility)
-    }
-
-    const request = (formData) => {
-        fetch('http://localhost:8888/user/update', {
-            method: 'POST',
-            body: formData
-        })
-            .then(success => {
-                setTimeout(() => {
-                    success.ok && setLoader(false)
-                }, 3000);
-            })
-            .catch(error => console.log("Error", error));
     }
 
     const handleSubmit = (e) => {
@@ -59,16 +48,13 @@ const Settings = () => {
 
         const formData = new FormData(e.target);
 
-        formData.set('id', localStorage.getItem('user_id'))
         formData.set('type', '4')
         formData.set('password', newPassword)
 
-        request(formData)
+        request(formData, setLoader, true)
     }
 
     const handleVisibility = () => {
-        setLoader(true)
-
         visibility === '1'
         ?
             setVisibility('0')
@@ -78,11 +64,10 @@ const Settings = () => {
 
         const formData = new FormData();
 
-        formData.set('id', localStorage.getItem('user_id'))
         formData.set('type', '5')
         formData.set('visibility', visibility === '1' ? '0' : '1')
 
-        request(formData)
+        request(formData, setLoader, false)
     }
 
     useEffect(() => {
@@ -145,14 +130,14 @@ const Settings = () => {
                                 <div className={styles.body}>
                                     <div className={styles.wrap}>
                                         <div className="row">
-                                            {
-                                                error &&
-                                                <div className={classes("col", "col-12", "col-padding-vertical")}>
-                                                    <div className={styles.error}>
-                                                        {error}
-                                                    </div>
-                                                </div>
-                                            }
+                                            {/*{*/}
+                                            {/*    error &&*/}
+                                            {/*    <div className={classes("col", "col-12", "col-padding-vertical")}>*/}
+                                            {/*        <div className={styles.error}>*/}
+                                            {/*            {error}*/}
+                                            {/*        </div>*/}
+                                            {/*    </div>*/}
+                                            {/*}*/}
                                             <div className={classes("col", "col-12", "col-lg-4", "col-padding-vertical")}>
                                                 <p className={styles.label}>{translate('profile_current_password')} <span>*</span></p>
                                                 <Password
@@ -183,15 +168,16 @@ const Settings = () => {
                                             <div className={classes("col", "col-12", "col-lg-4", "col-padding-vertical")}>
                                                 <GeneratePassword />
                                             </div>
+                                            <div className={classes("col", "col-12", "col-padding-vertical")}>
+                                                <Button
+                                                    type={"submit"}
+                                                    placeholder={translate('profile_button_save_settings')}
+                                                />
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-
-                            <Button
-                                type={"submit"}
-                                placeholder={translate('profile_button_save_settings')}
-                            />
                         </form>
                     </div>
                 </div>

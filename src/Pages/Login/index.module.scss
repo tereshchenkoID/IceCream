@@ -17,11 +17,11 @@
   }
 }
 
-//.error {
-//  border: 1px solid var(--color-red);
-//  padding: 5px 10px;
-//  text-align: center;
-//  color: var(--color-red);
-//  background-color: rgba(#f00, 0.2);
-//  border-radius: var(--default-border-radius);
-//}
+.error {
+  border: 1px solid var(--color-red);
+  padding: 5px 10px;
+  text-align: center;
+  color: var(--color-red);
+  background-color: rgba(#f00, 0.2);
+  border-radius: var(--default-border-radius);
+}

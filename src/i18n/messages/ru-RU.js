@@ -127,7 +127,8 @@ const a = {
         'sort_label_driver': 'Водильское удостоверение',
         'sort_alert_wrong_date': 'Неверная дата',
 
-        'alert-empty': 'Пока пусто'
+        'alert-empty': 'Пока пусто',
+        'alert-authorization': 'Неверный электронный адрес или пароль'
     }
 }
 

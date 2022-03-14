@@ -10,11 +10,15 @@
   z-index: 3;
 }
 
+.form,
+.wrapper {
+  margin-bottom: 50px;
+}
+
 .wrapper {
   background-color: var(--color-white);
   box-shadow: var(--box-shadow-lg);
   border-radius: var(--default-border-radius);
-  margin-bottom: 50px;
 
   &:last-child {
     margin-bottom: 0;
@@ -27,6 +31,7 @@
 }
 
 .form {
+  position: relative;
 
   &.disabled {
     pointer-events: none;
@@ -50,6 +55,33 @@
 
   &:last-child {
     margin-bottom: 0;
+  }
+}
+
+.photo {
+  @include size(100px);
+
+  position: relative;
+  border-radius: 50%;
+  overflow: hidden;
+  background-color: var(--color-secondary);
+  border: 2px solid var(--color-secondary);
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+
+  .img {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+  }
+
+  .file {
+    @include size(100%);
+
+    position: relative;
+    opacity: 0;
+    z-index: 2;
   }
 }
 

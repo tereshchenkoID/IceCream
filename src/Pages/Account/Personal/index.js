@@ -4,22 +4,25 @@ import {useSelector} from "react-redux";
 
 import classes from "classnames";
 
+import request from "../_helpers/request";
+
 import {translate, translateString} from "../../../i18n/translate";
 
 import Radio from "../../../Components/Radio";
 import Field from "../../../Components/Field";
-import Breadcrumbs from "../../../Components/Breadcrumbs";
 import Button from "../../../Components/Button";
 import Loader from "../../../Components/Loader";
+import Breadcrumbs from "../../../Components/Breadcrumbs";
 
 import styles from './index.module.scss';
 
 const actionList = (data, action, id) => {
-    const result = [...data];
+    const result = [...data]
     const find = result.find((e) => {return e === id})
     find ? result.splice(result.indexOf(find), 1) : result.push(id)
-
     action(result)
+
+    return result
 }
 
 const Personal = () => {
@@ -85,7 +88,6 @@ const Personal = () => {
 
         const formData = new FormData(e.target);
 
-        formData.set('id', localStorage.getItem('user_id'))
         formData.set('type', '1')
         formData.set('name', name)
         formData.set('surname', surname)
@@ -96,22 +98,29 @@ const Personal = () => {
         formData.set('family', family)
         formData.set('weight', weight.toString())
         formData.set('height', height.toString())
-        formData.set('hobbies', hobbies.join())
-        formData.set('driver', driver.join())
 
-
-        fetch('http://localhost:8888/user/update', {
-            method: 'POST',
-            body: formData
-        })
-            .then(success => {
-                setTimeout(() => {
-                    success.ok && setLoader(false)
-                }, 3000);
-            })
-            .catch(error => console.log("Error", error));
+        request(formData, setLoader, true)
     }
 
+    const handleDriver = (item) => {
+        const formData = new FormData();
+        const data = actionList(driver, setDriver, item.id);
+
+        formData.set('type', '6')
+        formData.set('driver', data ? data.join() : null)
+
+        request(formData, setLoader, false)
+    }
+
+    const handleHobbies = (item) => {
+        const formData = new FormData();
+        const data = actionList(hobbies, setHobbies, item.id);
+
+        formData.set('type', '7')
+        formData.set('hobbies', data ? data.join() : null)
+
+        request(formData, setLoader, false)
+    }
 
     useEffect(() => {
         dataProfile &&
@@ -121,12 +130,6 @@ const Personal = () => {
     return (
         <main>
             <ReactTitle title={`Global Workers | ${translateString('menu_link_11')}`} />
-            {
-                loader &&
-                <div className={styles.loader}>
-                    <Loader />
-                </div>
-            }
             <section className={classes("section", "alt")}>
                 <div className="container-fluid">
                     <div className="container">
@@ -144,6 +147,12 @@ const Personal = () => {
                             )}
                             onSubmit={handleSubmit}
                         >
+                            {
+                                loader &&
+                                <div className={styles.loader}>
+                                    <Loader />
+                                </div>
+                            }
                             <div className={styles.wrapper}>
                                 <div className={styles.head}>
                                     <div className={styles.title}>{translate('section_description_general')}:</div>
@@ -151,6 +160,20 @@ const Personal = () => {
                                 <div className={styles.body}>
                                     <div className={styles.wrap}>
                                         <div className="row">
+                                            {/*<div className={classes("col", "col-12", "col-padding-vertical")}>*/}
+                                            {/*    <div className={styles.photo}>*/}
+                                            {/*        <input*/}
+                                            {/*            type={"file"}*/}
+                                            {/*            accept={"image/*"}*/}
+                                            {/*            className={styles.file}*/}
+                                            {/*        />*/}
+                                            {/*        <img*/}
+                                            {/*            src={`https://global-workers.eu/img/profile/${dataProfile[0].photo}`}*/}
+                                            {/*            alt=""*/}
+                                            {/*            className={styles.img}*/}
+                                            {/*        />*/}
+                                            {/*    </div>*/}
+                                            {/*</div>*/}
                                             <div className={classes("col", "col-12", "col-lg-6", "col-padding-vertical")}>
                                                 <p className={styles.label}>{translate('profile_name')} <span>*</span></p>
                                                 <Field
@@ -318,70 +341,71 @@ const Personal = () => {
                                                     action={setHeight}
                                                 />
                                             </div>
+                                            <div className={classes("col", "col-12", "col-padding-vertical")}>
+                                                <Button
+                                                    type={"submit"}
+                                                    placeholder={translate('profile_button_save_settings')}
+                                                />
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-
-                            <div className={styles.wrapper}>
-                                <div className={styles.head}>
-                                    <div className={styles.title}>{translate('section_description_driver')}:</div>
-                                </div>
-                                <div className={styles.body}>
-                                    <div className={styles.list}>
-                                        {
-                                            dataSetting.driver.map((item, idx) =>
-                                                <button
-                                                    key={idx}
-                                                    type={"button"}
-                                                    onClick={() => {
-                                                        actionList(driver, setDriver, item.id)
-                                                    }}
-                                                    className={classes(
-                                                        styles.item,
-                                                        driver.find((e) => {return e === item.id}) && styles.active
-                                                    )}
-                                                >
-                                                    <span>{item.name}</span>
-                                                </button>
-                                            )
-                                        }
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div className={styles.wrapper}>
-                                <div className={styles.head}>
-                                    <div className={styles.title}>{translate('section_description_about')}:</div>
-                                </div>
-                                <div className={styles.body}>
-                                    <div className={styles.list}>
-                                        {
-                                            dataSetting.about.map((item, idx) =>
-                                                <button
-                                                    key={idx}
-                                                    type={"button"}
-                                                    onClick={() => {
-                                                        actionList(hobbies, setHobbies, item.id)
-                                                    }}
-                                                    className={classes(
-                                                        styles.item,
-                                                        hobbies.find((e) => {return e === item.id}) && styles.active
-                                                    )}
-                                                >
-                                                    <span>{item[lang]}</span>
-                                                </button>
-                                            )
-                                        }
-                                    </div>
-                                </div>
-                            </div>
-
-                            <Button
-                                type={"submit"}
-                                placeholder={translate('profile_button_save_settings')}
-                            />
                         </form>
+
+                        <div className={styles.wrapper}>
+                            <div className={styles.head}>
+                                <div className={styles.title}>{translate('section_description_driver')}:</div>
+                            </div>
+                            <div className={styles.body}>
+                                <div className={styles.list}>
+                                    {
+                                        dataSetting.driver.map((item, idx) =>
+                                            <button
+                                                key={idx}
+                                                type={"button"}
+                                                onClick={() => {
+                                                    handleDriver(item)
+                                                }}
+                                                className={classes(
+                                                    styles.item,
+                                                    driver.find((e) => {return e === item.id}) && styles.active
+                                                )}
+                                            >
+                                                <span>{item.name}</span>
+                                            </button>
+                                        )
+                                    }
+                                </div>
+                            </div>
+                        </div>
+
+                        <div className={styles.wrapper}>
+                            <div className={styles.head}>
+                                <div className={styles.title}>{translate('section_description_about')}:</div>
+                            </div>
+                            <div className={styles.body}>
+                                <div className={styles.list}>
+                                    {
+                                        dataSetting.about.map((item, idx) =>
+                                            <button
+                                                key={idx}
+                                                type={"button"}
+                                                onClick={() => {
+                                                    handleHobbies(item)
+                                                }}
+                                                className={classes(
+                                                    styles.item,
+                                                    hobbies.find((e) => {return e === item.id}) && styles.active
+                                                )}
+                                            >
+                                                <span>{item[lang]}</span>
+                                            </button>
+                                        )
+                                    }
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </section>

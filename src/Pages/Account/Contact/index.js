@@ -4,6 +4,8 @@ import {useSelector} from "react-redux";
 
 import classes from "classnames";
 
+import request from "../_helpers/request";
+
 import {translate, translateString} from "../../../i18n/translate";
 
 import Breadcrumbs from "../../../Components/Breadcrumbs";
@@ -42,21 +44,11 @@ const Contact = () => {
 
         const formData = new FormData(e.target);
 
-        formData.set('id', localStorage.getItem('user_id'))
         formData.set('type', '3')
         formData.set('email', email)
         formData.set('phone', phone)
 
-        fetch('http://localhost:8888/user/update', {
-            method: 'POST',
-            body: formData
-        })
-            .then(success => {
-                setTimeout(() => {
-                    success.ok && setLoader(false)
-                }, 3000);
-            })
-            .catch(error => console.log("Error", error));
+        request(formData, setLoader, true)
     }
 
     useEffect(() => {
@@ -118,15 +110,16 @@ const Contact = () => {
                                                     action={setPhone}
                                                 />
                                             </div>
+                                            <div className={classes("col", "col-12", "col-padding-vertical")}>
+                                                <Button
+                                                    type={"submit"}
+                                                    placeholder={translate('profile_button_save_settings')}
+                                                />
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-
-                            <Button
-                                type={"submit"}
-                                placeholder={translate('profile_button_save_settings')}
-                            />
                         </form>
                     </div>
                 </div>
