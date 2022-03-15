@@ -150,20 +150,20 @@ const Personal = () => {
                                 <div className={styles.body}>
                                     <div className={styles.wrap}>
                                         <div className="row">
-                                            {/*<div className={classes("col", "col-12", "col-padding-vertical")}>*/}
-                                            {/*    <div className={styles.photo}>*/}
-                                            {/*        <input*/}
-                                            {/*            type={"file"}*/}
-                                            {/*            accept={"image/*"}*/}
-                                            {/*            className={styles.file}*/}
-                                            {/*        />*/}
-                                            {/*        <img*/}
-                                            {/*            src={`https://global-workers.eu/img/profile/${dataProfile[0].photo}`}*/}
-                                            {/*            alt=""*/}
-                                            {/*            className={styles.img}*/}
-                                            {/*        />*/}
-                                            {/*    </div>*/}
-                                            {/*</div>*/}
+                                            <div className={classes("col", "col-12", "col-padding-vertical")}>
+                                                <div className={styles.photo}>
+                                                    <input
+                                                        type={"file"}
+                                                        accept={"image/*"}
+                                                        className={styles.file}
+                                                    />
+                                                    <img
+                                                        src={`https://global-workers.eu/img/profile/${dataProfile[0].photo}`}
+                                                        alt=""
+                                                        className={styles.img}
+                                                    />
+                                                </div>
+                                            </div>
                                             <div className={classes("col", "col-12", "col-lg-6", "col-padding-vertical")}>
                                                 <p className={styles.label}>{translate('profile_name')} <span>*</span></p>
                                                 <Field

@@ -128,7 +128,11 @@ const a = {
         'sort_alert_wrong_date': 'Ungültiges Datum',
 
         'alert-empty': 'Bisher leer',
-        'alert-authorization': 'Ungültige Emailadresse oder Passwort'
+        'alert-authorization': 'Ungültige Emailadresse oder Passwort',
+        'alert-wrong-current-password': 'Falsches aktuelles Passwort',
+        'alert-length-password': 'Die Passwortlänge muss > 6 Zeichen sein',
+        'alert-match-password': 'Passwörter stimmen nicht überein',
+        'alert-success-password': 'das Passwort wurde erfolgreich geändert'
     }
 }
 

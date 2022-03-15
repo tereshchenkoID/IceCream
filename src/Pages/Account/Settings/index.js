@@ -4,6 +4,8 @@ import {useSelector} from "react-redux";
 
 import classes from "classnames";
 
+import {server} from "../../../redux/types/types";
+
 import request from "../_helpers/request";
 
 import {translate, translateString} from "../../../i18n/translate";
@@ -12,7 +14,6 @@ import GeneratePassword from "../../../Modules/GeneratePassword";
 import Breadcrumbs from "../../../Components/Breadcrumbs";
 import Password from "../../../Components/Password";
 import Button from "../../../Components/Button";
-import Loader from "../../../Components/Loader";
 
 import styles from './index.module.scss';
 
@@ -30,24 +31,61 @@ const Settings = () => {
     ]
 
     const [loader, setLoader] = useState(false);
-    const [currentPassword, setCurrentPassword] = useState();
-    const [newPassword, setNewPassword] = useState();
-    const [repeatPassword, setRepeatPassword] = useState();
+    const [currentPassword, setCurrentPassword] = useState('');
+    const [newPassword, setNewPassword] = useState('');
+    const [repeatPassword, setRepeatPassword] = useState('');
     const [visibility, setVisibility] = useState('1');
 
-    // const [error, setError] = useState('');
+    const [error, setError] = useState('');
+    const [success, setSuccess] = useState('');
 
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        setLoader(true)
-
         const formData = new FormData(e.target);
 
         formData.set('type', '4')
-        formData.set('password', newPassword)
+        formData.set('id', localStorage.getItem('user_id'))
+        formData.set('new_password', newPassword)
+        formData.set('current_password', currentPassword)
 
-        request(formData, setLoader, true)
+        if (newPassword === repeatPassword) {
+
+            if (newPassword.length > 6 && repeatPassword.length > 6){
+                fetch(`${server.PATH}user/update`, {
+                    method: 'POST',
+                    body: formData
+                })
+                    .then(success => success.json())
+                    .then(success => {
+                        if (success === 1) {
+                            setLoader(true)
+
+                            setSuccess(translate('alert-success-password'))
+
+                            setError('')
+                            setNewPassword('')
+                            setCurrentPassword('')
+                            setRepeatPassword('')
+
+                            setTimeout(() => {
+                                setLoader(false)
+                                setSuccess('')
+                            }, 3000);
+
+                        } else {
+                            setError(translate('alert-wrong-current-password'))
+                        }
+                    })
+                    .catch(error => console.log("Error", error));
+            }
+            else {
+                setError(translate('alert-length-password'))
+            }
+        }
+        else {
+            setError(translate('alert-match-password'))
+        }
     }
 
     const handleVisibility = () => {
@@ -75,12 +113,6 @@ const Settings = () => {
     return (
         <main>
             <ReactTitle title={`Global Workers | ${translateString('menu_link_13')}`} />
-            {
-                loader &&
-                <div className={styles.loader}>
-                    <Loader />
-                </div>
-            }
             <section className={classes("section", "alt")}>
                 <div className="container-fluid">
                     <div className="container">
@@ -126,14 +158,22 @@ const Settings = () => {
                                 </div>
                                 <div className={styles.body}>
                                     <div className="row">
-                                        {/*{*/}
-                                        {/*    error &&*/}
-                                        {/*    <div className={classes("col", "col-12", "col-padding-vertical")}>*/}
-                                        {/*        <div className={styles.error}>*/}
-                                        {/*            {error}*/}
-                                        {/*        </div>*/}
-                                        {/*    </div>*/}
-                                        {/*}*/}
+                                        {
+                                            error &&
+                                            <div className={classes("col", "col-12", "col-padding-vertical")}>
+                                                <div className={classes(styles.alert, styles.error)}>
+                                                    {error}
+                                                </div>
+                                            </div>
+                                        }
+                                        {
+                                            success &&
+                                            <div className={classes("col", "col-12", "col-padding-vertical")}>
+                                                <div className={classes(styles.alert, styles.success)}>
+                                                    {success}
+                                                </div>
+                                            </div>
+                                        }
                                         <div className={classes("col", "col-12", "col-lg-4", "col-padding-vertical")}>
                                             <p className={styles.label}>{translate('profile_current_password')} <span>*</span></p>
                                             <Password

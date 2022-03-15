@@ -128,7 +128,11 @@ const a = {
         'sort_alert_wrong_date': 'Неверная дата',
 
         'alert-empty': 'Пока пусто',
-        'alert-authorization': 'Неверный электронный адрес или пароль'
+        'alert-authorization': 'Неверный электронный адрес или пароль',
+        'alert-wrong-current-password': 'Неверный текущий пароль',
+        'alert-length-password': 'Длинна пароля должна быть > 6 символов',
+        'alert-match-password': 'Пароли не совпадают',
+        'alert-success-password': 'Пароль успешно изменен'
     }
 }
 

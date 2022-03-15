@@ -127,7 +127,11 @@ const a = {
         'sort_alert_wrong_date': 'Невірна дата',
 
         'alert-empty': 'Поки що порожньо',
-        'alert-authorization': 'Невірна електронна адреса чи пароль'
+        'alert-authorization': 'Невірна електронна адреса чи пароль',
+        'alert-wrong-current-password': 'Невірний поточний пароль',
+        'alert-length-password': 'Довжина паролю має бути > 6 символів',
+        'alert-match-password': 'Паролі не співпадають',
+        'alert-success-password': 'Пароль успішно змінено'
     }
 }
 
