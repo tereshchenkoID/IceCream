@@ -6,32 +6,30 @@ export const useRequest = () => {
       const req = await axios({
         method: 'get',
         url: url,
-        headers: {
-          'Content-Type': 'application/json',
-        },
+        headers: headers
       })
 
-      const data = await req.data
+      // const data = await req.data
 
-      return data
+      return await req.data
     } catch (e) {
-      return new Error('Some propblem')
+      return e.response.status
     }
   }
 
-  const post = async (url, data) => {
+  const post = async (url, data, headers) => {
     try {
       const req = await axios({
         method: 'post',
         url: url,
-        data: data
+        data: data,
+        headers: headers
       })
+      // const res = await req.data
 
-      const res = await req.data
-
-      return res
+      return await req.data
     } catch (e) {
-      return new Error('Some problem', e)
+      return e.response.status
     }
   }
 

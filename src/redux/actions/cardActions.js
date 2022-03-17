@@ -6,8 +6,14 @@ const { get } = useRequest();
 
 export const loadCardData = () => async dispatch => {
   let URL = `${server.PATH}profile/show`;
+
   try {
-    const data = await get(URL);
+    const data = await get(
+        URL,
+        {
+          'Content-Type': 'application/json'
+        }
+    );
 
     dispatch({
       type: types.SET_CARD_DATA,

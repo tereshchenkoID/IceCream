@@ -2,6 +2,8 @@ import React, {useState, useEffect} from "react";
 import {useDispatch} from "react-redux";
 import {ReactTitle} from "react-meta-tags";
 
+import { server } from '../../redux/types/types';
+
 import classes from "classnames";
 
 import {translate, translateString} from "../../i18n/translate";
@@ -42,18 +44,19 @@ const Login = () => {
             formData.set('email', email)
             formData.set('password', password)
 
-            fetch('http://localhost:8888/login', {
+            fetch(`${server.PATH}login`, {
                 method: 'POST',
                 body: formData
             })
                 .then(success => success.json())
                 .then(success => {
-                    if(success && success.length > 0) {
-                        dispatch(setUserData(1));
-                        dispatch(loadProfileData(success[0].id))
-
+                    if(success && success.token) {
                         localStorage.setItem('user_role', '1')
-                        localStorage.setItem('user_id', success[0].id.toString())
+                        localStorage.setItem('user_id', success.id.toString())
+                        localStorage.setItem('user_token', success.token.toString())
+
+                        dispatch(loadProfileData())
+                        dispatch(setUserData(1))
 
                         setError('')
                     }

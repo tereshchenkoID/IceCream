@@ -7,7 +7,11 @@ const { get } = useRequest();
 export const loadSettingData = () => async dispatch => {
   let URL = `${server.PATH}settings/show`;
   try {
-    const data = await get(URL);
+    const data = await get(URL,
+        {
+            'Content-Type': 'application/json'
+        }
+    );
 
     dispatch({
       type: types.SET_SETTING_DATA,

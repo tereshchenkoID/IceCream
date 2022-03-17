@@ -8,11 +8,10 @@ const Account = () => {
 
     return (
         dataProfile &&
-        dataProfile.length > 0 &&
         <div className={styles.block}>
             <div className={styles.photo}>
                 <img
-                    src={dataProfile[0].photo ? `/img/profile/${dataProfile[0].photo}` : '/img/no-photo.webp'}
+                    src={dataProfile.photo ? `/img/profile/${dataProfile.photo}` : '/img/no-photo.webp'}
                     alt={'Profile'}
                     loading={'lazy'}
                 />

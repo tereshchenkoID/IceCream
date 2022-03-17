@@ -1,23 +1,27 @@
 import React, {useEffect, useState} from "react";
 import {ReactTitle} from "react-meta-tags";
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 
 import classes from "classnames";
 
-import request from "../_helpers/request";
 import list from "../_helpers/list";
+import request from "../_helpers/request";
+
+import {loadProfileData} from "../../../redux/actions/profileActions";
 
 import {translate, translateString} from "../../../i18n/translate";
 
 import Radio from "../../../Components/Radio";
 import Field from "../../../Components/Field";
 import Button from "../../../Components/Button";
-import Loader from "../../../Components/Loader";
+import Preloader from "../../../Components/Preloader";
 import Breadcrumbs from "../../../Components/Breadcrumbs";
 
 import styles from './index.module.scss';
 
 const Personal = () => {
+    const dispatch = useDispatch();
+
     let { dataProfile } = useSelector(state => state.profileReducer);
     let { dataSetting } = useSelector(state => state.settingReducer);
 
@@ -72,6 +76,8 @@ const Personal = () => {
         formData.set('height', height.toString())
 
         request(formData, setLoader, true)
+
+        localStorage.getItem('user_token') && dispatch(loadProfileData())
     }
 
     const handleDriver = (item) => {
@@ -96,24 +102,22 @@ const Personal = () => {
 
     useEffect(() => {
         dataProfile &&
-        dataProfile.length > 0 &&
-
-            setName(dataProfile[0].name);
-            setSurname(dataProfile[0].surname);
-            setHeight(dataProfile[0].height || 0);
-            setWeight(dataProfile[0].weight || 0);
-            setAge(dataProfile[0].age);
-            setGender(dataProfile[0].gender)
-            setFamily(dataProfile[0].family)
-            setDriver(dataProfile[0].driver_license || [])
-            setHobbies(dataProfile[0].hobbies || [])
+            setName(dataProfile.name || '')
+            setSurname(dataProfile.surname || '')
+            setHeight(dataProfile.height || 0)
+            setWeight(dataProfile.weight || 0)
+            setAge(dataProfile.age)
+            setGender(dataProfile.gender)
+            setFamily(dataProfile.family)
+            setDriver(dataProfile.driver_license || [])
+            setHobbies(dataProfile.hobbies || [])
             setCountry({
                 toggle: false,
-                value: dataProfile[0].country
+                value: dataProfile.country
             })
             setRegion({
                 toggle: false,
-                value: dataProfile[0].region
+                value: dataProfile.region
             })
     }, [dataProfile]);
 
@@ -140,7 +144,7 @@ const Personal = () => {
                             {
                                 loader &&
                                 <div className={styles.loader}>
-                                    <Loader />
+                                    <Preloader />
                                 </div>
                             }
                             <div className={styles.wrapper}>
@@ -152,15 +156,15 @@ const Personal = () => {
                                         <div className="row">
                                             <div className={classes("col", "col-12", "col-padding-vertical")}>
                                                 <div className={styles.photo}>
-                                                    <input
-                                                        type={"file"}
-                                                        accept={"image/*"}
-                                                        className={styles.file}
-                                                    />
+                                                    {/*<input*/}
+                                                    {/*    type={"file"}*/}
+                                                    {/*    accept={"image/*"}*/}
+                                                    {/*    className={styles.file}*/}
+                                                    {/*/>*/}
                                                     <img
-                                                        src={`https://global-workers.eu/img/profile/${dataProfile[0].photo}`}
-                                                        alt=""
-                                                        className={styles.img}
+                                                        src={dataProfile.photo ? `/img/profile/${dataProfile.photo}` : "/img/no-photo.webp"}
+                                                        alt={dataProfile.photo ? dataProfile.photo : "Empty"}
+                                                        loading={'lazy'}
                                                     />
                                                 </div>
                                             </div>

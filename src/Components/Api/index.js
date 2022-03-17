@@ -9,9 +9,11 @@ const Api = () => {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        dispatch(loadSettingData());
-        dispatch(loadCardData());
-        localStorage.getItem('user_id') && dispatch(loadProfileData(localStorage.getItem('user_id')))
+        localStorage.getItem('user_token') &&
+        dispatch(loadProfileData())
+
+        dispatch(loadSettingData())
+        dispatch(loadCardData())
     }, [dispatch]);
 
     return true;

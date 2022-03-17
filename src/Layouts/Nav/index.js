@@ -26,6 +26,7 @@ const Nav = ({lang, setLang}) => {
         dispatch(setUserData(0))
         localStorage.removeItem('user_id')
         localStorage.removeItem('user_role')
+        localStorage.removeItem('user_token')
     }
 
     return (

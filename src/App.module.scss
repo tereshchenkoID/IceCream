@@ -4,6 +4,7 @@
   @include size(100%, 300px);
 
   position: relative;
+  z-index: 20;
 }
 
 .scroll {

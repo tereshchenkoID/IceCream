@@ -1,21 +1,25 @@
 import React, {useEffect, useState} from "react";
 import {ReactTitle} from "react-meta-tags";
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 
 import classes from "classnames";
 
 import request from "../_helpers/request";
 
+import {loadProfileData} from "../../../redux/actions/profileActions";
+
 import {translate, translateString} from "../../../i18n/translate";
 
 import Button from "../../../Components/Button";
 import Radio from "../../../Components/Radio";
-import Loader from "../../../Components/Loader";
+import Preloader from "../../../Components/Preloader";
 import Breadcrumbs from "../../../Components/Breadcrumbs";
 
 import styles from './index.module.scss';
 
 const Applicant = () => {
+    const dispatch = useDispatch();
+
     let { dataProfile } = useSelector(state => state.profileReducer);
     let { dataSetting } = useSelector(state => state.settingReducer);
 
@@ -110,7 +114,6 @@ const Applicant = () => {
         formData.set('skills', JSON.stringify(a))
 
         request(formData, setLoader, false)
-
     }
 
     const handleSubmit = (e) => {
@@ -127,18 +130,19 @@ const Applicant = () => {
         formData.set('available_to', available.max)
 
         request(formData, setLoader, true)
+
+        localStorage.getItem('user_token') && dispatch(loadProfileData())
     }
 
     useEffect(() => {
         dataProfile &&
-        dataProfile.length > 0 &&
-            setAccess(dataProfile[0].eu_allowed_person)
-            setVaccination(dataProfile[0].vaccinated)
-            setLanguage(dataProfile[0].language || [])
-            setSkills(dataProfile[0].skills || [])
+            setAccess(dataProfile.eu_allowed_person)
+            setVaccination(dataProfile.vaccinated)
+            setLanguage(dataProfile.language || [])
+            setSkills(dataProfile.skills || [])
             setAvailable({
-                min: dataProfile[0].available[0],
-                max: dataProfile[0].available[1],
+                min: dataProfile.available[0],
+                max: dataProfile.available[1],
             })
     }, [dataProfile]);
 
@@ -165,7 +169,7 @@ const Applicant = () => {
                             {
                                 loader &&
                                 <div className={styles.loader}>
-                                    <Loader />
+                                    <Preloader />
                                 </div>
                             }
                             <div className={styles.wrapper}>

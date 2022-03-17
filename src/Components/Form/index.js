@@ -1,5 +1,9 @@
 import React, {useState} from "react";
+import {useSelector} from "react-redux";
+
 import classes from "classnames";
+
+import { server } from '../../redux/types/types';
 
 import {translate, translateString} from "../../i18n/translate";
 
@@ -9,6 +13,8 @@ import Button from "../Button";
 import styles from './index.module.scss';
 
 const Form = () => {
+    let { dataProfile } = useSelector(state => state.profileReducer);
+
     const [alert, setAlert] = useState(false)
 
     const handleSubmit = (e) => {
@@ -20,7 +26,7 @@ const Form = () => {
         formData.set('subject', formData.get('subject'))
         formData.set('message', formData.get('message'))
 
-        fetch('https://global-workers.eu/server/feedback/send', {
+        fetch(`${server.PATH}feedback/send`, {
             method: 'POST',
             body: formData
         })
@@ -30,7 +36,7 @@ const Form = () => {
 
             setTimeout(() => {
                 setAlert(false)
-            }, 5000);
+            }, 3000);
         })
         .catch(error => console.log("Error", error));
     }
@@ -51,10 +57,11 @@ const Form = () => {
                             </svg>
                         </div>
                         <input
-                            type="text"
+                            type={'text'}
+                            name={'name'}
                             className={styles.field}
                             placeholder={translateString('contact_name')}
-                            name="name"
+                            defaultValue={dataProfile && dataProfile.name}
                             required
                         />
                     </div>
@@ -65,10 +72,11 @@ const Form = () => {
                             </svg>
                         </div>
                         <input
-                            type="email"
+                            type={'email'}
+                            name={'email'}
                             className={styles.field}
                             placeholder={translateString('contact_email')}
-                            name="email"
+                            defaultValue={dataProfile && dataProfile.contact.email}
                             required
                         />
                     </div>

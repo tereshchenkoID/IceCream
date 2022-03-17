@@ -10,6 +10,9 @@ const request = (
 
     fetch(`${server.PATH}user/update`, {
         method: 'POST',
+        headers: {
+            'Authorization': `Bearer ${localStorage.getItem('user_token')}`
+        },
         body: formData
     })
         .then(success => {

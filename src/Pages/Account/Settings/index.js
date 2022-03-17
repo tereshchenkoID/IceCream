@@ -7,6 +7,7 @@ import classes from "classnames";
 import {server} from "../../../redux/types/types";
 
 import request from "../_helpers/request";
+import redirectLogin from "../../../helpers/redirectLogin";
 
 import {translate, translateString} from "../../../i18n/translate";
 
@@ -18,6 +19,7 @@ import Button from "../../../Components/Button";
 import styles from './index.module.scss';
 
 const Settings = () => {
+
     let { dataProfile } = useSelector(state => state.profileReducer);
 
     const breadcrumbs = [
@@ -44,8 +46,8 @@ const Settings = () => {
 
         const formData = new FormData(e.target);
 
-        formData.set('type', '4')
         formData.set('id', localStorage.getItem('user_id'))
+        formData.set('type', '4')
         formData.set('new_password', newPassword)
         formData.set('current_password', currentPassword)
 
@@ -54,6 +56,9 @@ const Settings = () => {
             if (newPassword.length > 6 && repeatPassword.length > 6){
                 fetch(`${server.PATH}user/update`, {
                     method: 'POST',
+                    headers: {
+                        'Authorization': `"Bearer ${localStorage.getItem('user_token')}"`
+                    },
                     body: formData
                 })
                     .then(success => success.json())
@@ -71,6 +76,8 @@ const Settings = () => {
                             setTimeout(() => {
                                 setLoader(false)
                                 setSuccess('')
+
+                                redirectLogin()
                             }, 3000);
 
                         } else {
@@ -106,8 +113,7 @@ const Settings = () => {
 
     useEffect(() => {
         dataProfile &&
-        dataProfile.length > 0 &&
-            setVisibility(dataProfile[0].visibility)
+            setVisibility(dataProfile.visibility)
     }, [dataProfile]);
 
     return (

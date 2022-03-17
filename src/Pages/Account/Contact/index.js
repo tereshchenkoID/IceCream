@@ -1,21 +1,25 @@
 import React, {useEffect, useState} from "react";
 import {ReactTitle} from "react-meta-tags";
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 
 import classes from "classnames";
 
 import request from "../_helpers/request";
+
+import {loadProfileData} from "../../../redux/actions/profileActions";
 
 import {translate, translateString} from "../../../i18n/translate";
 
 import Breadcrumbs from "../../../Components/Breadcrumbs";
 import Field from "../../../Components/Field";
 import Button from "../../../Components/Button";
-import Loader from "../../../Components/Loader";
+import Preloader from "../../../Components/Preloader";
 
 import styles from './index.module.scss';
 
 const Contact = () => {
+    const dispatch = useDispatch();
+
     let { dataProfile } = useSelector(state => state.profileReducer);
 
     const breadcrumbs = [
@@ -44,13 +48,14 @@ const Contact = () => {
         formData.set('phone', phone)
 
         request(formData, setLoader, true)
+
+        localStorage.getItem('user_token') && dispatch(loadProfileData())
     }
 
     useEffect(() => {
         dataProfile &&
-        dataProfile.length > 0 &&
-            setEmail(dataProfile[0].contact.email)
-            setPhone(dataProfile[0].contact.phone)
+            setEmail(dataProfile.contact.email)
+            setPhone(dataProfile.contact.phone)
     }, [dataProfile]);
 
     return (
@@ -59,7 +64,7 @@ const Contact = () => {
             {
                 loader &&
                 <div className={styles.loader}>
-                    <Loader />
+                    <Preloader />
                 </div>
             }
             <section className={classes("section", "alt")}>
