@@ -19,6 +19,7 @@ const a = {
         'menu_link_14': 'Ausloggen',
         'menu_link_15': 'Einloggen',
         'menu_link_16': 'Kontaktinformation',
+        'menu_link_17': 'Passwort wiederherstellen',
 
         "team_1_text": "Ich bin ein Softwareentwickler mit Ausbildung in Cyber Defense und Kryptografie. Mag Sport, Tracking und DIY.",
         "team_2_text": "Ich bin ein HTML-Entwickler mit funktechnischem Hintergrund. Ich mag Schach und Angeln.",
@@ -132,7 +133,16 @@ const a = {
         'alert-wrong-current-password': 'Falsches aktuelles Passwort',
         'alert-length-password': 'Die Passwortlänge muss > 6 Zeichen sein',
         'alert-match-password': 'Passwörter stimmen nicht überein',
-        'alert-success-password': 'das Passwort wurde erfolgreich geändert'
+        'alert-success-password': 'das Passwort wurde erfolgreich geändert',
+        'alert-restore': 'Passwort vergessen?',
+        'alert-restore-email': 'Geben Sie die E-Mail-Adresse ein, die Sie bei der Registrierung angegeben haben',
+        'alert-restore-send': 'An die angegebene E-Mail-Adresse wurde eine E-Mail mit einem Link zum Zurücksetzen Ihres Passworts gesendet.',
+        'alert-restore-not-found': 'Die angegebene E-Mail-Adresse wurde nicht gefunden',
+        'alert-restore-not-empty': 'Anfrage zum Zurücksetzen des Passworts wurde bereits erstellt! E-Mails abrufen',
+        'alert-restore-expired': 'Link abgelaufen, bitte kontaktieren Sie den Support',
+        'alert-restore-success': 'Passwort erfolgreich aktualisiert',
+
+        'button-continue': 'Fortsetzen'
     }
 }
 

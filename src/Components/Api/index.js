@@ -9,8 +9,7 @@ const Api = () => {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        localStorage.getItem('user_token') &&
-        dispatch(loadProfileData())
+        localStorage.getItem('user_token') && dispatch(loadProfileData())
 
         dispatch(loadSettingData())
         dispatch(loadCardData())

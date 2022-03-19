@@ -1,0 +1,24 @@
+@import '../../styles/config';
+
+.block {
+  padding: 5px 10px;
+  border-radius: var(--default-border-radius);
+  text-align: center;
+
+  &.error {
+    background-color: rgba(#f00, 0.2);
+    border: 1px solid var(--color-red);
+    color: var(--color-red);
+  }
+
+  &.success {
+    background-color: rgba(#008000, 0.2);
+    border: 1px solid var(--color-green);
+    color: var(--color-green);
+  }
+
+  &.info {
+    background-color: var(--color-secondary);
+    border: 1px solid var(--color-border);
+  }
+}

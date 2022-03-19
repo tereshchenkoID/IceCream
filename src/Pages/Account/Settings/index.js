@@ -7,7 +7,6 @@ import classes from "classnames";
 import {server} from "../../../redux/types/types";
 
 import request from "../_helpers/request";
-import redirectLogin from "../../../helpers/redirectLogin";
 
 import {translate, translateString} from "../../../i18n/translate";
 
@@ -17,6 +16,7 @@ import Password from "../../../Components/Password";
 import Button from "../../../Components/Button";
 
 import styles from './index.module.scss';
+import Notification from "../../../Components/Notification";
 
 const Settings = () => {
 
@@ -76,8 +76,6 @@ const Settings = () => {
                             setTimeout(() => {
                                 setLoader(false)
                                 setSuccess('')
-
-                                redirectLogin()
                             }, 3000);
 
                         } else {
@@ -167,17 +165,19 @@ const Settings = () => {
                                         {
                                             error &&
                                             <div className={classes("col", "col-12", "col-padding-vertical")}>
-                                                <div className={classes(styles.alert, styles.error)}>
-                                                    {error}
-                                                </div>
+                                                <Notification
+                                                    text={error}
+                                                    type={'error'}
+                                                />
                                             </div>
                                         }
                                         {
                                             success &&
                                             <div className={classes("col", "col-12", "col-padding-vertical")}>
-                                                <div className={classes(styles.alert, styles.success)}>
-                                                    {success}
-                                                </div>
+                                                <Notification
+                                                    text={success}
+                                                    type={'success'}
+                                                />
                                             </div>
                                         }
                                         <div className={classes("col", "col-12", "col-lg-4", "col-padding-vertical")}>
@@ -186,7 +186,7 @@ const Settings = () => {
                                                 data={currentPassword}
                                                 action={setCurrentPassword}
                                                 placeholder={false}
-                                                required={false}
+                                                required={true}
                                             />
                                         </div>
                                         <div className={classes("col", "col-12", "col-lg-4", "col-padding-vertical")}>
@@ -195,7 +195,7 @@ const Settings = () => {
                                                 data={newPassword}
                                                 action={setNewPassword}
                                                 placeholder={false}
-                                                required={false}
+                                                required={true}
                                             />
                                         </div>
                                         <div className={classes("col", "col-12", "col-lg-4", "col-padding-vertical")}>
@@ -204,7 +204,7 @@ const Settings = () => {
                                                 data={repeatPassword}
                                                 action={setRepeatPassword}
                                                 placeholder={false}
-                                                required={false}
+                                                required={true}
                                             />
                                         </div>
                                         <div className={classes("col", "col-12", "col-lg-4", "col-padding-vertical")}>

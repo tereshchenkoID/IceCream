@@ -19,6 +19,7 @@ const a = {
         'menu_link_14': 'Logout',
         'menu_link_15': 'Log in',
         'menu_link_16': 'Contact info',
+        'menu_link_17': 'Restore password',
 
         "team_1_text": "I am a software developer with education in cyber defense and cryptography. I am fond of sports, trekking and DIY.",
         "team_2_text": "I am an HTML developer, with a radio engineering background. I love chess, fishing.",
@@ -132,7 +133,16 @@ const a = {
         'alert-wrong-current-password': 'Wrong current password',
         'alert-length-password': 'Password length must be > 6 characters',
         'alert-match-password': 'Passwords do not match',
-        'alert-success-password': 'Password changed successfully'
+        'alert-success-password': 'Password changed successfully',
+        'alert-restore': 'Forgot your password?',
+        'alert-restore-email': 'Enter the e-mail address provided during registration',
+        'alert-restore-send': 'An email has been sent to the specified e-mail address with a link to reset your password.',
+        'alert-restore-not-found': 'The specified e-mail address was not found',
+        'alert-restore-not-empty': 'Password reset request has already been created! Check email',
+        'alert-restore-expired': 'Link expired, please contact support',
+        'alert-restore-success': 'Password updated successfully',
+
+        'button-continue': 'Continue'
     }
 }
 

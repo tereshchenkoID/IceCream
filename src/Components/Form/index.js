@@ -1,5 +1,4 @@
 import React, {useState} from "react";
-import {useSelector} from "react-redux";
 
 import classes from "classnames";
 
@@ -11,10 +10,9 @@ import Title from "../Title";
 import Button from "../Button";
 
 import styles from './index.module.scss';
+import Notification from "../Notification";
 
 const Form = () => {
-    let { dataProfile } = useSelector(state => state.profileReducer);
-
     const [alert, setAlert] = useState(false)
 
     const handleSubmit = (e) => {
@@ -47,7 +45,12 @@ const Form = () => {
                 <Title text={translateString('title-contact')} />
                 {
                     alert &&
-                    <div className={styles.alert}>{translate('contact_alert')}</div>
+                    <div className={styles.item}>
+                        <Notification
+                            text={translate('contact_alert')}
+                            type={'info'}
+                        />
+                    </div>
                 }
                 <div className={classes(styles.item, styles.inline)}>
                     <div className={styles.wrapper}>
@@ -61,7 +64,6 @@ const Form = () => {
                             name={'name'}
                             className={styles.field}
                             placeholder={translateString('contact_name')}
-                            defaultValue={dataProfile && dataProfile.name}
                             required
                         />
                     </div>
@@ -76,7 +78,6 @@ const Form = () => {
                             name={'email'}
                             className={styles.field}
                             placeholder={translateString('contact_email')}
-                            defaultValue={dataProfile && dataProfile.contact.email}
                             required
                         />
                     </div>

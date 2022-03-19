@@ -1,13 +1,11 @@
 import React, {useEffect, useState} from "react";
 import {ReactTitle} from "react-meta-tags";
-import {useDispatch, useSelector} from "react-redux";
+import {useSelector} from "react-redux";
 
 import classes from "classnames";
 
 import list from "../_helpers/list";
 import request from "../_helpers/request";
-
-import {loadProfileData} from "../../../redux/actions/profileActions";
 
 import {translate, translateString} from "../../../i18n/translate";
 
@@ -20,8 +18,6 @@ import Breadcrumbs from "../../../Components/Breadcrumbs";
 import styles from './index.module.scss';
 
 const Personal = () => {
-    const dispatch = useDispatch();
-
     let { dataProfile } = useSelector(state => state.profileReducer);
     let { dataSetting } = useSelector(state => state.settingReducer);
 
@@ -44,11 +40,11 @@ const Personal = () => {
     const [gender, setGender] = useState();
     const [country, setCountry] = useState({
         toggle: false,
-        value: '0'
+        value: 0
     });
     const [region, setRegion] = useState({
         toggle: false,
-        value: '0'
+        value: 0
     });
 
     const [family, setFamily] = useState();
@@ -76,8 +72,6 @@ const Personal = () => {
         formData.set('height', height.toString())
 
         request(formData, setLoader, true)
-
-        localStorage.getItem('user_token') && dispatch(loadProfileData())
     }
 
     const handleDriver = (item) => {
@@ -113,11 +107,11 @@ const Personal = () => {
             setHobbies(dataProfile.hobbies || [])
             setCountry({
                 toggle: false,
-                value: dataProfile.country
+                value: dataProfile.country || 0
             })
             setRegion({
                 toggle: false,
-                value: dataProfile.region
+                value: dataProfile.region || 0
             })
     }, [dataProfile]);
 

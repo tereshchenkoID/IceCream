@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from "react";
 import {useDispatch} from "react-redux";
+import {NavLink} from "react-router-dom";
 import {ReactTitle} from "react-meta-tags";
 
 import { server } from '../../redux/types/types';
@@ -15,6 +16,7 @@ import Button from "../../Components/Button";
 import Field from "../../Components/Field";
 import Password from "../../Components/Password";
 import Breadcrumbs from "../../Components/Breadcrumbs";
+import Notification from "../../Components/Notification";
 
 import styles from './index.module.scss';
 
@@ -92,7 +94,10 @@ const Login = () => {
                                 {
                                     error &&
                                     <div className={styles.wrap}>
-                                        <div className={styles.error}>{error}</div>
+                                        <Notification
+                                            text={error}
+                                            type={'error'}
+                                        />
                                     </div>
                                 }
                                 <div className={styles.wrap}>
@@ -111,6 +116,14 @@ const Login = () => {
                                         required={true}
                                         placeholder={'profile_password'}
                                     />
+                                </div>
+                                <div className={styles.wrap}>
+                                    <NavLink
+                                        to={'/restore/search'}
+                                        className={styles.link}
+                                    >
+                                        {translate('alert-restore')}
+                                    </NavLink>
                                 </div>
                                 <Button
                                     type={"submit"}

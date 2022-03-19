@@ -1,12 +1,10 @@
 import React, {useEffect, useState} from "react";
 import {ReactTitle} from "react-meta-tags";
-import {useDispatch, useSelector} from "react-redux";
+import {useSelector} from "react-redux";
 
 import classes from "classnames";
 
 import request from "../_helpers/request";
-
-import {loadProfileData} from "../../../redux/actions/profileActions";
 
 import {translate, translateString} from "../../../i18n/translate";
 
@@ -18,8 +16,6 @@ import Breadcrumbs from "../../../Components/Breadcrumbs";
 import styles from './index.module.scss';
 
 const Applicant = () => {
-    const dispatch = useDispatch();
-
     let { dataProfile } = useSelector(state => state.profileReducer);
     let { dataSetting } = useSelector(state => state.settingReducer);
 
@@ -130,8 +126,6 @@ const Applicant = () => {
         formData.set('available_to', available.max)
 
         request(formData, setLoader, true)
-
-        localStorage.getItem('user_token') && dispatch(loadProfileData())
     }
 
     useEffect(() => {

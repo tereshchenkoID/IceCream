@@ -1,12 +1,10 @@
 import React, {useEffect, useState} from "react";
 import {ReactTitle} from "react-meta-tags";
-import {useDispatch, useSelector} from "react-redux";
+import {useSelector} from "react-redux";
 
 import classes from "classnames";
 
 import request from "../_helpers/request";
-
-import {loadProfileData} from "../../../redux/actions/profileActions";
 
 import {translate, translateString} from "../../../i18n/translate";
 
@@ -18,8 +16,6 @@ import Preloader from "../../../Components/Preloader";
 import styles from './index.module.scss';
 
 const Contact = () => {
-    const dispatch = useDispatch();
-
     let { dataProfile } = useSelector(state => state.profileReducer);
 
     const breadcrumbs = [
@@ -48,8 +44,6 @@ const Contact = () => {
         formData.set('phone', phone)
 
         request(formData, setLoader, true)
-
-        localStorage.getItem('user_token') && dispatch(loadProfileData())
     }
 
     useEffect(() => {

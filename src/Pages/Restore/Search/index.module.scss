@@ -1,4 +1,4 @@
-@import '../../styles/config';
+@import '../../../styles/config';
 
 .form {
   max-width: 500px;
@@ -14,13 +14,5 @@
 
   &:last-child {
     margin-bottom: 0;
-  }
-}
-
-.link {
-  color: var(--color-primary);
-
-  &:hover {
-    text-decoration: underline;
   }
 }

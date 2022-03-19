@@ -14,6 +14,7 @@ import Empty from "../../Components/Empty";
 import Button from "../../Components/Button";
 
 import styles from './index.module.scss';
+import Notification from "../../Components/Notification";
 
 const getTeam = (arr, name) => {
     return arr.find((e) => {return e === name});
@@ -109,19 +110,24 @@ const Team = () => {
                 </div>
             </section>
 
-            <section className="section">
-                <div className="container-fluid">
-                    <div className="container">
-                        <div className="row">
-                            {
-                                teamArray.length > 0 &&
+            {
+                teamArray.length > 0 &&
+                <section className="section">
+                    <div className="container-fluid">
+                        <div className="container">
+                            <div className="row">
                                 <form
                                     onSubmit={handleSubmit}
                                     className={styles.form}
                                 >
                                     {
                                         alert &&
-                                        <div className={styles.alert}>{translate('contact_alert')}</div>
+                                        <div className={styles.wrap}>
+                                            <Notification
+                                                text={translate('contact_alert')}
+                                                type={'info'}
+                                            />
+                                        </div>
                                     }
                                     <div className={styles.wrapper}>
                                         <div className={styles.icon}>
@@ -151,7 +157,7 @@ const Team = () => {
                                             required
                                         />
                                     </div>
-                                    <div className={styles.item}>
+                                    <div className={styles.wrap}>
                                         <Button
                                             type={"submit"}
                                             action={false}
@@ -159,11 +165,11 @@ const Team = () => {
                                         />
                                     </div>
                                 </form>
-                            }
+                            </div>
                         </div>
                     </div>
-                </div>
-            </section>
+                </section>
+            }
         </main>
     );
 }

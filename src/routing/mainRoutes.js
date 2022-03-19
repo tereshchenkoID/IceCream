@@ -16,6 +16,9 @@ const AccountPersonal = lazy( () => import("../Pages/Account/Personal"));
 const AccountSettings = lazy( () => import("../Pages/Account/Settings"));
 const AccountContact = lazy(() => import("../Pages/Account/Contact"));
 
+const RestoreSearch = lazy(() => import("../Pages/Restore/Search"));
+const RestoreUpdate = lazy(() => import("../Pages/Restore/Update"));
+
 export const routes = [
   {
     path: '/',
@@ -86,6 +89,18 @@ export const routes = [
   {
     path: '/login',
     component: Login,
+    exact: false,
+    role: [0]
+  },
+  {
+    path: '/restore/search',
+    component: RestoreSearch,
+    exact: false,
+    role: [0]
+  },
+  {
+    path: '/restore/update/:id?',
+    component: RestoreUpdate,
     exact: false,
     role: [0]
   },
