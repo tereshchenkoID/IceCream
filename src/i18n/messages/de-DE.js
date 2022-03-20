@@ -20,6 +20,7 @@ const a = {
         'menu_link_15': 'Einloggen',
         'menu_link_16': 'Kontaktinformation',
         'menu_link_17': 'Passwort wiederherstellen',
+        'menu_link_18': 'Anmeldung',
 
         "team_1_text": "Ich bin ein Softwareentwickler mit Ausbildung in Cyber Defense und Kryptografie. Mag Sport, Tracking und DIY.",
         "team_2_text": "Ich bin ein HTML-Entwickler mit funktechnischem Hintergrund. Ich mag Schach und Angeln.",
@@ -60,6 +61,11 @@ const a = {
         'title-view-all': 'Alle ansehen',
         'title-sort-by': 'Sortierung',
 
+        'registration-title': 'Lassen Sie uns Ihr Konto erstellen!',
+        'registration-subtitle': 'Kein Account?',
+        'login-title': 'Wir freuen uns auf ein Wiedersehen!',
+        'login-subtitle': 'Kein Account?',
+
         'contact_name': 'Dein Name',
         'contact_email': 'E-Mail-Addresse',
         'contact_subject': 'Gegenstand',
@@ -97,7 +103,7 @@ const a = {
         'profile_phone': 'Telefonnummer',
         'profile_current_password': 'Aktuelles Passwort',
         'profile_new_password': 'Neues Kennwort',
-        'profile_repeat_password': 'Wiederhole das neue Passwort',
+        'profile_repeat_password': 'Wiederholen Sie das Passwort',
         'profile_password': 'Passwort',
         'profile_weight': 'Gewicht',
         'profile_height': 'Höhe',

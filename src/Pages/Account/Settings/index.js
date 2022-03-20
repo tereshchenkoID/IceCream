@@ -78,7 +78,8 @@ const Settings = () => {
                                 setSuccess('')
                             }, 3000);
 
-                        } else {
+                        }
+                        else {
                             setError(translate('alert-wrong-current-password'))
                         }
                     })

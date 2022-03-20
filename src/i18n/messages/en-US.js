@@ -20,6 +20,7 @@ const a = {
         'menu_link_15': 'Log in',
         'menu_link_16': 'Contact info',
         'menu_link_17': 'Restore password',
+        'menu_link_18': 'Registration',
 
         "team_1_text": "I am a software developer with education in cyber defense and cryptography. I am fond of sports, trekking and DIY.",
         "team_2_text": "I am an HTML developer, with a radio engineering background. I love chess, fishing.",
@@ -60,6 +61,11 @@ const a = {
         'title-view-all': 'View all',
         'title-sort-by': 'Sorting',
 
+        'registration-title': 'Let\'s create your account!',
+        'registration-subtitle': 'Don\'t have an account?',
+        'login-title': 'We\'re glad to see you again!',
+        'login-subtitle': 'Don\'t have an account?',
+
         'contact_name': 'Your name',
         'contact_email': 'Email address',
         'contact_subject': 'Subject',
@@ -97,7 +103,7 @@ const a = {
         'profile_phone': 'Phone number',
         'profile_current_password': 'Current password',
         'profile_new_password': 'New password',
-        'profile_repeat_password': 'Repeat new password',
+        'profile_repeat_password': 'Repeat password',
         'profile_password': 'Password',
         'profile_weight': 'Weight',
         'profile_height': 'Height',

@@ -10,6 +10,7 @@ const Contact  = lazy( () => import("../Pages/Contact"));
 const About = lazy( () => import("../Pages/About"));
 const NotFound = lazy( () => import("../Pages/NotFound"));
 const Login = lazy( () => import("../Pages/Login"));
+const Registration = lazy( () => import("../Pages/Registration"));
 
 const AccountApplicant = lazy( () => import("../Pages/Account/Applicant"));
 const AccountPersonal = lazy( () => import("../Pages/Account/Personal"));
@@ -89,6 +90,12 @@ export const routes = [
   {
     path: '/login',
     component: Login,
+    exact: false,
+    role: [0]
+  },
+  {
+    path: '/registration',
+    component: Registration,
     exact: false,
     role: [0]
   },

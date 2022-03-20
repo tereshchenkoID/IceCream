@@ -20,6 +20,7 @@ const a = {
         'menu_link_15': 'Вход',
         'menu_link_16': 'Контактная информация',
         'menu_link_17': 'Востановление пароля',
+        'menu_link_18': 'Регистрация',
 
         "team_1_text": "Я разработчик программного обеспечения, c образование в области киберзащиты и криптографии. Увлекаюсь спортом, трекингом и DIY.",
         "team_2_text": "Я HTML-разработчик, c радиотехническим образование. Люблю шахматы, рыбалку.",
@@ -60,6 +61,11 @@ const a = {
         'title-view-all': 'Смотреть все',
         'title-sort-by': 'Сортировка',
 
+        'registration-title': 'Давайте создадим ваш аккаунт!',
+        'registration-subtitle': 'Нет учетной записи?',
+        'login-title': 'Мы рады видеть вас снова!',
+        'login-subtitle': 'Нет учетной записи?',
+
         'contact_name': 'Ваше Имя',
         'contact_email': 'Email адрес',
         'contact_subject': 'Тема',
@@ -97,7 +103,7 @@ const a = {
         'profile_phone': 'Номер телефона',
         'profile_current_password': 'Текущий пароль',
         'profile_new_password': 'Новый пароль',
-        'profile_repeat_password': 'Повторите новый пароль',
+        'profile_repeat_password': 'Повторите пароль',
         'profile_password': 'Пароль',
         'profile_weight': 'Вес',
         'profile_height': 'Рост',

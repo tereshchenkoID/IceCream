@@ -20,6 +20,7 @@ const a = {
         'menu_link_15': 'Вхід',
         'menu_link_16': 'Контактна інформація',
         'menu_link_17': 'Відновлення паролю',
+        'menu_link_18': 'Реєстрація',
 
         "team_1_text": "Я розробник програмного забезпечення, з освітою в галузі кіберзахисту та криптографії. Захоплююсь спортом, трекінгом та DIY.",
         "team_2_text": "Я HTML-розробник, з радіотехнічною освітою. Люблю шахи, рибалку.",
@@ -60,6 +61,11 @@ const a = {
         'title-view-all': 'Дивитись все',
         'title-sort-by': 'Сортування',
 
+        'registration-title': 'Давайте створимо ваш обліковий запис!',
+        'registration-subtitle': 'Немає облікового запису?',
+        'login-title': 'Ми раді бачити вас знову!',
+        'login-subtitle': 'Немає облікового запису?',
+
         'contact_name': 'Ваше ім\'я',
         'contact_email': 'Email адреса',
         'contact_subject': 'Тема',
@@ -96,7 +102,7 @@ const a = {
         'profile_phone': 'Номер телефона',
         'profile_current_password': 'Поточний пароль',
         'profile_new_password': 'Новий пароль',
-        'profile_repeat_password': 'Повторіть новий пароль',
+        'profile_repeat_password': 'Повторіть пароль',
         'profile_password': 'Пароль',
         'profile_weight': 'Вага',
         'profile_height': 'Зріст',

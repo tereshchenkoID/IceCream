@@ -35,29 +35,31 @@ const Search = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        const formData = new FormData(e.target);
+        if (email.length > 0) {
+            const formData = new FormData(e.target);
 
-        formData.set('email', email)
+            formData.set('email', email)
 
-        fetch(`${server.PATH}recovery/show`, {
-            method: 'POST',
-            body: formData
-        })
-            .then(success => success.json())
-            .then(success => {
-                if(success === 0) {
-                    setSuccess(translate('alert-restore-send'))
-
-                    localStorage.setItem('restore_email', email)
-                }
-                else if(success === 1) {
-                    setError(translate('alert-restore-not-found'))
-                }
-                else if(success === 2) {
-                    setSuccess(translate('alert-restore-not-empty'))
-                }
+            fetch(`${server.PATH}recovery/show`, {
+                method: 'POST',
+                body: formData
             })
-            .catch(error => console.log("Error", error))
+                .then(success => success.json())
+                .then(success => {
+                    if(success === 0) {
+                        setSuccess(translate('alert-restore-send'))
+
+                        localStorage.setItem('restore_email', email)
+                    }
+                    else if(success === 1) {
+                        setError(translate('alert-restore-not-found'))
+                    }
+                    else if(success === 2) {
+                        setSuccess(translate('alert-restore-not-empty'))
+                    }
+                })
+                .catch(error => console.log("Error", error))
+        }
     }
 
     return (

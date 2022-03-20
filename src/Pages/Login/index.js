@@ -91,6 +91,20 @@ const Login = () => {
                     <div className="container">
                         <form onSubmit={handleSubmit}>
                             <div className={styles.form}>
+                                <div className={styles.wrap}>
+                                    <div className={styles.titles}>
+                                        <h5 className={styles.title}>{translate('login-title')}</h5>
+                                        <p className={styles.subtitle}>
+                                            <span>{translate('login-subtitle')}</span>
+                                            <NavLink
+                                                to={'/registration'}
+                                                className={styles.link}
+                                            >
+                                                {translate('menu_link_18')}!
+                                            </NavLink>
+                                        </p>
+                                    </div>
+                                </div>
                                 {
                                     error &&
                                     <div className={styles.wrap}>
