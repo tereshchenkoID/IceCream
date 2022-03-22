@@ -135,18 +135,23 @@ const a = {
         'sort_alert_wrong_date': 'Invalid date',
 
         'alert-empty': 'So far empty',
-        'alert-authorization': 'Invalid email address or password',
-        'alert-wrong-current-password': 'Wrong current password',
-        'alert-length-password': 'Password length must be > 6 characters',
-        'alert-match-password': 'Passwords do not match',
-        'alert-success-password': 'Password changed successfully',
         'alert-restore': 'Forgot your password?',
         'alert-restore-email': 'Enter the e-mail address provided during registration',
-        'alert-restore-send': 'An email has been sent to the specified e-mail address with a link to reset your password.',
-        'alert-restore-not-found': 'The specified e-mail address was not found',
-        'alert-restore-not-empty': 'Password reset request has already been created! Check email',
-        'alert-restore-expired': 'Link expired, please contact support',
-        'alert-restore-success': 'Password updated successfully',
+
+        'error-1': 'Invalid email address or password',
+        'error-2': 'Invalid current password',
+        'error-3': 'Passwords do not match',
+        'error-4': 'Password must be longer than 6 characters',
+        'error-5': 'Fill in your profile, required to be filled in (*)',
+        'error-6': 'The specified e-mail address was not found',
+        'error-7': 'Password update request already created! Check your email',
+        'error-8': 'The link is out of date, please contact support',
+        'error-9': 'The current e-mail is already registered',
+        'error-10': 'Fill in all fields',
+        'success-1': 'An email was sent to the specified e-mail with a link to update the password',
+        'success-2': 'Password successfully updated',
+        'success-3': 'Congratulations, your profile has been successfully created',
+        'success-4': 'Thank you, we will contact you as soon as possible!',
 
         'button-continue': 'Continue'
     }

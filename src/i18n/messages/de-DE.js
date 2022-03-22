@@ -135,18 +135,23 @@ const a = {
         'sort_alert_wrong_date': 'Ungültiges Datum',
 
         'alert-empty': 'Bisher leer',
-        'alert-authorization': 'Ungültige Emailadresse oder Passwort',
-        'alert-wrong-current-password': 'Falsches aktuelles Passwort',
-        'alert-length-password': 'Die Passwortlänge muss > 6 Zeichen sein',
-        'alert-match-password': 'Passwörter stimmen nicht überein',
-        'alert-success-password': 'das Passwort wurde erfolgreich geändert',
         'alert-restore': 'Passwort vergessen?',
         'alert-restore-email': 'Geben Sie die E-Mail-Adresse ein, die Sie bei der Registrierung angegeben haben',
-        'alert-restore-send': 'An die angegebene E-Mail-Adresse wurde eine E-Mail mit einem Link zum Zurücksetzen Ihres Passworts gesendet.',
-        'alert-restore-not-found': 'Die angegebene E-Mail-Adresse wurde nicht gefunden',
-        'alert-restore-not-empty': 'Anfrage zum Zurücksetzen des Passworts wurde bereits erstellt! E-Mails abrufen',
-        'alert-restore-expired': 'Link abgelaufen, bitte kontaktieren Sie den Support',
-        'alert-restore-success': 'Passwort erfolgreich aktualisiert',
+
+        'error-1': 'Ungültige Emailadresse oder Passwort',
+        'error-2': 'Ungültiges aktuelles Passwort',
+        'error-3': 'Passwörter stimmen nicht überein',
+        'error-4': 'Das Passwort muss länger als 6 Zeichen sein',
+        'error-5': 'Füllen Sie Ihr Profil aus, Pflichtfeld (*)',
+        'error-6': 'Die angegebene E-Mail-Adresse wurde nicht gefunden',
+        'error-7': 'Anfrage zur Passwortaktualisierung bereits erstellt! Überprüfen Sie Ihren Posteingang',
+        'error-8': 'Der Link ist veraltet, bitte wenden Sie sich an den Support',
+        'error-9': 'Die aktuelle E-Mail ist bereits registriert',
+        'error-10': 'Füllen Sie alle Felder aus',
+        'success-1': 'An die angegebene E-Mail-Adresse wurde eine E-Mail mit einem Link zum Aktualisieren des Passworts gesendet',
+        'success-2': 'Passwort erfolgreich aktualisiert',
+        'success-3': 'Herzlichen Glückwunsch, Ihr Profil wurde erfolgreich erstellt',
+        'success-4': 'Vielen Dank, wir werden uns schnellstmöglich mit Ihnen in Verbindung setzen!',
 
         'button-continue': 'Fortsetzen'
     }

@@ -10,6 +10,10 @@
   z-index: 3;
 }
 
+.notification {
+  margin-bottom: 20px;
+}
+
 .wrapper {
   background-color: var(--color-white);
   box-shadow: var(--box-shadow-lg);
@@ -22,6 +26,7 @@
 }
 
 .form {
+  position: relative;
 
   &.disabled {
     pointer-events: none;
@@ -49,8 +54,18 @@
   }
 }
 
+.option {
+  @include flex(flex-end, center);
+}
+
+.divider {
+  @include size(1px, 20px);
+
+  margin: 0 10px;
+  background-color: var(--color-text);
+}
+
 .visibility {
-  cursor: pointer;
 
   &.show {
     color: var(--color-primary);

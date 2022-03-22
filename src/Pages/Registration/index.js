@@ -1,8 +1,11 @@
-import React, {useState, useEffect} from "react";
-import {NavLink} from "react-router-dom";
+import React, {useState} from "react";
 import {ReactTitle} from "react-meta-tags";
+import {NavLink} from "react-router-dom";
 
 import { server } from '../../redux/types/types';
+
+import checkForm from "../../helpers/checkForm";
+import checkPassword from "../../helpers/checkPassword";
 
 import classes from "classnames";
 
@@ -27,22 +30,31 @@ const Registration = () => {
         }
     ]
 
+    const [name, setName] = useState('')
+    const [surname, setSurname] = useState('')
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [repeatPassword, setRepeatPassword] = useState('')
 
-    const [error, setError] = useState('')
-    const [success, setSuccess] = useState('')
+    const [notification, setNotification] = useState({
+        type: null,
+        code: 0
+    })
 
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        if (password === repeatPassword) {
+        const c_Form = checkForm([name, surname, email, password])
+        const c_Password = checkPassword(password, repeatPassword)
 
-            if (password.length > 6 && repeatPassword.length > 6) {
+        if (c_Form.code === 0) {
+
+            if (c_Password.code === 0) {
 
                 const formData = new FormData(e.target);
 
+                formData.set('name', name)
+                formData.set('surname', surname)
                 formData.set('email', email)
                 formData.set('password', password)
 
@@ -53,29 +65,28 @@ const Registration = () => {
                     .then(success => success.json())
                     .then(success => {
                         if (success === 0) {
-                            setError('')
-                            setSuccess("Ваша учетная запись успешно создана")
+                            setNotification({
+                                type: 'success',
+                                code: '3'
+                            })
                         }
                         else if (success === 1) {
-                            setError("Данный e-mail уже был зарегистрирован")
+                            setNotification({
+                                type: 'error',
+                                code: '9'
+                            })
                         }
                     })
                     .catch(error => console.log("Error", error));
             }
             else {
-                setError(translate('alert-length-password'))
+                setNotification(c_Password)
             }
         }
         else {
-            setError(translate('alert-match-password'))
+            setNotification(c_Form)
         }
     }
-
-    useEffect(() => {
-        return () => {
-            setError('');
-        }
-    }, []);
 
     return (
         <main>
@@ -106,58 +117,61 @@ const Registration = () => {
                                         </p>
                                     </div>
                                 </div>
+                                <div className={styles.wrap}>
+                                    <Notification date={notification} />
+                                </div>
                                 {
-                                    error &&
-                                    <div className={styles.wrap}>
-                                        <Notification
-                                            text={error}
-                                            type={'error'}
-                                        />
-                                    </div>
-                                }
-
-                                {
-                                    success
-                                        ?
+                                    notification.type !== 'success' &&
+                                    <>
                                         <div className={styles.wrap}>
-                                            <Notification
-                                                text={success}
-                                                type={'success'}
+                                            <Field
+                                                type={"text"}
+                                                required={true}
+                                                placeholder={'profile_name'}
+                                                data={name || ''}
+                                                action={setName}
                                             />
                                         </div>
-                                        :
-                                        <>
-                                            <div className={styles.wrap}>
-                                                <Field
-                                                    type={"email"}
-                                                    required={true}
-                                                    placeholder={'profile_email'}
-                                                    data={email || ''}
-                                                    action={setEmail}
-                                                />
-                                            </div>
-                                            <div className={styles.wrap}>
-                                                <Password
-                                                    data={password}
-                                                    action={setPassword}
-                                                    required={true}
-                                                    placeholder={'profile_password'}
-                                                />
-                                            </div>
-                                            <div className={styles.wrap}>
-                                                <Password
-                                                    data={repeatPassword}
-                                                    action={setRepeatPassword}
-                                                    required={true}
-                                                    placeholder={'profile_repeat_password'}
-                                                />
-                                            </div>
-                                            <Button
-                                                type={"submit"}
-                                                action={false}
-                                                placeholder={translate('menu_link_18')}
+                                        <div className={styles.wrap}>
+                                            <Field
+                                                type={"text"}
+                                                required={true}
+                                                placeholder={'profile_surname'}
+                                                data={surname || ''}
+                                                action={setSurname}
                                             />
-                                        </>
+                                        </div>
+                                        <div className={styles.wrap}>
+                                            <Field
+                                                type={"email"}
+                                                required={true}
+                                                placeholder={'profile_email'}
+                                                data={email || ''}
+                                                action={setEmail}
+                                            />
+                                        </div>
+                                        <div className={styles.wrap}>
+                                            <Password
+                                                data={password}
+                                                action={setPassword}
+                                                required={true}
+                                                placeholder={'profile_password'}
+                                            />
+                                        </div>
+                                        <div className={styles.wrap}>
+                                            <Password
+                                                data={repeatPassword}
+                                                action={setRepeatPassword}
+                                                required={true}
+                                                placeholder={'profile_repeat_password'}
+                                            />
+                                        </div>
+                                        <Button
+                                            type={"submit"}
+                                            action={false}
+                                            placeholder={translate('menu_link_18')}
+                                        />
+                                    </>
                                 }
                             </div>
                         </form>

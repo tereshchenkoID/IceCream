@@ -5,6 +5,7 @@ import {useSelector} from "react-redux";
 import classes from "classnames";
 
 import request from "../_helpers/request";
+import checkForm from "../../../helpers/checkForm";
 
 import {translate, translateString} from "../../../i18n/translate";
 
@@ -12,6 +13,7 @@ import Button from "../../../Components/Button";
 import Radio from "../../../Components/Radio";
 import Preloader from "../../../Components/Preloader";
 import Breadcrumbs from "../../../Components/Breadcrumbs";
+import Notification from "../../../Components/Notification";
 
 import styles from './index.module.scss';
 
@@ -41,6 +43,11 @@ const Applicant = () => {
 
     const [language, setLanguage] = useState([]);
     const [skills, setSkills] = useState([]);
+
+    const [notification, setNotification] = useState({
+        type: null,
+        code: 0
+    })
 
     const handleLanguage = (data) => {
         const a = [...language]
@@ -115,17 +122,29 @@ const Applicant = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        setLoader(true)
+        const c_Form = checkForm([access, vaccination, available.min, available.max])
 
-        const formData = new FormData(e.target);
+        if (c_Form.code === 0) {
+            setLoader(true)
 
-        formData.set('type', '2')
-        formData.set('access', access)
-        formData.set('vaccination', vaccination)
-        formData.set('available_from', available.min)
-        formData.set('available_to', available.max)
+            setNotification({
+                type: null,
+                code: 0
+            })
 
-        request(formData, setLoader, true)
+            const formData = new FormData(e.target);
+
+            formData.set('type', '2')
+            formData.set('access', access)
+            formData.set('vaccination', vaccination)
+            formData.set('available_from', available.min)
+            formData.set('available_to', available.max)
+
+            request(formData, setLoader, true)
+        }
+        else {
+            setNotification(c_Form)
+        }
     }
 
     useEffect(() => {
@@ -135,8 +154,8 @@ const Applicant = () => {
             setLanguage(dataProfile.language || [])
             setSkills(dataProfile.skills || [])
             setAvailable({
-                min: dataProfile.available[0],
-                max: dataProfile.available[1],
+                min: dataProfile.available[0] || '',
+                max: dataProfile.available[1] || '',
             })
     }, [dataProfile]);
 
@@ -166,6 +185,9 @@ const Applicant = () => {
                                     <Preloader />
                                 </div>
                             }
+                            <div className={styles.wrap}>
+                                <Notification date={notification} />
+                            </div>
                             <div className={styles.wrapper}>
                                 <div className={styles.head}>
                                     <div className={styles.title}>{translate('section_description_work')}:</div>
@@ -184,6 +206,7 @@ const Applicant = () => {
                                                         min: e.target.value,
                                                         max: available.max
                                                     })}
+                                                    required={true}
                                                 />
                                             </div>
                                             <div className={classes("col", "col-12", "col-lg-6", "col-padding-vertical")}>
@@ -196,6 +219,7 @@ const Applicant = () => {
                                                         min: available.min,
                                                         max: e.target.value
                                                     })}
+                                                    required={true}
                                                 />
                                             </div>
                                         </div>
@@ -217,6 +241,7 @@ const Applicant = () => {
                                                                 name={'vaccination'}
                                                                 date={vaccination}
                                                                 action={setVaccination}
+                                                                required={true}
                                                             />
                                                         </div>
                                                     )
@@ -236,6 +261,7 @@ const Applicant = () => {
                                                                 name={'access'}
                                                                 date={access}
                                                                 action={setAccess}
+                                                                required={true}
                                                             />
                                                         </div>
                                                     )

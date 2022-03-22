@@ -2,7 +2,7 @@ import React from "react";
 
 import styles from './index.module.scss';
 
-const Radio = ({lang, item, name, date, action}) => {
+const Radio = ({lang, item, name, date, action, required}) => {
     return (
         <div className={styles.block}>
             <input
@@ -13,6 +13,7 @@ const Radio = ({lang, item, name, date, action}) => {
                 name={name}
                 checked={item.id === date}
                 onChange={(e) => action(e.target.value)}
+                required={required}
             />
             <label
                 htmlFor={`${name}_${item[lang].toLowerCase()}`}

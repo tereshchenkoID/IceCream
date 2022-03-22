@@ -5,6 +5,7 @@ import {useSelector} from "react-redux";
 import classes from "classnames";
 
 import request from "../_helpers/request";
+import checkForm from "../../../helpers/checkForm";
 
 import {translate, translateString} from "../../../i18n/translate";
 
@@ -12,6 +13,7 @@ import Breadcrumbs from "../../../Components/Breadcrumbs";
 import Field from "../../../Components/Field";
 import Button from "../../../Components/Button";
 import Preloader from "../../../Components/Preloader";
+import Notification from "../../../Components/Notification";
 
 import styles from './index.module.scss';
 
@@ -32,18 +34,35 @@ const Contact = () => {
     const [email, setEmail] = useState();
     const [phone, setPhone] = useState();
 
+    const [notification, setNotification] = useState({
+        type: null,
+        code: 0
+    })
+
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        setLoader(true)
+        const c_Form = checkForm([email, phone])
 
-        const formData = new FormData(e.target);
+        if (c_Form.code === 0) {
+            setLoader(true)
 
-        formData.set('type', '3')
-        formData.set('email', email)
-        formData.set('phone', phone)
+            setNotification({
+                type: null,
+                code: 0
+            })
 
-        request(formData, setLoader, true)
+            const formData = new FormData(e.target);
+
+            formData.set('type', '3')
+            formData.set('email', email)
+            formData.set('phone', phone)
+
+            request(formData, setLoader, true)
+        }
+        else {
+            setNotification(c_Form)
+        }
     }
 
     useEffect(() => {
@@ -55,12 +74,6 @@ const Contact = () => {
     return (
         <main>
             <ReactTitle title={`Global Workers | ${translateString('menu_link_16')}`} />
-            {
-                loader &&
-                <div className={styles.loader}>
-                    <Preloader />
-                </div>
-            }
             <section className={classes("section", "alt")}>
                 <div className="container-fluid">
                     <div className="container">
@@ -79,6 +92,15 @@ const Contact = () => {
                             )}
                             onSubmit={handleSubmit}
                         >
+                            {
+                                loader &&
+                                <div className={styles.loader}>
+                                    <Preloader />
+                                </div>
+                            }
+                            <div className={styles.wrap}>
+                                <Notification date={notification} />
+                            </div>
                             <div className={styles.wrapper}>
                                 <div className={styles.head}>
                                     <div className={styles.title}>{translate('section_description_contact')}:</div>

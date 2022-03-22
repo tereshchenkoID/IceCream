@@ -2,13 +2,16 @@ import React from "react";
 
 import classes from "classnames";
 
+import {translate} from "../../i18n/translate";
+
 import styles from './index.module.scss';
 
-const Notification = ({text, type}) => {
+const Notification = ({date}) => {
 
     return (
-        <div className={classes(styles.block, styles[type])}>
-            {text}
+        date.code !== 0 &&
+        <div className={classes(styles.block, styles[date.type])}>
+            {translate(`${date.type}-${date.code}`)}
         </div>
     );
 }

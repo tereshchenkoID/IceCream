@@ -5,6 +5,8 @@ import { server } from '../../../redux/types/types';
 
 import classes from "classnames";
 
+import checkForm from "../../../helpers/checkForm";
+
 import {translate, translateString} from "../../../i18n/translate";
 
 import Button from "../../../Components/Button";
@@ -13,7 +15,6 @@ import Breadcrumbs from "../../../Components/Breadcrumbs";
 import Notification from "../../../Components/Notification";
 
 import styles from './index.module.scss';
-
 
 const Search = () => {
 
@@ -27,15 +28,19 @@ const Search = () => {
         }
     ]
 
-    const [email, setEmail] = useState('tereschenko23041991@gmail.com')
+    const [email, setEmail] = useState('')
 
-    const [error, setError] = useState('')
-    const [success, setSuccess] = useState('')
+    const [notification, setNotification] = useState({
+        type: null,
+        code: 0
+    })
 
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        if (email.length > 0) {
+        const c_Form = checkForm([email])
+
+        if (c_Form.code === 0) {
             const formData = new FormData(e.target);
 
             formData.set('email', email)
@@ -47,18 +52,30 @@ const Search = () => {
                 .then(success => success.json())
                 .then(success => {
                     if(success === 0) {
-                        setSuccess(translate('alert-restore-send'))
+                        setNotification({
+                            type: 'success',
+                            code: 1
+                        })
 
                         localStorage.setItem('restore_email', email)
                     }
                     else if(success === 1) {
-                        setError(translate('alert-restore-not-found'))
+                        setNotification({
+                            type: 'error',
+                            code: 6
+                        })
                     }
                     else if(success === 2) {
-                        setSuccess(translate('alert-restore-not-empty'))
+                        setNotification({
+                            type: 'error',
+                            code: 7
+                        })
                     }
                 })
                 .catch(error => console.log("Error", error))
+        }
+        else {
+            setNotification(c_Form)
         }
     }
 
@@ -77,44 +94,30 @@ const Search = () => {
                     <div className="container">
                         <form onSubmit={handleSubmit}>
                             <div className={styles.form}>
+                                <div className={styles.wrap}>
+                                    <Notification date={notification} />
+                                </div>
                                 {
-                                    success
-                                        ?
+                                    notification.type !== 'success' &&
+                                    <>
                                         <div className={styles.wrap}>
-                                            <Notification
-                                                text={success}
-                                                type={'success'}
+                                            <p>{translate('alert-restore-email')}</p>
+                                        </div>
+                                        <div className={styles.wrap}>
+                                            <Field
+                                                type={"email"}
+                                                required={true}
+                                                placeholder={'profile_email'}
+                                                data={email || ''}
+                                                action={setEmail}
                                             />
                                         </div>
-                                        :
-                                        <>
-                                            <div className={styles.wrap}>
-                                                <p>{translate('alert-restore-email')}</p>
-                                            </div>
-                                            {
-                                                error &&
-                                                <div className={styles.wrap}>
-                                                    <Notification
-                                                        text={error}
-                                                        type={'error'}
-                                                    />
-                                                </div>
-                                            }
-                                            <div className={styles.wrap}>
-                                                <Field
-                                                    type={"email"}
-                                                    required={true}
-                                                    placeholder={'profile_email'}
-                                                    data={email || ''}
-                                                    action={setEmail}
-                                                />
-                                            </div>
-                                            <Button
-                                                type={"submit"}
-                                                action={false}
-                                                placeholder={translate('button-continue')}
-                                            />
-                                        </>
+                                        <Button
+                                            type={"submit"}
+                                            action={false}
+                                            placeholder={translate('button-continue')}
+                                        />
+                                    </>
                                 }
                             </div>
                         </form>

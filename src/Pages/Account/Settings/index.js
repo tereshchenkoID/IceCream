@@ -1,24 +1,43 @@
 import React, {useEffect, useState} from "react";
 import {ReactTitle} from "react-meta-tags";
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 
 import classes from "classnames";
 
 import {server} from "../../../redux/types/types";
 
+import checkPassword from "../../../helpers/checkPassword";
 import request from "../_helpers/request";
 
 import {translate, translateString} from "../../../i18n/translate";
+
+import {setUserData} from "../../../redux/actions/userActions";
 
 import GeneratePassword from "../../../Modules/GeneratePassword";
 import Breadcrumbs from "../../../Components/Breadcrumbs";
 import Password from "../../../Components/Password";
 import Button from "../../../Components/Button";
-
-import styles from './index.module.scss';
 import Notification from "../../../Components/Notification";
 
+import styles from './index.module.scss';
+import Preloader from "../../../Components/Preloader";
+
+const checkProfile = (data) => {
+    return !!(
+        data.name &&
+        data.surname &&
+        data.vaccinated &&
+        data.age &&
+        data.available &&
+        data.country &&
+        data.region &&
+        data.eu_allowed_person &&
+        data.gender
+    )
+}
+
 const Settings = () => {
+    const dispatch = useDispatch();
 
     let { dataProfile } = useSelector(state => state.profileReducer);
 
@@ -38,76 +57,107 @@ const Settings = () => {
     const [repeatPassword, setRepeatPassword] = useState('');
     const [visibility, setVisibility] = useState('1');
 
-    const [error, setError] = useState('');
-    const [success, setSuccess] = useState('');
+    const [notification, setNotification] = useState({
+        type: null,
+        code: 0
+    })
 
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        const formData = new FormData(e.target);
+        const c_Password = checkPassword(newPassword, repeatPassword)
 
-        formData.set('id', localStorage.getItem('user_id'))
-        formData.set('type', '4')
-        formData.set('new_password', newPassword)
-        formData.set('current_password', currentPassword)
+        if (c_Password.code === 0) {
+            const formData = new FormData(e.target);
 
-        if (newPassword === repeatPassword) {
+            formData.set('id', localStorage.getItem('user_id'))
+            formData.set('type', '4')
+            formData.set('new_password', newPassword)
+            formData.set('current_password', currentPassword)
 
-            if (newPassword.length > 6 && repeatPassword.length > 6){
-                fetch(`${server.PATH}user/update`, {
-                    method: 'POST',
-                    headers: {
-                        'Authorization': `"Bearer ${localStorage.getItem('user_token')}"`
-                    },
-                    body: formData
+            fetch(`${server.PATH}user/update`, {
+                method: 'POST',
+                headers: {
+                    'Authorization': `Bearer ${localStorage.getItem('user_token')}`
+                },
+                body: formData
+            })
+                .then(success => success.json())
+                .then(success => {
+                    if (success === 1) {
+                        setLoader(true)
+
+                        setNotification({
+                            type: 'success',
+                            code: '2'
+                        })
+
+                        setNewPassword('')
+                        setCurrentPassword('')
+                        setRepeatPassword('')
+
+                        setTimeout(() => {
+                            setLoader(false)
+                            setNotification({
+                                type: null,
+                                code: 0
+                            })
+
+                        }, 3000);
+                    }
+                    else {
+                        setNotification({
+                            type: 'error',
+                            code: '2'
+                        })
+                    }
                 })
-                    .then(success => success.json())
-                    .then(success => {
-                        if (success === 1) {
-                            setLoader(true)
-
-                            setSuccess(translate('alert-success-password'))
-
-                            setError('')
-                            setNewPassword('')
-                            setCurrentPassword('')
-                            setRepeatPassword('')
-
-                            setTimeout(() => {
-                                setLoader(false)
-                                setSuccess('')
-                            }, 3000);
-
-                        }
-                        else {
-                            setError(translate('alert-wrong-current-password'))
-                        }
-                    })
-                    .catch(error => console.log("Error", error));
-            }
-            else {
-                setError(translate('alert-length-password'))
-            }
+                .catch(error => console.log("Error", error));
         }
         else {
-            setError(translate('alert-match-password'))
+            setNotification(c_Password)
         }
     }
 
     const handleVisibility = () => {
-        visibility === '1'
-        ?
-            setVisibility('0')
-        :
-            setVisibility('1')
+        if (checkProfile(dataProfile)) {
+            visibility === '1'
+            ?
+                setVisibility('0')
+            :
+                setVisibility('1')
 
+            setNotification({
+                type: null,
+                code: 0
+            })
 
+            const formData = new FormData();
+
+            formData.set('type', '5')
+            formData.set('visibility', visibility === '1' ? '0' : '1')
+
+            request(formData, setLoader, false)
+        }
+        else {
+            setNotification({
+                type: 'error',
+                code: '5'
+            })
+        }
+    }
+
+    const handleDelete = () => {
         const formData = new FormData();
 
-        formData.set('type', '5')
-        formData.set('visibility', visibility === '1' ? '0' : '1')
+        formData.set('type', '10')
 
         request(formData, setLoader, false)
+
+        dispatch(setUserData(0))
+        localStorage.removeItem('user_id')
+        localStorage.removeItem('user_role')
+        localStorage.removeItem('user_token')
     }
 
     useEffect(() => {
@@ -129,22 +179,36 @@ const Settings = () => {
             <section className="section">
                 <div className="container-fluid">
                     <div className="container">
+                        <div className={styles.notification}>
+                            <Notification date={notification} />
+                        </div>
                         <div className={styles.wrapper}>
                             <div className={styles.body}>
                                 <div className="row">
                                     <div className={classes("col", "col-12")}>
-                                        <div
-                                            onClick={() => {
-                                                handleVisibility()
-                                            }}
-                                        >
-                                            {
-                                                visibility === '1'
-                                                ?
-                                                    <div className={classes(styles.visibility, styles.hide)}>{translate('profile_hide')}</div>
-                                                :
-                                                    <div className={classes(styles.visibility, styles.show)}>{translate('profile_show')}</div>
-                                            }
+                                        <div className={styles.option}>
+                                            <div
+                                                onClick={() => {
+                                                    handleVisibility()
+                                                }}
+                                            >
+                                                {
+                                                    visibility === '1'
+                                                    ?
+                                                        <button className={classes(styles.visibility, styles.hide)}>{translate('profile_hide')}</button>
+                                                    :
+                                                        <button className={classes(styles.visibility, styles.show)}>{translate('profile_show')}</button>
+                                                }
+                                            </div>
+                                            <div className={styles.divider} />
+                                            <button
+                                                onClick={() => {
+                                                    handleDelete()
+                                                }}
+                                                className={classes(styles.visibility, styles.hide)}
+                                            >
+                                                Delete Profile
+                                            </button>
                                         </div>
                                     </div>
                                 </div>
@@ -157,30 +221,18 @@ const Settings = () => {
                             )}
                             onSubmit={handleSubmit}
                         >
+                            {
+                                loader &&
+                                <div className={styles.loader}>
+                                    <Preloader />
+                                </div>
+                            }
                             <div className={styles.wrapper}>
                                 <div className={styles.head}>
                                     <div className={styles.title}>{translate('section_description_password')}:</div>
                                 </div>
                                 <div className={styles.body}>
                                     <div className="row">
-                                        {
-                                            error &&
-                                            <div className={classes("col", "col-12", "col-padding-vertical")}>
-                                                <Notification
-                                                    text={error}
-                                                    type={'error'}
-                                                />
-                                            </div>
-                                        }
-                                        {
-                                            success &&
-                                            <div className={classes("col", "col-12", "col-padding-vertical")}>
-                                                <Notification
-                                                    text={success}
-                                                    type={'success'}
-                                                />
-                                            </div>
-                                        }
                                         <div className={classes("col", "col-12", "col-lg-4", "col-padding-vertical")}>
                                             <p className={styles.label}>{translate('profile_current_password')} <span>*</span></p>
                                             <Password

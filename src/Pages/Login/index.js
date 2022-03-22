@@ -1,16 +1,18 @@
-import React, {useState, useEffect} from "react";
+import React, {useState} from "react";
 import {useDispatch} from "react-redux";
 import {NavLink} from "react-router-dom";
 import {ReactTitle} from "react-meta-tags";
 
 import { server } from '../../redux/types/types';
 
+import checkForm from "../../helpers/checkForm";
+
 import classes from "classnames";
 
 import {translate, translateString} from "../../i18n/translate";
 
-import { loadProfileData } from "../../redux/actions/profileActions";
 import { setUserData } from "../../redux/actions/userActions";
+import { loadProfileData } from "../../redux/actions/profileActions";
 
 import Button from "../../Components/Button";
 import Field from "../../Components/Field";
@@ -35,12 +37,19 @@ const Login = () => {
 
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
-    const [error, setError] = useState('')
+
+    const [notification, setNotification] = useState({
+        type: null,
+        code: 0
+    })
 
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        if (email.length > 0 && password.length > 0) {
+        const c_Form = checkForm([email, password])
+
+        if (c_Form.code === 0) {
+
             const formData = new FormData(e.target);
 
             formData.set('email', email)
@@ -59,22 +68,20 @@ const Login = () => {
 
                         dispatch(loadProfileData())
                         dispatch(setUserData(1))
-
-                        setError('')
                     }
                     else {
-                        setError(translate("alert-authorization"))
+                        setNotification({
+                            type: 'error',
+                            code: 1
+                        })
                     }
                 })
                 .catch(error => console.log("Error", error));
         }
-    }
-
-    useEffect(() => {
-        return () => {
-            setError('');
+        else {
+            setNotification(c_Form)
         }
-    }, []);
+    }
 
     return (
         <main>
@@ -105,15 +112,9 @@ const Login = () => {
                                         </p>
                                     </div>
                                 </div>
-                                {
-                                    error &&
-                                    <div className={styles.wrap}>
-                                        <Notification
-                                            text={error}
-                                            type={'error'}
-                                        />
-                                    </div>
-                                }
+                                <div className={styles.wrap}>
+                                    <Notification date={notification} />
+                                </div>
                                 <div className={styles.wrap}>
                                     <Field
                                         type={"email"}

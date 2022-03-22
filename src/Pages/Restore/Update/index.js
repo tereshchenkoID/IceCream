@@ -4,6 +4,8 @@ import {useParams} from "react-router-dom";
 
 import { server } from '../../../redux/types/types';
 
+import checkPassword from "../../../helpers/checkPassword";
+
 import classes from "classnames";
 
 import {translate, translateString} from "../../../i18n/translate";
@@ -16,7 +18,6 @@ import Notification from "../../../Components/Notification";
 import GeneratePassword from "../../../Modules/GeneratePassword";
 
 import styles from './index.module.scss';
-
 
 const Update = () => {
     let { id } = useParams();
@@ -34,13 +35,17 @@ const Update = () => {
     const [newPassword, setNewPassword] = useState('')
     const [repeatPassword, setRepeatPassword] = useState('')
 
-    const [error, setError] = useState('')
-    const [success, setSuccess] = useState('')
+    const [notification, setNotification] = useState({
+        type: null,
+        code: 0
+    })
 
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        if (newPassword === repeatPassword) {
+        const c_Password = checkPassword(newPassword, repeatPassword)
+
+        if (c_Password.code === 0) {
 
             if(id && id.length === 42) {
                 const formData = new FormData(e.target);
@@ -56,26 +61,31 @@ const Update = () => {
                     .then(success => success.json())
                     .then(success => {
                         if (success === 0) {
-                            setSuccess(translate('alert-restore-success'))
-
-                            setError('')
-                            setNewPassword('')
-                            setRepeatPassword('')
+                            setNotification({
+                                type: 'success',
+                                code: 2
+                            })
 
                             localStorage.setItem('restore_email', '')
                         }
                         else if (success === 1) {
-                            setError(translate('alert-restore-expired'))
+                            setNotification({
+                                type: 'error',
+                                code: 8
+                            })
                         }
                         else if (success === 2) {
-                            setSuccess(translate('alert-restore-not-found'))
+                            setNotification({
+                                type: 'error',
+                                code: 6
+                            })
                         }
                     })
                     .catch(error => console.log("Error", error))
             }
         }
         else {
-            setError(translate('alert-match-password'))
+            setNotification(c_Password)
         }
     }
 
@@ -94,51 +104,37 @@ const Update = () => {
                     <div className="container">
                         <form onSubmit={handleSubmit}>
                             <div className={styles.form}>
+                                <div className={styles.wrap}>
+                                    <Notification date={notification} />
+                                </div>
                                 {
-                                    error &&
-                                    <div className={styles.wrap}>
-                                        <Notification
-                                            text={error}
-                                            type={'error'}
-                                        />
-                                    </div>
-                                }
-                                {
-                                    success
-                                        ?
+                                    notification.type !== 'success' &&
+                                    <>
                                         <div className={styles.wrap}>
-                                            <Notification
-                                                text={success}
-                                                type={'success'}
+                                            <Password
+                                                data={newPassword}
+                                                action={setNewPassword}
+                                                placeholder={'profile_new_password'}
+                                                required={true}
                                             />
                                         </div>
-                                        :
-                                        <>
-                                            <div className={styles.wrap}>
-                                                <Password
-                                                    data={newPassword}
-                                                    action={setNewPassword}
-                                                    placeholder={'profile_new_password'}
-                                                    required={true}
-                                                />
-                                            </div>
-                                            <div className={styles.wrap}>
-                                                <Password
-                                                    data={repeatPassword}
-                                                    action={setRepeatPassword}
-                                                    placeholder={'profile_repeat_password'}
-                                                    required={true}
-                                                />
-                                            </div>
-                                            <div className={styles.wrap}>
-                                                <GeneratePassword />
-                                            </div>
-                                            <Button
-                                                type={"submit"}
-                                                action={false}
-                                                placeholder={translate('button-continue')}
+                                        <div className={styles.wrap}>
+                                            <Password
+                                                data={repeatPassword}
+                                                action={setRepeatPassword}
+                                                placeholder={'profile_repeat_password'}
+                                                required={true}
                                             />
-                                        </>
+                                        </div>
+                                        <div className={styles.wrap}>
+                                            <GeneratePassword />
+                                        </div>
+                                        <Button
+                                            type={"submit"}
+                                            action={false}
+                                            placeholder={translate('button-continue')}
+                                        />
+                                    </>
                                 }
                             </div>
                         </form>

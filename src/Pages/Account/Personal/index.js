@@ -6,6 +6,7 @@ import classes from "classnames";
 
 import list from "../_helpers/list";
 import request from "../_helpers/request";
+import checkForm from "../../../helpers/checkForm";
 
 import {translate, translateString} from "../../../i18n/translate";
 
@@ -14,6 +15,7 @@ import Field from "../../../Components/Field";
 import Button from "../../../Components/Button";
 import Preloader from "../../../Components/Preloader";
 import Breadcrumbs from "../../../Components/Breadcrumbs";
+import Notification from "../../../Components/Notification";
 
 import styles from './index.module.scss';
 
@@ -38,6 +40,7 @@ const Personal = () => {
     const [surname, setSurname] = useState('');
     const [age, setAge] = useState();
     const [gender, setGender] = useState();
+    const [family, setFamily] = useState();
     const [country, setCountry] = useState({
         toggle: false,
         value: 0
@@ -47,31 +50,47 @@ const Personal = () => {
         value: 0
     });
 
-    const [family, setFamily] = useState();
     const [driver, setDriver] = useState([]);
     const [hobbies, setHobbies] = useState([]);
     const [height, setHeight] = useState(0);
     const [weight, setWeight] = useState(0);
 
+    const [notification, setNotification] = useState({
+        type: null,
+        code: 0
+    })
+
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        setLoader(true)
+        const c_Form = checkForm([name, surname, age, country, region, gender, family])
 
-        const formData = new FormData(e.target);
+        if (c_Form.code === 0) {
+            setLoader(true)
 
-        formData.set('type', '1')
-        formData.set('name', name)
-        formData.set('surname', surname)
-        formData.set('age', age)
-        formData.set('country', country.value)
-        formData.set('region', region.value)
-        formData.set('gender', gender)
-        formData.set('family', family)
-        formData.set('weight', weight.toString())
-        formData.set('height', height.toString())
+            setNotification({
+                type: null,
+                code: 0
+            })
 
-        request(formData, setLoader, true)
+            const formData = new FormData(e.target);
+
+            formData.set('type', '1')
+            formData.set('name', name)
+            formData.set('surname', surname)
+            formData.set('age', age)
+            formData.set('country', country.value)
+            formData.set('region', region.value)
+            formData.set('gender', gender)
+            formData.set('family', family)
+            formData.set('weight', weight.toString())
+            formData.set('height', height.toString())
+
+            request(formData, setLoader, true)
+        }
+        else {
+            setNotification(c_Form)
+        }
     }
 
     const handleDriver = (item) => {
@@ -141,6 +160,9 @@ const Personal = () => {
                                     <Preloader />
                                 </div>
                             }
+                            <div className={styles.wrap}>
+                                <Notification date={notification} />
+                            </div>
                             <div className={styles.wrapper}>
                                 <div className={styles.head}>
                                     <div className={styles.title}>{translate('section_description_general')}:</div>
@@ -280,13 +302,14 @@ const Personal = () => {
                                                                 name={'gender'}
                                                                 date={gender}
                                                                 action={setGender}
+                                                                required={true}
                                                             />
                                                         </div>
                                                     )
                                                 }
                                             </div>
                                             <div className={classes("col", "col-12", "col-lg-6", "col-padding-vertical")}>
-                                                <p className={styles.label}>{translate('profile_family')}</p>
+                                                <p className={styles.label}>{translate('profile_family')} <span>*</span></p>
                                                 {
                                                     dataSetting.family.slice(1, dataSetting.length).map((item, idx) =>
                                                         <div
@@ -299,6 +322,7 @@ const Personal = () => {
                                                                 name={'family'}
                                                                 date={family}
                                                                 action={setFamily}
+                                                                required={true}
                                                             />
                                                         </div>
                                                     )
