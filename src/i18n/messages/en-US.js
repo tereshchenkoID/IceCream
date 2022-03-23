@@ -137,6 +137,7 @@ const a = {
         'alert-empty': 'So far empty',
         'alert-restore': 'Forgot your password?',
         'alert-restore-email': 'Enter the e-mail address provided during registration',
+        'alert-upload-photo': 'Photo size up to 4MB in jpeg/png format',
 
         'error-1': 'Invalid email address or password',
         'error-2': 'Invalid current password',
@@ -148,12 +149,20 @@ const a = {
         'error-8': 'The link is out of date, please contact support',
         'error-9': 'The current e-mail is already registered',
         'error-10': 'Fill in all fields',
+        'error-11': 'Invalid password reset code, contact support',
+        'error-12': 'The file is larger than the maximum allowed size (4 MB)',
+        'error-13': 'File extension denied. Please upload a jpeg or png file',
+        'error-14': 'An error has occurred. Contact the administrator',
+        'error-15': 'File not selected',
+
         'success-1': 'An email was sent to the specified e-mail with a link to update the password',
         'success-2': 'Password successfully updated',
         'success-3': 'Congratulations, your profile has been successfully created',
         'success-4': 'Thank you, we will contact you as soon as possible!',
+        'success-5': 'File upload successful',
 
-        'button-continue': 'Continue'
+        'button-continue': 'Continue',
+        'button-upload': 'Select'
     }
 }
 

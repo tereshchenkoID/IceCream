@@ -193,86 +193,79 @@ const Applicant = () => {
                                     <div className={styles.title}>{translate('section_description_work')}:</div>
                                 </div>
                                 <div className={styles.body}>
-                                    <div className={styles.wrap}>
-                                        <p className={styles.label}>{translate('profile_available')} <span>*</span></p>
-                                        <div className="row">
-                                            <div className={classes("col", "col-12", "col-lg-6", "col-padding-vertical")}>
-                                                <p className={styles.label}>{translate('sort_from')}: </p>
-                                                <input
-                                                    type={"date"}
-                                                    className={styles.field}
-                                                    value={available.min}
-                                                    onChange={(e) => setAvailable({
-                                                        min: e.target.value,
-                                                        max: available.max
-                                                    })}
-                                                    required={true}
-                                                />
-                                            </div>
-                                            <div className={classes("col", "col-12", "col-lg-6", "col-padding-vertical")}>
-                                                <p className={styles.label}>{translate('sort_to')}: </p>
-                                                <input
-                                                    type={"date"}
-                                                    className={styles.field}
-                                                    value={available.max}
-                                                    onChange={(e) => setAvailable({
-                                                        min: available.min,
-                                                        max: e.target.value
-                                                    })}
-                                                    required={true}
-                                                />
-                                            </div>
+                                    <p className={styles.label}>{translate('profile_available')} <span>*</span></p>
+                                    <div className="row">
+                                        <div className={classes("col", "col-12", "col-lg-6", "col-padding-vertical")}>
+                                            <p className={styles.label}>{translate('sort_from')}: </p>
+                                            <input
+                                                type={"date"}
+                                                className={styles.field}
+                                                value={available.min}
+                                                onChange={(e) => setAvailable({
+                                                    min: e.target.value,
+                                                    max: available.max
+                                                })}
+                                                required={true}
+                                            />
                                         </div>
-                                    </div>
-
-                                    <div className={styles.wrap}>
-                                        <div className="row">
-                                            <div className={classes("col", "col-12", "col-lg-6", "col-padding-vertical")}>
-                                                <p className={styles.label}>{translate('profile_vaccination')} <span>*</span></p>
-                                                {
-                                                    dataSetting.vaccination.slice(1, dataSetting.length).map((item, idx) =>
-                                                        <div
-                                                            key={idx}
-                                                            className={styles.block}
-                                                        >
-                                                            <Radio
-                                                                lang={lang}
-                                                                item={item}
-                                                                name={'vaccination'}
-                                                                date={vaccination}
-                                                                action={setVaccination}
-                                                                required={true}
-                                                            />
-                                                        </div>
-                                                    )
-                                                }
-                                            </div>
-                                            <div className={classes("col", "col-12", "col-lg-6", "col-padding-vertical")}>
-                                                <p className={styles.label}>{translate('profile_access')} <span>*</span></p>
-                                                {
-                                                    dataSetting.access.slice(1, dataSetting.length).map((item, idx) =>
-                                                        <div
-                                                            key={idx}
-                                                            className={styles.block}
-                                                        >
-                                                            <Radio
-                                                                lang={lang}
-                                                                item={item}
-                                                                name={'access'}
-                                                                date={access}
-                                                                action={setAccess}
-                                                                required={true}
-                                                            />
-                                                        </div>
-                                                    )
-                                                }
-                                            </div>
-                                            <div className={classes("col", "col-12", "col-padding-vertical")}>
-                                                <Button
-                                                    type={"submit"}
-                                                    placeholder={translate('profile_button_save_settings')}
-                                                />
-                                            </div>
+                                        <div className={classes("col", "col-12", "col-lg-6", "col-padding-vertical")}>
+                                            <p className={styles.label}>{translate('sort_to')}: </p>
+                                            <input
+                                                type={"date"}
+                                                className={styles.field}
+                                                value={available.max}
+                                                onChange={(e) => setAvailable({
+                                                    min: available.min,
+                                                    max: e.target.value
+                                                })}
+                                                required={true}
+                                            />
+                                        </div>
+                                        <div className={classes("col", "col-12", "col-lg-6", "col-padding-vertical")}>
+                                            <p className={styles.label}>{translate('profile_vaccination')} <span>*</span></p>
+                                            {
+                                                dataSetting.vaccination.slice(1, dataSetting.length).map((item, idx) =>
+                                                    <div
+                                                        key={idx}
+                                                        className={styles.block}
+                                                    >
+                                                        <Radio
+                                                            lang={lang}
+                                                            item={item}
+                                                            name={'vaccination'}
+                                                            date={vaccination}
+                                                            action={setVaccination}
+                                                            required={true}
+                                                        />
+                                                    </div>
+                                                )
+                                            }
+                                        </div>
+                                        <div className={classes("col", "col-12", "col-lg-6", "col-padding-vertical")}>
+                                            <p className={styles.label}>{translate('profile_access')} <span>*</span></p>
+                                            {
+                                                dataSetting.access.slice(1, dataSetting.length).map((item, idx) =>
+                                                    <div
+                                                        key={idx}
+                                                        className={styles.block}
+                                                    >
+                                                        <Radio
+                                                            lang={lang}
+                                                            item={item}
+                                                            name={'access'}
+                                                            date={access}
+                                                            action={setAccess}
+                                                            required={true}
+                                                        />
+                                                    </div>
+                                                )
+                                            }
+                                        </div>
+                                        <div className={classes("col", "col-12", "col-padding-vertical")}>
+                                            <Button
+                                                type={"submit"}
+                                                placeholder={translate('profile_button_save_settings')}
+                                            />
                                         </div>
                                     </div>
                                 </div>

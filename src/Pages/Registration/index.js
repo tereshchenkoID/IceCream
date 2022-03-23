@@ -126,7 +126,6 @@ const Registration = () => {
                                         <div className={styles.wrap}>
                                             <Field
                                                 type={"text"}
-                                                required={true}
                                                 placeholder={'profile_name'}
                                                 data={name || ''}
                                                 action={setName}
@@ -135,7 +134,6 @@ const Registration = () => {
                                         <div className={styles.wrap}>
                                             <Field
                                                 type={"text"}
-                                                required={true}
                                                 placeholder={'profile_surname'}
                                                 data={surname || ''}
                                                 action={setSurname}
@@ -144,7 +142,6 @@ const Registration = () => {
                                         <div className={styles.wrap}>
                                             <Field
                                                 type={"email"}
-                                                required={true}
                                                 placeholder={'profile_email'}
                                                 data={email || ''}
                                                 action={setEmail}
@@ -154,7 +151,6 @@ const Registration = () => {
                                             <Password
                                                 data={password}
                                                 action={setPassword}
-                                                required={true}
                                                 placeholder={'profile_password'}
                                             />
                                         </div>
@@ -162,7 +158,6 @@ const Registration = () => {
                                             <Password
                                                 data={repeatPassword}
                                                 action={setRepeatPassword}
-                                                required={true}
                                                 placeholder={'profile_repeat_password'}
                                             />
                                         </div>

@@ -118,7 +118,6 @@ const Login = () => {
                                 <div className={styles.wrap}>
                                     <Field
                                         type={"email"}
-                                        required={true}
                                         placeholder={'profile_email'}
                                         data={email || ''}
                                         action={setEmail}
@@ -128,7 +127,6 @@ const Login = () => {
                                     <Password
                                         data={password}
                                         action={setPassword}
-                                        required={true}
                                         placeholder={'profile_password'}
                                     />
                                 </div>

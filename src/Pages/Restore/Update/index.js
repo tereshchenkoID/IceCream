@@ -4,6 +4,7 @@ import {useParams} from "react-router-dom";
 
 import { server } from '../../../redux/types/types';
 
+import checkForm from "../../../helpers/checkForm";
 import checkPassword from "../../../helpers/checkPassword";
 
 import classes from "classnames";
@@ -14,7 +15,6 @@ import Button from "../../../Components/Button";
 import Breadcrumbs from "../../../Components/Breadcrumbs";
 import Password from "../../../Components/Password";
 import Notification from "../../../Components/Notification";
-
 import GeneratePassword from "../../../Modules/GeneratePassword";
 
 import styles from './index.module.scss';
@@ -43,49 +43,63 @@ const Update = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
 
+        const c_Form = checkForm([newPassword, repeatPassword])
         const c_Password = checkPassword(newPassword, repeatPassword)
 
-        if (c_Password.code === 0) {
+        if (id && id.length === 42) {
 
-            if(id && id.length === 42) {
-                const formData = new FormData(e.target);
+            if (c_Form.code === 0) {
 
-                formData.set('hash', id)
-                formData.set('email', localStorage.getItem('restore_email'))
-                formData.set('new_password', newPassword)
+                if (c_Password.code === 0) {
 
-                fetch(`${server.PATH}recovery/update`, {
-                    method: 'POST',
-                    body: formData
-                })
-                    .then(success => success.json())
-                    .then(success => {
-                        if (success === 0) {
-                            setNotification({
-                                type: 'success',
-                                code: 2
-                            })
+                    const formData = new FormData(e.target);
 
-                            localStorage.setItem('restore_email', '')
-                        }
-                        else if (success === 1) {
-                            setNotification({
-                                type: 'error',
-                                code: 8
-                            })
-                        }
-                        else if (success === 2) {
-                            setNotification({
-                                type: 'error',
-                                code: 6
-                            })
-                        }
+                    formData.set('hash', id)
+                    formData.set('email', localStorage.getItem('restore_email'))
+                    formData.set('new_password', newPassword)
+
+                    fetch(`${server.PATH}recovery/update`, {
+                        method: 'POST',
+                        body: formData
                     })
-                    .catch(error => console.log("Error", error))
+                        .then(success => success.json())
+                        .then(success => {
+                            if (success === 0) {
+                                setNotification({
+                                    type: 'success',
+                                    code: 2
+                                })
+
+                                localStorage.setItem('restore_email', '')
+                            }
+                            else if (success === 1) {
+                                setNotification({
+                                    type: 'error',
+                                    code: 8
+                                })
+                            }
+                            else if (success === 2) {
+                                setNotification({
+                                    type: 'error',
+                                    code: 6
+                                })
+                            }
+                        })
+                        .catch(error => console.log("Error", error))
+                }
+                else {
+                    setNotification(c_Password)
+                }
+            }
+            else {
+                setNotification(c_Form)
             }
         }
         else {
-            setNotification(c_Password)
+            setNotification({
+                type: 'error',
+                code: 11
+            })
         }
     }
 
@@ -115,7 +129,6 @@ const Update = () => {
                                                 data={newPassword}
                                                 action={setNewPassword}
                                                 placeholder={'profile_new_password'}
-                                                required={true}
                                             />
                                         </div>
                                         <div className={styles.wrap}>
@@ -123,7 +136,6 @@ const Update = () => {
                                                 data={repeatPassword}
                                                 action={setRepeatPassword}
                                                 placeholder={'profile_repeat_password'}
-                                                required={true}
                                             />
                                         </div>
                                         <div className={styles.wrap}>

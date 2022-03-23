@@ -2,6 +2,8 @@ import React, {useEffect, useState} from "react";
 import {ReactTitle} from "react-meta-tags";
 import {useSelector} from "react-redux";
 
+import {server} from "../../../redux/types/types";
+
 import classes from "classnames";
 
 import list from "../_helpers/list";
@@ -54,6 +56,7 @@ const Personal = () => {
     const [hobbies, setHobbies] = useState([]);
     const [height, setHeight] = useState(0);
     const [weight, setWeight] = useState(0);
+    const [image, setImage] = useState();
 
     const [notification, setNotification] = useState({
         type: null,
@@ -113,6 +116,106 @@ const Personal = () => {
         request(formData, setLoader, false)
     }
 
+    const handlePhoto = (e) => {
+        e.preventDefault();
+
+        if (image) {
+            setLoader(true)
+
+            const formData = new FormData(e.target);
+
+            formData.set('id', localStorage.getItem('user_id'))
+            formData.set('type', '11')
+            formData.set('image', image)
+
+            fetch(`${server.PATH}user/update`, {
+                method: 'POST',
+                headers: {
+                    'Authorization': `Bearer ${localStorage.getItem('user_token')}`
+                },
+                body: formData,
+                contentType: false,
+                processData: false
+            })
+                .then(success => success.json())
+                .then(success => {
+                    if (success === 0) {
+                        setLoader(false)
+
+                        setNotification({
+                            type: 'success',
+                            code: 5
+                        })
+
+                        setTimeout(() => {
+                            setNotification({
+                                type: null,
+                                code: 0
+                            })
+
+                            setImage(null)
+                        }, 2000);
+                    }
+                    else if(success === 1) {
+                        setNotification({
+                            type: 'error',
+                            code: 12
+                        })
+                    }
+                    else if(success === 2) {
+                        setNotification({
+                            type: 'error',
+                            code: 14
+                        })
+                    }
+                })
+                .catch(error => console.log("Error", error));
+        }
+        else {
+            setNotification({
+                type: 'error',
+                code: 15
+            })
+        }
+    }
+
+    const loadingPhoto = () => {
+        if (image) {
+            return URL.createObjectURL(image)
+        }
+        else {
+            return dataProfile.photo ? `/img/profile/${dataProfile.photo}` : "/img/no-photo.webp"
+        }
+    }
+
+    const uploadPhoto = (e) => {
+        const file = e.target.files[0]
+
+        const extension = [
+            'image/png',
+            'image/jpeg',
+            'image/jpg'
+        ]
+
+        if (file.size > 4000000) {
+            setNotification({
+                type: 'error',
+                code: 12
+            })
+        }
+        else {
+            if(extension.indexOf(file.type) === -1) {
+                setNotification({
+                    type: 'error',
+                    code: 13
+                })
+            }
+            else {
+                setImage(file)
+            }
+        }
+    }
+
     useEffect(() => {
         dataProfile &&
             setName(dataProfile.name || '')
@@ -147,223 +250,236 @@ const Personal = () => {
             <section className="section">
                 <div className="container-fluid">
                     <div className="container">
-                        <form
-                            className={classes(
-                                styles.form,
-                                loader && styles.disabled
-                            )}
-                            onSubmit={handleSubmit}
-                        >
-                            {
-                                loader &&
-                                <div className={styles.loader}>
-                                    <Preloader />
-                                </div>
-                            }
-                            <div className={styles.wrap}>
-                                <Notification date={notification} />
+                        <div className={styles.wrap}>
+                            <Notification date={notification} />
+                        </div>
+                        <div className={styles.wrapper}>
+                            <div className={styles.head}>
+                                <div className={styles.title}>{translate('section_description_general')}:</div>
                             </div>
-                            <div className={styles.wrapper}>
-                                <div className={styles.head}>
-                                    <div className={styles.title}>{translate('section_description_general')}:</div>
-                                </div>
-                                <div className={styles.body}>
-                                    <div className={styles.wrap}>
-                                        <div className="row">
-                                            <div className={classes("col", "col-12", "col-padding-vertical")}>
-                                                <div className={styles.photo}>
-                                                    {/*<input*/}
-                                                    {/*    type={"file"}*/}
-                                                    {/*    accept={"image/*"}*/}
-                                                    {/*    className={styles.file}*/}
-                                                    {/*/>*/}
-                                                    <img
-                                                        src={dataProfile.photo ? `/img/profile/${dataProfile.photo}` : "/img/no-photo.webp"}
-                                                        alt={dataProfile.photo ? dataProfile.photo : "Empty"}
-                                                        loading={'lazy'}
-                                                    />
-                                                </div>
-                                            </div>
-                                            <div className={classes("col", "col-12", "col-lg-6", "col-padding-vertical")}>
-                                                <p className={styles.label}>{translate('profile_name')} <span>*</span></p>
-                                                <Field
-                                                    type={"text"}
-                                                    required={true}
-                                                    placeholder={false}
-                                                    data={name || ''}
-                                                    action={setName}
+                            <div className={styles.body}>
+                                {
+                                    loader &&
+                                    <div className={styles.loader}>
+                                        <Preloader />
+                                    </div>
+                                }
+                                <form
+                                    encType={"multipart/form-data"}
+                                    className={classes(
+                                        styles.form,
+                                        loader && styles.disabled
+                                    )}
+                                    onSubmit={handlePhoto}
+                                >
+                                    <div className="row">
+                                        <div className={classes("col", "col-12", "col-padding-vertical")}>
+                                            <div className={styles.photo}>
+                                                <img
+                                                    src={loadingPhoto()}
+                                                    loading={'lazy'}
+                                                    alt={"Photo"}
                                                 />
                                             </div>
-                                            <div className={classes("col", "col-12", "col-lg-6", "col-padding-vertical")}>
-                                                <p className={styles.label}>{translate('profile_surname')} <span>*</span></p>
-                                                <Field
-                                                    type={"text"}
-                                                    required={true}
-                                                    placeholder={false}
-                                                    data={surname || ''}
-                                                    action={setSurname}
+                                            <p className={styles.label}>{translate('alert-upload-photo')} <span>*</span></p>
+                                            <label
+                                                htmlFor={'upload'}
+                                                className={styles.check}
+                                            >
+                                                <input
+                                                    type={"file"}
+                                                    onChange={uploadPhoto}
+                                                    className={styles.file}
+                                                    id={'upload'}
                                                 />
-                                            </div>
-                                            <div className={classes("col", "col-12", "col-lg-6", "col-padding-vertical")}>
-                                                <p className={styles.label}>{translate('profile_birth')} <span>*</span></p>
-                                                <Field
-                                                    type={"date"}
-                                                    required={true}
-                                                    placeholder={false}
-                                                    data={age || ''}
-                                                    action={setAge}
-                                                />
-                                            </div>
-                                            <div className={classes("col", "col-12", "col-lg-6", "col-padding-vertical")} />
-                                            <div className={classes("col", "col-12", "col-lg-6", "col-padding-vertical")}>
-                                                <p className={styles.label}>{translate('profile_country')} <span>*</span></p>
-                                                <div className={classes(styles.dropdown, country.toggle && styles.active)}>
-                                                    <div
-                                                        className={styles.select}
-                                                        onClick={()=> {
-                                                            setCountry({
-                                                                toggle: !country.toggle,
-                                                                value: country.value
-                                                            })
-                                                        }}
-                                                    >
-                                                        {dataSetting.regions[country.value][lang]}
-                                                    </div>
-                                                    <div className={styles.toggle}>
-                                                        {
-                                                            dataSetting.regions.map((item, idx) =>
-                                                                <div
-                                                                    key={idx}
-                                                                    className={classes(styles.value, item.id === country.value && styles.active)}
-                                                                    onClick={()=> {
-                                                                        setCountry({
-                                                                            toggle: false,
-                                                                            value: item.id
-                                                                        })
-                                                                    }}
-                                                                >
-                                                                    {item[lang]}
-                                                                </div>
-                                                            )
-                                                        }
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div className={classes("col", "col-12", "col-lg-6", "col-padding-vertical")}>
-                                                <p className={styles.label}>{translate('profile_region')} <span>*</span></p>
-                                                <div className={classes(styles.dropdown, region.toggle && styles.active)}>
-                                                    <div
-                                                        className={styles.select}
-                                                        onClick={()=> {
-                                                            setRegion({
-                                                                toggle: !region.toggle,
-                                                                value: region.value
-                                                            })
-                                                        }}
-                                                    >
-                                                        {dataSetting.regions[country.value].list[region.value][lang]}
-                                                    </div>
-                                                    <div className={styles.toggle}>
-                                                        {
-                                                            dataSetting.regions[country.value].list.map((item, idx) =>
-                                                                <div
-                                                                    key={idx}
-                                                                    className={classes(styles.value, item.id === region.value && styles.active)}
-                                                                    onClick={()=> {
-                                                                        setRegion({
-                                                                            toggle: false,
-                                                                            value: item.id
-                                                                        })
-                                                                    }}
-                                                                >
-                                                                    {item[lang]}
-                                                                </div>
-                                                            )
-                                                        }
-                                                    </div>
-                                                </div>
-                                            </div>
+                                                {translate('button-upload')}
+                                            </label>
+                                            <Button
+                                                type={"submit"}
+                                                placeholder={translate('profile_button_save_settings')}
+                                            />
                                         </div>
                                     </div>
+                                </form>
 
-                                    <div className={styles.wrap}>
-                                        <div className="row">
-                                            <div className={classes("col", "col-12", "col-lg-6", "col-padding-vertical")}>
-                                                <p className={styles.label}>{translate('profile_gender')} <span>*</span></p>
-                                                {
-                                                    dataSetting.gender.slice(1, dataSetting.length).map((item, idx) =>
-                                                        <div
-                                                            key={idx}
-                                                            className={styles.block}
-                                                        >
-                                                            <Radio
-                                                                lang={lang}
-                                                                item={item}
-                                                                name={'gender'}
-                                                                date={gender}
-                                                                action={setGender}
-                                                                required={true}
-                                                            />
-                                                        </div>
-                                                    )
-                                                }
-                                            </div>
-                                            <div className={classes("col", "col-12", "col-lg-6", "col-padding-vertical")}>
-                                                <p className={styles.label}>{translate('profile_family')} <span>*</span></p>
-                                                {
-                                                    dataSetting.family.slice(1, dataSetting.length).map((item, idx) =>
-                                                        <div
-                                                            key={idx}
-                                                            className={styles.block}
-                                                        >
-                                                            <Radio
-                                                                lang={lang}
-                                                                item={item}
-                                                                name={'family'}
-                                                                date={family}
-                                                                action={setFamily}
-                                                                required={true}
-                                                            />
-                                                        </div>
-                                                    )
-                                                }
+                                <form
+                                    className={classes(
+                                        styles.form,
+                                        styles.margin,
+                                        loader && styles.disabled
+                                    )}
+                                    onSubmit={handleSubmit}
+                                >
+                                    <div className="row">
+                                        <div className={classes("col", "col-12", "col-lg-6", "col-padding-vertical")}>
+                                            <p className={styles.label}>{translate('profile_name')} <span>*</span></p>
+                                            <Field
+                                                type={"text"}
+                                                required={true}
+                                                placeholder={false}
+                                                data={name || ''}
+                                                action={setName}
+                                            />
+                                        </div>
+                                        <div className={classes("col", "col-12", "col-lg-6", "col-padding-vertical")}>
+                                            <p className={styles.label}>{translate('profile_surname')} <span>*</span></p>
+                                            <Field
+                                                type={"text"}
+                                                required={true}
+                                                placeholder={false}
+                                                data={surname || ''}
+                                                action={setSurname}
+                                            />
+                                        </div>
+                                        <div className={classes("col", "col-12", "col-lg-6", "col-padding-vertical")}>
+                                            <p className={styles.label}>{translate('profile_birth')} <span>*</span></p>
+                                            <Field
+                                                type={"date"}
+                                                required={true}
+                                                placeholder={false}
+                                                data={age || ''}
+                                                action={setAge}
+                                            />
+                                        </div>
+                                        <div className={classes("col", "col-12", "col-lg-6", "col-padding-vertical")} />
+                                        <div className={classes("col", "col-12", "col-lg-6", "col-padding-vertical")}>
+                                            <p className={styles.label}>{translate('profile_country')} <span>*</span></p>
+                                            <div className={classes(styles.dropdown, country.toggle && styles.active)}>
+                                                <div
+                                                    className={styles.select}
+                                                    onClick={()=> {
+                                                        setCountry({
+                                                            toggle: !country.toggle,
+                                                            value: country.value
+                                                        })
+                                                    }}
+                                                >
+                                                    {dataSetting.regions[country.value][lang]}
+                                                </div>
+                                                <div className={styles.toggle}>
+                                                    {
+                                                        dataSetting.regions.map((item, idx) =>
+                                                            <div
+                                                                key={idx}
+                                                                className={classes(styles.value, item.id === country.value && styles.active)}
+                                                                onClick={()=> {
+                                                                    setCountry({
+                                                                        toggle: false,
+                                                                        value: item.id
+                                                                    })
+                                                                }}
+                                                            >
+                                                                {item[lang]}
+                                                            </div>
+                                                        )
+                                                    }
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-
-                                    <div className={styles.wrap}>
-                                        <div className="row">
-                                            <div className={classes("col", "col-12", "col-lg-6", "col-padding-vertical")}>
-                                                <p className={styles.label}>{translate('profile_weight')}, kg</p>
-                                                <Field
-                                                    type={"number"}
-                                                    required={false}
-                                                    placeholder={false}
-                                                    data={weight}
-                                                    action={setWeight}
-                                                />
-                                            </div>
-                                            <div className={classes("col", "col-12", "col-lg-6", "col-padding-vertical")}>
-                                                <p className={styles.label}>{translate('profile_height')}, cm</p>
-                                                <Field
-                                                    type={"number"}
-                                                    required={false}
-                                                    placeholder={false}
-                                                    data={height}
-                                                    action={setHeight}
-                                                />
-                                            </div>
-                                            <div className={classes("col", "col-12", "col-padding-vertical")}>
-                                                <Button
-                                                    type={"submit"}
-                                                    placeholder={translate('profile_button_save_settings')}
-                                                />
+                                        <div className={classes("col", "col-12", "col-lg-6", "col-padding-vertical")}>
+                                            <p className={styles.label}>{translate('profile_region')} <span>*</span></p>
+                                            <div className={classes(styles.dropdown, region.toggle && styles.active)}>
+                                                <div
+                                                    className={styles.select}
+                                                    onClick={()=> {
+                                                        setRegion({
+                                                            toggle: !region.toggle,
+                                                            value: region.value
+                                                        })
+                                                    }}
+                                                >
+                                                    {dataSetting.regions[country.value].list[region.value][lang]}
+                                                </div>
+                                                <div className={styles.toggle}>
+                                                    {
+                                                        dataSetting.regions[country.value].list.map((item, idx) =>
+                                                            <div
+                                                                key={idx}
+                                                                className={classes(styles.value, item.id === region.value && styles.active)}
+                                                                onClick={()=> {
+                                                                    setRegion({
+                                                                        toggle: false,
+                                                                        value: item.id
+                                                                    })
+                                                                }}
+                                                            >
+                                                                {item[lang]}
+                                                            </div>
+                                                        )
+                                                    }
+                                                </div>
                                             </div>
                                         </div>
+                                        <div className={classes("col", "col-12", "col-lg-6", "col-padding-vertical")}>
+                                            <p className={styles.label}>{translate('profile_gender')} <span>*</span></p>
+                                            {
+                                                dataSetting.gender.slice(1, dataSetting.length).map((item, idx) =>
+                                                    <div
+                                                        key={idx}
+                                                        className={styles.block}
+                                                    >
+                                                        <Radio
+                                                            lang={lang}
+                                                            item={item}
+                                                            name={'gender'}
+                                                            date={gender}
+                                                            action={setGender}
+                                                            required={true}
+                                                        />
+                                                    </div>
+                                                )
+                                            }
+                                        </div>
+                                        <div className={classes("col", "col-12", "col-lg-6", "col-padding-vertical")}>
+                                            <p className={styles.label}>{translate('profile_family')} <span>*</span></p>
+                                            {
+                                                dataSetting.family.slice(1, dataSetting.length).map((item, idx) =>
+                                                    <div
+                                                        key={idx}
+                                                        className={styles.block}
+                                                    >
+                                                        <Radio
+                                                            lang={lang}
+                                                            item={item}
+                                                            name={'family'}
+                                                            date={family}
+                                                            action={setFamily}
+                                                            required={true}
+                                                        />
+                                                    </div>
+                                                )
+                                            }
+                                        </div>
+                                        <div className={classes("col", "col-12", "col-lg-6", "col-padding-vertical")}>
+                                            <p className={styles.label}>{translate('profile_weight')}, kg</p>
+                                            <Field
+                                                type={"number"}
+                                                required={false}
+                                                placeholder={false}
+                                                data={weight}
+                                                action={setWeight}
+                                            />
+                                        </div>
+                                        <div className={classes("col", "col-12", "col-lg-6", "col-padding-vertical")}>
+                                            <p className={styles.label}>{translate('profile_height')}, cm</p>
+                                            <Field
+                                                type={"number"}
+                                                required={false}
+                                                placeholder={false}
+                                                data={height}
+                                                action={setHeight}
+                                            />
+                                        </div>
+                                        <div className={classes("col", "col-12", "col-padding-vertical")}>
+                                            <Button
+                                                type={"submit"}
+                                                placeholder={translate('profile_button_save_settings')}
+                                            />
+                                        </div>
                                     </div>
-                                </div>
+                                </form>
                             </div>
-                        </form>
+                        </div>
 
                         <div className={styles.wrapper}>
                             <div className={styles.head}>

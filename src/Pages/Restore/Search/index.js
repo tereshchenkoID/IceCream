@@ -106,7 +106,6 @@ const Search = () => {
                                         <div className={styles.wrap}>
                                             <Field
                                                 type={"email"}
-                                                required={true}
                                                 placeholder={'profile_email'}
                                                 data={email || ''}
                                                 action={setEmail}
