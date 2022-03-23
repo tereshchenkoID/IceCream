@@ -1,8 +1,10 @@
 import React, {useEffect, useState} from "react";
 import {ReactTitle} from "react-meta-tags";
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 
 import classes from "classnames";
+
+import {loadProfileData} from "../../../redux/actions/profileActions";
 
 import request from "../_helpers/request";
 import checkForm from "../../../helpers/checkForm";
@@ -18,6 +20,8 @@ import Notification from "../../../Components/Notification";
 import styles from './index.module.scss';
 
 const Applicant = () => {
+    const dispatch = useDispatch();
+
     let { dataProfile } = useSelector(state => state.profileReducer);
     let { dataSetting } = useSelector(state => state.settingReducer);
 
@@ -49,6 +53,12 @@ const Applicant = () => {
         code: 0
     })
 
+    const updateProfile = () => {
+        setTimeout(() => {
+            dispatch(loadProfileData())
+        }, 2000);
+    }
+
     const handleLanguage = (data) => {
         const a = [...language]
         const find_c = a.find((e) => {
@@ -79,6 +89,8 @@ const Applicant = () => {
         formData.set('language', JSON.stringify(a))
 
         request(formData, setLoader, false)
+
+        updateProfile()
     }
 
     const handleSkill = (c_id, i_id) => {
@@ -117,6 +129,8 @@ const Applicant = () => {
         formData.set('skills', JSON.stringify(a))
 
         request(formData, setLoader, false)
+
+        updateProfile()
     }
 
     const handleSubmit = (e) => {
@@ -141,6 +155,8 @@ const Applicant = () => {
             formData.set('available_to', available.max)
 
             request(formData, setLoader, true)
+
+            updateProfile()
         }
         else {
             setNotification(c_Form)
@@ -172,6 +188,9 @@ const Applicant = () => {
             <section className="section">
                 <div className="container-fluid">
                     <div className="container">
+                        <div className={styles.wrap}>
+                            <Notification date={notification} />
+                        </div>
                         <form
                             className={classes(
                                 styles.form,
@@ -185,9 +204,6 @@ const Applicant = () => {
                                     <Preloader />
                                 </div>
                             }
-                            <div className={styles.wrap}>
-                                <Notification date={notification} />
-                            </div>
                             <div className={styles.wrapper}>
                                 <div className={styles.head}>
                                     <div className={styles.title}>{translate('section_description_work')}:</div>

@@ -1,8 +1,10 @@
 import React, {useEffect, useState} from "react";
 import {ReactTitle} from "react-meta-tags";
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 
 import {server} from "../../../redux/types/types";
+
+import {loadProfileData} from "../../../redux/actions/profileActions";
 
 import classes from "classnames";
 
@@ -22,6 +24,8 @@ import Notification from "../../../Components/Notification";
 import styles from './index.module.scss';
 
 const Personal = () => {
+    const dispatch = useDispatch();
+
     let { dataProfile } = useSelector(state => state.profileReducer);
     let { dataSetting } = useSelector(state => state.settingReducer);
 
@@ -63,6 +67,12 @@ const Personal = () => {
         code: 0
     })
 
+    const updateProfile = () => {
+        setTimeout(() => {
+            dispatch(loadProfileData())
+        }, 2000);
+    }
+
     const handleSubmit = (e) => {
         e.preventDefault();
 
@@ -90,6 +100,8 @@ const Personal = () => {
             formData.set('height', height.toString())
 
             request(formData, setLoader, true)
+
+            updateProfile()
         }
         else {
             setNotification(c_Form)
@@ -104,6 +116,8 @@ const Personal = () => {
         formData.set('driver', data ? data.join() : null)
 
         request(formData, setLoader, false)
+
+        updateProfile()
     }
 
     const handleHobbies = (item) => {
@@ -114,6 +128,8 @@ const Personal = () => {
         formData.set('hobbies', data ? data.join() : null)
 
         request(formData, setLoader, false)
+
+        updateProfile()
     }
 
     const handlePhoto = (e) => {
@@ -152,8 +168,6 @@ const Personal = () => {
                                 type: null,
                                 code: 0
                             })
-
-                            setImage(null)
                         }, 2000);
                     }
                     else if(success === 1) {
@@ -278,7 +292,7 @@ const Personal = () => {
                                                 <img
                                                     src={loadingPhoto()}
                                                     loading={'lazy'}
-                                                    alt={"Photo"}
+                                                    alt={"Profile"}
                                                 />
                                             </div>
                                             <p className={styles.label}>{translate('alert-upload-photo')} <span>*</span></p>

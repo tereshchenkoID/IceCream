@@ -6,12 +6,7 @@
   right: 0;
   bottom: 0;
   left: 0;
-  background-color: rgba(255, 255, 255, 0.8);
   z-index: 3;
-}
-
-.notification {
-  margin-bottom: 20px;
 }
 
 .wrapper {
@@ -23,6 +18,10 @@
   &:last-child {
     margin-bottom: 0;
   }
+}
+
+.wrap {
+  margin-bottom: 20px;
 }
 
 .form {

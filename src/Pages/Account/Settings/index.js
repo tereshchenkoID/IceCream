@@ -12,15 +12,16 @@ import request from "../_helpers/request";
 import {translate, translateString} from "../../../i18n/translate";
 
 import {setUserData} from "../../../redux/actions/userActions";
+import {loadCardData} from "../../../redux/actions/cardActions";
 
 import GeneratePassword from "../../../Modules/GeneratePassword";
 import Breadcrumbs from "../../../Components/Breadcrumbs";
 import Password from "../../../Components/Password";
 import Button from "../../../Components/Button";
 import Notification from "../../../Components/Notification";
+import Preloader from "../../../Components/Preloader";
 
 import styles from './index.module.scss';
-import Preloader from "../../../Components/Preloader";
 
 const checkProfile = (data) => {
     return !!(
@@ -62,6 +63,12 @@ const Settings = () => {
         code: 0
     })
 
+    const updateProfile = () => {
+        setTimeout(() => {
+            dispatch(loadCardData())
+        }, 2000);
+    }
+
     const handleSubmit = (e) => {
         e.preventDefault();
 
@@ -75,6 +82,8 @@ const Settings = () => {
             formData.set('new_password', newPassword)
             formData.set('current_password', currentPassword)
 
+            setLoader(true)
+
             fetch(`${server.PATH}user/update`, {
                 method: 'POST',
                 headers: {
@@ -85,27 +94,31 @@ const Settings = () => {
                 .then(success => success.json())
                 .then(success => {
                     if (success === 1) {
-                        setLoader(true)
-
-                        setNotification({
-                            type: 'success',
-                            code: '2'
-                        })
-
                         setNewPassword('')
                         setCurrentPassword('')
                         setRepeatPassword('')
 
                         setTimeout(() => {
                             setLoader(false)
+
+                            setNotification({
+                                type: 'success',
+                                code: '2'
+                            })
+
+                        }, 2000);
+
+                        setTimeout(() => {
+
                             setNotification({
                                 type: null,
                                 code: 0
                             })
-
-                        }, 3000);
+                        }, 4000);
                     }
                     else {
+                        setLoader(false)
+
                         setNotification({
                             type: 'error',
                             code: '2'
@@ -138,6 +151,8 @@ const Settings = () => {
             formData.set('visibility', visibility === '1' ? '0' : '1')
 
             request(formData, setLoader, false)
+
+            updateProfile()
         }
         else {
             setNotification({
@@ -179,7 +194,7 @@ const Settings = () => {
             <section className="section">
                 <div className="container-fluid">
                     <div className="container">
-                        <div className={styles.notification}>
+                        <div className={styles.wrap}>
                             <Notification date={notification} />
                         </div>
                         <div className={styles.wrapper}>
@@ -239,7 +254,7 @@ const Settings = () => {
                                                 data={currentPassword}
                                                 action={setCurrentPassword}
                                                 placeholder={false}
-                                                required={true}
+                                                required={false}
                                             />
                                         </div>
                                         <div className={classes("col", "col-12", "col-lg-4", "col-padding-vertical")}>
@@ -248,7 +263,7 @@ const Settings = () => {
                                                 data={newPassword}
                                                 action={setNewPassword}
                                                 placeholder={false}
-                                                required={true}
+                                                required={false}
                                             />
                                         </div>
                                         <div className={classes("col", "col-12", "col-lg-4", "col-padding-vertical")}>
@@ -257,7 +272,7 @@ const Settings = () => {
                                                 data={repeatPassword}
                                                 action={setRepeatPassword}
                                                 placeholder={false}
-                                                required={true}
+                                                required={false}
                                             />
                                         </div>
                                         <div className={classes("col", "col-12", "col-lg-4", "col-padding-vertical")}>

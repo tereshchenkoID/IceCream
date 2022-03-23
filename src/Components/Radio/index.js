@@ -3,6 +3,7 @@ import React from "react";
 import styles from './index.module.scss';
 
 const Radio = ({lang, item, name, date, action, required}) => {
+
     return (
         <div className={styles.block}>
             <input

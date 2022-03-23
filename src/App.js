@@ -35,8 +35,8 @@ const App = () => {
 
           <I18nProvider locale={lang}>
               <Provider store={store}>
+                  <Api/>
                   <BrowserRouter>
-                      <Api/>
                       <Nav
                           lang={lang}
                           setLang={setLang}

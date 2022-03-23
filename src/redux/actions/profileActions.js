@@ -38,7 +38,7 @@ export const loadProfileData = () => async dispatch => {
 
   // try {
   //   const data = await post(
-  //       URL,
+  //       `${server.PATH}user/show`,
   //       formData,
   //       {
   //         'Authorization': `Bearer ${localStorage.getItem('user_token') || null}`

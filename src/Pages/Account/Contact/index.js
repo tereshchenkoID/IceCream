@@ -1,8 +1,10 @@
 import React, {useEffect, useState} from "react";
 import {ReactTitle} from "react-meta-tags";
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 
 import classes from "classnames";
+
+import {loadProfileData} from "../../../redux/actions/profileActions";
 
 import request from "../_helpers/request";
 import checkForm from "../../../helpers/checkForm";
@@ -18,6 +20,8 @@ import Notification from "../../../Components/Notification";
 import styles from './index.module.scss';
 
 const Contact = () => {
+    const dispatch = useDispatch();
+
     let { dataProfile } = useSelector(state => state.profileReducer);
 
     const breadcrumbs = [
@@ -39,6 +43,12 @@ const Contact = () => {
         code: 0
     })
 
+    const updateProfile = () => {
+        setTimeout(() => {
+            dispatch(loadProfileData())
+        }, 2000);
+    }
+
     const handleSubmit = (e) => {
         e.preventDefault();
 
@@ -59,6 +69,8 @@ const Contact = () => {
             formData.set('phone', phone)
 
             request(formData, setLoader, true)
+
+            updateProfile()
         }
         else {
             setNotification(c_Form)
@@ -85,6 +97,9 @@ const Contact = () => {
             <section className="section">
                 <div className="container-fluid">
                     <div className="container">
+                        <div className={styles.wrap}>
+                            <Notification date={notification} />
+                        </div>
                         <form
                             className={classes(
                                 styles.form,
@@ -98,9 +113,6 @@ const Contact = () => {
                                     <Preloader />
                                 </div>
                             }
-                            <div className={styles.wrap}>
-                                <Notification date={notification} />
-                            </div>
                             <div className={styles.wrapper}>
                                 <div className={styles.head}>
                                     <div className={styles.title}>{translate('section_description_contact')}:</div>
@@ -111,7 +123,7 @@ const Contact = () => {
                                             <p className={styles.label}>{translate('profile_email')} <span>*</span></p>
                                             <Field
                                                 type={"email"}
-                                                required={true}
+                                                required={false}
                                                 placeholder={false}
                                                 data={email || ''}
                                                 action={setEmail}
@@ -121,7 +133,7 @@ const Contact = () => {
                                             <p className={styles.label}>{translate('profile_phone')} <span>*</span></p>
                                             <Field
                                                 type={"text"}
-                                                required={true}
+                                                required={false}
                                                 placeholder={false}
                                                 data={phone || ''}
                                                 action={setPhone}
