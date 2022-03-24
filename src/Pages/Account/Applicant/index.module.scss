@@ -30,7 +30,6 @@
 }
 
 .form {
-  position: relative;
 
   &.disabled {
     pointer-events: none;
@@ -47,10 +46,6 @@
 
 .block {
   padding: 5px 0;
-}
-
-.wrap {
-  margin-bottom: 20px;
 }
 
 .list {

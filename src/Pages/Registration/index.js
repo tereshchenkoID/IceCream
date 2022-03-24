@@ -98,77 +98,76 @@ const Registration = () => {
                     </div>
                 </div>
             </section>
-            <section className="section">
+            <section className={classes("section", "fluid")}>
                 <div className="container-fluid">
                     <div className="container">
-                        <form onSubmit={handleSubmit}>
-                            <div className={styles.form}>
-                                <div className={styles.wrap}>
-                                    <div className={styles.titles}>
-                                        <h5 className={styles.title}>{translate('registration-title')}</h5>
-                                        <p className={styles.subtitle}>
-                                            <span>{translate('registration-subtitle')}</span>
-                                            <NavLink
-                                                to={'/login'}
-                                                className={styles.link}
-                                            >
-                                                {translate('menu_link_15')}!
-                                            </NavLink>
-                                        </p>
-                                    </div>
+                        <form
+                            onSubmit={handleSubmit}
+                            className={styles.form}
+                        >
+                            <div className={styles.wrap}>
+                                <div className={styles.titles}>
+                                    <h5 className={styles.title}>{translate('registration-title')}</h5>
+                                    <p className={styles.subtitle}>
+                                        <span>{translate('login-subtitle')}</span>
+                                        <NavLink
+                                            to={'/login'}
+                                            className={styles.link}
+                                        >
+                                            {translate('menu_link_15')}!
+                                        </NavLink>
+                                    </p>
                                 </div>
-                                <div className={styles.wrap}>
-                                    <Notification date={notification} />
-                                </div>
-                                {
-                                    notification.type !== 'success' &&
-                                    <>
-                                        <div className={styles.wrap}>
-                                            <Field
-                                                type={"text"}
-                                                placeholder={'profile_name'}
-                                                data={name || ''}
-                                                action={setName}
-                                            />
-                                        </div>
-                                        <div className={styles.wrap}>
-                                            <Field
-                                                type={"text"}
-                                                placeholder={'profile_surname'}
-                                                data={surname || ''}
-                                                action={setSurname}
-                                            />
-                                        </div>
-                                        <div className={styles.wrap}>
-                                            <Field
-                                                type={"email"}
-                                                placeholder={'profile_email'}
-                                                data={email || ''}
-                                                action={setEmail}
-                                            />
-                                        </div>
-                                        <div className={styles.wrap}>
-                                            <Password
-                                                data={password}
-                                                action={setPassword}
-                                                placeholder={'profile_password'}
-                                            />
-                                        </div>
-                                        <div className={styles.wrap}>
-                                            <Password
-                                                data={repeatPassword}
-                                                action={setRepeatPassword}
-                                                placeholder={'profile_repeat_password'}
-                                            />
-                                        </div>
-                                        <Button
-                                            type={"submit"}
-                                            action={false}
-                                            placeholder={translate('menu_link_18')}
-                                        />
-                                    </>
-                                }
                             </div>
+                            <Notification date={notification} />
+                            {
+                                notification.type !== 'success' &&
+                                <>
+                                    <div className={styles.wrap}>
+                                        <Field
+                                            type={"text"}
+                                            placeholder={'profile_name'}
+                                            data={name || ''}
+                                            action={setName}
+                                        />
+                                    </div>
+                                    <div className={styles.wrap}>
+                                        <Field
+                                            type={"text"}
+                                            placeholder={'profile_surname'}
+                                            data={surname || ''}
+                                            action={setSurname}
+                                        />
+                                    </div>
+                                    <div className={styles.wrap}>
+                                        <Field
+                                            type={"email"}
+                                            placeholder={'profile_email'}
+                                            data={email || ''}
+                                            action={setEmail}
+                                        />
+                                    </div>
+                                    <div className={styles.wrap}>
+                                        <Password
+                                            data={password}
+                                            action={setPassword}
+                                            placeholder={'profile_password'}
+                                        />
+                                    </div>
+                                    <div className={styles.wrap}>
+                                        <Password
+                                            data={repeatPassword}
+                                            action={setRepeatPassword}
+                                            placeholder={'profile_repeat_password'}
+                                        />
+                                    </div>
+                                    <Button
+                                        type={"submit"}
+                                        action={false}
+                                        placeholder={translate('menu_link_18')}
+                                    />
+                                </>
+                            }
                         </form>
                     </div>
                 </div>

@@ -93,57 +93,56 @@ const Login = () => {
                     </div>
                 </div>
             </section>
-            <section className="section">
+            <section className={classes("section", "fluid")}>
                 <div className="container-fluid">
                     <div className="container">
-                        <form onSubmit={handleSubmit}>
-                            <div className={styles.form}>
-                                <div className={styles.wrap}>
-                                    <div className={styles.titles}>
-                                        <h5 className={styles.title}>{translate('login-title')}</h5>
-                                        <p className={styles.subtitle}>
-                                            <span>{translate('login-subtitle')}</span>
-                                            <NavLink
-                                                to={'/registration'}
-                                                className={styles.link}
-                                            >
-                                                {translate('menu_link_18')}!
-                                            </NavLink>
-                                        </p>
-                                    </div>
+                        <form
+                            onSubmit={handleSubmit}
+                            className={styles.form}
+                        >
+                            <div className={styles.wrap}>
+                                <div className={styles.titles}>
+                                    <h5 className={styles.title}>{translate('login-title')}</h5>
+                                    <p className={styles.subtitle}>
+                                        <span>{translate('registration-subtitle')}</span>
+                                        <NavLink
+                                            to={'/registration'}
+                                            className={styles.link}
+                                        >
+                                            {translate('menu_link_18')}!
+                                        </NavLink>
+                                    </p>
                                 </div>
-                                <div className={styles.wrap}>
-                                    <Notification date={notification} />
-                                </div>
-                                <div className={styles.wrap}>
-                                    <Field
-                                        type={"email"}
-                                        placeholder={'profile_email'}
-                                        data={email || ''}
-                                        action={setEmail}
-                                    />
-                                </div>
-                                <div className={styles.wrap}>
-                                    <Password
-                                        data={password}
-                                        action={setPassword}
-                                        placeholder={'profile_password'}
-                                    />
-                                </div>
-                                <div className={styles.wrap}>
-                                    <NavLink
-                                        to={'/restore/search'}
-                                        className={styles.link}
-                                    >
-                                        {translate('alert-restore')}
-                                    </NavLink>
-                                </div>
-                                <Button
-                                    type={"submit"}
-                                    action={false}
-                                    placeholder={translate('menu_link_15')}
+                            </div>
+                            <Notification date={notification} />
+                            <div className={styles.wrap}>
+                                <Field
+                                    type={"email"}
+                                    placeholder={'profile_email'}
+                                    data={email || ''}
+                                    action={setEmail}
                                 />
                             </div>
+                            <div className={styles.wrap}>
+                                <Password
+                                    data={password}
+                                    action={setPassword}
+                                    placeholder={'profile_password'}
+                                />
+                            </div>
+                            <div className={styles.wrap}>
+                                <NavLink
+                                    to={'/restore/search'}
+                                    className={styles.link}
+                                >
+                                    {translate('alert-restore')}
+                                </NavLink>
+                            </div>
+                            <Button
+                                type={"submit"}
+                                action={false}
+                                placeholder={translate('menu_link_15')}
+                            />
                         </form>
                     </div>
                 </div>

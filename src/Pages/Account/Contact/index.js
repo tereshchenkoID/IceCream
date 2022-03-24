@@ -4,9 +4,10 @@ import {useDispatch, useSelector} from "react-redux";
 
 import classes from "classnames";
 
+import {server} from "../../../redux/types/types";
+
 import {loadProfileData} from "../../../redux/actions/profileActions";
 
-import request from "../_helpers/request";
 import checkForm from "../../../helpers/checkForm";
 
 import {translate, translateString} from "../../../i18n/translate";
@@ -43,34 +44,50 @@ const Contact = () => {
         code: 0
     })
 
-    const updateProfile = () => {
-        setTimeout(() => {
-            dispatch(loadProfileData())
-        }, 2000);
-    }
-
     const handleSubmit = (e) => {
         e.preventDefault();
 
         const c_Form = checkForm([email, phone])
 
         if (c_Form.code === 0) {
-            setLoader(true)
-
-            setNotification({
-                type: null,
-                code: 0
-            })
 
             const formData = new FormData(e.target);
 
+            formData.set('id', localStorage.getItem('user_id'))
             formData.set('type', '3')
             formData.set('email', email)
             formData.set('phone', phone)
 
-            request(formData, setLoader, true)
+            fetch(`${server.PATH}user/update`, {
+                method: 'POST',
+                headers: {
+                    'Authorization': `Bearer ${localStorage.getItem('user_token')}`
+                },
+                body: formData
+            })
+                .then(success => success.json())
+                .then(success => {
+                    if(success === 0){
+                        setLoader(true)
 
-            updateProfile()
+                        setNotification({
+                            type: null,
+                            code: 0
+                        })
+
+                        setTimeout(() => {
+                            setLoader(false)
+                            dispatch(loadProfileData())
+                        }, 2000);
+                    }
+                    else if(success === 1) {
+                        setNotification({
+                            type: 'error',
+                            code: 9
+                        })
+                    }
+                })
+                .catch(error => console.log("Error", error));
         }
         else {
             setNotification(c_Form)
@@ -94,12 +111,10 @@ const Contact = () => {
                 </div>
             </section>
 
-            <section className="section">
+            <section className={classes("section", "fluid")}>
                 <div className="container-fluid">
                     <div className="container">
-                        <div className={styles.wrap}>
-                            <Notification date={notification} />
-                        </div>
+                        <Notification date={notification} />
                         <form
                             className={classes(
                                 styles.form,

@@ -64,7 +64,7 @@ const a = {
         'registration-title': 'Let\'s create your account!',
         'registration-subtitle': 'Don\'t have an account?',
         'login-title': 'We\'re glad to see you again!',
-        'login-subtitle': 'Don\'t have an account?',
+        'login-subtitle': 'Already have an account?',
 
         'contact_name': 'Your name',
         'contact_email': 'Email address',
@@ -156,13 +156,14 @@ const a = {
         'error-15': 'File not selected',
 
         'success-1': 'An email was sent to the specified e-mail with a link to update the password',
-        'success-2': 'Password successfully updated',
+        'success-2': 'Data successfully updated',
         'success-3': 'Congratulations, your profile has been successfully created',
         'success-4': 'Thank you, we will contact you as soon as possible!',
-        'success-5': 'File upload successful',
+        // 'success-5': 'File upload successful',
 
         'button-continue': 'Continue',
-        'button-upload': 'Select'
+        'button-upload': 'Select',
+        'button-delete': 'Delete profile'
     }
 }
 

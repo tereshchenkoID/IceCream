@@ -132,16 +132,14 @@ const Team = () => {
 
             {
                 teamArray.length > 0 &&
-                <section className="section">
+                <section className={classes("section", "fluid")}>
                     <div className="container-fluid">
                         <div className="container">
                             <form
                                 onSubmit={handleSubmit}
                                 className={styles.form}
                             >
-                                <div className={styles.wrap}>
-                                    <Notification date={notification} />
-                                </div>
+                                <Notification date={notification} />
                                 {
                                     notification.type !== 'success' &&
                                     <>

@@ -89,36 +89,35 @@ const Search = () => {
                     </div>
                 </div>
             </section>
-            <section className="section">
+            <section className={classes("section", "fluid")}>
                 <div className="container-fluid">
                     <div className="container">
-                        <form onSubmit={handleSubmit}>
-                            <div className={styles.form}>
-                                <div className={styles.wrap}>
-                                    <Notification date={notification} />
-                                </div>
-                                {
-                                    notification.type !== 'success' &&
-                                    <>
-                                        <div className={styles.wrap}>
-                                            <p>{translate('alert-restore-email')}</p>
-                                        </div>
-                                        <div className={styles.wrap}>
-                                            <Field
-                                                type={"email"}
-                                                placeholder={'profile_email'}
-                                                data={email || ''}
-                                                action={setEmail}
-                                            />
-                                        </div>
-                                        <Button
-                                            type={"submit"}
-                                            action={false}
-                                            placeholder={translate('button-continue')}
+                        <form
+                            onSubmit={handleSubmit}
+                            className={styles.form}
+                        >
+                            <Notification date={notification} />
+                            {
+                                notification.type !== 'success' &&
+                                <>
+                                    <div className={styles.wrap}>
+                                        <p>{translate('alert-restore-email')}</p>
+                                    </div>
+                                    <div className={styles.wrap}>
+                                        <Field
+                                            type={"email"}
+                                            placeholder={'profile_email'}
+                                            data={email || ''}
+                                            action={setEmail}
                                         />
-                                    </>
-                                }
-                            </div>
+                                    </div>
+                                    <Button
+                                        type={"submit"}
+                                        action={false}
+                                        placeholder={translate('button-continue')}
+                                    />
+                                </>
+                            }
                         </form>
                     </div>
                 </div>

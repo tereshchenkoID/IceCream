@@ -64,7 +64,7 @@ const a = {
         'registration-title': 'Lassen Sie uns Ihr Konto erstellen!',
         'registration-subtitle': 'Kein Account?',
         'login-title': 'Wir freuen uns auf ein Wiedersehen!',
-        'login-subtitle': 'Kein Account?',
+        'login-subtitle': 'Sie haben bereits ein Konto?',
 
         'contact_name': 'Dein Name',
         'contact_email': 'E-Mail-Addresse',
@@ -156,13 +156,14 @@ const a = {
         'error-15': 'Datei nicht ausgewählt',
 
         'success-1': 'An die angegebene E-Mail-Adresse wurde eine E-Mail mit einem Link zum Aktualisieren des Passworts gesendet',
-        'success-2': 'Passwort erfolgreich aktualisiert',
+        'success-2': 'Daten erfolgreich aktualisiert',
         'success-3': 'Herzlichen Glückwunsch, Ihr Profil wurde erfolgreich erstellt',
         'success-4': 'Vielen Dank, wir werden uns schnellstmöglich mit Ihnen in Verbindung setzen!',
-        'success-5': 'Datei-Upload erfolgreich',
+        // 'success-5': 'Datei-Upload erfolgreich',
 
         'button-continue': 'Fortsetzen',
-        'button-upload': 'Auswählen'
+        'button-upload': 'Auswählen',
+        'button-delete': 'Profil löschen'
     }
 }
 

@@ -15,15 +15,15 @@ import Notification from "../Notification";
 import styles from './index.module.scss';
 
 const Form = () => {
-    const [notification, setNotification] = useState({
-        type: null,
-        code: 0
-    })
-
     const [name, setName] = useState('')
     const [email, setEmail] = useState('')
     const [subject, setSubject] = useState('')
     const [message, setMessage] = useState('')
+
+    const [notification, setNotification] = useState({
+        type: null,
+        code: 0
+    })
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -69,9 +69,7 @@ const Form = () => {
         <div className={styles.block}>
             <form onSubmit={handleSubmit}>
                 <Title text={translateString('title-contact')} />
-                <div className={styles.item}>
-                    <Notification date={notification} />
-                </div>
+                <Notification date={notification} />
                 {
                     notification.type !== 'success' &&
                     <>
@@ -87,7 +85,6 @@ const Form = () => {
                                     onChange={(e) => setName(e.target.value)}
                                     className={styles.field}
                                     placeholder={translateString('contact_name')}
-                                    required
                                 />
                             </div>
                             <div className={styles.wrapper}>
@@ -101,7 +98,6 @@ const Form = () => {
                                     onChange={(e) => setEmail(e.target.value)}
                                     className={styles.field}
                                     placeholder={translateString('contact_email')}
-                                    required
                                 />
                             </div>
                         </div>
@@ -117,7 +113,6 @@ const Form = () => {
                                     onChange={(e) => setSubject(e.target.value)}
                                     className={styles.field}
                                     placeholder={translateString('contact_subject')}
-                                    required
                                 />
                             </div>
                         </div>
@@ -126,7 +121,6 @@ const Form = () => {
                                 className={styles.textarea}
                                 onChange={(e) => setMessage(e.target.value)}
                                 placeholder={translateString('contact_message')}
-                                required
                             />
                         </div>
                         <div className={styles.item}>

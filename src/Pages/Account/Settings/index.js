@@ -7,12 +7,14 @@ import classes from "classnames";
 import {server} from "../../../redux/types/types";
 
 import checkPassword from "../../../helpers/checkPassword";
+import checkForm from "../../../helpers/checkForm";
 import request from "../_helpers/request";
 
 import {translate, translateString} from "../../../i18n/translate";
 
 import {setUserData} from "../../../redux/actions/userActions";
 import {loadCardData} from "../../../redux/actions/cardActions";
+import {loadProfileData} from "../../../redux/actions/profileActions";
 
 import GeneratePassword from "../../../Modules/GeneratePassword";
 import Breadcrumbs from "../../../Components/Breadcrumbs";
@@ -65,6 +67,7 @@ const Settings = () => {
 
     const updateProfile = () => {
         setTimeout(() => {
+            dispatch(loadProfileData())
             dispatch(loadCardData())
         }, 2000);
     }
@@ -72,63 +75,79 @@ const Settings = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
 
+        const c_Form = checkForm([currentPassword, newPassword, repeatPassword])
         const c_Password = checkPassword(newPassword, repeatPassword)
 
-        if (c_Password.code === 0) {
-            const formData = new FormData(e.target);
+        if (c_Form.code === 0) {
 
-            formData.set('id', localStorage.getItem('user_id'))
-            formData.set('type', '4')
-            formData.set('new_password', newPassword)
-            formData.set('current_password', currentPassword)
+            if (c_Password.code === 0) {
 
-            setLoader(true)
+                const formData = new FormData(e.target);
 
-            fetch(`${server.PATH}user/update`, {
-                method: 'POST',
-                headers: {
-                    'Authorization': `Bearer ${localStorage.getItem('user_token')}`
-                },
-                body: formData
-            })
-                .then(success => success.json())
-                .then(success => {
-                    if (success === 1) {
-                        setNewPassword('')
-                        setCurrentPassword('')
-                        setRepeatPassword('')
+                formData.set('id', localStorage.getItem('user_id'))
+                formData.set('type', '4')
+                formData.set('new_password', newPassword)
+                formData.set('current_password', currentPassword)
 
-                        setTimeout(() => {
-                            setLoader(false)
-
-                            setNotification({
-                                type: 'success',
-                                code: '2'
-                            })
-
-                        }, 2000);
-
-                        setTimeout(() => {
+                fetch(`${server.PATH}user/update`, {
+                    method: 'POST',
+                    headers: {
+                        'Authorization': `Bearer ${localStorage.getItem('user_token')}`
+                    },
+                    body: formData
+                })
+                    .then(success => success.json())
+                    .then(success => {
+                        if (success === 0) {
+                            setLoader(true)
 
                             setNotification({
                                 type: null,
                                 code: 0
                             })
-                        }, 4000);
-                    }
-                    else {
-                        setLoader(false)
 
-                        setNotification({
-                            type: 'error',
-                            code: '2'
-                        })
-                    }
-                })
-                .catch(error => console.log("Error", error));
+                            setNewPassword('')
+                            setCurrentPassword('')
+                            setRepeatPassword('')
+
+                            setTimeout(() => {
+                                setLoader(false)
+                            }, 2000);
+                            //
+
+                            // setTimeout(() => {
+                            //     setLoader(false)
+                            //
+                            //     setNotification({
+                            //         type: 'success',
+                            //         code: '2'
+                            //     })
+                            //
+                            // }, 2000);
+                            //
+                            // setTimeout(() => {
+                            //
+                            //     setNotification({
+                            //         type: null,
+                            //         code: 0
+                            //     })
+                            // }, 4000);
+                        }
+                        else {
+                            setNotification({
+                                type: 'error',
+                                code: '2'
+                            })
+                        }
+                    })
+                    .catch(error => console.log("Error", error));
+            }
+            else {
+                setNotification(c_Password)
+            }
         }
         else {
-            setNotification(c_Password)
+            setNotification(c_Form)
         }
     }
 
@@ -191,12 +210,10 @@ const Settings = () => {
                 </div>
             </section>
 
-            <section className="section">
+            <section className={classes("section", "fluid")}>
                 <div className="container-fluid">
                     <div className="container">
-                        <div className={styles.wrap}>
-                            <Notification date={notification} />
-                        </div>
+                        <Notification date={notification} />
                         <div className={styles.wrapper}>
                             <div className={styles.body}>
                                 <div className="row">
@@ -217,12 +234,12 @@ const Settings = () => {
                                             </div>
                                             <div className={styles.divider} />
                                             <button
+                                                className={classes(styles.visibility, styles.hide)}
                                                 onClick={() => {
                                                     handleDelete()
                                                 }}
-                                                className={classes(styles.visibility, styles.hide)}
                                             >
-                                                Delete Profile
+                                                {translate('button-delete')}
                                             </button>
                                         </div>
                                     </div>

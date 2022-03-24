@@ -5,7 +5,7 @@ const checkForm = (data) => {
     };
 
     data.map((item) => {
-      if(item === '') {
+      if(item === '' || item === null) {
           notification.type = 'error'
           notification.code = 10
       }

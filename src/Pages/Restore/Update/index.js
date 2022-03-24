@@ -52,40 +52,49 @@ const Update = () => {
 
                 if (c_Password.code === 0) {
 
-                    const formData = new FormData(e.target);
+                    if (localStorage.getItem('restore_email')) {
 
-                    formData.set('hash', id)
-                    formData.set('email', localStorage.getItem('restore_email'))
-                    formData.set('new_password', newPassword)
+                        const formData = new FormData(e.target);
 
-                    fetch(`${server.PATH}recovery/update`, {
-                        method: 'POST',
-                        body: formData
-                    })
-                        .then(success => success.json())
-                        .then(success => {
-                            if (success === 0) {
-                                setNotification({
-                                    type: 'success',
-                                    code: 2
-                                })
+                        formData.set('hash', id)
+                        formData.set('email', localStorage.getItem('restore_email'))
+                        formData.set('new_password', newPassword)
 
-                                localStorage.setItem('restore_email', '')
-                            }
-                            else if (success === 1) {
-                                setNotification({
-                                    type: 'error',
-                                    code: 8
-                                })
-                            }
-                            else if (success === 2) {
-                                setNotification({
-                                    type: 'error',
-                                    code: 6
-                                })
-                            }
+                        fetch(`${server.PATH}recovery/update`, {
+                            method: 'POST',
+                            body: formData
                         })
-                        .catch(error => console.log("Error", error))
+                            .then(success => success.json())
+                            .then(success => {
+                                if (success === 0) {
+                                    setNotification({
+                                        type: 'success',
+                                        code: 2
+                                    })
+
+                                    localStorage.setItem('restore_email', '')
+                                }
+                                else if (success === 1) {
+                                    setNotification({
+                                        type: 'error',
+                                        code: 8
+                                    })
+                                }
+                                else if (success === 2) {
+                                    setNotification({
+                                        type: 'error',
+                                        code: 6
+                                    })
+                                }
+                            })
+                            .catch(error => console.log("Error", error))
+                    }
+                    else {
+                        setNotification({
+                            type: 'error',
+                            code: 8
+                        })
+                    }
                 }
                 else {
                     setNotification(c_Password)
@@ -113,42 +122,41 @@ const Update = () => {
                     </div>
                 </div>
             </section>
-            <section className="section">
+            <section className={classes("section", "fluid")}>
                 <div className="container-fluid">
                     <div className="container">
-                        <form onSubmit={handleSubmit}>
-                            <div className={styles.form}>
-                                <div className={styles.wrap}>
-                                    <Notification date={notification} />
-                                </div>
-                                {
-                                    notification.type !== 'success' &&
-                                    <>
-                                        <div className={styles.wrap}>
-                                            <Password
-                                                data={newPassword}
-                                                action={setNewPassword}
-                                                placeholder={'profile_new_password'}
-                                            />
-                                        </div>
-                                        <div className={styles.wrap}>
-                                            <Password
-                                                data={repeatPassword}
-                                                action={setRepeatPassword}
-                                                placeholder={'profile_repeat_password'}
-                                            />
-                                        </div>
-                                        <div className={styles.wrap}>
-                                            <GeneratePassword />
-                                        </div>
-                                        <Button
-                                            type={"submit"}
-                                            action={false}
-                                            placeholder={translate('button-continue')}
+                        <form
+                            onSubmit={handleSubmit}
+                            className={styles.form}
+                        >
+                            <Notification date={notification} />
+                            {
+                                notification.type !== 'success' &&
+                                <>
+                                    <div className={styles.wrap}>
+                                        <Password
+                                            data={newPassword}
+                                            action={setNewPassword}
+                                            placeholder={'profile_new_password'}
                                         />
-                                    </>
-                                }
-                            </div>
+                                    </div>
+                                    <div className={styles.wrap}>
+                                        <Password
+                                            data={repeatPassword}
+                                            action={setRepeatPassword}
+                                            placeholder={'profile_repeat_password'}
+                                        />
+                                    </div>
+                                    <div className={styles.wrap}>
+                                        <GeneratePassword />
+                                    </div>
+                                    <Button
+                                        type={"submit"}
+                                        action={false}
+                                        placeholder={translate('button-continue')}
+                                    />
+                                </>
+                            }
                         </form>
                     </div>
                 </div>

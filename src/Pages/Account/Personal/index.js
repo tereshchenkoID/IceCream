@@ -136,7 +136,6 @@ const Personal = () => {
         e.preventDefault();
 
         if (image) {
-            setLoader(true)
 
             const formData = new FormData(e.target);
 
@@ -156,18 +155,15 @@ const Personal = () => {
                 .then(success => success.json())
                 .then(success => {
                     if (success === 0) {
-                        setLoader(false)
+                        setLoader(true)
 
                         setNotification({
-                            type: 'success',
-                            code: 5
+                            type: null,
+                            code: 0
                         })
 
                         setTimeout(() => {
-                            setNotification({
-                                type: null,
-                                code: 0
-                            })
+                            setLoader(false)
                         }, 2000);
                     }
                     else if(success === 1) {
@@ -261,12 +257,10 @@ const Personal = () => {
                     </div>
                 </div>
             </section>
-            <section className="section">
+            <section className={classes("section", "fluid")}>
                 <div className="container-fluid">
                     <div className="container">
-                        <div className={styles.wrap}>
-                            <Notification date={notification} />
-                        </div>
+                        <Notification date={notification} />
                         <div className={styles.wrapper}>
                             <div className={styles.head}>
                                 <div className={styles.title}>{translate('section_description_general')}:</div>

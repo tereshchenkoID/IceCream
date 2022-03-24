@@ -185,12 +185,10 @@ const Applicant = () => {
                     </div>
                 </div>
             </section>
-            <section className="section">
+            <section className={classes("section", "fluid")}>
                 <div className="container-fluid">
                     <div className="container">
-                        <div className={styles.wrap}>
-                            <Notification date={notification} />
-                        </div>
+                        <Notification date={notification} />
                         <form
                             className={classes(
                                 styles.form,

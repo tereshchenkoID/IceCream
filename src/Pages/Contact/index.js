@@ -4,8 +4,6 @@ import classes from "classnames";
 
 import {translate, translateString} from "../../i18n/translate";
 
-// import styles from './index.module.scss';
-
 import Form from "../../Components/Form";
 import Breadcrumbs from "../../Components/Breadcrumbs";
 
