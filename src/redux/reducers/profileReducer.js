@@ -1,7 +1,7 @@
 import { types } from '../types/types';
 
 const initialState = {
-  dataProfile: []
+  dataProfile: {}
 };
 
 export const profileReducer = (state = initialState, action) => {

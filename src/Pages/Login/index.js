@@ -1,18 +1,20 @@
 import React, {useState} from "react";
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {NavLink} from "react-router-dom";
 import {ReactTitle} from "react-meta-tags";
+
+import classes from "classnames";
 
 import { server } from '../../redux/types/types';
 
 import checkForm from "../../helpers/checkForm";
-
-import classes from "classnames";
-
-import {translate, translateString} from "../../i18n/translate";
+import getAccess from "../../helpers/getAccess";
 
 import { setUserData } from "../../redux/actions/userActions";
+import { setAccessData } from "../../redux/actions/accessActions";
 import { loadProfileData } from "../../redux/actions/profileActions";
+
+import {translate, translateString} from "../../i18n/translate";
 
 import Button from "../../Components/Button";
 import Field from "../../Components/Field";
@@ -24,6 +26,8 @@ import styles from './index.module.scss';
 
 const Login = () => {
     const dispatch = useDispatch();
+
+    let { user } = useSelector(state => state.userReducer);
 
     const breadcrumbs = [
         {
@@ -52,6 +56,7 @@ const Login = () => {
 
             const formData = new FormData(e.target);
 
+            formData.set('role', user)
             formData.set('email', email)
             formData.set('password', password)
 
@@ -62,12 +67,12 @@ const Login = () => {
                 .then(success => success.json())
                 .then(success => {
                     if(success && success.token) {
-                        localStorage.setItem('user_role', '1')
                         localStorage.setItem('user_id', success.id.toString())
                         localStorage.setItem('user_token', success.token.toString())
 
+                        dispatch(setAccessData(getAccess()))
+                        dispatch(setUserData(user))
                         dispatch(loadProfileData())
-                        dispatch(setUserData(1))
                     }
                     else {
                         setNotification({
@@ -121,6 +126,7 @@ const Login = () => {
                                     placeholder={'profile_email'}
                                     data={email || ''}
                                     action={setEmail}
+                                    icon={2}
                                 />
                             </div>
                             <div className={styles.wrap}>

@@ -74,6 +74,7 @@ const a = {
         'contact_button-2': 'Отправить запрос',
         'contact_alert': 'Спасибо, мы свяжемся с вами как можно скорее!',
 
+        'section_description_photo': 'Фото',
         'section_description_about': 'Хобби',
         'section_description_skills': 'Навыки',
         'section_description_general': 'Главная информация',
@@ -82,6 +83,7 @@ const a = {
         'section_description_password': 'Пароль и безопасность',
         'section_description_contact': 'Контактные данные',
         'section_description_work': 'Рабочая информация',
+        'section_description_delete': 'Удаление профиля',
 
         'sort_from': 'С',
         'sort_to': 'По',
@@ -163,7 +165,10 @@ const a = {
 
         'button-continue': 'Продолжить',
         'button-upload': 'Выбрать',
-        'button-delete': 'Удалить профиль'
+        'button-delete': 'Удалить профиль',
+
+        'role-1': 'Работодатель',
+        'role-2': 'Рабочий'
     }
 }
 

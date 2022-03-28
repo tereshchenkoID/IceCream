@@ -15,6 +15,7 @@ import Preloader from "./Components/Preloader"
 import Meta from "./Components/Meta";
 import Nav from "./Layouts/Nav";
 import Footer from "./Layouts/Footer";
+import SelectRole from "./Modules/SelectRole";
 
 import styles from './App.module.scss';
 
@@ -23,7 +24,7 @@ const setLanguage = () => {
 };
 
 const App = () => {
-  const [lang, setLang] = useState(LOCALES[setLanguage()]);
+  const [lang, setLang] = useState(LOCALES[setLanguage()])
 
   return (
       <>
@@ -35,6 +36,7 @@ const App = () => {
 
           <I18nProvider locale={lang}>
               <Provider store={store}>
+                  <SelectRole/>
                   <Api/>
                   <BrowserRouter>
                       <Nav
@@ -44,11 +46,11 @@ const App = () => {
                       <Suspense
                           fallback={
                               <div className={styles.preloader}>
-                                <Preloader/>
+                                  <Preloader/>
                               </div>
                           }
                       >
-                        <Routing {...{ routes }} />
+                          <Routing {...{ routes }} />
                       </Suspense>
                       <Footer />
                       <button
@@ -72,7 +74,7 @@ const App = () => {
               </Provider>
           </I18nProvider>
       </>
-  );
+  )
 }
 
 export default App;

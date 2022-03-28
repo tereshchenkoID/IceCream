@@ -1,12 +1,14 @@
 import React, {useState} from "react";
-import {useDispatch, useSelector} from "react-redux";
+import {useSelector, useDispatch} from "react-redux";
 import {NavLink} from "react-router-dom";
 
-import {setUserData} from "../../redux/actions/userActions";
+import classes from 'classnames';
+
+import { setAccessData } from "../../redux/actions/accessActions";
+
+import getRole from "../../helpers/getRole";
 
 import {translate} from "../../i18n/translate";
-
-import classes from 'classnames';
 
 import Menu from "./Menu";
 import Lang from "./Lang";
@@ -16,16 +18,56 @@ import Link from "../../Components/Link";
 
 import styles from './index.module.scss';
 
+const path = {
+    employer: [
+        {
+            url: '/employer/my/personal',
+            text: 'menu_link_11',
+        },
+        {
+            url: '/employer/my/team',
+            text: 'menu_link_4',
+        },
+        {
+            url: '/employer/my/contact',
+            text: 'menu_link_16',
+        },
+        {
+            url: '/employer/my/settings',
+            text: 'menu_link_13',
+        }
+    ],
+    worker: [
+        {
+            url: '/worker/my/personal',
+            text: 'menu_link_11',
+        },
+        {
+            url: '/worker/my/applicant',
+            text: 'menu_link_12',
+        },
+        {
+            url: '/worker/my/contact',
+            text: 'menu_link_16',
+        },
+        {
+            url: '/worker/my/settings',
+            text: 'menu_link_13',
+        }
+    ]
+}
+
 const Nav = ({lang, setLang}) => {
     const dispatch = useDispatch();
-    const dataUser = useSelector(state => state.userReducer);
+
+    const { access } = useSelector(state => state.accessReducer)
 
     const [active, setActive] = useState(false)
 
     const logout = () => {
-        dispatch(setUserData(0))
+        dispatch(setAccessData(false))
+
         localStorage.removeItem('user_id')
-        localStorage.removeItem('user_role')
         localStorage.removeItem('user_token')
     }
 
@@ -52,15 +94,16 @@ const Nav = ({lang, setLang}) => {
                             </div>
                             <div className={styles.cell}>
                                 {
-                                    dataUser.user === 0 ?
+                                    access
+                                    ?
+                                        <Account/>
+                                    :
                                         <div>
                                             <Link
                                                 url={'/login'}
                                                 text={translate('menu_link_15')}
                                             />
                                         </div>
-                                    :
-                                        <Account/>
                                 }
                             </div>
                             <div className={styles.cell}>
@@ -78,58 +121,34 @@ const Nav = ({lang, setLang}) => {
                 </div>
             </div>
             {
-                dataUser.user !== 0 &&
+                access &&
                 <div className={styles.bottom}>
                     <div className="container-fluid">
                         <div className="container">
                             <div className={styles.wrapper}>
-                                <div className={styles.item}>
-                                    <NavLink
-                                        to={'/my/personal'}
-                                        className={styles.link}
-                                        activeClassName={styles.active}
-                                    >
-                                        {translate("menu_link_11")}
-                                    </NavLink>
-                                </div>
-                                <div className={styles.item}>
-                                    <NavLink
-                                        to={'/my/applicant'}
-                                        className={styles.link}
-                                        activeClassName={styles.active}
-                                    >
-                                        {translate("menu_link_12")}
-                                    </NavLink>
-                                </div>
-                                <div className={styles.item}>
-                                    <NavLink
-                                        to={'/my/contact'}
-                                        className={styles.link}
-                                        activeClassName={styles.active}
-                                    >
-                                        {translate("menu_link_16")}
-                                    </NavLink>
-                                </div>
-                                <div className={styles.item}>
-                                    <NavLink
-                                        to={'/my/settings'}
-                                        className={styles.link}
-                                        activeClassName={styles.active}
-                                    >
-                                        {translate("menu_link_13")}
-                                    </NavLink>
-                                </div>
-                                <div className={styles.item}>
-                                    <NavLink
-                                        to={'/'}
-                                        className={styles.link}
-                                        onClick={() => {
-                                            logout()
-                                        }}
-                                    >
-                                        {translate("menu_link_14")}
-                                    </NavLink>
-                                </div>
+                                {
+                                    path[getRole()].map((item, idx) =>
+                                        <div
+                                            key={idx}
+                                            className={styles.item}
+                                        >
+                                            <NavLink
+                                                to={item.url}
+                                                className={styles.link}
+                                                activeClassName={styles.active}
+                                            >
+                                                {translate(item.text)}
+                                            </NavLink>
+                                        </div>
+                                    )
+                                }
+                                <NavLink
+                                    to={'/'}
+                                    className={styles.link}
+                                    onClick={logout}
+                                >
+                                    {translate('menu_link_14')}
+                                </NavLink>
                             </div>
                         </div>
                     </div>

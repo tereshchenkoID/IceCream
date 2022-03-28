@@ -1,4 +1,5 @@
 import React from "react";
+import {useSelector} from "react-redux";
 
 import {translate} from "../../i18n/translate";
 
@@ -8,28 +9,31 @@ import convertData from "../../helpers/convertData";
 import Link from "../../Components/Link";
 import Favourite from "../../Components/Favourite";
 import Team from "../../Components/Team";
+import Photo from "../../Components/Photo";
 
 import styles from './index.module.scss';
 
 const ProfileCard = ({
-  data,
-  lang,
-  setting,
-  favArray,
-  setFavArray,
-  teamArray,
-  setTeamArray,
-}) => {
+      data,
+      lang,
+      setting,
+      favArray,
+      setFavArray,
+      teamArray,
+      setTeamArray,
+    }) => {
+
+    const { user } = useSelector(state => state.userReducer)
+    const { access } = useSelector(state => state.accessReducer)
 
     return (
         <div className={styles.block}>
             {
                 <div className={styles.wrapper} >
                     <div className={styles.photo}>
-                        <img
-                            src={data.photo ? `/img/profile/${data.photo}` : "/img/no-photo.webp"}
-                            alt={data.photo ? data.photo : "Empty"}
-                            loading={'lazy'}
+                        <Photo
+                            photo={data.photo}
+                            size={'md'}
                         />
                     </div>
                     <div className={styles.content}>
@@ -73,11 +77,15 @@ const ProfileCard = ({
                             </div>
                             <div className={styles.footer}>
                                 <div className={styles.button}>
-                                    <Team
-                                        id={data.id}
-                                        teamArray={teamArray}
-                                        setTeamArray={setTeamArray}
-                                    />
+                                    {
+                                        (user === 1 && access) &&
+                                        <Team
+                                            id={data.id}
+                                            teamArray={teamArray}
+                                            setTeamArray={setTeamArray}
+                                        />
+                                    }
+
                                 </div>
                                 <div className={styles.button}>
                                     <Link

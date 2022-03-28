@@ -7,6 +7,8 @@ import classes from "classnames";
 
 import checkForm from "../../../helpers/checkForm";
 
+import {useSelector} from "react-redux";
+
 import {translate, translateString} from "../../../i18n/translate";
 
 import Button from "../../../Components/Button";
@@ -17,6 +19,7 @@ import Notification from "../../../Components/Notification";
 import styles from './index.module.scss';
 
 const Search = () => {
+    let { user } = useSelector(state => state.userReducer);
 
     const breadcrumbs = [
         {
@@ -43,6 +46,7 @@ const Search = () => {
         if (c_Form.code === 0) {
             const formData = new FormData(e.target);
 
+            formData.set('role', user)
             formData.set('email', email)
 
             fetch(`${server.PATH}recovery/show`, {
@@ -109,6 +113,7 @@ const Search = () => {
                                             placeholder={'profile_email'}
                                             data={email || ''}
                                             action={setEmail}
+                                            icon={2}
                                         />
                                     </div>
                                     <Button

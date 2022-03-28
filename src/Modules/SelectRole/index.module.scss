@@ -1,0 +1,55 @@
+@import "../../styles/config";
+
+.block {
+  @include flex(center, center);
+
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 21;
+  background-color: var(--color-white);
+
+  &.hide {
+    display: none;
+  }
+}
+
+.check {
+  @include size(150px);
+
+  position: relative;
+  margin-right: 10px;
+
+  &:last-child {
+    margin-right: 0;
+  }
+}
+
+.radio {
+  @include size(0);
+
+  position: absolute;
+  z-index: -1;
+
+  &:checked + .label {
+    background-color: var(--color-primary);
+    color: var(--color-white);
+  }
+}
+
+.label {
+  @include size(100%);
+  @include flex(center, center);
+
+  cursor: pointer;
+  padding: 0 10px;
+  border-radius: var(--default-border-radius);
+  background-color: var(--color-secondary);
+  transition: var(--default-transition);
+
+  &:hover {
+    color: var(--color-primary);
+  }
+}

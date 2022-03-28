@@ -1,0 +1,21 @@
+@import '../../styles/config';
+
+.block {
+  border-radius: 50%;
+  background-color: var(--color-secondary);
+  border: 2px solid var(--color-secondary);
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+
+  &.sm {
+    @include size(100px);
+  }
+
+  &.md {
+    @include size(120px);
+  }
+
+  &.lg {
+    @include size(150px);
+  }
+}

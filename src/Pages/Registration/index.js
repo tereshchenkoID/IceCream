@@ -1,13 +1,14 @@
 import React, {useState} from "react";
 import {ReactTitle} from "react-meta-tags";
 import {NavLink} from "react-router-dom";
-
-import { server } from '../../redux/types/types';
-
-import checkForm from "../../helpers/checkForm";
-import checkPassword from "../../helpers/checkPassword";
+import {useSelector} from "react-redux";
 
 import classes from "classnames";
+
+import { server } from '../../redux/types/types';
+import checkForm from "../../helpers/checkForm";
+
+import checkPassword from "../../helpers/checkPassword";
 
 import {translate, translateString} from "../../i18n/translate";
 
@@ -20,6 +21,8 @@ import Notification from "../../Components/Notification";
 import styles from './index.module.scss';
 
 const Registration = () => {
+    let { user } = useSelector(state => state.userReducer);
+
     const breadcrumbs = [
         {
             url: "/",
@@ -53,6 +56,7 @@ const Registration = () => {
 
                 const formData = new FormData(e.target);
 
+                formData.set('role', user)
                 formData.set('name', name)
                 formData.set('surname', surname)
                 formData.set('email', email)
@@ -129,6 +133,7 @@ const Registration = () => {
                                             placeholder={'profile_name'}
                                             data={name || ''}
                                             action={setName}
+                                            icon={1}
                                         />
                                     </div>
                                     <div className={styles.wrap}>
@@ -137,6 +142,7 @@ const Registration = () => {
                                             placeholder={'profile_surname'}
                                             data={surname || ''}
                                             action={setSurname}
+                                            icon={1}
                                         />
                                     </div>
                                     <div className={styles.wrap}>
@@ -145,6 +151,7 @@ const Registration = () => {
                                             placeholder={'profile_email'}
                                             data={email || ''}
                                             action={setEmail}
+                                            icon={2}
                                         />
                                     </div>
                                     <div className={styles.wrap}>

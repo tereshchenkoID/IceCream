@@ -1,26 +1,23 @@
 @import '../../styles/config';
 
 .block {
-  padding: 8px 10px;
+  padding: 20px 26px;
   border-radius: var(--default-border-radius);
-  box-shadow: var(--box-shadow-lg);
   margin-bottom: 20px;
   text-align: center;
 
   &.error {
-    background-color: rgba(#f00, 0.2);
-    border: 1px solid var(--color-red);
-    color: var(--color-red);
+    color: #de5959;
+    background-color: #ffe9e9;
   }
 
   &.success {
-    background-color: rgba(#008000, 0.2);
-    border: 1px solid var(--color-green);
-    color: var(--color-green);
+    color: #5f9025;
+    background-color: #ebf6e0;
   }
 
   &.info {
-    background-color: var(--color-secondary);
-    border: 1px solid var(--color-border);
+    color: #3184ae;
+    background-color: #e9f7fe;
   }
 }

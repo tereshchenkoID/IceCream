@@ -74,6 +74,7 @@ const a = {
         'contact_button-2': 'Send request',
         'contact_alert': 'Thank you, we will contact you as soon as possible!',
 
+        'section_description_photo': 'A photo',
         'section_description_about': 'Hobbies',
         'section_description_skills': 'Skills',
         'section_description_general': 'General info',
@@ -82,6 +83,7 @@ const a = {
         'section_description_password': 'Password and security',
         'section_description_contact': 'Contact info',
         'section_description_work': 'Work info',
+        'section_description_delete': 'Deleting a profile',
 
         'sort_from': 'From',
         'sort_to': 'To',
@@ -163,7 +165,10 @@ const a = {
 
         'button-continue': 'Continue',
         'button-upload': 'Select',
-        'button-delete': 'Delete profile'
+        'button-delete': 'Delete profile',
+
+        'role-1': 'Employer',
+        'role-2': 'Worker',
     }
 }
 

@@ -1,5 +1,5 @@
 import {useEffect} from "react";
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 
 import { loadSettingData } from '../../redux/actions/settingActions';
 import { loadCardData } from '../../redux/actions/cardActions';
@@ -8,12 +8,14 @@ import { loadProfileData } from "../../redux/actions/profileActions";
 const Api = () => {
     const dispatch = useDispatch();
 
+    const { access } = useSelector(state => state.accessReducer)
+
     useEffect(() => {
-        localStorage.getItem('user_token') && dispatch(loadProfileData())
+        access && dispatch(loadProfileData())
 
         dispatch(loadSettingData())
         dispatch(loadCardData())
-    }, [dispatch]);
+    }, [dispatch, access]);
 
     return true;
 }

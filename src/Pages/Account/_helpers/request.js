@@ -1,14 +1,17 @@
 import { server } from '../../../redux/types/types';
 
+import getRole from "../../../helpers/getRole";
+import getId from "../../../helpers/getId";
+
 const request = (
     formData,
     setLoader,
     preloader
 ) => {
 
-    formData.set('id', localStorage.getItem('user_id'))
+    formData.set('id', getId())
 
-    fetch(`${server.PATH}user/update`, {
+    fetch(`${server.PATH}${getRole()}/update`, {
         method: 'POST',
         headers: {
             'Authorization': `Bearer ${localStorage.getItem('user_token')}`

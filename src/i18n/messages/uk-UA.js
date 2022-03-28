@@ -73,6 +73,7 @@ const a = {
         'contact_button-1': 'Надіслати повідомлення',
         'contact_button-2': 'Надіслати запит',
 
+        'section_description_photo': 'Фото',
         'section_description_about': 'Хоббі',
         'section_description_skills': 'Навички',
         'section_description_general': 'Голавна інформация',
@@ -81,6 +82,7 @@ const a = {
         'section_description_password': 'Пароль та безпека',
         'section_description_contact': 'Контактні данні',
         'section_description_work': 'Робоча інформація',
+        'section_description_delete': 'Видалення профілю',
 
         'sort_from': 'З',
         'sort_to': 'По',
@@ -161,7 +163,10 @@ const a = {
 
         'button-continue': 'Продовжити',
         'button-upload': 'Вибрати',
-        'button-delete': 'Видалити профіль'
+        'button-delete': 'Видалити профіль',
+
+        'role-1': 'Роботодавець',
+        'role-2': 'Робітник'
     }
 }
 

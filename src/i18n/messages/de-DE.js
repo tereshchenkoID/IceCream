@@ -74,6 +74,7 @@ const a = {
         'contact_button-2': 'Anfrage senden',
         'contact_alert': 'Vielen Dank, wir werden uns schnellstmöglich mit Ihnen in Verbindung setzen!',
 
+        'section_description_photo': 'Ein Foto',
         'section_description_about': 'Hobbys',
         'section_description_skills': 'Kompetenzen',
         'section_description_general': 'Allgemeine information',
@@ -82,6 +83,7 @@ const a = {
         'section_description_password': 'Passwort und Sicherheit',
         'section_description_contact': 'Kontaktinformation',
         'section_description_work': 'Arbeitsinfo',
+        'section_description_delete': 'Löschen eines Profils',
 
         'sort_from': 'Von',
         'sort_to': 'Dann',
@@ -163,7 +165,10 @@ const a = {
 
         'button-continue': 'Fortsetzen',
         'button-upload': 'Auswählen',
-        'button-delete': 'Profil löschen'
+        'button-delete': 'Profil löschen',
+
+        'role-1': 'Arbeitgeberin',
+        'role-2': 'Arbeiterin'
     }
 }
 

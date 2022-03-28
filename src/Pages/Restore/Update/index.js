@@ -1,5 +1,6 @@
 import React, {useState} from "react";
 import {ReactTitle} from "react-meta-tags";
+import {useSelector} from "react-redux";
 import {useParams} from "react-router-dom";
 
 import { server } from '../../../redux/types/types';
@@ -21,6 +22,7 @@ import styles from './index.module.scss';
 
 const Update = () => {
     let { id } = useParams();
+    let { user } = useSelector(state => state.userReducer);
 
     const breadcrumbs = [
         {
@@ -57,6 +59,7 @@ const Update = () => {
                         const formData = new FormData(e.target);
 
                         formData.set('hash', id)
+                        formData.set('role', user)
                         formData.set('email', localStorage.getItem('restore_email'))
                         formData.set('new_password', newPassword)
 

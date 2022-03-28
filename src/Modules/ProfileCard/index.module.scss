@@ -41,18 +41,11 @@
 }
 
 .photo {
-  @include size(120px);
-
   position: absolute;
   top: 0;
   left: 50%;
   z-index: 1;
   transform: translate(-50%, -50%);
-  border-radius: 50%;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
-  background-color: var(--color-secondary);
-  border: 2px solid var(--color-secondary);
-  overflow: hidden;
 }
 
 .favourite {

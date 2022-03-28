@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from "react";
+import {ReactTitle} from "react-meta-tags";
 import {useParams} from "react-router-dom";
 import {useSelector} from 'react-redux'
-import {ReactTitle} from "react-meta-tags";
 
 import classes from "classnames";
 
@@ -15,6 +15,7 @@ import Empty from "../../Components/Empty";
 import Team from "../../Components/Team";
 import Favourite from "../../Components/Favourite";
 import Breadcrumbs from "../../Components/Breadcrumbs";
+import Photo from "../../Components/Photo";
 
 import styles from './index.module.scss';
 
@@ -28,8 +29,10 @@ const random = () => {
 const Profile = () => {
     let { id } = useParams();
 
-    let { dataCard } = useSelector(state => state.cardReducer);
-    let { dataSetting } = useSelector(state => state.settingReducer);
+    let { dataCard } = useSelector(state => state.cardReducer)
+    let { dataSetting } = useSelector(state => state.settingReducer)
+    const { user } = useSelector(state => state.userReducer)
+    const { access } = useSelector(state => state.accessReducer)
 
     const idx = random();
     const [lang] = useState(translateString('lang'));
@@ -91,10 +94,9 @@ const Profile = () => {
                                                 />
                                             </div>
                                             <div className={styles.photo}>
-                                                <img
-                                                    src={find.photo ? `/img/profile/${find.photo}` : "/img/no-photo.webp"}
-                                                    alt={find.photo ? find.photo : "Empty"}
-                                                    loading={'lazy'}
+                                                <Photo
+                                                    photo={find.photo}
+                                                    size={'lg'}
                                                 />
                                             </div>
                                         </div>
@@ -113,16 +115,18 @@ const Profile = () => {
                                                     <p className={styles.text}>{convertData(find.date)}</p>
                                                 </div>
                                             </div>
-
-                                            <div className={styles.wrap}>
-                                                <div className={styles.button}>
-                                                    <Team
-                                                        id={find.id}
-                                                        teamArray={teamArray}
-                                                        setTeamArray={setTeamArray}
-                                                    />
+                                            {
+                                                (user === 1 && access) &&
+                                                <div className={styles.wrap}>
+                                                    <div className={styles.button}>
+                                                        <Team
+                                                            id={find.id}
+                                                            teamArray={teamArray}
+                                                            setTeamArray={setTeamArray}
+                                                        />
+                                                    </div>
                                                 </div>
-                                            </div>
+                                            }
                                         </div>
                                     </div>
                                 </div>
