@@ -7,6 +7,7 @@ const Profile  = lazy( () => import("../Pages/Profile"));
 const Favourite = lazy( () => import( "../Pages/Favourite"));
 const Contact  = lazy( () => import("../Pages/Contact"));
 const About = lazy( () => import("../Pages/About"));
+const Faq = lazy( () => import("../Pages/Faq"));
 const NotFound = lazy( () => import("../Pages/NotFound"));
 const Login = lazy( () => import("../Pages/Login"));
 const Registration = lazy( () => import("../Pages/Registration"));
@@ -51,6 +52,12 @@ export const routes = [
   {
     path: '/favourite',
     component: Favourite,
+    exact: false,
+    role: [0, 1, 2]
+  },
+  {
+    path: '/faq',
+    component: Faq,
     exact: false,
     role: [0, 1, 2]
   },

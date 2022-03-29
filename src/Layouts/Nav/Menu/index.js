@@ -54,6 +54,16 @@ const Menu = ({active, setActive}) => {
                 <NavLink
                     activeClassName={styles.active}
                     className={styles.link}
+                    to="/faq"
+                    onClick={() => setActive(false)}
+                >
+                    {translate("menu_link_19")}
+                </NavLink>
+            </li>
+            <li className={styles.item}>
+                <NavLink
+                    activeClassName={styles.active}
+                    className={styles.link}
                     to="/contact"
                     onClick={() => setActive(false)}
                 >

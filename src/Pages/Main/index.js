@@ -5,10 +5,10 @@ import classes from "classnames";
 
 import {translate, translateString} from "../../i18n/translate";
 
-import CategoryCard from './CaregoryCard';
 import Title from '../../Components/Title';
-import Header from "../../Layouts/Header";
-import Form from "../../Components/Form";
+import Form from '../../Modules/Form';
+import CategoryCard from '../../Modules/CaregoryCard';
+import Header from '../../Layouts/Header';
 
 import styles from './index.module.scss';
 

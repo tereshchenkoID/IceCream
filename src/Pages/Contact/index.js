@@ -4,7 +4,7 @@ import classes from "classnames";
 
 import {translate, translateString} from "../../i18n/translate";
 
-import Form from "../../Components/Form";
+import Form from "../../Modules/Form";
 import Breadcrumbs from "../../Components/Breadcrumbs";
 
 const Main = () => {

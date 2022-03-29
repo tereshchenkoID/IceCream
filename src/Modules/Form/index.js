@@ -8,10 +8,10 @@ import checkForm from "../../helpers/checkForm";
 
 import {translate, translateString} from "../../i18n/translate";
 
-import Title from "../Title";
-import Button from "../Button";
-import Notification from "../Notification";
-import Field from "../Field";
+import Title from "../../Components/Title";
+import Button from "../../Components/Button";
+import Notification from "../../Components/Notification";
+import Field from "../../Components/Field";
 
 import styles from './index.module.scss';
 

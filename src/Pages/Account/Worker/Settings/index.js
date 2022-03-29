@@ -13,7 +13,6 @@ import request from "../../_helpers/request";
 
 import {translate, translateString} from "../../../../i18n/translate";
 
-import {setUserData} from "../../../../redux/actions/userActions";
 import {loadCardData} from "../../../../redux/actions/cardActions";
 import {loadProfileData} from "../../../../redux/actions/profileActions";
 
@@ -25,6 +24,7 @@ import Notification from "../../../../Components/Notification";
 import Preloader from "../../../../Components/Preloader";
 
 import styles from './index.module.scss';
+import {setAccessData} from "../../../../redux/actions/accessActions";
 
 const checkProfile = (data) => {
     return !!(
@@ -172,9 +172,8 @@ const Settings = () => {
 
         request(formData, setLoader, false)
 
-        dispatch(setUserData(0))
+        dispatch(setAccessData(false))
         localStorage.removeItem('user_id')
-        localStorage.removeItem('user_role')
         localStorage.removeItem('user_token')
     }
 
@@ -229,7 +228,7 @@ const Settings = () => {
                                     onSubmit={handleSubmit}
                                 >
                                     <div className="row">
-                                        <div className={classes("col", "col-12", "col-lg-4", "col-padding-vertical")}>
+                                        <div className={classes("col", "col-12", "col-md-6", "col-lg-4", "col-padding-vertical")}>
                                             <p className={styles.label}>{translate('profile_current_password')} <span>*</span></p>
                                             <Password
                                                 data={currentPassword}
@@ -238,7 +237,7 @@ const Settings = () => {
                                                 required={false}
                                             />
                                         </div>
-                                        <div className={classes("col", "col-12", "col-lg-4", "col-padding-vertical")}>
+                                        <div className={classes("col", "col-12", "col-md-6", "col-lg-4", "col-padding-vertical")}>
                                             <p className={styles.label}>{translate('profile_new_password')} <span>*</span></p>
                                             <Password
                                                 data={newPassword}
@@ -247,7 +246,7 @@ const Settings = () => {
                                                 required={false}
                                             />
                                         </div>
-                                        <div className={classes("col", "col-12", "col-lg-4", "col-padding-vertical")}>
+                                        <div className={classes("col", "col-12", "col-md-6", "col-lg-4", "col-padding-vertical")}>
                                             <p className={styles.label}>{translate('profile_repeat_password')} <span>*</span></p>
                                             <Password
                                                 data={repeatPassword}
@@ -256,7 +255,7 @@ const Settings = () => {
                                                 required={false}
                                             />
                                         </div>
-                                        <div className={classes("col", "col-12", "col-lg-4", "col-padding-vertical")}>
+                                        <div className={classes("col", "col-12", "col-padding-vertical")}>
                                             <GeneratePassword />
                                         </div>
                                         <div className={classes("col", "col-12", "col-padding-vertical")}>

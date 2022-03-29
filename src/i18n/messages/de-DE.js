@@ -21,6 +21,7 @@ const a = {
         'menu_link_16': 'Kontaktinformation',
         'menu_link_17': 'Passwort wiederherstellen',
         'menu_link_18': 'Anmeldung',
+        'menu_link_19': 'FAQ',
 
         "team_1_text": "Ich bin ein Softwareentwickler mit Ausbildung in Cyber Defense und Kryptografie. Mag Sport, Tracking und DIY.",
         "team_2_text": "Ich bin ein HTML-Entwickler mit funktechnischem Hintergrund. Ich mag Schach und Angeln.",

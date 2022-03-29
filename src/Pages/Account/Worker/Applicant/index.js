@@ -232,7 +232,7 @@ const Applicant = () => {
                                         <div className={classes("col", "col-12", "col-padding-vertical")}>
                                             <p className={styles.label}>{translate('profile_available')} <span>*</span></p>
                                         </div>
-                                        <div className={classes("col", "col-12", "col-lg-6", "col-padding-vertical")}>
+                                        <div className={classes("col", "col-12", "col-md-6", "col-padding-vertical")}>
                                             <p className={styles.label}>{translate('sort_from')}: </p>
                                             <input
                                                 type={"date"}
@@ -244,7 +244,7 @@ const Applicant = () => {
                                                 })}
                                             />
                                         </div>
-                                        <div className={classes("col", "col-12", "col-lg-6", "col-padding-vertical")}>
+                                        <div className={classes("col", "col-12", "col-md-6", "col-padding-vertical")}>
                                             <p className={styles.label}>{translate('sort_to')}: </p>
                                             <input
                                                 type={"date"}
@@ -256,7 +256,7 @@ const Applicant = () => {
                                                 })}
                                             />
                                         </div>
-                                        <div className={classes("col", "col-12", "col-lg-6", "col-padding-vertical")}>
+                                        <div className={classes("col", "col-12", "col-md-6", "col-padding-vertical")}>
                                             <p className={styles.label}>{translate('profile_vaccination')} <span>*</span></p>
                                             {
                                                 dataSetting.vaccination.slice(1, dataSetting.length).map((item, idx) =>
@@ -275,7 +275,7 @@ const Applicant = () => {
                                                 )
                                             }
                                         </div>
-                                        <div className={classes("col", "col-12", "col-lg-6", "col-padding-vertical")}>
+                                        <div className={classes("col", "col-12", "col-md-6", "col-padding-vertical")}>
                                             <p className={styles.label}>{translate('profile_access')} <span>*</span></p>
                                             {
                                                 dataSetting.access.slice(1, dataSetting.length).map((item, idx) =>

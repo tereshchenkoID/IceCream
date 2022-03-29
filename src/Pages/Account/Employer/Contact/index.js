@@ -138,7 +138,7 @@ const Contact = () => {
                                     onSubmit={handleSubmit}
                                 >
                                     <div className="row">
-                                        <div className={classes("col", "col-12", "col-lg-6", "col-padding-vertical")}>
+                                        <div className={classes("col", "col-12", "col-md-6", "col-padding-vertical")}>
                                             <p className={styles.label}>{translate('profile_email')} <span>*</span></p>
                                             <Field
                                                 type={"email"}
@@ -149,7 +149,7 @@ const Contact = () => {
                                                 icon={2}
                                             />
                                         </div>
-                                        <div className={classes("col", "col-12", "col-lg-6", "col-padding-vertical")}>
+                                        <div className={classes("col", "col-12", "col-md-6", "col-padding-vertical")}>
                                             <p className={styles.label}>{translate('profile_phone')} <span>*</span></p>
                                             <Field
                                                 type={"text"}

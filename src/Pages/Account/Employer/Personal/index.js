@@ -134,7 +134,7 @@ const Personal = () => {
                                     onSubmit={handleSubmit}
                                 >
                                     <div className="row">
-                                        <div className={classes("col", "col-12", "col-lg-6", "col-padding-vertical")}>
+                                        <div className={classes("col", "col-12", "col-md-6", "col-padding-vertical")}>
                                             <p className={styles.label}>{translate('profile_name')} <span>*</span></p>
                                             <Field
                                                 type={"text"}
@@ -144,7 +144,7 @@ const Personal = () => {
                                                 icon={1}
                                             />
                                         </div>
-                                        <div className={classes("col", "col-12", "col-lg-6", "col-padding-vertical")}>
+                                        <div className={classes("col", "col-12", "col-md-6", "col-padding-vertical")}>
                                             <p className={styles.label}>{translate('profile_surname')} <span>*</span></p>
                                             <Field
                                                 type={"text"}
@@ -154,7 +154,7 @@ const Personal = () => {
                                                 icon={1}
                                             />
                                         </div>
-                                        <div className={classes("col", "col-12", "col-lg-6", "col-padding-vertical")}>
+                                        <div className={classes("col", "col-12", "col-md-6", "col-padding-vertical")}>
                                             <p className={styles.label}>{translate('profile_birth')} <span>*</span></p>
                                             <Field
                                                 type={"date"}
@@ -163,8 +163,8 @@ const Personal = () => {
                                                 action={setAge}
                                             />
                                         </div>
-                                        <div className={classes("col", "col-12", "col-lg-6")} />
-                                        <div className={classes("col", "col-12", "col-lg-6", "col-padding-vertical")}>
+                                        <div className={classes("col", "col-12", "col-md-6")} />
+                                        <div className={classes("col", "col-12", "col-md-6", "col-padding-vertical")}>
                                             <p className={styles.label}>{translate('profile_gender')} <span>*</span></p>
                                             {
                                                 dataSetting.gender.slice(1, dataSetting.length).map((item, idx) =>

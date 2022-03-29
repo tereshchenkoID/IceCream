@@ -309,7 +309,7 @@ const Personal = () => {
                                     onSubmit={handleSubmit}
                                 >
                                     <div className="row">
-                                        <div className={classes("col", "col-12", "col-lg-6", "col-padding-vertical")}>
+                                        <div className={classes("col", "col-12", "col-md-6", "col-padding-vertical")}>
                                             <p className={styles.label}>{translate('profile_name')} <span>*</span></p>
                                             <Field
                                                 type={"text"}
@@ -319,7 +319,7 @@ const Personal = () => {
                                                 icon={1}
                                             />
                                         </div>
-                                        <div className={classes("col", "col-12", "col-lg-6", "col-padding-vertical")}>
+                                        <div className={classes("col", "col-12", "col-md-6", "col-padding-vertical")}>
                                             <p className={styles.label}>{translate('profile_surname')} <span>*</span></p>
                                             <Field
                                                 type={"text"}
@@ -329,7 +329,7 @@ const Personal = () => {
                                                 icon={1}
                                             />
                                         </div>
-                                        <div className={classes("col", "col-12", "col-lg-6", "col-padding-vertical")}>
+                                        <div className={classes("col", "col-12", "col-md-6", "col-padding-vertical")}>
                                             <p className={styles.label}>{translate('profile_birth')} <span>*</span></p>
                                             <Field
                                                 type={"date"}
@@ -338,8 +338,8 @@ const Personal = () => {
                                                 action={setAge}
                                             />
                                         </div>
-                                        <div className={classes("col", "col-12", "col-lg-6", "col-padding-vertical")} />
-                                        <div className={classes("col", "col-12", "col-lg-6", "col-padding-vertical")}>
+                                        <div className={classes("col", "col-12", "col-md-6", "col-padding-vertical")} />
+                                        <div className={classes("col", "col-12", "col-md-6", "col-padding-vertical")}>
                                             <p className={styles.label}>{translate('profile_country')} <span>*</span></p>
                                             <div className={classes(styles.dropdown, country.toggle && styles.active)}>
                                                 <div
@@ -352,6 +352,11 @@ const Personal = () => {
                                                     }}
                                                 >
                                                     {dataSetting.regions[country.value][lang]}
+                                                    <div className={styles.icon}>
+                                                        <svg width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                            <path d="M10 6L4.99998 0L0 6L10 6Z" fill="#000" />
+                                                        </svg>
+                                                    </div>
                                                 </div>
                                                 <div className={styles.toggle}>
                                                     {
@@ -373,7 +378,7 @@ const Personal = () => {
                                                 </div>
                                             </div>
                                         </div>
-                                        <div className={classes("col", "col-12", "col-lg-6", "col-padding-vertical")}>
+                                        <div className={classes("col", "col-12", "col-md-6", "col-padding-vertical")}>
                                             <p className={styles.label}>{translate('profile_region')} <span>*</span></p>
                                             <div className={classes(styles.dropdown, region.toggle && styles.active)}>
                                                 <div
@@ -386,6 +391,11 @@ const Personal = () => {
                                                     }}
                                                 >
                                                     {dataSetting.regions[country.value].list[region.value][lang]}
+                                                    <div className={styles.icon}>
+                                                        <svg width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                            <path d="M10 6L4.99998 0L0 6L10 6Z" fill="#000" />
+                                                        </svg>
+                                                    </div>
                                                 </div>
                                                 <div className={styles.toggle}>
                                                     {
@@ -407,7 +417,7 @@ const Personal = () => {
                                                 </div>
                                             </div>
                                         </div>
-                                        <div className={classes("col", "col-12", "col-lg-6", "col-padding-vertical")}>
+                                        <div className={classes("col", "col-12", "col-md-6", "col-padding-vertical")}>
                                             <p className={styles.label}>{translate('profile_gender')} <span>*</span></p>
                                             {
                                                 dataSetting.gender.slice(1, dataSetting.length).map((item, idx) =>
@@ -426,7 +436,7 @@ const Personal = () => {
                                                 )
                                             }
                                         </div>
-                                        <div className={classes("col", "col-12", "col-lg-6", "col-padding-vertical")}>
+                                        <div className={classes("col", "col-12", "col-md-6", "col-padding-vertical")}>
                                             <p className={styles.label}>{translate('profile_family')} <span>*</span></p>
                                             {
                                                 dataSetting.family.slice(1, dataSetting.length).map((item, idx) =>
@@ -445,7 +455,7 @@ const Personal = () => {
                                                 )
                                             }
                                         </div>
-                                        <div className={classes("col", "col-12", "col-lg-6", "col-padding-vertical")}>
+                                        <div className={classes("col", "col-12", "col-md-6", "col-padding-vertical")}>
                                             <p className={styles.label}>{translate('profile_weight')}, kg</p>
                                             <Field
                                                 type={"number"}
@@ -454,7 +464,7 @@ const Personal = () => {
                                                 action={setWeight}
                                             />
                                         </div>
-                                        <div className={classes("col", "col-12", "col-lg-6", "col-padding-vertical")}>
+                                        <div className={classes("col", "col-12", "col-md-6", "col-padding-vertical")}>
                                             <p className={styles.label}>{translate('profile_height')}, cm</p>
                                             <Field
                                                 type={"number"}

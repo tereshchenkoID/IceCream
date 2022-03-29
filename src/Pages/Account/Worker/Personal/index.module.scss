@@ -93,13 +93,17 @@
   border: 1px solid var(--color-border);
   border-radius: var(--default-border-radius);
   background-color: var(--color-white);
-  box-shadow: var(--box-shadow-sm);
   color: var(--color-text);
 
   &.active {
+    border-radius: var(--default-border-radius) var(--default-border-radius) 0 0;
 
     .toggle {
       display: block;
+    }
+
+    .icon {
+      transform: none;
     }
   }
 }
@@ -111,18 +115,31 @@
 .select {
   @include flex($align-items: center);
   @include size(100%);
+
+  position: relative;
+  padding-right: 30px;
+}
+
+.icon {
+  position: absolute;
+  right: 5px;
+  top: 17px;
+  transform: rotateZ(180deg);
+  transition: var(--default-transition);
 }
 
 .toggle {
   position: absolute;
   top: 100%;
-  right: 0;
-  left: 0;
+  right: -1px;
+  left: -1px;
   z-index: 1;
   overflow-y: auto;
   background-color: var(--color-white);
-  box-shadow: var(--box-shadow-sm);
-  border: 1px solid var(--color-border);
+  border-right: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+  border-left: 1px solid var(--color-border);
+  border-radius: 0 0 var(--default-border-radius) var(--default-border-radius);
   max-height: 300px;
 
   &::-webkit-scrollbar {
@@ -141,13 +158,9 @@
 }
 
 .value {
-  padding: 10px 15px;
-  border-bottom: 1px solid var(--color-border);
+  padding: 10px;
+  border-top: 1px solid var(--color-border);
   transition: var(--default-transition);
-
-  &:last-child {
-    border-bottom: 0;
-  }
 
   &.active,
   &:hover {

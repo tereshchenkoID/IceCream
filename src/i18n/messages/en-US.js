@@ -21,6 +21,7 @@ const a = {
         'menu_link_16': 'Contact info',
         'menu_link_17': 'Restore password',
         'menu_link_18': 'Registration',
+        'menu_link_19': 'FAQ',
 
         "team_1_text": "I am a software developer with education in cyber defense and cryptography. I am fond of sports, trekking and DIY.",
         "team_2_text": "I am an HTML developer, with a radio engineering background. I love chess, fishing.",

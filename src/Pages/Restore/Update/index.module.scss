@@ -1,7 +1,7 @@
 @import '../../../styles/config';
 
 .form {
-  max-width: 500px;
+  max-width: var(--default-form-width);
   margin: 0 auto;
 }
 
