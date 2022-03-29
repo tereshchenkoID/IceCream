@@ -167,7 +167,8 @@ const Personal = () => {
                                         <div className={classes("col", "col-12", "col-md-6", "col-padding-vertical")}>
                                             <p className={styles.label}>{translate('profile_gender')} <span>*</span></p>
                                             {
-                                                dataSetting.gender.slice(1, dataSetting.length).map((item, idx) =>
+                                                dataSetting.gender &&
+                                                dataSetting.gender.slice(1, dataSetting.gender.length).map((item, idx) =>
                                                     <div
                                                         key={idx}
                                                         className={styles.block}

@@ -259,7 +259,8 @@ const Applicant = () => {
                                         <div className={classes("col", "col-12", "col-md-6", "col-padding-vertical")}>
                                             <p className={styles.label}>{translate('profile_vaccination')} <span>*</span></p>
                                             {
-                                                dataSetting.vaccination.slice(1, dataSetting.length).map((item, idx) =>
+                                                dataSetting.vaccination &&
+                                                dataSetting.vaccination.slice(1, dataSetting.vaccination.length).map((item, idx) =>
                                                     <div
                                                         key={idx}
                                                         className={styles.block}
@@ -278,7 +279,8 @@ const Applicant = () => {
                                         <div className={classes("col", "col-12", "col-md-6", "col-padding-vertical")}>
                                             <p className={styles.label}>{translate('profile_access')} <span>*</span></p>
                                             {
-                                                dataSetting.access.slice(1, dataSetting.length).map((item, idx) =>
+                                                dataSetting.access &&
+                                                dataSetting.access.slice(1, dataSetting.access.length).map((item, idx) =>
                                                     <div
                                                         key={idx}
                                                         className={styles.block}
@@ -306,6 +308,7 @@ const Applicant = () => {
                             <div className={classes(styles.panel, tab === 1 && styles.active)}>
                                 <div className="row">
                                     {
+                                        dataSetting.language &&
                                         dataSetting.language.list.map((c_item, c_idx) =>
                                             <div
                                                 key={c_idx}
@@ -345,6 +348,7 @@ const Applicant = () => {
                             <div className={classes(styles.panel, tab === 2 && styles.active)}>
                                 <div className="row">
                                     {
+                                        dataSetting.job &&
                                         dataSetting.job.map((c_item, c_idx) =>
                                             c_idx !== 0 &&
                                             <div
