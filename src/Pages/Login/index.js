@@ -67,8 +67,8 @@ const Login = () => {
                 .then(success => success.json())
                 .then(success => {
                     if(success && success.token) {
-                        localStorage.setItem('user_id', success.id.toString())
-                        localStorage.setItem('user_token', success.token.toString())
+                        localStorage.setItem('user_id', success.id)
+                        localStorage.setItem('user_token', success.token)
 
                         dispatch(setAccessData(getAccess()))
                         dispatch(setUserData(user))

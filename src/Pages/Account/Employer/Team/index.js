@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {ReactTitle} from "react-meta-tags";
 
 import {server} from "../../../../redux/types/types";
@@ -7,7 +7,8 @@ import {server} from "../../../../redux/types/types";
 import classes from "classnames";
 
 import checkForm from "../../../../helpers/checkForm";
-import getAllStorage from "../../../../helpers/localStorage";
+
+import {setTeamData} from "../../../../redux/actions/teamActions";
 
 import {translate, translateString} from "../../../../i18n/translate";
 
@@ -20,11 +21,17 @@ import Field from "../../../../Components/Field";
 
 import styles from './index.module.scss';
 
-const getTeam = (arr, name) => {
-    return arr.find((e) => {return e === name});
+const getTeam = (arr, id) => {
+    return arr.find((e) => {return e === id});
 }
 
 const Team = () => {
+    const dispatch = useDispatch()
+
+    const { team } = useSelector(state => state.teamReducer)
+    const { dataCard } = useSelector(state => state.cardReducer)
+    const { dataSetting } = useSelector(state => state.settingReducer)
+
     const breadcrumbs = [
         {
             url: "/",
@@ -35,15 +42,10 @@ const Team = () => {
         }
     ]
 
-    const [lang] = useState(translateString('lang'));
-    const [favArray, setFavArray] = useState(getAllStorage('favourite'));
-    const [teamArray, setTeamArray] = useState(getAllStorage('team'));
+    const [lang] = useState(translateString('lang'))
 
     const [name, setName] = useState('')
     const [email, setEmail] = useState('')
-
-    let { dataCard } = useSelector(state => state.cardReducer);
-    let { dataSetting } = useSelector(state => state.settingReducer);
 
     const [notification, setNotification] = useState({
         type: null,
@@ -60,7 +62,7 @@ const Team = () => {
 
             formData.set('email', email)
             formData.set('name', name)
-            formData.set('team', teamArray)
+            formData.set('team', team)
 
             fetch(`${server.PATH}team/send`, {
                 method: 'POST',
@@ -74,8 +76,7 @@ const Team = () => {
                         })
 
                         setTimeout(() => {
-                            setTeamArray([])
-
+                            dispatch(setTeamData([]))
                             localStorage['team'] = '[]'
                         }, 3000);
                     }
@@ -107,19 +108,15 @@ const Team = () => {
                     <div className="container">
                         <div className="row">
                             {
-                                teamArray.length > 0
+                                team.length > 0
                                     ?
                                     dataCard.map((item, idx) =>
-                                        getTeam(teamArray, item.id) &&
+                                        getTeam(team, item.id) &&
                                         <div key={idx} className={classes("col", "col-12", "col-md-6", "col-lg-4")}>
                                             <ProfileCard
                                                 setting={dataSetting}
                                                 data={item}
                                                 lang={lang}
-                                                favArray={favArray}
-                                                setFavArray={setFavArray}
-                                                teamArray={teamArray}
-                                                setTeamArray={setTeamArray}
                                             />
                                         </div>
 
@@ -133,7 +130,7 @@ const Team = () => {
             </section>
 
             {
-                teamArray.length > 0 &&
+                team.length > 0 &&
                 <section className={classes("section", "fluid")}>
                     <div className="container-fluid">
                         <div className="container">

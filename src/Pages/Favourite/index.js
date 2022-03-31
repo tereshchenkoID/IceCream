@@ -4,21 +4,21 @@ import {ReactTitle} from "react-meta-tags";
 
 import classes from "classnames";
 
-import getAllStorage from "../../helpers/localStorage";
-
 import {translate, translateString} from "../../i18n/translate";
 
 import Breadcrumbs from "../../Components/Breadcrumbs";
 import ProfileCard from "../../Modules/ProfileCard";
 import Empty from "../../Components/Empty";
 
-// import styles from "./index.module.scss";
-
-const getFav = (arr, name) => {
-    return arr.find((e) => {return e === name});
+const getFavourite = (arr, id) => {
+    return arr.find((e) => {return e === id});
 }
 
 const Favourite = () => {
+    const { favourite } = useSelector(state => state.favouriteReducer)
+    const { dataCard } = useSelector(state => state.cardReducer)
+    const { dataSetting } = useSelector(state => state.settingReducer)
+
     const breadcrumbs = [
         {
             url: "/",
@@ -29,12 +29,7 @@ const Favourite = () => {
         }
     ]
 
-    const [lang] = useState(translateString('lang'));
-    const [favArray, setFavArray] = useState(getAllStorage('favourite'));
-    const [teamArray, setTeamArray] = useState(getAllStorage('team'));
-
-    let { dataCard } = useSelector(state => state.cardReducer);
-    let { dataSetting } = useSelector(state => state.settingReducer);
+    const [lang] = useState(translateString('lang'))
 
     return (
         <main>
@@ -56,19 +51,15 @@ const Favourite = () => {
                     <div className="container">
                         <div className="row">
                             {
-                                favArray.length > 0
+                                favourite.length > 0
                                     ?
                                     dataCard.map((item, idx) =>
-                                        getFav(favArray, item.id) &&
+                                        getFavourite(favourite, item.id) &&
                                         <div key={idx} className={classes("col", "col-12", "col-md-6", "col-lg-4")}>
                                             <ProfileCard
                                                 setting={dataSetting}
                                                 data={item}
                                                 lang={lang}
-                                                favArray={favArray}
-                                                setFavArray={setFavArray}
-                                                teamArray={teamArray}
-                                                setTeamArray={setTeamArray}
                                             />
                                         </div>
                                     )

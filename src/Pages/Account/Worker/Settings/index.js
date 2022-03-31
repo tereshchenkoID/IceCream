@@ -15,6 +15,7 @@ import {translate, translateString} from "../../../../i18n/translate";
 
 import {loadCardData} from "../../../../redux/actions/cardActions";
 import {loadProfileData} from "../../../../redux/actions/profileActions";
+import {setAccessData} from "../../../../redux/actions/accessActions";
 
 import GeneratePassword from "../../../../Modules/GeneratePassword";
 import Breadcrumbs from "../../../../Components/Breadcrumbs";
@@ -24,15 +25,16 @@ import Notification from "../../../../Components/Notification";
 import Preloader from "../../../../Components/Preloader";
 
 import styles from './index.module.scss';
-import {setAccessData} from "../../../../redux/actions/accessActions";
 
 const checkProfile = (data) => {
+    console.log(data)
     return !!(
         data.name &&
         data.surname &&
         data.vaccinated &&
         data.age &&
-        data.available &&
+        data.available_from &&
+        data.available_to &&
         data.country &&
         data.region &&
         data.eu_allowed_person &&

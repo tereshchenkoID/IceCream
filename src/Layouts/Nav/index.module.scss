@@ -118,6 +118,7 @@ $md: map-get($brackpoints, 'md');
 }
 
 .item {
+  position: relative;
   margin-right: 20px;
   flex-shrink: 0;
 
@@ -135,4 +136,16 @@ $md: map-get($brackpoints, 'md');
   }
 }
 
+.count {
+  @include flex(center, center);
+  @include size(19px);
 
+  position: absolute;
+  top: 0;
+  right: 0;
+  transform: translate(90%, -70%);
+  background-color: var(--color-primary);
+  border-radius: 50%;
+  color: var(--color-white);
+  font-size: 11px;
+}

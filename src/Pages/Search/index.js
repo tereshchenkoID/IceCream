@@ -8,7 +8,6 @@ import classes from "classnames";
 import {translate, translateString} from "../../i18n/translate";
 
 import getAge from "../../helpers/getAge";
-import getAllStorage from "../../helpers/localStorage";
 import convertData from "../../helpers/convertData";
 
 import Toggle from "../../Components/Toggle";
@@ -49,9 +48,6 @@ const Search = () => {
     let {dataSetting} = useSelector(state => state.settingReducer);
 
     const [lang] = useState(translateString('lang'));
-
-    const [favArray, setFavArray] = useState(getAllStorage('favourite'));
-    const [teamArray, setTeamArray] = useState(getAllStorage('team'));
 
     const values = [0, 80];
     const [sort, setSort] = useState(0);
@@ -455,10 +451,6 @@ const Search = () => {
                                                         setting={dataSetting}
                                                         data={item}
                                                         lang={lang}
-                                                        favArray={favArray}
-                                                        setFavArray={setFavArray}
-                                                        teamArray={teamArray}
-                                                        setTeamArray={setTeamArray}
                                                     />
                                                 </div>
                                             )

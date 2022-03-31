@@ -18,6 +18,7 @@ import Link from "../../Components/Link";
 
 import styles from './index.module.scss';
 
+
 const path = {
     employer: [
         {
@@ -27,6 +28,7 @@ const path = {
         {
             url: '/employer/my/team',
             text: 'menu_link_4',
+            count: true
         },
         {
             url: '/employer/my/contact',
@@ -61,6 +63,7 @@ const Nav = ({lang, setLang}) => {
     const dispatch = useDispatch();
 
     const { access } = useSelector(state => state.accessReducer)
+    const { team } = useSelector(state => state.teamReducer)
 
     const [active, setActive] = useState(false)
 
@@ -132,6 +135,14 @@ const Nav = ({lang, setLang}) => {
                                             key={idx}
                                             className={styles.item}
                                         >
+                                            {
+                                                item.count &&
+                                                team.length > 0 &&
+                                                <div className={styles.count}>
+                                                    {team.length}
+                                                </div>
+                                            }
+
                                             <NavLink
                                                 to={item.url}
                                                 className={styles.link}

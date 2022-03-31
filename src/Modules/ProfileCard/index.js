@@ -7,9 +7,9 @@ import getAge from "../../helpers/getAge";
 import convertData from "../../helpers/convertData";
 
 import Link from "../../Components/Link";
-import Favourite from "../../Components/Favourite";
-import Team from "../../Components/Team";
 import Photo from "../../Components/Photo";
+import Team from "../../Components/Team";
+import Favourite from "../../Components/Favourite";
 
 import styles from './index.module.scss';
 
@@ -17,10 +17,6 @@ const ProfileCard = ({
       data,
       lang,
       setting,
-      favArray,
-      setFavArray,
-      teamArray,
-      setTeamArray,
     }) => {
 
     const { user } = useSelector(state => state.userReducer)
@@ -40,8 +36,6 @@ const ProfileCard = ({
                         <div className={styles.favourite}>
                             <Favourite
                                 id={data.id}
-                                favArray={favArray}
-                                setFavArray={setFavArray}
                             />
                         </div>
 
@@ -81,11 +75,8 @@ const ProfileCard = ({
                                         (user === 1 && access) &&
                                         <Team
                                             id={data.id}
-                                            teamArray={teamArray}
-                                            setTeamArray={setTeamArray}
                                         />
                                     }
-
                                 </div>
                                 <div className={styles.button}>
                                     <Link

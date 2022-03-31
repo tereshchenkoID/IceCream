@@ -1,15 +1,15 @@
 import { types } from '../types/types';
 
 const initialState = {
-    user: parseInt(localStorage.getItem('user_role'), 10) || 0
+    team: JSON.parse(localStorage.getItem('team')) || []
 };
 
-export const userReducer = (state = initialState, action) => {
+export const teamReducer = (state = initialState, action) => {
     switch (action.type) {
-        case types.SET_USER_DATA:
+        case types.SET_TEAM_DATA:
             return {
                 ...state,
-                user: action.payload,
+                team: action.payload,
             };
         default:
             return state;

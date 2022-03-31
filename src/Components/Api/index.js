@@ -11,10 +11,10 @@ const Api = () => {
     const { access } = useSelector(state => state.accessReducer)
 
     useEffect(() => {
-        access && dispatch(loadProfileData())
-
         dispatch(loadSettingData())
         dispatch(loadCardData())
+
+        access && dispatch(loadProfileData())
     }, [dispatch, access]);
 
     return true;

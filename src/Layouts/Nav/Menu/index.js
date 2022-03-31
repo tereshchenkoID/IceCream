@@ -1,12 +1,17 @@
 import React from "react";
+import {useSelector} from "react-redux";
+
 import classes from 'classnames';
+
+import {translate} from "../../../i18n/translate";
+
 import {NavLink} from "react-router-dom";
 
 import styles from './index.module.scss';
 
-import {translate} from "../../../i18n/translate";
-
 const Menu = ({active, setActive}) => {
+
+    const { favourite } = useSelector(state => state.favouriteReducer)
 
     return (
         <ul className={classes(styles.block, active && styles.active)}>
@@ -41,6 +46,12 @@ const Menu = ({active, setActive}) => {
                 </NavLink>
             </li>
             <li className={styles.item}>
+                {
+                    favourite.length > 0 &&
+                    <div className={styles.count}>
+                        {favourite.length}
+                    </div>
+                }
                 <NavLink
                     activeClassName={styles.active}
                     className={styles.link}

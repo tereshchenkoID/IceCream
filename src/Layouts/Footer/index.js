@@ -26,14 +26,6 @@ const Footer = () => {
                                     <div className={styles.item}>
                                         <NavLink
                                             className={styles.link}
-                                            to="/"
-                                        >
-                                            {translate("menu_link_1")}
-                                        </NavLink>
-                                    </div>
-                                    <div className={styles.item}>
-                                        <NavLink
-                                            className={styles.link}
                                             to="/about"
                                         >
                                             {translate("menu_link_9")}
@@ -58,9 +50,9 @@ const Footer = () => {
                                     <div className={styles.item}>
                                         <NavLink
                                             className={styles.link}
-                                            to="/team"
+                                            to="/faq"
                                         >
-                                            {translate('menu_link_4')}
+                                            {translate("menu_link_19")}
                                         </NavLink>
                                     </div>
                                     <div className={styles.item}>

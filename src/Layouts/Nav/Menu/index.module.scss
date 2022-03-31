@@ -31,14 +31,17 @@ $md: map-get($brackpoints, 'md');
 }
 
 .item {
+  position: relative;
   margin: 0 10px;
   list-style: none;
 
   &:first-child {
+    position: static;
     margin: 0;
   }
 
   @include media-max($md) {
+    margin: 0;
     width: 100%;
   }
 }
@@ -68,5 +71,25 @@ $md: map-get($brackpoints, 'md');
 
   @include media-max($md) {
     display: block;
+  }
+}
+
+.count {
+  @include flex(center, center);
+  @include size(19px);
+
+  position: absolute;
+  top: 0;
+  right: 0;
+  transform: translate(90%, -70%);
+  background-color: var(--color-primary);
+  border-radius: 50%;
+  color: var(--color-white);
+  font-size: 11px;
+
+  @include media-max($md) {
+    top: 50%;
+    right: 30px;
+    transform: translate(0, -50%);
   }
 }

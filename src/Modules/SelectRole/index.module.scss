@@ -17,10 +17,10 @@
 }
 
 .check {
-  @include size(120px);
+  @include size(130px);
 
   position: relative;
-  margin-right: 10px;
+  margin-right: 20px;
 
   &:last-child {
     margin-right: 0;
@@ -44,12 +44,26 @@
   @include flex(center, center);
 
   cursor: pointer;
-  padding: 0 10px;
   border-radius: var(--default-border-radius);
   background-color: var(--color-secondary);
   transition: var(--default-transition);
 
   &:hover {
-    color: var(--color-primary);
+
+    .icon {
+      color: var(--color-primary);
+    }
+  }
+}
+
+.icon {
+  @include size(100%);
+
+  display: block;
+  padding: 10px;
+
+  svg {
+    fill: currentColor;
+    transition: var(--default-transition);
   }
 }
