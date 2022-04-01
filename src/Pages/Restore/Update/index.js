@@ -56,41 +56,56 @@ const Update = () => {
 
                     if (localStorage.getItem('restore_email')) {
 
-                        const formData = new FormData(e.target);
+                        if (user !== 0) {
 
-                        formData.set('hash', id)
-                        formData.set('role', user)
-                        formData.set('email', localStorage.getItem('restore_email'))
-                        formData.set('new_password', newPassword)
+                            const formData = new FormData(e.target);
 
-                        fetch(`${server.PATH}recovery/update`, {
-                            method: 'POST',
-                            body: formData
-                        })
-                            .then(success => success.json())
-                            .then(success => {
-                                if (success === 0) {
-                                    setNotification({
-                                        type: 'success',
-                                        code: 2
-                                    })
+                            formData.set('hash', id)
+                            formData.set('role', user)
+                            formData.set('email', localStorage.getItem('restore_email'))
+                            formData.set('new_password', newPassword)
 
-                                    localStorage.setItem('restore_email', '')
-                                }
-                                else if (success === 1) {
-                                    setNotification({
-                                        type: 'error',
-                                        code: 8
-                                    })
-                                }
-                                else if (success === 2) {
-                                    setNotification({
-                                        type: 'error',
-                                        code: 6
-                                    })
-                                }
+                            fetch(`${server.PATH}recovery/update`, {
+                                method: 'POST',
+                                body: formData
                             })
-                            .catch(error => console.log("Error", error))
+                                .then(success => success.json())
+                                .then(success => {
+                                    if (success === 0) {
+                                        setNotification({
+                                            type: 'success',
+                                            code: 2
+                                        })
+
+                                        localStorage.setItem('restore_email', '')
+                                    }
+                                    else if (success === 1) {
+                                        setNotification({
+                                            type: 'error',
+                                            code: 8
+                                        })
+                                    }
+                                    else if (success === 2) {
+                                        setNotification({
+                                            type: 'error',
+                                            code: 6
+                                        })
+                                    }
+                                    else if(success === 3) {
+                                        setNotification({
+                                            type: 'error',
+                                            code: 16
+                                        })
+                                    }
+                                })
+                                .catch(error => console.log("Error", error))
+                        }
+                        else {
+                            setNotification({
+                                type: 'error',
+                                code: 16
+                            })
+                        }
                     }
                     else {
                         setNotification({

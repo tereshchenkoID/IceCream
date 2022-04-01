@@ -14,6 +14,7 @@ import request from "../../_helpers/request";
 import {translate, translateString} from "../../../../i18n/translate";
 
 import {setUserData} from "../../../../redux/actions/userActions";
+import {setAccessData} from "../../../../redux/actions/accessActions";
 
 import GeneratePassword from "../../../../Modules/GeneratePassword";
 import Breadcrumbs from "../../../../Components/Breadcrumbs";
@@ -116,10 +117,12 @@ const Settings = () => {
 
         request(formData, setLoader, false)
 
-        dispatch(setUserData(0))
+        localStorage.setItem('user_role', '0')
         localStorage.removeItem('user_id')
-        localStorage.removeItem('user_role')
         localStorage.removeItem('user_token')
+
+        dispatch(setUserData(0))
+        dispatch(setAccessData(false))
     }
 
     return (

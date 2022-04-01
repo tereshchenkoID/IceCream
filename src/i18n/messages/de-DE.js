@@ -141,6 +141,7 @@ const a = {
         'alert-restore': 'Passwort vergessen?',
         'alert-restore-email': 'Geben Sie die E-Mail-Adresse ein, die Sie bei der Registrierung angegeben haben',
         'alert-upload-photo': 'Fotogröße bis zu 4 MB im JPEG-/PNG-Format',
+        'alert-terms': 'Ich bin einverstanden mit',
 
         'error-1': 'Ungültige Emailadresse oder Passwort',
         'error-2': 'Ungültiges aktuelles Passwort',
@@ -157,6 +158,7 @@ const a = {
         'error-13': 'Dateierweiterung verweigert. Bitte laden Sie eine JPEG- oder PNG-Datei hoch',
         'error-14': 'Ein Fehler ist aufgetreten. Wenden Sie sich an die Verwaltung',
         'error-15': 'Datei nicht ausgewählt',
+        'error-16': 'Kein Benutzertyp ausgewählt',
 
         'success-1': 'An die angegebene E-Mail-Adresse wurde eine E-Mail mit einem Link zum Aktualisieren des Passworts gesendet',
         'success-2': 'Daten erfolgreich aktualisiert',

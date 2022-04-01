@@ -15,6 +15,7 @@ import Button from "../../../Components/Button";
 import Field from "../../../Components/Field";
 import Breadcrumbs from "../../../Components/Breadcrumbs";
 import Notification from "../../../Components/Notification";
+import SelectRole from "../../../Modules/SelectRole";
 
 import styles from './index.module.scss';
 
@@ -44,39 +45,55 @@ const Search = () => {
         const c_Form = checkForm([email])
 
         if (c_Form.code === 0) {
-            const formData = new FormData(e.target);
 
-            formData.set('role', user)
-            formData.set('email', email)
+            if (user !== 0) {
 
-            fetch(`${server.PATH}recovery/show`, {
-                method: 'POST',
-                body: formData
-            })
-                .then(success => success.json())
-                .then(success => {
-                    if(success === 0) {
-                        setNotification({
-                            type: 'success',
-                            code: 1
-                        })
+                const formData = new FormData(e.target);
 
-                        localStorage.setItem('restore_email', email)
-                    }
-                    else if(success === 1) {
-                        setNotification({
-                            type: 'error',
-                            code: 6
-                        })
-                    }
-                    else if(success === 2) {
-                        setNotification({
-                            type: 'error',
-                            code: 7
-                        })
-                    }
+                formData.set('role', user)
+                formData.set('email', email)
+
+                fetch(`${server.PATH}recovery/show`, {
+                    method: 'POST',
+                    body: formData
                 })
-                .catch(error => console.log("Error", error))
+                    .then(success => success.json())
+                    .then(success => {
+                        if(success === 0) {
+                            setNotification({
+                                type: 'success',
+                                code: 1
+                            })
+
+                            localStorage.setItem('restore_email', email)
+                        }
+                        else if(success === 1) {
+                            setNotification({
+                                type: 'error',
+                                code: 6
+                            })
+                        }
+                        else if(success === 2) {
+                            setNotification({
+                                type: 'error',
+                                code: 7
+                            })
+                        }
+                        else if(success === 3) {
+                            setNotification({
+                                type: 'error',
+                                code: 16
+                            })
+                        }
+                    })
+                    .catch(error => console.log("Error", error))
+                }
+            else {
+                setNotification({
+                    type: 'error',
+                    code: 16
+                })
+            }
         }
         else {
             setNotification(c_Form)
@@ -107,6 +124,12 @@ const Search = () => {
                                     <div className={styles.wrap}>
                                         <p>{translate('alert-restore-email')}</p>
                                     </div>
+                                    {
+                                        user === 0 &&
+                                        <div className={styles.wrap}>
+                                            <SelectRole/>
+                                        </div>
+                                    }
                                     <div className={styles.wrap}>
                                         <Field
                                             type={"email"}

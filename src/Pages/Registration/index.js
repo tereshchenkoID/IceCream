@@ -6,8 +6,8 @@ import {useSelector} from "react-redux";
 import classes from "classnames";
 
 import { server } from '../../redux/types/types';
-import checkForm from "../../helpers/checkForm";
 
+import checkForm from "../../helpers/checkForm";
 import checkPassword from "../../helpers/checkPassword";
 
 import {translate, translateString} from "../../i18n/translate";
@@ -17,6 +17,7 @@ import Field from "../../Components/Field";
 import Password from "../../Components/Password";
 import Breadcrumbs from "../../Components/Breadcrumbs";
 import Notification from "../../Components/Notification";
+import SelectRole from "../../Modules/SelectRole";
 
 import styles from './index.module.scss';
 
@@ -33,6 +34,7 @@ const Registration = () => {
         }
     ]
 
+    const [terms, setTerms] = useState(false)
     const [name, setName] = useState('')
     const [surname, setSurname] = useState('')
     const [email, setEmail] = useState('')
@@ -52,39 +54,63 @@ const Registration = () => {
 
         if (c_Form.code === 0) {
 
-            if (c_Password.code === 0) {
+            if (user !== 0) {
 
-                const formData = new FormData(e.target);
+                if (c_Password.code === 0) {
 
-                formData.set('role', user)
-                formData.set('name', name)
-                formData.set('surname', surname)
-                formData.set('email', email)
-                formData.set('password', password)
+                    if (terms) {
+                        const formData = new FormData(e.target);
 
-                fetch(`${server.PATH}registration/show`, {
-                    method: 'POST',
-                    body: formData
-                })
-                    .then(success => success.json())
-                    .then(success => {
-                        if (success === 0) {
-                            setNotification({
-                                type: 'success',
-                                code: '3'
+                        formData.set('role', user)
+                        formData.set('name', name)
+                        formData.set('surname', surname)
+                        formData.set('email', email)
+                        formData.set('password', password)
+
+                        fetch(`${server.PATH}registration/show`, {
+                            method: 'POST',
+                            body: formData
+                        })
+                            .then(success => success.json())
+                            .then(success => {
+
+                                if (success === 0) {
+                                    setNotification({
+                                        type: 'success',
+                                        code: 3
+                                    })
+                                }
+                                else if (success === 1) {
+                                    setNotification({
+                                        type: 'error',
+                                        code: 9
+                                    })
+                                }
+                                else if (success === 2) {
+                                    setNotification({
+                                        type: 'error',
+                                        code: 16
+                                    })
+                                }
                             })
-                        }
-                        else if (success === 1) {
-                            setNotification({
-                                type: 'error',
-                                code: '9'
-                            })
-                        }
-                    })
-                    .catch(error => console.log("Error", error));
+                            .catch(error => console.log("Error", error));
+                    }
+                    else {
+                        setNotification({
+                            type: 'error',
+                            code: 10
+                        })
+                    }
+                }
+                else {
+                    setNotification(c_Password)
+                }
             }
             else {
-                setNotification(c_Password)
+                setNotification({
+                    type: 'error',
+                    code: 16
+                })
             }
         }
         else {
@@ -128,6 +154,9 @@ const Registration = () => {
                                 notification.type !== 'success' &&
                                 <>
                                     <div className={styles.wrap}>
+                                        <SelectRole />
+                                    </div>
+                                    <div className={styles.wrap}>
                                         <Field
                                             type={"text"}
                                             placeholder={'profile_name'}
@@ -167,6 +196,30 @@ const Registration = () => {
                                             action={setRepeatPassword}
                                             placeholder={'profile_repeat_password'}
                                         />
+                                    </div>
+                                    <div className={styles.wrap}>
+                                        <div className={styles.checkbox}>
+                                            <input
+                                                type="checkbox"
+                                                id={'terms'}
+                                                className={styles.input}
+                                                onChange={(e) => setTerms(!terms)}
+                                                checked={terms}
+                                            />
+                                            <label
+                                                htmlFor={'terms'}
+                                                className={styles.label}
+                                            >
+                                                {translate('alert-terms')}
+                                                <NavLink
+                                                    className={styles.link}
+                                                    to="../DOC/confidential.pdf"
+                                                    target="_blank"
+                                                >
+                                                    {translate('menu_link_7')}
+                                                </NavLink>
+                                            </label>
+                                        </div>
                                     </div>
                                     <Button
                                         type={"submit"}

@@ -15,12 +15,11 @@ import Preloader from "./Components/Preloader"
 import Meta from "./Components/Meta";
 import Nav from "./Layouts/Nav";
 import Footer from "./Layouts/Footer";
-import SelectRole from "./Modules/SelectRole";
 
 import styles from './App.module.scss';
 
 const setLanguage = () => {
-    return localStorage.language ? JSON.parse(localStorage.getItem('language')) : 'ENGLISH';
+    return localStorage.language ? JSON.parse(localStorage.getItem('language')) : 'UKRAINIAN';
 };
 
 const App = () => {
@@ -36,7 +35,6 @@ const App = () => {
 
           <I18nProvider locale={lang}>
               <Provider store={store}>
-                  <SelectRole/>
                   <Api/>
                   <BrowserRouter>
                       <Nav

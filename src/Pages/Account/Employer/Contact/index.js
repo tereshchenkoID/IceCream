@@ -142,7 +142,6 @@ const Contact = () => {
                                             <p className={styles.label}>{translate('profile_email')} <span>*</span></p>
                                             <Field
                                                 type={"email"}
-                                                required={false}
                                                 placeholder={false}
                                                 data={email || ''}
                                                 action={setEmail}
@@ -153,7 +152,6 @@ const Contact = () => {
                                             <p className={styles.label}>{translate('profile_phone')} <span>*</span></p>
                                             <Field
                                                 type={"text"}
-                                                required={false}
                                                 placeholder={false}
                                                 data={phone || ''}
                                                 action={setPhone}

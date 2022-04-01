@@ -16,6 +16,7 @@ import {translate, translateString} from "../../../../i18n/translate";
 import {loadCardData} from "../../../../redux/actions/cardActions";
 import {loadProfileData} from "../../../../redux/actions/profileActions";
 import {setAccessData} from "../../../../redux/actions/accessActions";
+import {setUserData} from "../../../../redux/actions/userActions";
 
 import GeneratePassword from "../../../../Modules/GeneratePassword";
 import Breadcrumbs from "../../../../Components/Breadcrumbs";
@@ -174,9 +175,12 @@ const Settings = () => {
 
         request(formData, setLoader, false)
 
-        dispatch(setAccessData(false))
+        localStorage.setItem('user_role', '0')
         localStorage.removeItem('user_id')
         localStorage.removeItem('user_token')
+
+        dispatch(setUserData(0))
+        dispatch(setAccessData(false))
     }
 
     useEffect(() => {

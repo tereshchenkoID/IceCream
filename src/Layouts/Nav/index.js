@@ -18,7 +18,6 @@ import Link from "../../Components/Link";
 
 import styles from './index.module.scss';
 
-
 const path = {
     employer: [
         {

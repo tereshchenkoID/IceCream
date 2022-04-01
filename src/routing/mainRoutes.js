@@ -67,8 +67,6 @@ export const routes = [
     exact: false,
     role: [0, 1, 2]
   },
-
-
   {
     path: '/employer/my/personal',
     component: EmployerPersonal,
@@ -93,8 +91,6 @@ export const routes = [
     exact: false,
     role: [1]
   },
-
-
   {
     path: '/worker/my/personal',
     component: WorkerPersonal,
@@ -119,8 +115,6 @@ export const routes = [
     exact: false,
     role: [2]
   },
-
-
   {
     path: '/login',
     component: Login,
@@ -156,11 +150,7 @@ export const routes = [
     role: [0]
   },
   {
-    component: () => <Redirect to="/employer/my/personal" />,
-    role: [1]
-  },
-  {
-    component: () => <Redirect to="/worker/my/personal" />,
-    role: [2]
+    component: () => <Redirect to="/" />,
+    role: [1, 2]
   }
 ]

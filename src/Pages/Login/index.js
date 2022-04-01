@@ -1,7 +1,7 @@
 import React, {useState} from "react";
+import {ReactTitle} from "react-meta-tags";
 import {useDispatch, useSelector} from "react-redux";
 import {NavLink} from "react-router-dom";
-import {ReactTitle} from "react-meta-tags";
 
 import classes from "classnames";
 
@@ -21,6 +21,7 @@ import Field from "../../Components/Field";
 import Password from "../../Components/Password";
 import Breadcrumbs from "../../Components/Breadcrumbs";
 import Notification from "../../Components/Notification";
+import SelectRole from "../../Modules/SelectRole";
 
 import styles from './index.module.scss';
 
@@ -54,34 +55,50 @@ const Login = () => {
 
         if (c_Form.code === 0) {
 
-            const formData = new FormData(e.target);
+            if (user !== 0) {
+                const formData = new FormData(e.target);
 
-            formData.set('role', user)
-            formData.set('email', email)
-            formData.set('password', password)
+                formData.set('role', user)
+                formData.set('email', email)
+                formData.set('password', password)
 
-            fetch(`${server.PATH}login`, {
-                method: 'POST',
-                body: formData
-            })
-                .then(success => success.json())
-                .then(success => {
-                    if(success && success.token) {
-                        localStorage.setItem('user_id', success.id)
-                        localStorage.setItem('user_token', success.token)
-
-                        dispatch(setAccessData(getAccess()))
-                        dispatch(setUserData(user))
-                        dispatch(loadProfileData())
-                    }
-                    else {
-                        setNotification({
-                            type: 'error',
-                            code: 1
-                        })
-                    }
+                fetch(`${server.PATH}login`, {
+                    method: 'POST',
+                    body: formData
                 })
-                .catch(error => console.log("Error", error));
+                    .then(success => success.json())
+                    .then(success => {
+
+                        if (success === 1) {
+                            setNotification({
+                                type: 'error',
+                                code: 1
+                            })
+
+                        }
+                        else if(success === 2) {
+                            setNotification({
+                                type: 'error',
+                                code: 16
+                            })
+                        }
+                        else {
+                            localStorage.setItem('user_id', success.id)
+                            localStorage.setItem('user_token', success.token)
+
+                            dispatch(setAccessData(getAccess()))
+                            dispatch(setUserData(user))
+                            dispatch(loadProfileData())
+                        }
+                    })
+                    .catch(error => console.log("Error", error));
+            }
+            else {
+                setNotification({
+                    type: 'error',
+                    code: 16
+                })
+            }
         }
         else {
             setNotification(c_Form)
@@ -120,6 +137,12 @@ const Login = () => {
                                 </div>
                             </div>
                             <Notification date={notification} />
+                            {
+                                user === 0 &&
+                                <div className={styles.wrap}>
+                                    <SelectRole />
+                                </div>
+                            }
                             <div className={styles.wrap}>
                                 <Field
                                     type={"email"}
