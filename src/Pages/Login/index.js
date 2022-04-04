@@ -12,7 +12,6 @@ import getAccess from "../../helpers/getAccess";
 
 import { setUserData } from "../../redux/actions/userActions";
 import { setAccessData } from "../../redux/actions/accessActions";
-import { loadProfileData } from "../../redux/actions/profileActions";
 
 import {translate, translateString} from "../../i18n/translate";
 
@@ -74,7 +73,6 @@ const Login = () => {
                                 type: 'error',
                                 code: 1
                             })
-
                         }
                         else if(success === 2) {
                             setNotification({
@@ -88,7 +86,6 @@ const Login = () => {
 
                             dispatch(setAccessData(getAccess()))
                             dispatch(setUserData(user))
-                            dispatch(loadProfileData())
                         }
                     })
                     .catch(error => console.log("Error", error));

@@ -11,6 +11,7 @@ const Api = () => {
     const { access } = useSelector(state => state.accessReducer)
 
     useEffect(() => {
+
         dispatch(loadSettingData())
         dispatch(loadCardData())
 
