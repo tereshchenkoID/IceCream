@@ -1,95 +1,53 @@
 @import '../../../styles/config';
 
-$md: map-get($brackpoints, 'md');
-
 .block {
   @include flex($align-items: center);
 
-  padding-left: 30px;
+  padding: 0;
+  margin: 0;
+  list-style: none;
 
-  @include media-max($md) {
-    flex-direction: column;
+  @include media-max(map_get($brackpoints, md)) {
     position: fixed;
     top: 0;
+    right: 0;
     bottom: 0;
-    left: 0;
-    padding: 90px 0 0;
-    margin: 0;
-    z-index: 11;
-    background-color: var(--color-white);
+    z-index: 10;
+    padding: 15px 0;
+    flex-direction: column;
+    align-items: flex-start;
+    transform: translateX(100%);
     transition: var(--default-transition);
-    box-shadow: var(--box-shadow-lg);
-    transform: translateX(-100%);
-    opacity: 0;
-    width: 320px;
+    background-color: var(--color-black);
+    width: 250px;
+  }
 
-    &.active {
-      opacity: 1;
-      transform: translateX(0);
-    }
+  &.active {
+    transform: translateX(0);
   }
 }
 
 .item {
-  position: relative;
-  margin: 0 10px;
-  list-style: none;
+  margin-right: 60px;
 
-  &:first-child {
-    position: static;
-    margin: 0;
+  &:last-child {
+    margin-right: 0;
   }
 
-  @include media-max($md) {
-    margin: 0;
-    width: 100%;
+  @include media-max(map_get($brackpoints, lg)) {
+    margin-right: 40px;
+  }
+
+  @include media-max(map_get($brackpoints, md)) {
+    padding: 10px 20px;
+    margin-right: 0;
   }
 }
 
 .link {
-  @include flex(center, center);
 
-  &.active,
-  &:hover {
+  &:hover,
+  &.active {
     color: var(--color-primary);
-  }
-
-  @include media-max($md) {
-    justify-content: flex-start;
-    padding: 10px 20px;
-    width: 100%;
-  }
-}
-
-.icon {
-  @include size(50px);
-
-  display: none;
-  position: absolute;
-  top: 15px;
-  right: 15px;
-
-  @include media-max($md) {
-    display: block;
-  }
-}
-
-.count {
-  @include flex(center, center);
-  @include size(19px);
-
-  position: absolute;
-  top: 0;
-  right: 0;
-  transform: translate(90%, -70%);
-  background-color: var(--color-primary);
-  border-radius: 50%;
-  color: var(--color-white);
-  font-size: 11px;
-
-  @include media-max($md) {
-    top: 50%;
-    right: 30px;
-    transform: translate(0, -50%);
   }
 }

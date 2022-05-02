@@ -1,84 +1,58 @@
 import React from "react";
-import {useSelector} from "react-redux";
+import {NavLink} from "react-router-dom";
 
 import classes from 'classnames';
-
-import {translate} from "../../../i18n/translate";
-
-import {NavLink} from "react-router-dom";
 
 import styles from './index.module.scss';
 
 const Menu = ({active, setActive}) => {
 
-    const { favourite } = useSelector(state => state.favouriteReducer)
-
     return (
-        <ul className={classes(styles.block, active && styles.active)}>
-            <li className={styles.item}>
-                <span
-                    className={styles.icon}
-                    onClick={() => setActive(!active)}
-                >
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-                        <path d="M12,11.2928932 L16.1464466,7.14644661 C16.3417088,6.95118446 16.6582912,6.95118446 16.8535534,7.14644661 C17.0488155,7.34170876 17.0488155,7.65829124 16.8535534,7.85355339 L12.7071068,12 L16.8535534,16.1464466 C17.0488155,16.3417088 17.0488155,16.6582912 16.8535534,16.8535534 C16.6582912,17.0488155 16.3417088,17.0488155 16.1464466,16.8535534 L12,12.7071068 L7.85355339,16.8535534 C7.65829124,17.0488155 7.34170876,17.0488155 7.14644661,16.8535534 C6.95118446,16.6582912 6.95118446,16.3417088 7.14644661,16.1464466 L11.2928932,12 L7.14644661,7.85355339 C6.95118446,7.65829124 6.95118446,7.34170876 7.14644661,7.14644661 C7.34170876,6.95118446 7.65829124,6.95118446 7.85355339,7.14644661 L12,11.2928932 Z"/>
-                    </svg>
-                </span>
-            </li>
+        <ul
+            className={classes(
+                styles.block,
+                active && styles.active
+            )}
+        >
             <li className={styles.item}>
                 <NavLink
                     activeClassName={styles.active}
                     className={styles.link}
-                    to="/about"
-                    onClick={() => setActive(false)}
+                    to="/"
+                    exact={true}
+                    // onClick={() => setActive(false)}
                 >
-                    {translate("menu_link_9")}
+                    Home
                 </NavLink>
             </li>
             <li className={styles.item}>
                 <NavLink
                     activeClassName={styles.active}
                     className={styles.link}
-                    to="/search/0"
-                    onClick={() => setActive(false)}
+                    to="/farm"
+                    // onClick={() => setActive(false)}
                 >
-                    {translate("menu_link_2")}
-                </NavLink>
-            </li>
-            <li className={styles.item}>
-                {
-                    favourite.length > 0 &&
-                    <div className={styles.count}>
-                        {favourite.length}
-                    </div>
-                }
-                <NavLink
-                    activeClassName={styles.active}
-                    className={styles.link}
-                    to="/favourite"
-                    onClick={() => setActive(false)}
-                >
-                    {translate("menu_link_3")}
+                    Farm
                 </NavLink>
             </li>
             <li className={styles.item}>
                 <NavLink
                     activeClassName={styles.active}
                     className={styles.link}
-                    to="/faq"
-                    onClick={() => setActive(false)}
+                    to="/boardrooms"
+                    // onClick={() => setActive(false)}
                 >
-                    {translate("menu_link_19")}
+                    Boardrooms
                 </NavLink>
             </li>
             <li className={styles.item}>
                 <NavLink
                     activeClassName={styles.active}
                     className={styles.link}
-                    to="/contact"
-                    onClick={() => setActive(false)}
+                    to="/bonds"
+                    // onClick={() => setActive(false)}
                 >
-                    {translate("menu_link_8")}
+                    Bonds
                 </NavLink>
             </li>
         </ul>

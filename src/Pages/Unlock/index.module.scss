@@ -1,0 +1,49 @@
+@import '../../styles/config';
+
+.section {
+  @include size(100%);
+  @include flex(center, center);
+}
+
+.button {
+  @include flex(center, center);
+  @include size(100%, 45px);
+
+  position: relative;
+  margin: 0 auto;
+  border-radius: 13px;
+  overflow: hidden;
+  max-width: 300px;
+  background: linear-gradient(180deg, #FDAD3E 0%, #FE4F8E 51.56%, #D94BAF 100%);
+  background-size: 300% 300%;
+  animation: background 3s infinite linear;
+
+  &::before {
+    position: absolute;
+    top: 1px;
+    right: 1px;
+    bottom: 1px;
+    left: 1px;
+    background-color: var(--color-grey);
+    border-radius: inherit;
+    content: '';
+  }
+}
+
+.text {
+  position: relative;
+  color: var(--color-text);
+  font-size: 20px;
+}
+
+@keyframes background {
+  0% {
+    background-position: 0 80%;
+  }
+  50% {
+    background-position: 100% 20%;
+  }
+  100% {
+    background-position: 0 80%;
+  }
+}

@@ -1,14 +1,8 @@
 :root {
-  --min-width: 320px;
+  --min-width: 375px;
   --max-width: 1200px;
 
-  --box-shadow-lg: 0 0 14px rgba(0, 0, 0, 0.1);
-  --box-shadow-sm: 0 0 5px rgba(0, 0, 0, 0.1);
-
-  --letter-spacing: 2px;
-  --default-height: 40px;
-  --default-border-radius: 3px;
   --default-transition: 0.3s;
 
-  --default-form-width: 500px;
+  --default-title-outher: 0 auto 34px;
 }

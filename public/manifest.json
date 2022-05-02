@@ -1,5 +1,5 @@
 {
-  "name": "Global Workers",
+  "name": "IceCream",
   "icons": [
     {
       "src": "/img/icon/favicon.ico",
@@ -29,6 +29,6 @@
   ],
   "start_url": ".",
   "display": "standalone",
-  "theme_color": "#fff",
-  "background_color": "#fff"
+  "theme_color": "#111",
+  "background_color": "#111"
 }

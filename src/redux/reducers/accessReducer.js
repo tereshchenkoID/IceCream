@@ -1,9 +1,7 @@
 import { types } from '../types/types';
 
-import getAccess from "../../helpers/getAccess";
-
 const initialState = {
-    access: getAccess() || false
+    access: 0
 };
 
 export const accessReducer = (state = initialState, action) => {

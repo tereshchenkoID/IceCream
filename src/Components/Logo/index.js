@@ -4,21 +4,18 @@ import {NavLink} from "react-router-dom";
 
 import styles from './index.module.scss';
 
-const Logo = ({isLight}) => {
-    const path = isLight ? 'logo-white' : 'logo'
+const Logo = () => {
     return (
         <div className={styles.block}>
             <NavLink
                 to="/"
+                className={styles.link}
             >
-                <picture>
-                    <source srcSet={`/img/logo/1x/${path}.webp 1x, /img/logo/2x/${path}@2x.webp 2x`}/>
-                    <img
-                        src={`/img/logo/1x/${path}.webp`}
-                        alt={"Global Workers"}
-                        loading={"lazy"}
-                    />
-                </picture>
+                <img
+                    src={'/img/logo.webp'}
+                    alt={'Logo'}
+                    loading={'lazy'}
+                />
             </NavLink>
         </div>
     );

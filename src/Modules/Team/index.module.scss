@@ -1,0 +1,70 @@
+@import '../../styles/config';
+
+.title {
+  margin: var(--default-title-outher);
+  max-width: 450px;
+  text-align: center;
+}
+
+.list {
+  @include flex($justify-content: center, $align-items: center, $wrap: wrap);
+
+  margin-left: -$grid-margin;
+  margin-right: -$grid-margin;
+
+  @include media-max(map_get($brackpoints, sm)) {
+    margin-left: -($grid-margin - 5px);
+    margin-right: -($grid-margin - 5px);
+    justify-content: flex-start;
+  }
+}
+
+.card {
+  margin: 0 15px 30px;
+
+  &:nth-child(even) {
+    padding-top: 40px;
+    animation: slide-1 3s ease-in-out 0.2s infinite;
+  }
+
+  &:nth-child(odd) {
+    animation: slide-2 3s ease-in-out 0.2s infinite;
+  }
+
+  @include media-max(map_get($brackpoints, sm)) {
+    @include flex(center);
+
+    margin: 0;
+    flex: 1 1 50%;
+    max-width: 50%;
+  }
+}
+
+
+@keyframes slide-1 {
+  0% {
+    transform: translate(0px, 0px);
+  }
+
+  50% {
+    transform: translate(0, 5px);
+  }
+
+  100% {
+    transform: translate(0px, 0px);
+  }
+}
+
+@keyframes slide-2 {
+  0% {
+    transform: translate(0px, 0px);
+  }
+
+  50% {
+    transform: translate(0, -5px);
+  }
+
+  100% {
+    transform: translate(0px, 0px);
+  }
+}

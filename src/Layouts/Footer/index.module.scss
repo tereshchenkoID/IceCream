@@ -2,57 +2,119 @@
 
 .block {
   position: relative;
+  padding-top: 270px;
+  overflow: hidden;
+
+  &::before {
+    position: absolute;
+    right: -45px;
+    left: -45px;
+    bottom: -70px;
+    height: 505px;
+    background: linear-gradient(0, #353535 0%, rgba(84, 84, 84, 0) 100%);
+    z-index: -1;
+    content: '';
+
+    @include media-max(map_get($brackpoints, lg)) {
+      height: 305px;
+    }
+
+    @include media-max(map_get($brackpoints, sm)) {
+      bottom: 0;
+    }
+  }
+
+  @include media-max(map_get($brackpoints, lg)) {
+    padding-top: 200px;
+  }
+
+  @include media-max(map_get($brackpoints, md)) {
+    padding-top: 120px;
+  }
 }
 
 .top {
-  padding: 50px 0 30px;
-  background-color: var(--color-black);
+  margin-bottom: 20px;
 }
 
 .bottom {
-  padding: 15px 0;
-  background-color: #262626;
   text-align: center;
 }
 
-.list {
-  margin-bottom: 20px;
+.row {
+  align-items: center;
+}
+
+.navigation {
+  @include flex(flex-end, center);
+
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  height: 100%;
+
+  @include media-max(map_get($brackpoints, md)) {
+    flex-wrap: wrap;
+  }
+}
+
+.item {
+  margin: 10px 0;
+  width: 50%;
+  text-align: center;
 
   &:last-child {
     margin-right: 0;
   }
-}
-.subtitle,
-.item {
-  margin-bottom: 10px;
-}
 
-.subtitle,
-.text {
-  color: var(--color-white);
-}
-
-.item {
-
-  &:last-child {
-    margin-bottom: 0;
+  @include media-min(map_get($brackpoints, md)) {
+    margin: 0 52px 0 0;
+    width: auto;
+    text-align: left;
   }
 }
 
-.text {
-  font-size: 14px;
+.text,
+.link {
 
-  span {
-    margin: 2px;
+  &.sm {
+    font-size: 12px;
   }
 }
 
 .link {
-  display: block;
-  color: rgba(255, 255, 255, 0.5);
+  text-decoration: underline;
 
   &:hover {
     color: var(--color-primary);
-    transform: translateX(10px);
+  }
+}
+
+.rules {
+  @include flex($align-items: center);
+
+  @include media-max(map_get($brackpoints, md)) {
+    justify-content: center;
+  }
+}
+
+.divider {
+  @include size(1px, 10px);
+
+  margin: 0 5px;
+  background-color: var(--color-white);
+}
+
+.toggle {
+  position: absolute;
+  right: $grid-margin;
+  top: -180px;
+  z-index: 1;
+
+  @include media-min(map_get($brackpoints, md)) {
+    position: static;
+    margin-right: 0;
+    margin-left: auto;
+    width: 105px;
   }
 }

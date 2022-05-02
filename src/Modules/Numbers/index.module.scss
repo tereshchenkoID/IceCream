@@ -1,0 +1,38 @@
+@import '../../styles/config';
+
+.group {
+  margin: var(--default-title-outher);
+  max-width: 470px;
+}
+
+.title {
+  margin-bottom: 20px;
+}
+
+.subtitle {
+  margin-bottom: 12px;
+}
+
+.text {
+
+  @include media-min(map_get($brackpoints, sm)) {
+    font-size: 18px;
+  }
+}
+
+.icon {
+  @include size(45px);
+
+  margin: 0 auto 30px;
+}
+
+.row {
+  justify-content: center;
+  margin: 0 auto;
+  max-width: 980px;
+  text-align: center;
+}
+
+.col {
+  margin-bottom: 20px;
+}

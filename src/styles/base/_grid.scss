@@ -1,16 +1,16 @@
+main {
+  overflow-x: hidden;
+}
+
 .section {
-  padding: 50px 0;
+  padding: 100px 0;
 
-  &.alt {
-    padding: 0;
+  @include media-max(map_get($brackpoints, md)) {
+    padding: 65px 0;
   }
 
-  &.dark {
-    background-color: #fbfbfb;
-  }
-
-  &.fluid {
-    padding-top: 0;
+  @include media-max(map_get($brackpoints, sm)) {
+    padding: 55px 0;
   }
 }
 
@@ -45,18 +45,6 @@
   padding: {
     right: $grid-padding;
     left: $grid-padding;
-  }
-
-  &.center {
-    text-align: center;
-  }
-
-  &.right {
-    text-align: right;
-  }
-
-  &.left {
-    text-align: left;
   }
 
   @for $i from 1 through $count-column {

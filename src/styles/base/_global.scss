@@ -1,7 +1,7 @@
 body {
   @include smooth-font;
 
-  background-color: var(--white);
+  //background-color: var(--color-grey);
   font-family: var(--font-family);
   font-weight: var(--font-weight);
   font-size: var(--font-size);
@@ -14,7 +14,7 @@ body {
   }
 
   &::-webkit-scrollbar-track {
-    background-color: var(--color-secondary);
+    background-color: var(--color-grey);
   }
 
   &::-webkit-scrollbar-thumb {
@@ -26,6 +26,7 @@ body {
 
 main {
   position: relative;
+  flex-grow: 1;
 }
 
 a,
@@ -50,46 +51,6 @@ button {
   }
 }
 
-textarea,
-input {
-
-  &:focus {
-    outline: none;
-  }
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  margin: 0;
-  line-height: var(--line-height);
-  color: var(--color-title);
-}
-
-
-h1 {
-  font-size: 50px;
-}
-
-h2 {
-  font-size: 45px;
-}
-
-h4 {
-  font-size: 30px;
-}
-
-h5 {
-  font-size: 22px;
-}
-
-h6 {
-  font-size: 18px;
-}
-
 svg,
 picture,
 img {
@@ -99,6 +60,143 @@ img {
   object-fit: cover;
 }
 
-form {
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+  font-family: var(--font-family-additional);
+  font-weight: var(--font-weight);
+  color: var(--color-title);
+  line-height: 1.2;
+}
+
+h1 {
+  font-size: 48px;
+
+  @include media-max(map_get($brackpoints, lg)) {
+    font-size: 42px;
+  }
+
+  @include media-max(map_get($brackpoints, sm)) {
+    font-size: 32px;
+  }
+}
+
+h2 {
+  font-size: 48px;
+
+  @include media-max(map_get($brackpoints, lg)) {
+    font-size: 42px;
+  }
+
+  @include media-max(map_get($brackpoints, sm)) {
+    font-size: 32px;
+  }
+}
+
+h3 {
+  font-size: 42px;
+
+  @include media-max(map_get($brackpoints, lg)) {
+    font-size: 36px;
+  }
+}
+
+h4 {
+  font-size: 38px;
+}
+
+h5 {
+  font-size: 28px;
+
+  @include media-max(map_get($brackpoints, lg)) {
+    font-size: 24px;
+  }
+
+  @include media-max(map_get($brackpoints, sm)) {
+    font-size: 20px;
+  }
+}
+
+h6 {
+  font-size: 20px;
+}
+
+[data-theme='light'] {
+  :root {
+    --color-title: #111;
+    --color-text: #111;
+  }
+
+  body {
+    background-color: var(--color-white);
+  }
+}
+
+[data-theme='dark'] {
+  :root {
+    --color-title: #fff;
+    --color-text: #fff;
+  }
+
+  body {
+    background-color: var(--color-grey);
+  }
+}
+
+.gradient {
+  background: linear-gradient(180deg,
+          rgba(253, 173, 62, 0.8) 0%,
+          rgba(254, 123, 104, 0.695312) 33.85%,
+          rgba(218, 75, 174, 0.334375) 73.96%,
+          rgba(159, 87, 209, 0.2) 100%);
+  background-size: 150% 150%;
+  animation: gradient 5s infinite linear;
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0 100%;
+  }
+  50% {
+    background-position: 100% 20%;
+  }
+  100% {
+    background-position: 0 100%;
+  }
+}
+
+.gradient-background {
   position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+  background: linear-gradient(180deg, #FDAD3E 0%, #FE4F8E 47.4%, #C64FBB 100%);
+  animation: background 3s infinite linear;
+
+  &::before {
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    bottom: 2px;
+    left: 2px;
+    background-color: var(--color-grey);
+    border-radius: 19px;
+    content: '';
+  }
+}
+
+@keyframes gradient-background {
+  0% {
+    background-position: 0 80%;
+  }
+  50% {
+    background-position: 100% 20%;
+  }
+  100% {
+    background-position: 0 80%;
+  }
 }

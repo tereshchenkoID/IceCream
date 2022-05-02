@@ -1,0 +1,153 @@
+@import '../../styles/config';
+
+.section {
+  padding: 100px 0 0;
+}
+
+.banner {
+  @include flex(center, center);
+
+  padding: 30px 55px;
+  border-radius: 35px;
+  min-height: 400px;
+
+  @include media-max(map_get($brackpoints, lg)) {
+    padding: 30px;
+    min-height: 300px;
+  }
+}
+
+.left,
+.right {
+  position: relative;
+  height: 100%;
+  flex: 1;
+}
+
+.left {
+  @include media-max(map_get($brackpoints, sm)) {
+    flex-grow: 1;
+  }
+}
+
+.right {
+  @include media-max(map_get($brackpoints, sm)) {
+    flex: unset;
+  }
+}
+
+.text {
+  margin-top: 30px;
+  margin-bottom: 30px;
+  max-width: 400px;
+
+  @include media-min(map_get($brackpoints, md)) {
+    margin-bottom: 50px;
+    font-size: 18px;
+  }
+}
+
+.label {
+  font-family: var(--font-family-additional);
+  text-transform: uppercase;
+}
+
+.value {
+  font-weight: var(--medium);
+  font-size: 38px;
+}
+
+.picture {
+  @include size(100%, 320px);
+
+  position: relative;
+
+  @include media-max(map_get($brackpoints, sm)) {
+    @include size(180px, 235px);
+
+    position: absolute;
+    top: 0;
+    right: -90px;
+  }
+}
+
+.img {
+  @include size(195px, 450px);
+
+  position: absolute;
+
+  @include media-max(map_get($brackpoints, lg)) {
+    @include size(180px, 400px);
+  }
+
+  @include media-max(map_get($brackpoints, sm)) {
+    @include size(75px, 175px);
+  }
+
+  &:nth-child(1) {
+    top: -40px;
+    left: 32%;
+    animation: slide-1 3s ease-in-out 0s infinite;
+
+    @include media-max(map_get($brackpoints, md)) {
+      top: 0;
+      left: 10%;
+    }
+
+    @include media-max(map_get($brackpoints, sm)) {
+      top: 50px;
+    }
+
+    img {
+      transform: rotateZ(-18deg);
+    }
+  }
+
+  &:nth-child(2) {
+    top: -140px;
+    left: 55%;
+    animation: slide-2 3s ease-in-out 0.3s infinite;
+
+    @include media-max(map_get($brackpoints, md)) {
+      top: -120px;
+      left: 48%;
+    }
+
+    @include media-max(map_get($brackpoints, sm)) {
+      top: 0;
+      left: 36%;
+    }
+
+    img {
+      transform: rotateZ(20deg);
+    }
+  }
+}
+
+@keyframes slide-1 {
+  0% {
+    transform: translate(0px, 0px);
+  }
+
+  50% {
+    transform: translate(-10px, -10px);
+  }
+
+  100% {
+    transform: translate(0px, 0px);
+  }
+}
+
+@keyframes slide-2 {
+  0% {
+    transform: translate(0px, 0px);
+  }
+
+  50% {
+    transform: translate(10px, -10px);
+  }
+
+  100% {
+    transform: translate(0px, 0px);
+  }
+}

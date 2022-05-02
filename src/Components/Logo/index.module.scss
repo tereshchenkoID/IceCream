@@ -1,9 +1,21 @@
 @import '../../styles/config';
 
 .block {
-  @include size(130px, 60px);
+  @include size(168px, 65px);
 
-  picture {
+  @include media-max(map_get($brackpoints, md)) {
+    @include size(145px, 52px);
+  }
+
+  @include media-max(map_get($brackpoints, sm)) {
+    @include size(102px, 35px);
+  }
+}
+
+.link {
+  display: block;
+
+  img {
     transform: translateX(-10px);
   }
 }

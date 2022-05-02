@@ -7,11 +7,11 @@ const Preloader = () => {
     return (
         <div className={styles.block}>
             <div className={styles.wrapper}>
-                {
-                    Array(16).fill(null).map((item, idx) =>
-                        <div key={idx} className={styles.item} />
-                    )
-                }
+                <img
+                    src={"https://icecreamfinance.app/static/media/loader.fa8ccc02.gif"}
+                    alt={""}
+                    loading={'lazy'}
+                />
             </div>
         </div>
     );
