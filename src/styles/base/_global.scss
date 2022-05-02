@@ -1,7 +1,6 @@
 body {
   @include smooth-font;
 
-  //background-color: var(--color-grey);
   font-family: var(--font-family);
   font-weight: var(--font-weight);
   font-size: var(--font-size);
@@ -26,7 +25,17 @@ body {
 
 main {
   position: relative;
+  padding-bottom: 270px;
+  overflow-x: hidden;
   flex-grow: 1;
+
+  @include media-max(map_get($brackpoints, lg)) {
+    padding-bottom: 200px;
+  }
+
+  @include media-max(map_get($brackpoints, md)) {
+    padding-bottom: 120px;
+  }
 }
 
 a,

@@ -3,9 +3,9 @@ import classes from "classnames";
 
 import styles from './index.module.scss';
 
-const JoinUs = () => {
+const JoinUs = ({isLast}) => {
     return (
-        <section className={classes("section", styles.section)}>
+        <section className={classes("section", styles.section, isLast && styles.last)}>
             <div className={classes("container-fluid", styles.fluid)}>
                 <div className={classes("container", styles.container)}>
                     <h2 className={styles.title}>Get Updates on New Farms from Our Social Channels</h2>

@@ -2,8 +2,6 @@
 
 .block {
   position: relative;
-  padding-top: 270px;
-  overflow: hidden;
 
   &::before {
     position: absolute;
@@ -22,14 +20,6 @@
     @include media-max(map_get($brackpoints, sm)) {
       bottom: 0;
     }
-  }
-
-  @include media-max(map_get($brackpoints, lg)) {
-    padding-top: 200px;
-  }
-
-  @include media-max(map_get($brackpoints, md)) {
-    padding-top: 120px;
   }
 }
 

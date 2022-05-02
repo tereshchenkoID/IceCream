@@ -1,49 +1,105 @@
 @import '../../styles/config';
 
-.section {
-  @include size(100%);
+.main {
   @include flex(center, center);
+
+  overflow: unset;
+  padding-bottom: 0;
+
+  &::before,
+  &::after {
+    @include size(1500px, 2475px);
+
+    position: absolute;
+    z-index: -1;
+    content: '';
+  }
+
+  &::before {
+    top: -375px;
+    left: 100%;
+    transform: translateX(-50%);
+    background: radial-gradient(50% 50% at 50% 50%, #734E26 0%, rgba(55, 37, 17, 0) 100%);
+  }
+
+  &::after {
+    top: -95px;
+    left: -50%;
+    background: radial-gradient(50% 50% at 50% 50%, #792F70 0%, rgba(89, 59, 85, 0) 100%);
+  }
+}
+
+.section {
+  padding: 0;
 }
 
 .button {
-  @include flex(center, center);
-  @include size(100%, 45px);
-
-  position: relative;
   margin: 0 auto;
-  border-radius: 13px;
-  overflow: hidden;
-  max-width: 300px;
-  background: linear-gradient(180deg, #FDAD3E 0%, #FE4F8E 51.56%, #D94BAF 100%);
-  background-size: 300% 300%;
-  animation: background 3s infinite linear;
-
-  &::before {
-    position: absolute;
-    top: 1px;
-    right: 1px;
-    bottom: 1px;
-    left: 1px;
-    background-color: var(--color-grey);
-    border-radius: inherit;
-    content: '';
-  }
+  width: 165px;
+  white-space: nowrap;
 }
 
-.text {
+.pictures {
+  @include size(120px, 135px);
+
   position: relative;
-  color: var(--color-text);
-  font-size: 20px;
+  margin: 0 auto 20px;
 }
 
-@keyframes background {
+.picture {
+  @include size(45px, 95px);
+
+  position: absolute;
+
+  &:nth-child(1) {
+    @include size(45px, 95px);
+
+    top: 35px;
+    left: 17px;
+    transform: rotateZ(-18deg);
+
+    img {
+      animation: slide-1 3s ease-in-out 0s infinite;
+    }
+  }
+
+  &:nth-child(2) {
+    @include size(50px, 105px);
+
+    top: 8px;
+    right: 19px;
+    transform: rotateZ(21deg);
+
+    img {
+      animation: slide-2 3s ease-in-out 0.1s infinite;
+    }
+  }
+}
+
+@keyframes slide-1 {
   0% {
-    background-position: 0 80%;
+    transform: translate(0px, 0px);
   }
+
   50% {
-    background-position: 100% 20%;
+    transform: translate(-2px, -5px);
   }
+
   100% {
-    background-position: 0 80%;
+    transform: translate(0px, 0px);
+  }
+}
+
+@keyframes slide-2 {
+  0% {
+    transform: translate(0px, 0px);
+  }
+
+  50% {
+    transform: translate(2px, -5px);
+  }
+
+  100% {
+    transform: translate(0px, 0px);
   }
 }

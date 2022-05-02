@@ -45,7 +45,7 @@ const Menu = ({active, setActive}) => {
                     Boardrooms
                 </NavLink>
             </li>
-            <li className={styles.item}>
+            <li className={classes(styles.item, styles.last)}>
                 <NavLink
                     activeClassName={styles.active}
                     className={styles.link}
@@ -55,6 +55,22 @@ const Menu = ({active, setActive}) => {
                     Bonds
                 </NavLink>
             </li>
+            <div className={styles.pictures}>
+                <div className={styles.picture}>
+                    <img
+                        src={'/img/icecream-4.webp'}
+                        alt={"Ice Cream 1"}
+                        loading={"lazy"}
+                    />
+                </div>
+                <div className={styles.picture}>
+                    <img
+                        src={'/img/icecream-6.webp'}
+                        alt={"Ice Cream 2"}
+                        loading={"lazy"}
+                    />
+                </div>
+            </div>
         </ul>
     );
 }

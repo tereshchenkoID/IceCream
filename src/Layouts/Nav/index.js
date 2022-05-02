@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import {useDispatch, useSelector} from "react-redux";
 
 import classes from 'classnames';
@@ -17,9 +17,25 @@ const Nav = () => {
     const { modal } = useSelector(state => state.modalReducer)
 
     const [active, setActive] = useState(false)
+    const [sticky, setSticky] = useState('relative');
+
+    useEffect(() => {
+        window.addEventListener('scroll', stickNavbar);
+
+        return () => {
+            window.removeEventListener('scroll', stickNavbar);
+        };
+    }, []);
+
+    const stickNavbar = () => {
+        if (window !== undefined) {
+            let windowHeight = window.scrollY;
+            windowHeight > 20 ? setSticky('fixed') : setSticky('relative');
+        }
+    };
 
     return (
-        <nav className={styles.block}>
+        <nav className={classes(styles.block, styles[sticky])}>
             <div className="container-fluid">
                 <div className="container">
                     <div className={styles.wrapper}>

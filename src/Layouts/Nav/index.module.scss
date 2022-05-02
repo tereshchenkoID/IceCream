@@ -1,11 +1,18 @@
 @import '../../styles/config';
 
 .block {
-  position: sticky;
-  top: 0;
+  position: fixed;
+  top: 11px;
+  left: 0;
+  right: 0;
   z-index: 11;
-  background-color: var(--color-grey);
   padding: 5px 0;
+  transition: var(--default-transition);
+
+  &.fixed {
+    top: 0;
+    background-color: var(--color-grey);
+  }
 }
 
 .wrapper {

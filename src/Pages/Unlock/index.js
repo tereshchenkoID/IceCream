@@ -6,6 +6,8 @@ import classes from "classnames";
 
 import {setModalData} from "../../redux/actions/modalActions";
 
+import Button from "../../Components/Button";
+
 import styles from './index.module.scss';
 
 const Unlock = () => {
@@ -14,18 +16,36 @@ const Unlock = () => {
     const { modal } = useSelector(state => state.modalReducer)
 
     return (
-        <main>
+        <main className={styles.main}>
             <ReactTitle title={'IceCream | Unlock'}/>
 
             <section className={classes("section", styles.section)}>
                 <div className={classes("container-fluid", styles.fluid)}>
                     <div className={classes("container", styles.container)}>
-                        <button
-                            onClick={() => {dispatch(setModalData(!modal))} }
-                            className={styles.button}
-                        >
-                            <span className={styles.text}>Unlock</span>
-                        </button>
+                        <div className={styles.pictures}>
+                            <div className={styles.picture}>
+                                <img
+                                    src={'/img/icecream-8.webp'}
+                                    alt={"Ice Cream 8"}
+                                    loading={"lazy"}
+                                />
+                            </div>
+                            <div className={styles.picture}>
+                                <img
+                                    src={'/img/icecream-9.webp'}
+                                    alt={"Ice Cream 9"}
+                                    loading={"lazy"}
+                                />
+                            </div>
+                        </div>
+                        <div className={styles.button}>
+                            <Button
+                                action={() => {dispatch(setModalData(!modal))} }
+                                type={'button'}
+                                placeholder={'Connect Wallet'}
+                                classname={'primary'}
+                            />
+                        </div>
                     </div>
                 </div>
             </section>

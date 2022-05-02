@@ -18,7 +18,9 @@ const Bonds = () => {
                 isButton={false}
                 isToggle={false}
             />
-            <JoinUs />
+            <JoinUs
+                isLast={true}
+            />
         </main>
     );
 }

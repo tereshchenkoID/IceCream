@@ -1,5 +1,12 @@
 @import '../../styles/config';
 
+.section {
+
+  &.last {
+    padding-bottom: 0;
+  }
+}
+
 .title {
   margin: var(--default-title-outher);
   max-width: 826px;
