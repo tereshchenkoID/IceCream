@@ -43,6 +43,8 @@
   @include size(30px);
 
   cursor: pointer;
+  position: relative;
+  z-index: 11;
 
   * {
     @include size(23px, 2px);

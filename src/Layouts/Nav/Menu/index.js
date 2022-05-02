@@ -20,7 +20,7 @@ const Menu = ({active, setActive}) => {
                     className={styles.link}
                     to="/"
                     exact={true}
-                    // onClick={() => setActive(false)}
+                    onClick={() => setActive(false)}
                 >
                     Home
                 </NavLink>
@@ -30,7 +30,7 @@ const Menu = ({active, setActive}) => {
                     activeClassName={styles.active}
                     className={styles.link}
                     to="/farm"
-                    // onClick={() => setActive(false)}
+                    onClick={() => setActive(false)}
                 >
                     Farm
                 </NavLink>
@@ -40,7 +40,7 @@ const Menu = ({active, setActive}) => {
                     activeClassName={styles.active}
                     className={styles.link}
                     to="/boardrooms"
-                    // onClick={() => setActive(false)}
+                    onClick={() => setActive(false)}
                 >
                     Boardrooms
                 </NavLink>
@@ -50,7 +50,7 @@ const Menu = ({active, setActive}) => {
                     activeClassName={styles.active}
                     className={styles.link}
                     to="/bonds"
-                    // onClick={() => setActive(false)}
+                    onClick={() => setActive(false)}
                 >
                     Bonds
                 </NavLink>

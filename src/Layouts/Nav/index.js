@@ -25,10 +25,7 @@ const Nav = () => {
                     <div className={styles.wrapper}>
                         <div className={styles.cell}>
                             <div
-                                className={classes(
-                                    styles.toggle,
-                                    active && styles.active
-                                )}
+                                className={classes(styles.toggle, active && styles.active)}
                                 onClick={() => setActive(!active)}
                             >
                                 <div />
