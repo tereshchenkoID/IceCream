@@ -3,21 +3,31 @@
 .section {
   padding: 100px 0 0;
 
-  @include media-max(map_get($brackpoints, sm)) {
+  @include media-max(map_get($brackpoints, md)) {
     padding: 45px 0 0;
   }
+}
+
+.title,
+.text,
+.label,
+.value {
+  color: var(--color-white);
 }
 
 .banner {
   @include flex(center, center);
 
-  padding: 30px 55px;
+  padding: 35px 55px;
   border-radius: 35px;
   min-height: 400px;
 
-  @include media-max(map_get($brackpoints, lg)) {
-    padding: 30px;
-    min-height: 300px;
+  @include media-max(map_get($brackpoints, xl) - 1) {
+    padding: 35px 40px;
+  }
+
+  @include media-max(map_get($brackpoints, md) - 1) {
+    padding: 35px;
   }
 }
 
@@ -29,13 +39,13 @@
 }
 
 .left {
-  @include media-max(map_get($brackpoints, sm)) {
+  @include media-max(map_get($brackpoints, md) - 1) {
     flex-grow: 1;
   }
 }
 
 .right {
-  @include media-max(map_get($brackpoints, sm)) {
+  @include media-max(map_get($brackpoints, md) - 1) {
     flex: unset;
   }
 }
@@ -45,7 +55,7 @@
   margin-bottom: 30px;
   max-width: 400px;
 
-  @include media-min(map_get($brackpoints, md)) {
+  @include media-min(map_get($brackpoints, xl)) {
     margin-bottom: 50px;
     font-size: 18px;
   }
@@ -66,12 +76,12 @@
 
   position: relative;
 
-  @include media-max(map_get($brackpoints, sm)) {
+  @include media-max(map_get($brackpoints, md) - 1) {
     @include size(180px, 235px);
 
     position: absolute;
     top: 0;
-    right: -90px;
+    right: -60px;
   }
 }
 
@@ -80,26 +90,27 @@
 
   position: absolute;
 
-  @include media-max(map_get($brackpoints, lg)) {
+  @include media-max(map_get($brackpoints, xl) - 1) {
     @include size(180px, 400px);
   }
 
-  @include media-max(map_get($brackpoints, sm)) {
+  @include media-max(map_get($brackpoints, md) - 1) {
     @include size(75px, 175px);
   }
 
   &:nth-child(1) {
     top: -40px;
-    left: 32%;
+    right: 175px;
     animation: slide-1 3s ease-in-out 0s infinite;
 
-    @include media-max(map_get($brackpoints, md)) {
-      top: 0;
-      left: 10%;
+    @include media-max(map_get($brackpoints, xl) - 1) {
+      top: 10px;
+      right: 105px;
     }
 
-    @include media-max(map_get($brackpoints, sm)) {
+    @include media-max(map_get($brackpoints, md) - 1) {
       top: 50px;
+      left: 50px;
     }
 
     img {
@@ -109,17 +120,17 @@
 
   &:nth-child(2) {
     top: -140px;
-    left: 55%;
+    right: 45px;
     animation: slide-2 3s ease-in-out 0.3s infinite;
 
-    @include media-max(map_get($brackpoints, md)) {
-      top: -120px;
-      left: 48%;
+    @include media-max(map_get($brackpoints, xl) - 1) {
+      top: -100px;
+      right: -20px;
     }
 
-    @include media-max(map_get($brackpoints, sm)) {
+    @include media-max(map_get($brackpoints, md) - 1) {
       top: 0;
-      left: 36%;
+      right: 5px;
     }
 
     img {
@@ -134,7 +145,7 @@
   }
 
   50% {
-    transform: translate(-10px, -10px);
+    transform: translate(-7px, -7px);
   }
 
   100% {
@@ -148,7 +159,7 @@
   }
 
   50% {
-    transform: translate(10px, -10px);
+    transform: translate(7px, -7px);
   }
 
   100% {

@@ -11,7 +11,7 @@
 
   &.fixed {
     top: 0;
-    background-color: var(--color-grey);
+    background-color: var(--navigation-color);
   }
 }
 
@@ -25,7 +25,7 @@
   &:nth-child(1) {
     display: none;
 
-    @include media-max(map_get($brackpoints, md)) {
+    @include media-max(map_get($brackpoints, lg) - 1) {
       display: block;
       margin-right: 15px;
     }
@@ -35,11 +35,11 @@
     margin-left: auto;
     margin-right: 60px;
 
-    @include media-max(map_get($brackpoints, lg)) {
+    @include media-max(map_get($brackpoints, xl) - 1) {
       margin-right: 40px;
     }
 
-    @include media-max(map_get($brackpoints, md)) {
+    @include media-max(map_get($brackpoints, lg) - 1) {
       margin-right: 0;
     }
   }
@@ -96,7 +96,7 @@
 .button {
   @include size(160px, 45px);
 
-  @include media-max(map_get($brackpoints, sm)) {
+  @include media-max(map_get($brackpoints, sm) - 1) {
     @include size(140px, 40px);
   }
 }

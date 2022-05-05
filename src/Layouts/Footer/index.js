@@ -13,10 +13,10 @@ const Footer = () => {
                 <div className={classes("container-fluid", styles.fluid)}>
                     <div className={classes("container", styles.container)}>
                         <div className={classes("row", styles.row)}>
-                            <div className={classes("col", "col-12", "col-md-4", "col-padding-vertical")}>
+                            <div className={classes("col", "col-12", "col-md-4", styles.col)}>
                                 <Logo/>
                             </div>
-                            <div className={classes("col", "col-12", "col-md-8", "col-padding-vertical")}>
+                            <div className={classes("col", "col-12", "col-md-8", styles.col)}>
                                 <ul className={styles.navigation}>
                                     <li className={styles.item}>
                                         <a
@@ -69,7 +69,7 @@ const Footer = () => {
                 <div className={classes("container-fluid", styles.fluid)}>
                     <div className={classes("container", styles.container)}>
                         <div className={classes("row", styles.row)}>
-                            <div className={classes("col", "col-12", "col-md-4", "col-padding-vertical")}>
+                            <div className={classes("col", "col-12", "col-md-4", styles.col)}>
                                 <div className={styles.rules}>
                                     <a
                                         href={"/"}
@@ -90,12 +90,12 @@ const Footer = () => {
                                     </a>
                                 </div>
                             </div>
-                            <div className={classes("col", "col-12", "col-md-6", "col-lg-5", "col-padding-vertical")}>
+                            <div className={classes("col", "col-12", "col-md-5", "col-lg-5", styles.col)}>
                                 <p className={classes(styles.text, styles.sm)}>
                                     © { new Date().getFullYear() }, IceCream Finance. All Rights Reserved
                                 </p>
                             </div>
-                            <div className={classes("col", "col-12", "col-md-2", "col-lg-3", "col-padding-vertical")}>
+                            <div className={classes("col", "col-12", "col-md-3", "col-lg-3", styles.col)}>
                                 <div className={styles.toggle}>
                                     <Toggle />
                                 </div>

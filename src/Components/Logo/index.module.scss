@@ -3,19 +3,30 @@
 .block {
   @include size(168px, 65px);
 
-  @include media-max(map_get($brackpoints, md)) {
-    @include size(145px, 52px);
-  }
-
   @include media-max(map_get($brackpoints, sm)) {
     @include size(102px, 35px);
+
+    .img {
+      @include size(35px);
+    }
   }
 }
 
 .link {
-  display: block;
+  @include flex(center, center);
+}
 
-  img {
-    transform: translateX(-10px);
+.text {
+  flex-grow: 1;
+
+  svg {
+    margin-left: -8px;
+    fill: var(--color-text);
   }
+}
+
+.img {
+  @include size(65px);
+
+  transform: translateX(-10px);
 }

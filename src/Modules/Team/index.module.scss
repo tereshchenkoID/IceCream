@@ -7,14 +7,18 @@
 }
 
 .list {
-  @include flex($justify-content: center, $align-items: center, $wrap: wrap);
+  @include flex($justify-content: center, $wrap: nowrap);
 
-  margin-left: -$grid-margin;
-  margin-right: -$grid-margin;
+  overflow: hidden;
+  padding-top: 10px;
+  padding-right: var(--grid-outher-fluid);
+  padding-left: var(--grid-outher-fluid);
 
-  @include media-max(map_get($brackpoints, sm)) {
-    margin-left: -($grid-margin - 5px);
-    margin-right: -($grid-margin - 5px);
+  @include media-max(map_get($brackpoints, xl) - 1) {
+    flex-wrap: wrap;
+  }
+
+  @include media-max(map_get($brackpoints, md) - 1) {
     justify-content: flex-start;
   }
 }
@@ -22,24 +26,70 @@
 .card {
   margin: 0 15px 30px;
 
-  &:nth-child(even) {
+  &.top {
+    animation: slide-2 3s ease-in-out 0.2s infinite;
+  }
+
+  &.bottom {
     padding-top: 40px;
     animation: slide-1 3s ease-in-out 0.2s infinite;
   }
 
-  &:nth-child(odd) {
-    animation: slide-2 3s ease-in-out 0.2s infinite;
+  &:nth-child(1),
+  &:nth-child(4) {
+    @include media-max(map_get($brackpoints, xl) - 1) {
+      justify-content: flex-start;
+    }
+
+    @include media-max(map_get($brackpoints, md) - 1) {
+      justify-content: center;
+    }
   }
 
-  @include media-max(map_get($brackpoints, sm)) {
+  &:nth-child(3),
+  &:nth-child(5) {
+    @include media-max(map_get($brackpoints, xl) - 1) {
+      justify-content: flex-end;
+    }
+
+    @include media-max(map_get($brackpoints, md) - 1) {
+      justify-content: center;
+    }
+  }
+
+  &:nth-child(4) {
+    @include media-max(map_get($brackpoints, xl) - 1) {
+      padding-top: 0;
+    }
+
+    @include media-max(map_get($brackpoints, md) - 1) {
+      padding-top: 40px;
+    }
+  }
+
+  &:nth-child(5) {
+    @include media-max(map_get($brackpoints, xl) - 1) {
+      padding-top: 40px;
+    }
+
+    @include media-max(map_get($brackpoints, md) - 1) {
+      padding-top: 0;
+    }
+  }
+
+  @include media-max(map_get($brackpoints, xl) - 1) {
     @include flex(center);
 
-    margin: 0;
+    flex: 1 1 33.3%;
+    max-width: 33.3%;
+    margin: 0 0 30px 0;
+  }
+
+  @include media-max(map_get($brackpoints, md) - 1) {
     flex: 1 1 50%;
     max-width: 50%;
   }
 }
-
 
 @keyframes slide-1 {
   0% {

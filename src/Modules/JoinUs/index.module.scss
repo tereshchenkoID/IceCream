@@ -7,16 +7,23 @@
   }
 }
 
+.container {
+  max-width: 860px;
+  text-align: center;
+}
+
 .title {
   margin: var(--default-title-outher);
-  max-width: 826px;
-  text-align: center;
+
+  @include media-max(map_get($brackpoints, xl) - 1) {
+    max-width: 650px;
+  }
 }
 
 .actions {
   @include flex(center, center);
 
-  @include media-max(map_get($brackpoints, sm)) {
+  @include media-max(map_get($brackpoints, md) - 1) {
     flex-direction: column;
   }
 }
@@ -25,7 +32,7 @@
   @include flex(center, center);
   @include size(100%, 80px);
 
-  margin-right: 26px;
+  margin-right: 25px;
   max-width: 400px;
   background-size: 300% 300%;
 
@@ -37,13 +44,14 @@
     transform: scale(1.05);
   }
 
-  @include media-max(map_get($brackpoints, lg)) {
-    max-width: 329px;
+  @include media-max(map_get($brackpoints, xl) - 1) {
+    max-width: 330px;
   }
 
-  @include media-max(map_get($brackpoints, sm)) {
+  @include media-max(map_get($brackpoints, md) - 1) {
     margin-right: 0;
     margin-bottom: 29px;
+    max-width: 335px;
   }
 }
 

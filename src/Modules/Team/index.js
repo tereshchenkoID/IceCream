@@ -12,35 +12,35 @@ const Team = () => {
                 <div className={classes("container", styles.container)}>
                     <h2 className={styles.title}>Meet The People Behind it All</h2>
                     <div className={styles.list}>
-                        <div className={styles.card}>
+                        <div className={classes(styles.card, styles.top)}>
                             <Card
                                 url={null}
                                 name={"Name Surname"}
                                 position={"Position"}
                             />
                         </div>
-                        <div className={styles.card}>
+                        <div className={classes(styles.card, styles.bottom)}>
                             <Card
                                 url={null}
                                 name={"Name Surname"}
                                 position={"Position"}
                             />
                         </div>
-                        <div className={styles.card}>
+                        <div className={classes(styles.card, styles.top)}>
                             <Card
                                 url={null}
                                 name={"Name Surname"}
                                 position={"Position"}
                             />
                         </div>
-                        <div className={styles.card}>
+                        <div className={classes(styles.card, styles.bottom)}>
                             <Card
                                 url={null}
                                 name={"Name Surname"}
                                 position={"Position"}
                             />
                         </div>
-                        <div className={styles.card}>
+                        <div className={classes(styles.card, styles.top)}>
                             <Card
                                 url={null}
                                 name={"Name Surname"}

@@ -1,6 +1,7 @@
 @import '../../styles/config';
 
 .container {
+  max-width: 1040px;
 
   &::before {
     @include size(1500px, 2475px);
@@ -15,11 +16,33 @@
   }
 }
 
-.text {
-  margin: 26px 0;
+.row {
+  align-items: center;
+}
 
-  @include media-min(map_get($brackpoints, md) - 1) {
-    font-size: 18px;
+.col {
+  position: relative;
+
+  &:nth-child(1) {
+    @include media-max(map_get($brackpoints, xl) - 1) {
+      padding-right: 50px;
+    }
+
+    @include media-max(map_get($brackpoints, md) - 1) {
+      order: 2;
+      padding-right: var(--grid-outher);
+    }
+  }
+
+  &:nth-child(2) {
+    @include media-max(map_get($brackpoints, xl) - 1) {
+      padding-left: 0;
+    }
+
+    @include media-max(map_get($brackpoints, md) - 1) {
+      order: 1;
+      padding-left: var(--grid-outher);
+    }
   }
 }
 
@@ -27,6 +50,15 @@
 .text {
   @include media-max(map_get($brackpoints, md) - 1) {
     text-align: center;
+  }
+}
+
+
+.text {
+  margin: 26px 0;
+
+  @include media-min(map_get($brackpoints, xl) - 1) {
+    font-size: 18px;
   }
 }
 
@@ -43,31 +75,25 @@
   margin-right: 0;
   margin-left: auto;
   overflow: hidden;
-  max-width: 350px;
   width: 100%;
+  max-width: 335px;
+
+  @include media-min(map_get($brackpoints, md)) {
+    position: absolute;
+    top: 50%;
+    right: var(--grid-outher);
+    transform: translateY(-50%);
+    max-width: 240px;
+  }
+
+  @include media-min(map_get($brackpoints, xl)) {
+    position: relative;
+    transform: none;
+    top: unset;
+    max-width: 350px;
+  }
 
   @include media-max(map_get($brackpoints, md) - 1) {
     margin-right: auto;
-  }
-}
-
-.row {
-  margin: 0 auto;
-  align-items: center;
-  max-width: 980px;
-}
-
-.col {
-
-  &:nth-child(1) {
-    @include media-max(map_get($brackpoints, md) - 1) {
-      order: 2;
-    }
-  }
-
-  &:nth-child(2) {
-    @include media-max(map_get($brackpoints, md) - 1) {
-      order: 1;
-    }
   }
 }

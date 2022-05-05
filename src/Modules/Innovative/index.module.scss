@@ -1,6 +1,7 @@
 @import '../../styles/config';
 
 .container {
+  max-width: 980px;
 
   &::before {
     @include size(1500px, 2475px);
@@ -16,9 +17,30 @@
 }
 
 .row {
-  margin: 0 auto;
   align-items: center;
-  max-width: 980px;
+}
+
+.col {
+
+  &:nth-child(1) {
+    @include media-max(map_get($brackpoints, xl) - 1) {
+      padding-right: 0;
+    }
+
+    @include media-max(map_get($brackpoints, md) - 1) {
+      padding-right: var(--grid-outher);
+    }
+  }
+
+  &:nth-child(2) {
+    @include media-max(map_get($brackpoints, xl) - 1) {
+      padding-left: 0;
+    }
+
+    @include media-max(map_get($brackpoints, md) - 1) {
+      padding-left: var(--grid-outher);
+    }
+  }
 }
 
 .title,
@@ -31,8 +53,12 @@
 .text {
   margin: 26px 0;
 
-  @include media-min(map_get($brackpoints, md) - 1) {
+  @include media-min(map_get($brackpoints, xl) - 1) {
     font-size: 18px;
+  }
+
+  &:last-child {
+    margin-bottom: 0;
   }
 }
 
@@ -42,13 +68,14 @@
   position: relative;
   max-width: 460px;
 
-  @include media-max(map_get($brackpoints, lg)) {
-    height: 300px;
+  @include media-max(map_get($brackpoints, xl) - 1) {
+    max-width: 260px;
+    height: 350px;
   }
 
   @include media-max(map_get($brackpoints, md) - 1) {
-    @include size(230px, 330px);
-
+    max-width: 230px;
+    height: 300px;
     margin-left: auto;
     margin-right: auto;
   }
@@ -57,10 +84,6 @@
 .img {
   position: absolute;
 
-  @include media-max(map_get($brackpoints, lg)) {
-    @include size(114px, 290px);
-  }
-
   &:nth-child(1) {
     @include size(190px, 500px);
 
@@ -68,7 +91,7 @@
     left: 0;
     animation: slide-1 3s ease-in-out 0s infinite;
 
-    @include media-max(map_get($brackpoints, lg)) {
+    @include media-max(map_get($brackpoints, xl) - 1) {
       @include size(114px, 290px);
     }
 
@@ -85,7 +108,7 @@
     left: 140px;
     animation: slide-2 3s ease-in-out 0.3s infinite;
 
-    @include media-max(map_get($brackpoints, lg)) {
+    @include media-max(map_get($brackpoints, xl) - 1) {
       @include size(114px, 290px);
 
       top: 50px;

@@ -1,24 +1,27 @@
+$base-grid-column: 		12;
+$count-column: $base-grid-column;
+$count-width: 100 / $count-column;
+
 .section {
   padding: 100px 0;
 
-  @include media-max(map_get($brackpoints, md)) {
+  @include media-max(map_get($brackpoints, lg) - 1) {
     padding: 65px 0;
   }
 
-  @include media-max(map_get($brackpoints, sm)) {
+  @include media-max(map_get($brackpoints, md) - 1) {
     padding: 55px 0;
   }
 }
 
 .container {
   position: relative;
-  padding: 0 $grid-padding;
+  padding: 0 var(--grid-outher);
   min-width: var(--min-width);
   max-width: var(--max-width);
-  margin: {
-    right: auto;
-    left: auto;
-  }
+  margin-right: auto;
+  margin-left: auto;
+  //border: 1px solid red;
 
   &-fluid {
     margin-right: auto;
@@ -30,18 +33,18 @@
 .row {
   display: flex;
   flex-wrap: wrap;
-  margin-right: -$grid-padding;
-  margin-left: -$grid-padding;
+  margin-right: var(--grid-outher-fluid);
+  margin-left: var(--grid-outher-fluid);
+  //border: 1px solid red;
 }
 
 .col {
   flex-basis: 0;
   flex-grow: 1;
   max-width: 100%;
-  padding: {
-    right: $grid-padding;
-    left: $grid-padding;
-  }
+  padding-right: var(--grid-outher);
+  padding-left: var(--grid-outher);
+  //border: 1px solid red;
 
   @for $i from 1 through $count-column {
 
@@ -52,8 +55,8 @@
   }
 
   &-padding-vertical {
-    padding-top: $grid-padding;
-    padding-bottom: $grid-padding;
+    padding-top: var(--grid-outher);
+    padding-bottom: var(--grid-outher);
   }
 }
 

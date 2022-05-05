@@ -4,8 +4,8 @@
   width: 210px;
   text-align: center;
 
-  @include media-max(map_get($brackpoints, sm)) {
-    width: 150px;
+  @include media-max(map_get($brackpoints, md) - 1) {
+    width: 160px;
   }
 }
 
@@ -15,7 +15,7 @@
   margin-bottom: 14px;
   border-radius: 20px;
 
-  @include media-max(map_get($brackpoints, sm)) {
+  @include media-max(map_get($brackpoints, md) - 1) {
     height: 187px;
   }
 }
@@ -23,7 +23,7 @@
 .name {
   margin-bottom: 3px;
 
-  @include media-max(map_get($brackpoints, sm)) {
+  @include media-max(map_get($brackpoints, md) - 1) {
     font-size: 18px;
   }
 }

@@ -1,5 +1,27 @@
 @import '../../styles/config';
 
+.container {
+  max-width: 1090px;
+}
+
+.row {
+  justify-content: center;
+  text-align: center;
+}
+
+.col {
+  margin-bottom: 20px;
+
+  @include media-min(map_get($brackpoints, md)) {
+    margin-bottom: 0;
+  }
+
+  &:first-child,
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
 .group {
   margin: var(--default-title-outher);
   max-width: 470px;
@@ -15,7 +37,7 @@
 
 .text {
 
-  @include media-min(map_get($brackpoints, sm)) {
+  @include media-min(map_get($brackpoints, md)) {
     font-size: 18px;
   }
 }
@@ -24,15 +46,9 @@
   @include size(45px);
 
   margin: 0 auto 30px;
-}
+  color: var(--icon-color);
 
-.row {
-  justify-content: center;
-  margin: 0 auto;
-  max-width: 980px;
-  text-align: center;
-}
-
-.col {
-  margin-bottom: 20px;
+  svg {
+    fill: currentColor;
+  }
 }

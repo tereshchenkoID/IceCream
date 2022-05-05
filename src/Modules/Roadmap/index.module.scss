@@ -21,7 +21,7 @@
 
         top: 35px;
         bottom: 40px;
-        left: $grid-padding;
+        left: var(--grid-outher);
         transform: none;
         background: linear-gradient(0, #FDAD3E 0%, #FE4F8E 47.4%, #C64FBB 100%);
       }
@@ -32,6 +32,14 @@
 .title {
   margin: var(--default-title-outher);
   text-align: center;
+
+  @include media-max(map_get($brackpoints, xl) - 1) {
+    margin: 0 auto;
+  }
+
+  @include media-max(map_get($brackpoints, md) - 1) {
+    margin: var(--default-title-outher);
+  }
 }
 
 .block {
@@ -54,12 +62,12 @@
   position: relative;
   margin-right: 120px;
 
-  @include media-max(map_get($brackpoints, xl)) {
-    margin-right: 60px;
+  @include media-max(map_get($brackpoints, xl) - 1) {
+    margin-right: 100px;
   }
 
-  @include media-max(map_get($brackpoints, lg)) {
-    margin-right: 40px;
+  @include media-max(map_get($brackpoints, lg) - 1) {
+    margin-right: 38px;
   }
 
   &::after {
@@ -81,22 +89,17 @@
   &:nth-child(even) {
 
     .wrap {
-      bottom: 166px;
+      bottom: 180px;
 
       &::before {
         top: 34px;
         left: -50px;
-        border-top: 1px solid var(--color-white);
-        height: 201px;
-
-        @include media-max(map_get($brackpoints, lg)) {
-          top: 32px;
-          height: 204px;
-        }
+        border-top: 1px solid var(--color-text);
+        height: 215px;
       }
 
-      @include media-max(map_get($brackpoints, lg)) {
-        bottom: 150px;
+      @include media-max(map_get($brackpoints, xl) - 1) {
+        bottom: 160px;
       }
     }
   }
@@ -109,15 +112,11 @@
       &::before {
         top: -130px;
         left: -50px;
-        border-bottom: 1px solid var(--color-white);
+        border-bottom: 1px solid var(--color-text);
         height: 164px;
-
-        @include media-max(map_get($brackpoints, lg)) {
-          height: 162px;
-        }
       }
 
-      @include media-max(map_get($brackpoints, lg)) {
+      @include media-max(map_get($brackpoints, xl) - 1) {
         top: 182px;
       }
     }
@@ -128,6 +127,7 @@
   @include size(120px, 70px);
   @include flex(center, center);
 
+  z-index: 1;
   font-family: var(--font-family-additional);
   font-size: 20px;
 
@@ -139,13 +139,17 @@
 
 .wrap {
   position: absolute;
-  left: 90%;
-  min-width: 340px;
+  left: 110px;
+  min-width: 355px;
   height: 140px;
 
-  @include media-max(map_get($brackpoints, lg)) {
+  @include media-max(map_get($brackpoints, xl) - 1) {
     left: 50px;
     min-width: 220px;
+  }
+
+  @include media-max(map_get($brackpoints, lg) - 1) {
+    min-width: 180px;
   }
 
   @include media-max(map_get($brackpoints, md) - 1) {
@@ -154,13 +158,33 @@
     height: auto;
   }
 
-  &::before {
+  &::before,
+  &::after {
     position: absolute;
-    border-left: 1px solid var(--color-white);
-    width: 30px;
     content: '';
 
     @include media-max(map_get($brackpoints, md) - 1) {
+      display: none;
+    }
+  }
+
+  &::after {
+    @include size(10px);
+
+    top: 29px;
+    left: -25px;
+    border-radius: 50%;
+    background-color: var(--color-text);
+  }
+
+  &::before {
+    border-left: 1px solid var(--color-text);
+    width: 30px;
+  }
+
+  @include media-max(map_get($brackpoints, md) - 1) {
+
+    &::before {
       display: none;
     }
   }
@@ -173,29 +197,6 @@
 .data {
   font-size: 12px;
   text-transform: uppercase;
-}
-
-.subtitle {
-  position: relative;
-
-  &::before {
-    @include size(10px);
-
-    position: absolute;
-    top: 50%;
-    left: -25px;
-    border-radius: 50%;
-    transform: translateY(-50%);
-    background-color: var(--color-white);
-    content: ''
-  }
-
-  @include media-max(map_get($brackpoints, md) - 1) {
-
-    &::before {
-      display: none;
-    }
-  }
 }
 
 .list {
@@ -226,11 +227,11 @@
 
 .item {
   position: relative;
-  margin-bottom: 10px;
+  margin-bottom: 8px;
   padding-left: 25px;
   font-size: 14px;
 
-  @include media-max(map_get($brackpoints, lg)) {
+  @include media-max(map_get($brackpoints, xl) - 1) {
     font-size: 12px;
   }
 

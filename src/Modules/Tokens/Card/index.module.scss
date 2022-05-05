@@ -50,7 +50,7 @@
 .center {
   display: grid;
 
-  @include media-max(map_get($brackpoints, lg)) {
+  @include media-max(map_get($brackpoints, lg) - 1) {
     margin-bottom: 30px;
   }
 }
@@ -61,7 +61,7 @@
   align-items: flex-end;
   column-gap: 45px;
 
-  @include media-max(map_get($brackpoints, lg)) {
+  @include media-max(map_get($brackpoints, lg) - 1) {
 
     &::after {
       position: absolute;
@@ -74,7 +74,7 @@
     }
   }
 
-  @include media-max(map_get($brackpoints, sm)) {
+  @include media-max(map_get($brackpoints, sm) - 1) {
     grid-template-columns: repeat(2, 1fr);
 
     &::after {
@@ -87,11 +87,11 @@
   grid-template-columns: repeat(3, 120px);
   column-gap: 35px;
 
-  @include media-max(map_get($brackpoints, lg)) {
+  @include media-max(map_get($brackpoints, lg) - 1) {
     grid-template-columns: repeat(3, 1fr);
   }
 
-  @include media-max(map_get($brackpoints, sm)) {
+  @include media-max(map_get($brackpoints, sm) - 1) {
     grid-template-columns: auto;
   }
 }
@@ -99,12 +99,13 @@
 .label {
   margin-bottom: 10px;
   font-size: 14px;
+  font-weight: var(--medium);
 
   &.uppercase {
     text-transform: uppercase;
   }
 
-  @include media-max(map_get($brackpoints, sm)) {
+  @include media-max(map_get($brackpoints, sm) - 1) {
     margin-bottom: 0;
   }
 }
@@ -118,11 +119,11 @@
   margin-top: 10px;
   font-family: var(--font-family);
   font-weight: var(--bold);
-  line-height: 1;
+  line-height: 0.8;
 }
 
 .item {
-  @include media-max(map_get($brackpoints, sm)) {
+  @include media-max(map_get($brackpoints, sm) - 1) {
     @include flex(space-between, flex-end);
 
     margin-bottom: 15px;
@@ -130,7 +131,7 @@
 }
 
 .right {
-  @include media-max(map_get($brackpoints, sm)) {
+  @include media-max(map_get($brackpoints, sm) - 1) {
     text-align: right;
   }
 }
@@ -147,7 +148,7 @@
 
   margin-bottom: 6px;
 
-  @include media-max(map_get($brackpoints, sm)) {
+  @include media-max(map_get($brackpoints, sm) - 1) {
     @include size(68px);
   }
 }

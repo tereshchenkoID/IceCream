@@ -29,8 +29,8 @@ const Modal = () => {
                 handleClick(event)
             }}
         >
-            <div className={styles.content}>
-                <h6 className={styles.title}>Connect Wallet</h6>
+            <div className={classes('gradient-background', styles.content)}>
+                <h5 className={styles.title}>Connect Wallet</h5>
                 <span
                     className={styles.close}
                     data-close={true}
@@ -48,7 +48,7 @@ const Modal = () => {
                 >
                    <span className={styles.icon}>
                         <img
-                            src={"https://icecreamfinance.app/static/media/metamask-fox.c06f3a3e.svg"}
+                            src={"/img/product/metamask.svg"}
                             alt={"Metamask"}
                             loading={'lazy'}
                             className={styles.icon}
@@ -66,7 +66,7 @@ const Modal = () => {
                 >
                     <span className={styles.icon}>
                         <img
-                            src={"https://icecreamfinance.app/static/media/wallet-connect.37f2bc6e.svg"}
+                            src={"/img/product/wallet.svg"}
                             alt={"Metamask"}
                             loading={'lazy'}
                         />

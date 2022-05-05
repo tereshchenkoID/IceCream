@@ -2,6 +2,11 @@
 
 .block {
   position: relative;
+  padding-bottom: 30px;
+
+  @include media-max(map_get($brackpoints, md) - 1) {
+    padding-bottom: 0;
+  }
 
   &::before {
     position: absolute;
@@ -13,14 +18,19 @@
     z-index: -1;
     content: '';
 
-    @include media-max(map_get($brackpoints, lg)) {
+    @include media-max(map_get($brackpoints, xl) - 1) {
       height: 305px;
     }
 
-    @include media-max(map_get($brackpoints, sm)) {
+    @include media-max(map_get($brackpoints, md) - 1) {
       bottom: 0;
     }
   }
+}
+
+.col {
+  padding-top: 15px;
+  padding-bottom: 15px;
 }
 
 .top {
@@ -43,7 +53,7 @@
   list-style: none;
   height: 100%;
 
-  @include media-max(map_get($brackpoints, md)) {
+  @include media-max(map_get($brackpoints, md) - 1) {
     flex-wrap: wrap;
   }
 }
@@ -57,7 +67,7 @@
     margin-right: 0;
   }
 
-  @include media-min(map_get($brackpoints, md)) {
+  @include media-min(map_get($brackpoints, md) - 1) {
     margin: 0 52px 0 0;
     width: auto;
     text-align: left;
@@ -68,22 +78,24 @@
 .link {
 
   &.sm {
+    white-space: nowrap;
     font-size: 12px;
   }
 }
 
 .link {
   text-decoration: underline;
+  white-space: nowrap;
 
   &:hover {
-    color: var(--color-primary);
+    color: var(--color-secondary);
   }
 }
 
 .rules {
-  @include flex($align-items: center);
+  @include flex($align-items: center, $wrap: nowrap);
 
-  @include media-max(map_get($brackpoints, md)) {
+  @include media-max(map_get($brackpoints, md) - 1) {
     justify-content: center;
   }
 }
@@ -92,19 +104,21 @@
   @include size(1px, 10px);
 
   margin: 0 5px;
-  background-color: var(--color-white);
+  background-color: var(--color-text);
+  flex-shrink: 0;
 }
 
 .toggle {
   position: absolute;
-  right: $grid-margin;
+  right: var(--grid-outher);
   top: -180px;
   z-index: 1;
 
-  @include media-min(map_get($brackpoints, md)) {
+  @include media-min(map_get($brackpoints, md) - 1) {
     position: static;
     margin-right: 0;
     margin-left: auto;
+    transform: translateX(5px);
     width: 105px;
   }
 }

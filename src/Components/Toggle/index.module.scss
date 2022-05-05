@@ -15,9 +15,15 @@
   border-radius: 10px;
 
   &.active {
+    border-color: var(--color-grey);
 
     .slide {
       transform: translate(100%, -50%);
+      background-color: var(--color-grey);
+    }
+
+    .icon {
+      color: var(--color-grey);
     }
   }
 }
@@ -43,5 +49,7 @@
 
   svg {
     @include size(100%);
+
+    fill: currentColor;
   }
 }
