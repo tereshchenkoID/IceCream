@@ -10,17 +10,17 @@ import Toggle from "../../Components/Toggle";
 
 import styles from './index.module.scss';
 
-const Description = ({title, text, isButton, isToggle}) => {
+const Description = ({title, text, page}) => {
     const dispatch = useDispatch();
 
     const { modal } = useSelector(state => state.modalReducer)
 
     return (
-        <section className={classes("section", styles.section)}>
+        <section className={classes("section", styles.section, page !== 'home' && styles.sm)}>
             <div className={classes("container-fluid", styles.fluid)}>
                 <div className={classes("container", styles.container)}>
                     {
-                        isToggle &&
+                        page === 'home' &&
                         <div className={styles.toggle}>
                             <Toggle />
                         </div>
@@ -29,7 +29,7 @@ const Description = ({title, text, isButton, isToggle}) => {
                         <h2 className={styles.title}>{title}</h2>
                         <p className={styles.text}>{text}</p>
                         {
-                            isButton &&
+                            page === 'home' &&
                             <div className={styles.button}>
                                 <Button
                                     action={() => {dispatch(setModalData(!modal))} }

@@ -5,13 +5,14 @@ $blur: 5px;
 .section {
   position: relative;
   padding: 0;
+  border: 1px solid red;
 
   &::before {
     position: absolute;
     top: 0;
-    right: 0;
     bottom: 0;
-    left: 0;
+    right: var(--grid-outher-fluid);
+    left: var(--grid-outher-fluid);
     background: var(--description-background);
     z-index: -1;
     content: '';
@@ -23,6 +24,15 @@ $blur: 5px;
 
   @include media-max(map_get($brackpoints, sm) - 1) {
     padding-top: 200px;
+  }
+
+  &.sm {
+    padding: 0;
+
+    .fluid,
+    .container {
+      height: 450px;
+    }
   }
 }
 

@@ -18,19 +18,19 @@ export const routes = [
     path: '/bonds',
     component: Bonds,
     exact: false,
-    role: [1]
+    role: [0, 1]
   },
   {
     path: '/boardrooms',
     component: Boardrooms,
     exact: false,
-    role: [1]
+    role: [0, 1]
   },
   {
     path: '/farm',
     component: Farm,
     exact: false,
-    role: [1]
+    role: [0, 1]
   },
   {
     path: '/unlock',

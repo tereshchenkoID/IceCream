@@ -2,19 +2,35 @@ import React from "react";
 import {ReactTitle} from 'react-meta-tags';
 
 import JoinUs from "../../Modules/JoinUs";
-import Team from "../../Modules/Team";
-import Community from "../../Modules/Community";
 import Numbers from "../../Modules/Numbers";
-import Innovative from "../../Modules/Innovative";
-import CTA from "../../Modules/CTA";
-import Tokens from "../../Modules/Tokens";
-import Roadmap from "../../Modules/Roadmap";
 import Description from "../../Modules/Description";
-import Banner from "../../Modules/Banner";
+
+import Team from "./Team";
+import Community from "./Community";
+import Innovative from "./Innovative";
+import Tokens from "./Tokens";
+import Roadmap from "./Roadmap";
+import Banner from "./Banner";
+import CTA from "./CTA";
 
 // import styles from './index.module.scss';
 
 const Main = () => {
+    const numbers = [
+        {
+            title: "3.1 Daily Volume",
+            text: "Quantifying the buying and selling of the last 24 hours."
+        },
+        {
+            title: "XX.XX Treasury Value",
+            text: "Accumulation of protocol owned liquitity and protocol generated revenue."
+        },
+        {
+            title: "XX.XX Transactions",
+            text: "Total amount of transactions accumulated to date."
+        }
+    ]
+
     return (
         <main>
             <ReactTitle title={'IceCream | Home'}/>
@@ -22,11 +38,15 @@ const Main = () => {
             <Description
                 title={'Taste The Growth'}
                 text={'$CREAM A next-generation algo stable to cure your sweet-tooth on the Avalanche Network. Stake your LP in the Farm to earn CSHARE rewards. Then stake your earned CSHARE in the Boardroom to earn more $CREAM!'}
-                isButton={true}
-                isToggle={true}
+                page={'home'}
             />
             <Tokens />
-            <Numbers />
+            <Numbers
+                title={'Numbers Speak for Themselves'}
+                description={'An ever-growing ecosystem built with success for our investors in mind. Check out our launch statistics since January that showscases our trajectory.'}
+                info={numbers}
+                page={'home'}
+            />
             <Community />
             <Team />
             <JoinUs />

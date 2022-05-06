@@ -1,0 +1,19 @@
+@import '../../../styles/config';
+
+.row {
+  justify-content: center;
+}
+
+.col {
+  position: relative;
+}
+
+.tooltip {
+  @include size(23px);
+
+  position: absolute;
+  z-index: 1;
+  top: var(--grid-outher);
+  right: var(--grid-outher);
+  transform: translate(-20px, 20px);
+}

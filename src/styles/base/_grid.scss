@@ -17,7 +17,7 @@ $count-width: 100 / $count-column;
 .container {
   position: relative;
   padding: 0 var(--grid-outher);
-  min-width: var(--min-width);
+  //min-width: var(--min-width);
   max-width: var(--max-width);
   margin-right: auto;
   margin-left: auto;
