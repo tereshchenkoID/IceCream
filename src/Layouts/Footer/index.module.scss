@@ -2,6 +2,7 @@
 
 .block {
   position: relative;
+  z-index: 1;
   padding-bottom: 30px;
 
   @include media-max(map_get($brackpoints, md) - 1) {

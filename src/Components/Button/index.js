@@ -1,19 +1,25 @@
 import React from "react";
 import classNames from "classnames";
 
+import {useSelector} from "react-redux";
+
+import styles from './index.module.scss';
+
 const Button = ({
     action,
     type,
     placeholder,
     classname
 }) => {
+    const { mode } = useSelector(state => state.modeReducer)
+
     return (
         <>
             {
                type === 'button' &&
                     <button
                         type={type}
-                        className={classNames('button', classname)}
+                        className={classNames(styles.button, styles[classname], styles[mode])}
                         onClick={() => {
                             action && action()
                         }}
@@ -24,7 +30,7 @@ const Button = ({
             {
                type === 'link' &&
                     <a
-                        className={classNames('button', classname)}
+                        className={classNames(styles.button, styles[classname], styles[mode])}
                         href={action}
                         target={'_blank'}
                         rel={"noreferrer"}

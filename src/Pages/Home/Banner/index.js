@@ -15,8 +15,6 @@ const Banner = () => {
         const mouseYpercentage =  Math.round(y * 100 / rect.height);
 
         parent.style.background = `radial-gradient(at ${mouseXpercentage}% ${mouseYpercentage}%, #FDAD3E, #C64FBB)`
-
-        console.log(x, y, rect)
     }
 
     return (
