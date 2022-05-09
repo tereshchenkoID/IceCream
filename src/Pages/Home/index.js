@@ -12,6 +12,7 @@ import Tokens from "./Tokens";
 import Roadmap from "./Roadmap";
 import Banner from "./Banner";
 import CTA from "./CTA";
+import Footer from "../../Layouts/Footer";
 
 // import styles from './index.module.scss';
 
@@ -32,28 +33,31 @@ const Main = () => {
     ]
 
     return (
-        <main>
-            <ReactTitle title={'IceCream | Home'}/>
-            <Banner />
-            <Description
-                title={'Taste The Growth'}
-                text={'$CREAM A next-generation algo stable to cure your sweet-tooth on the Avalanche Network. Stake your LP in the Farm to earn CSHARE rewards. Then stake your earned CSHARE in the Boardroom to earn more $CREAM!'}
-                page={'home'}
-            />
-            <Tokens />
-            <Numbers
-                title={'Numbers Speak for Themselves'}
-                description={'An ever-growing ecosystem built with success for our investors in mind. Check out our launch statistics since January that showscases our trajectory.'}
-                info={numbers}
-                page={'home'}
-            />
-            <Community />
-            <Team />
-            <JoinUs />
-            <Innovative />
-            <Roadmap />
-            <CTA />
-        </main>
+        <>
+            <main>
+                <ReactTitle title={'IceCream | Home'}/>
+                <Banner />
+                <Description
+                    title={'Taste The Growth'}
+                    text={'$CREAM A next-generation algo stable to cure your sweet-tooth on the Avalanche Network. Stake your LP in the Farm to earn CSHARE rewards. Then stake your earned CSHARE in the Boardroom to earn more $CREAM!'}
+                    page={'home'}
+                />
+                <Tokens />
+                <Numbers
+                    title={'Numbers Speak for Themselves'}
+                    description={'An ever-growing ecosystem built with success for our investors in mind. Check out our launch statistics since January that showscases our trajectory.'}
+                    info={numbers}
+                    page={'home'}
+                />
+                <Community />
+                <Team />
+                <JoinUs />
+                <Innovative />
+                <Roadmap />
+                <CTA />
+            </main>
+            <Footer />
+        </>
     );
 }
 

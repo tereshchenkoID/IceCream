@@ -1,5 +1,13 @@
 @import "./styles/config";
 
+//button {
+//  border: 1px solid #fff;
+//  padding: 10px 20px;
+//  margin: 10px;
+//  border-radius: 5px;
+//  color: #fff;
+//}
+
 .preloader {
   position: fixed;
   top: 0;
@@ -15,28 +23,4 @@
 
   padding-top: 95px;
   min-height: 100vh;
-
-  //position: relative;
-  //
-  //&::before,
-  //&::after {
-  //  @include size(1500px, 2475px);
-  //
-  //  position: absolute;
-  //  z-index: -1;
-  //  content: '';
-  //}
-  //
-  //&::before {
-  //  right: -465px;
-  //  bottom: 0;
-  //  background: radial-gradient(50% 50% at 50% 50%, #734E26 0%, rgba(55, 37, 17, 0) 100%);
-  //
-  //}
-  //
-  //&::after {
-  //  bottom: -275px;
-  //  left: -565px;
-  //  background: radial-gradient(50% 50% at 50% 50%, #792F70 0%, rgba(89, 59, 85, 0) 100%);
-  //}
 }

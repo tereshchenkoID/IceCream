@@ -1,6 +1,7 @@
 import React from "react";
 import {ReactTitle} from 'react-meta-tags';
 
+import Footer from "../../Layouts/Footer";
 import JoinUs from "../../Modules/JoinUs";
 import Description from "../../Modules/Description";
 import Numbers from "../../Modules/Numbers";
@@ -26,25 +27,28 @@ const Boardrooms = () => {
     ]
 
     return (
-        <main className={'inner'}>
-            <ReactTitle title={'IceCream | Boardroom'}/>
-            <Description
-                title={'Boardroom'}
-                text={'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do labore et dolore magna dot  lorem aliqua. '}
-                page={'boardrooms'}
-            />
-            <Banners />
-            <Tokens />
-            <Numbers
-                title={'How It Works'}
-                description={'The boardroom utilizes the share-token as a single stake in the protocol to emit the governance (peg) token at the scheduled expansion rate that is dependent on the circulating supply.'}
-                info={numbers}
-                page={'boardrooms'}
-            />
-            <JoinUs
-                isLast={true}
-            />
-        </main>
+        <>
+            <main className={'inner'}>
+                <ReactTitle title={'IceCream | Boardroom'}/>
+                <Description
+                    title={'Boardroom'}
+                    text={'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do labore et dolore magna dot  lorem aliqua. '}
+                    page={'boardrooms'}
+                />
+                <Banners />
+                <Tokens />
+                <Numbers
+                    title={'How It Works'}
+                    description={'The boardroom utilizes the share-token as a single stake in the protocol to emit the governance (peg) token at the scheduled expansion rate that is dependent on the circulating supply.'}
+                    info={numbers}
+                    page={'boardrooms'}
+                />
+                <JoinUs
+                    isLast={true}
+                />
+            </main>
+            <Footer alt={true}/>
+        </>
     );
 }
 

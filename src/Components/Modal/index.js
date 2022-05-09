@@ -1,5 +1,8 @@
 import React from "react";
 import {useDispatch, useSelector} from "react-redux";
+import {useWeb3React} from "@web3-react/core";
+import {WalletConnectConnector} from "@web3-react/walletconnect-connector";
+import {InjectedConnector} from "@web3-react/injected-connector";
 
 import classes from "classnames";
 
@@ -8,8 +11,19 @@ import {setAccessData} from "../../redux/actions/accessActions";
 
 import styles from './index.module.scss';
 
+const WalletConnect = new WalletConnectConnector({
+    rpcUrl: `https://mainnet.infura.io/v3/${process.env.INFURA_KEY}`,
+    bridge: "https://bridge.walletconnect.org",
+    qrcode: true,
+});
+
+const Injected = new InjectedConnector({
+    supportedChainIds: [1, 3, 4, 5, 42]
+});
+
 const Modal = () => {
     const dispatch = useDispatch();
+    const { activate } = useWeb3React();
 
     const { modal } = useSelector(state => state.modalReducer)
 
@@ -42,6 +56,7 @@ const Modal = () => {
                     type={'button'}
                     className={classes(styles.button, styles.metamask)}
                     onClick={() => {
+                        activate(Injected)
                         dispatch(setAccessData(1))
                         dispatch(setModalData(!modal))
                     }}
@@ -60,6 +75,7 @@ const Modal = () => {
                     type={'button'}
                     className={classes(styles.button, styles.wallet)}
                     onClick={() => {
+                        activate(WalletConnect)
                         dispatch(setAccessData(1))
                         dispatch(setModalData(!modal))
                     }}

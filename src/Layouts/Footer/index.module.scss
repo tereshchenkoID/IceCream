@@ -5,8 +5,18 @@
   z-index: 1;
   padding-bottom: 30px;
 
+  @include media-max(map_get($brackpoints, xl) - 1) {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
   @include media-max(map_get($brackpoints, md) - 1) {
     padding-bottom: 0;
+  }
+
+  @include media-max(map_get($brackpoints, sm) - 1) {
+    padding-left: 0;
+    padding-right: 0;
   }
 
   &::before {
@@ -16,7 +26,7 @@
     bottom: -70px;
     height: 505px;
     background: linear-gradient(0, #353535 0%, rgba(84, 84, 84, 0) 100%);
-    z-index: -1;
+    z-index: 0;
     content: '';
 
     @include media-max(map_get($brackpoints, xl) - 1) {
@@ -25,6 +35,64 @@
 
     @include media-max(map_get($brackpoints, md) - 1) {
       bottom: 0;
+    }
+  }
+
+  &.alt {
+
+    .wrapper {
+      @include size(100%);
+
+      overflow: hidden;
+
+      &::before,
+      &::after {
+        @include size(1500px, 2475px);
+
+        position: absolute;
+        z-index: -1;
+        content: '';
+
+        @include media-max(map_get($brackpoints, xl) - 1) {
+          @include size(1313px, 2165px);
+        }
+      }
+
+      &::before {
+        right: -465px;
+        bottom: 0;
+        background: radial-gradient(50% 50% at 50% 50%, #734E26 0%, rgba(55, 37, 17, 0) 100%);
+
+        @include media-max(map_get($brackpoints, xl) - 1) {
+          right: -605px;
+          bottom: 225px;
+        }
+
+        @include media-max(map_get($brackpoints, md) - 1) {
+          @include size(805px, 1325px);
+
+          right: -435px;
+          bottom: 812px;
+        }
+      }
+
+      &::after {
+        bottom: -275px;
+        left: -565px;
+        background: radial-gradient(50% 50% at 50% 50%, #792F70 0%, rgba(89, 59, 85, 0) 100%);
+
+        @include media-max(map_get($brackpoints, xl) - 1) {
+          left: -712px;
+          bottom: -360px;
+        }
+
+        @include media-max(map_get($brackpoints, md) - 1) {
+          @include size(1085px, 1790px);
+
+          left: -585px;
+          bottom: 42px;
+        }
+      }
     }
   }
 }

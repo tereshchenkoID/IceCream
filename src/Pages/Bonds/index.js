@@ -1,6 +1,7 @@
 import React from "react";
 import {ReactTitle} from 'react-meta-tags';
 
+import Footer from "../../Layouts/Footer";
 import JoinUs from "../../Modules/JoinUs";
 import Description from "../../Modules/Description";
 import Numbers from "../../Modules/Numbers";
@@ -25,24 +26,27 @@ const Bonds = () => {
     ]
 
     return (
-        <main className={'inner'}>
-            <ReactTitle title={'IceCream | Bonds'}/>
-            <Description
-                title={'Buy & Redeem Bonds'}
-                text={'Earn premiums upon redemption. Consectetur adipiscing elit, sed do labore et dolore magna aliqua. '}
-                page={'bonds'}
-            />
-            <Tokens />
-            <Numbers
-                title={'How It Works'}
-                description={'Lorem dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.'}
-                info={numbers}
-                page={'bonds'}
-            />
-            <JoinUs
-                isLast={true}
-            />
-        </main>
+        <>
+            <main className={'inner'}>
+                <ReactTitle title={'IceCream | Bonds'}/>
+                <Description
+                    title={'Buy & Redeem Bonds'}
+                    text={'Earn premiums upon redemption. Consectetur adipiscing elit, sed do labore et dolore magna aliqua. '}
+                    page={'bonds'}
+                />
+                <Tokens />
+                <Numbers
+                    title={'How It Works'}
+                    description={'Lorem dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.'}
+                    info={numbers}
+                    page={'bonds'}
+                />
+                <JoinUs
+                    isLast={true}
+                />
+            </main>
+            <Footer alt={true}/>
+        </>
     );
 }
 
