@@ -14,15 +14,18 @@ const Boardrooms = () => {
     const numbers = [
         {
             title: "Purchase or Claim",
-            text: "PURCHASE OR CLAIM. Either purchase share-tokens ($CSHARE) from traderjoe or claim rewards from the farms."
+            text: "PURCHASE OR CLAIM. Either purchase share-tokens ($CSHARE) from traderjoe or claim rewards from the farms.",
+            icon: 'purchase'
         },
         {
             title: "Deposit Tokens",
-            text: "Deposit the tokens into the boardroom above on the card to the right. There will be a 36 hour lock-up period prior to being able withdraw the provided share token."
+            text: "Deposit the tokens into the boardroom above on the card to the right. There will be a 36 hour lock-up period prior to being able withdraw the provided share token.",
+            icon: 'deposit'
         },
         {
             title: "Claim Rewards",
-            text: "Collect the emissions in the form of the peg-token. There will be a 18 hour time period before being able to redeem rewards."
+            text: "Collect the emissions in the form of the peg-token. There will be a 18 hour time period before being able to redeem rewards.",
+            icon: 'claim'
         }
     ]
 

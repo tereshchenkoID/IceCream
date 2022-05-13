@@ -36,14 +36,14 @@ const Banner = () => {
                             <div className={styles.picture}>
                                 <div className={styles.img}>
                                     <img
-                                        src={"/img/banner-1.webp"}
+                                        src={"/img/banner-1.png"}
                                         alt={"Banner 1"}
                                         loading={"lazy"}
                                     />
                                 </div>
                                 <div className={styles.img}>
                                     <img
-                                        src={"/img/banner-2.webp"}
+                                        src={"/img/banner-2.png"}
                                         alt={"Banner 2"}
                                         loading={"lazy"}
                                     />

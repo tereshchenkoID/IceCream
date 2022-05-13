@@ -20,15 +20,18 @@ const Main = () => {
     const numbers = [
         {
             title: "3.1 Daily Volume",
-            text: "Quantifying the buying and selling of the last 24 hours."
+            text: "Quantifying the buying and selling of the last 24 hours.",
+            icon: 'daily'
         },
         {
             title: "XX.XX Treasury Value",
-            text: "Accumulation of protocol owned liquitity and protocol generated revenue."
+            text: "Accumulation of protocol owned liquitity and protocol generated revenue.",
+            icon: 'treasury'
         },
         {
             title: "XX.XX Transactions",
-            text: "Total amount of transactions accumulated to date."
+            text: "Total amount of transactions accumulated to date.",
+            icon: 'transactions'
         }
     ]
 

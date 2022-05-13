@@ -13,14 +13,14 @@ const Innovative = () => {
                             <div className={styles.picture}>
                                 <div className={styles.img}>
                                     <img
-                                        src={"/img/innovative-1.webp"}
+                                        src={"/img/innovative-1.png"}
                                         alt={"Innovative 1"}
                                         loading={"lazy"}
                                     />
                                 </div>
                                 <div className={styles.img}>
                                     <img
-                                        src={"/img/innovative-2.webp"}
+                                        src={"/img/innovative-2.png"}
                                         alt={"Innovative 2"}
                                         loading={"lazy"}
                                     />

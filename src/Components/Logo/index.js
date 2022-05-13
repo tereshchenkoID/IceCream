@@ -12,10 +12,10 @@ const Logo = () => {
                 className={styles.link}
             >
                 <img
-                    src={'/img/logo.webp'}
-                    alt={'Logo'}
                     loading={'lazy'}
                     className={styles.img}
+                    src={"/img/logo.png"}
+                    alt={"Ice cream"}
                 />
                 <span className={styles.text}>
                     <svg width="106" height="36" viewBox="0 0 106 36" fill="none" xmlns="http://www.w3.org/2000/svg">

@@ -47,7 +47,7 @@ const Description = ({title, text, page}) => {
                                 className={classes(styles.picture, styles[`picture--${idx}`])}
                             >
                                 <img
-                                    src={`/img/icecream-${idx}.webp`}
+                                    src={`/img/icecream-${idx}.png`}
                                     alt={"Ice Cream 1"}
                                     loading={"lazy"}
                                 />
@@ -57,28 +57,28 @@ const Description = ({title, text, page}) => {
 
                     <div className={classes(styles.picture, styles['picture--8'])}>
                         <img
-                            src={'/img/icecream-4.webp'}
+                            src={'/img/icecream-4.png'}
                             alt={"Ice Cream 8"}
                             loading={"lazy"}
                         />
                     </div>
                     <div className={classes(styles.picture, styles['picture--9'])}>
                         <img
-                            src={'/img/icecream-1.webp'}
+                            src={'/img/icecream-1.png'}
                             alt={"Ice Cream 9"}
                             loading={"lazy"}
                         />
                     </div>
                     <div className={classes(styles.picture, styles['picture--10'])}>
                         <img
-                            src={'/img/icecream-5.webp'}
+                            src={'/img/icecream-5.png'}
                             alt={"Ice Cream 10"}
                             loading={"lazy"}
                         />
                     </div>
                     <div className={classes(styles.picture, styles['picture--11'])}>
                         <img
-                            src={'/img/icecream-6.webp'}
+                            src={'/img/icecream-6.png'}
                             alt={"Ice Cream 11"}
                             loading={"lazy"}
                         />

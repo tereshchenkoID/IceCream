@@ -13,15 +13,18 @@ const Farm = () => {
     const numbers = [
         {
             title: "Purchase",
-            text: "Purchase tokens neccessary to construct the desired liquidity pair."
+            text: "Purchase tokens neccessary to construct the desired liquidity pair.",
+            icon: 'purchase'
         },
         {
             title: "Create",
-            text: "Create a liquidity pair on trader joe. A liquidity pair is 50% value of each token."
+            text: "Create a liquidity pair on trader joe. A liquidity pair is 50% value of each token.",
+            icon: 'create'
         },
         {
             title: "Deposit",
-            text: "Deposit liquidity pair token into the desired farm on the protocol."
+            text: "Deposit liquidity pair token into the desired farm on the protocol.",
+            icon: 'deposit'
         }
     ]
 

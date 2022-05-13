@@ -13,15 +13,18 @@ const Bonds = () => {
     const numbers = [
         {
             title: "Convert Tokens",
-            text: "Convert your peg-token at a 1:1 ratio for the bond-token. Bonds will only be available when the protocol is in a deficit phase."
+            text: "Convert your peg-token at a 1:1 ratio for the bond-token. Bonds will only be available when the protocol is in a deficit phase.",
+            icon: 'convert'
         },
         {
             title: "Hold Bond",
-            text: "Hold the bond-token until the peg-token is back above the algorithmically pegged value."
+            text: "Hold the bond-token until the peg-token is back above the algorithmically pegged value.",
+            icon: 'hold'
         },
         {
             title: "Redeem Bonds",
-            text: "The CBOND:CREAM ratio will be determined by the peg-token's time weighted average price on the previous epoch. "
+            text: "The CBOND:CREAM ratio will be determined by the peg-token's time weighted average price on the previous epoch.",
+            icon: 'redeem'
         }
     ]
 
